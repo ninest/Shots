@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 extension E on Widget {
-  Widget sliverToBoxAdapter() {
+  Widget sliver() {
     return SliverToBoxAdapter(child: this);
   }
 }
