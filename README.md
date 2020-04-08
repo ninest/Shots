@@ -1,16 +1,27 @@
-# shots
+<h1 align="center">
+  <a href="">Shots</a>
+</h1>
 
-A new Flutter project.
+<p align="center"><i>
+The Drinking game.
+</i></p>
 
-## Getting Started
+## 🚀 Features
 
-This project is a starting point for a Flutter application.
+- [ ] Start page where users can see a few options
+  - [ ] Start game
+  - [ ] Terms (everyone is over 18, ...)
+  - [ ] Theme customization
+- [ ] Randomize card order (all cards are in a YML file)
+- [ ] Don't show cards which were already shown
+- [ ] Card swiping to change cards (similar to Tinder)
+- [ ] Timer to show players how long they've been playing
 
-A few resources to get you started if this is your first Flutter project:
+## Packages used
+- coming soon
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## FAQs
+- coming soon
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Build setup
+- coming soon
