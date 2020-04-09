@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shots/components/core/buttons/close_buttons.dart';
 import 'package:shots/components/core/page_template.dart';
+import 'package:shots/components/game/shot_card.dart';
 import 'package:shots/utils/extensions.dart';
 
 class GameRoute extends StatelessWidget {
@@ -15,6 +16,7 @@ class GameRoute extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 AppCloseButton(),
+                // ShotCard()
               ],
             ).sliver()
           ],
