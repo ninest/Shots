@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shots/components/core/spacing.dart';
-import 'package:shots/styles/values.dart';
-import 'package:shots/utils/extensions.dart';
 
 class PageTemplate extends StatelessWidget {
   final List children;

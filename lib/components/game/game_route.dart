@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shots/components/core/buttons/close_buttons.dart';
-import 'package:shots/components/core/page_template.dart';
 import 'package:shots/components/game/card_group.dart';
-import 'package:shots/utils/extensions.dart';
 
 class GameRoute extends StatelessWidget {
   @override
@@ -10,6 +8,7 @@ class GameRoute extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             AppCloseButton(),
             Expanded(
@@ -20,22 +19,6 @@ class GameRoute extends StatelessWidget {
             ),
           ],
         ),
-        // child: PageTemplate(
-        //   children: <Widget>[
-        //     Column(
-        //       // mainAxisAlignment: MainAxisAlignment.start,
-        //       // crossAxisAlignment: CrossAxisAlignment.start,
-        //       children: <Widget>[
-        //         Align(
-        //           alignment: Alignment.topLeft,
-        //           child: AppCloseButton(),
-        //         ),
-
-        //         Expanded(child: CardGroup())
-        //       ],
-        //     ).sliver()
-        //   ],
-        // ),
       ),
     );
   }
