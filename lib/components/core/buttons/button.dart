@@ -19,14 +19,15 @@ class Button extends StatelessWidget {
           vertical: 13.0,
         ),
         decoration: BoxDecoration(
-            color: outline ? Colors.transparent : color,
-            borderRadius: BorderRadius.circular(100.0),
-            border: outline
-                ? Border.all(
-                    color: color,
-                    width: 4.0,
-                  )
-                : null),
+          color: outline ? Colors.transparent : color,
+          borderRadius: BorderRadius.circular(100.0),
+          // putting border for regular buttons so that they are the same width and height as
+          // outline buttons
+          border: Border.all(
+            color: color,
+            width: 4.0,
+          ),
+        ),
         child: Align(
           alignment: Alignment.center,
           child: Text(

@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:shots/components/core/button.dart';
+import 'package:shots/components/core/buttons/button.dart';
 import 'package:shots/components/core/page_template.dart';
 import 'package:shots/components/core/spacing.dart';
 import 'package:shots/router/router.gr.dart';

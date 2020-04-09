@@ -12,7 +12,7 @@ TextTheme _buildTextTheme(TextTheme base) {
     title: GoogleFonts.rubik(
       textStyle: base.title.copyWith(
         fontWeight: FontWeight.w900,
-        fontSize: 1.8 * em,
+        fontSize: 2.2 * em,
         letterSpacing: 0.7,
       ),
     ),
