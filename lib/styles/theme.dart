@@ -16,6 +16,14 @@ TextTheme _buildTextTheme(TextTheme base) {
         letterSpacing: 0.7,
       ),
     ),
+    button: GoogleFonts.rubik(
+      textStyle: base.button.copyWith(
+        fontWeight: FontWeight.w700,
+        fontSize: em,
+        letterSpacing: 0.8,
+        color: Colors.white70,
+      )
+    )
   );
 }
 
