@@ -5,8 +5,9 @@ class Values {
   */
   static double get em => 24;
 
+  static double get mainPadding => 20;
   /*
   padding for main pageTemplate
   */
-  static double get pageHorizontalPadding => 20;
+  static double get pageHorizontalPadding => mainPadding;
 }
