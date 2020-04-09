@@ -10,18 +10,19 @@ class PageTemplate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double statusBarHeight = MediaQuery.of(context).padding.top;
+    // un comment if we want use this as a safe area for notch/rounded corners
+    // double statusBarHeight = MediaQuery.of(context).padding.top;
 
     return Container(
-        padding: EdgeInsets.symmetric(
-          horizontal: Values.pageHorizontalPadding,
-        ),
-        child: CustomScrollView(slivers: <Widget>[
-          // padding for status bar; we still want content to be able to scroll and be seen behind it
-          Spacing(height: statusBarHeight).sliver(),
+      child: CustomScrollView(slivers: <Widget>[
 
-          ...children,
-        ]));
+        // un comment if required
+        // padding for status bar; we still want content to be able to scroll and be seen behind it
+        // Spacing(height: statusBarHeight).sliver(),
+
+        ...children,
+      ]),
+    );
   }
 
   Widget scaffold() => Scaffold(body: this);

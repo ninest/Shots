@@ -16,6 +16,7 @@ The Drinking game.
 - [ ] Don't show cards which were already shown
 - [ ] Card swiping to change cards (similar to Tinder)
 - [ ] Timer to show players how long they've been playing
+- [ ] Show how many cards the players have gone through
 
 ## Packages used
 - coming soon
