@@ -8,9 +8,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:shots/components/home/home_route.dart';
+import 'package:shots/components/game/game_route.dart';
 
 abstract class Routes {
   static const homeRoute = '/';
+  static const gameRoute = '/game-route';
 }
 
 class Router extends RouterBase {
@@ -26,6 +28,11 @@ class Router extends RouterBase {
       case Routes.homeRoute:
         return MaterialPageRoute<dynamic>(
           builder: (_) => HomeRoute(),
+          settings: settings,
+        );
+      case Routes.gameRoute:
+        return MaterialPageRoute<dynamic>(
+          builder: (_) => GameRoute(),
           settings: settings,
         );
       default:

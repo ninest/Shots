@@ -35,6 +35,13 @@ flutter run
 
 The main app entry point is `main.dart`, then `app.dart`.
 
+### Editing `router.dart`
+Everythime you change `router/router.dart`, you need to run
+
+```
+flutter packages pub run build_runner build
+```
+
 ### Build Android APK and appbundle
 ```
 flutter build appbundle
