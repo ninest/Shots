@@ -7,5 +7,6 @@ class $Router {
   @initial
   HomeRoute homeRoute;
 
+  @CupertinoRoute(fullscreenDialog: true)
   GameRoute gameRoute;
 }

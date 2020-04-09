@@ -19,11 +19,17 @@ TextTheme _buildTextTheme(TextTheme base) {
     button: GoogleFonts.rubik(
       textStyle: base.button.copyWith(
         fontWeight: FontWeight.w700,
-        fontSize: em,
         letterSpacing: 0.8,
+        fontSize: em,
         color: Colors.white70,
-      )
-    )
+      ),
+    ),
+
+    body1: GoogleFonts.rubik(
+      textStyle: base.body1.copyWith(
+        fontSize: em,
+      ),
+    ),
   );
 }
 

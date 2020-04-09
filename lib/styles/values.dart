@@ -10,4 +10,8 @@ class Values {
   padding for main pageTemplate
   */
   static double get pageHorizontalPadding => mainPadding;
+
+  // button padding
+  static double get buttonHorizontalPadding => 25.0;
+  static double get buttonVerticalPadding => 13.0;
 }

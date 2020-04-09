@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shots/styles/values.dart';
 
 class Button extends StatelessWidget {
   final String text;
@@ -15,8 +16,8 @@ class Button extends StatelessWidget {
       child: Container(
         width: width,
         padding: EdgeInsets.symmetric(
-          horizontal: 23.0,
-          vertical: 13.0,
+          horizontal: Values.buttonHorizontalPadding,
+          vertical: Values.buttonVerticalPadding,
         ),
         decoration: BoxDecoration(
           color: outline ? Colors.transparent : color,

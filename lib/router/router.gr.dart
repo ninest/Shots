@@ -31,9 +31,10 @@ class Router extends RouterBase {
           settings: settings,
         );
       case Routes.gameRoute:
-        return MaterialPageRoute<dynamic>(
+        return CupertinoPageRoute<dynamic>(
           builder: (_) => GameRoute(),
           settings: settings,
+          fullscreenDialog: true,
         );
       default:
         return unknownRoutePage(settings.name);
