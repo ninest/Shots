@@ -15,7 +15,7 @@ class Button extends StatelessWidget {
       child: Container(
         width: width,
         padding: EdgeInsets.symmetric(
-          horizontal: 25.0,
+          horizontal: 23.0,
           vertical: 13.0,
         ),
         decoration: BoxDecoration(
@@ -28,17 +28,27 @@ class Button extends StatelessWidget {
             width: 4.0,
           ),
         ),
-        child: Align(
-          alignment: Alignment.center,
-          child: Text(
-            text,
-            style: outline
-                ? Theme.of(context).textTheme.button.copyWith(color: color)
-                : Theme.of(context).textTheme.button,
-          ),
-        ),
+        child: child(context),
       ),
       onTap: () => onTap() ?? null,
     );
+  }
+
+  child(context) {
+    // text
+    Widget textChild = Text(
+      text,
+      style: outline
+          ? Theme.of(context).textTheme.button.copyWith(color: color)
+          : Theme.of(context).textTheme.button,
+    );
+
+    if (width != null) {
+      // if width is specified, make it an align element so the child is centered
+      return Align(alignment: Alignment.center, child: textChild);
+    } else {
+      // if no width specified, no need for align
+      return textChild;
+    }
   }
 }

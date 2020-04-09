@@ -38,9 +38,19 @@ class HomeRoute extends StatelessWidget {
 
   Widget _buttons(context) => Column(
         children: <Widget>[
-          Button(text: "Start", color: Colors.indigo, width: 200.0, onTap: () => ExtendedNavigator.ofRouter<Router>().pushNamed(Routes.gameRoute),),
+          Button(
+            text: "Start",
+            color: Colors.indigo,
+            width: 200.0,
+            onTap: () => ExtendedNavigator.ofRouter<Router>().pushNamed(Routes.gameRoute),
+          ),
           Spacing(height: Values.mainPadding),
-          Button(text: "Terms", color: Colors.indigo, width: 200.0, outline: true)
+          Button(
+            text: "Terms",
+            color: Colors.indigo,
+            width: 200.0,
+            outline: true,
+          )
         ],
       );
 }
