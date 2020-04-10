@@ -9,12 +9,15 @@ The Drinking game.
 ## 🚀 Features
 
 - [ ] Start page where users can see a few options
-  - [ ] Start game
+  - [x] Start game to take user to game
   - [ ] Terms (everyone is over 18, ...)
   - [ ] Theme customization
 - [ ] Randomize card order (all cards are in a YML file)
 - [ ] Don't show cards which were already shown
-- [ ] Card swiping to change cards (similar to Tinder)
+- [x] Card swiping to change cards (similar to Tinder)
+  - [ ] Show one card behind the current card
+  - [ ] Make cards wave as they are moving (similar to real cards)
+  - [ ] Animation when user drops card but not on target (animation of card going back)
 - [ ] Timer to show players how long they've been playing
 - [ ] Show how many cards the players have gone through
 
