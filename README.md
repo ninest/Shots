@@ -22,7 +22,11 @@ The Drinking game.
 - [ ] Show how many cards the players have gone through
 
 ## Packages used
-- coming soon
+- auto_route
+- google_fonts
+- font_awesome_flutter
+- provider
+- yaml
 
 ## FAQs
 - coming soon

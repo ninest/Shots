@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shots/app/providers/card_provider.dart';
@@ -14,7 +16,10 @@ class ShotCard extends StatelessWidget {
     return Draggable(
       child: _cardContainer(context),
       childWhenDragging: Container(),
-      feedback: _cardContainer(context),
+      feedback: Transform.rotate(
+        angle: pi/0.6,
+        child: _cardContainer(context),
+      ),
       // un comment if required
       // onDragStarted: () => print("Drag started"),
       // onDragEnd: (drag) => print("Drag ended"),
