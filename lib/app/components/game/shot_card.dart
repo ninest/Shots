@@ -6,8 +6,9 @@ import 'package:shots/app/providers/card_provider.dart';
 import 'package:shots/app/styles/values.dart';
 
 class ShotCard extends StatelessWidget {
-  final String text;
-  ShotCard({this.text});
+  final String line1;
+  final String line2;
+  ShotCard({@required this.line1, this.line2});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class ShotCard extends StatelessWidget {
       child: _cardContainer(context),
       childWhenDragging: Container(),
       feedback: Transform.rotate(
-        angle: pi/0.6,
+        angle: pi / 0.6,
         child: _cardContainer(context),
       ),
       // un comment if required
@@ -28,20 +29,22 @@ class ShotCard extends StatelessWidget {
   }
 
   Widget _cardContainer(context) => Container(
-        height: 500.0,
-        width: 300.0,
-        padding: EdgeInsets.symmetric(
-          horizontal: Values.mainPadding,
-          vertical: Values.mainPadding,
+      height: 500.0,
+      width: 300.0,
+      padding: EdgeInsets.symmetric(
+        horizontal: Values.mainPadding * 3,
+        vertical: Values.mainPadding,
+      ),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(Values.borderRadius),
+        border: Border.all(
+          color: Colors.grey,
+          width: 1,
         ),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(Values.borderRadius),
-          border: Border.all(
-            color: Colors.grey,
-            width: 1,
-          ),
-        ),
-        child: Text(text, style: Theme.of(context).textTheme.body1),
-      );
+      ),
+      child: Column(children: <Widget>[
+        Text(line1, style: Theme.of(context).textTheme.display1),
+        if (line2 != null) Text(line2, style: Theme.of(context).textTheme.display2),
+      ]));
 }
