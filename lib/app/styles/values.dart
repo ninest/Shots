@@ -14,4 +14,6 @@ class Values {
   // button padding
   static double get buttonHorizontalPadding => 25.0;
   static double get buttonVerticalPadding => 13.0;
+
+  static double get borderRadius => 15.0;
 }

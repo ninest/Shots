@@ -13,7 +13,7 @@ class GameRoute extends StatelessWidget {
             AppCloseButton(),
             Expanded(
               child: Container(
-                color: Colors.green,
+                // color: Colors.green,
                 child: CardGroup()
               ),
             ),
