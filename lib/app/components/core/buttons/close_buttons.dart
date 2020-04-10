@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:shots/router/router.gr.dart';
-import 'package:shots/styles/values.dart';
+import 'package:shots/app/router/router.gr.dart';
+import 'package:shots/app/styles/values.dart';
 
 class AppCloseButton extends StatelessWidget {
   @override

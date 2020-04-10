@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shots/components/game/shot_card.dart';
+import 'package:shots/app/components/game/shot_card.dart';
 
 class CardGroup extends StatelessWidget {
   @override

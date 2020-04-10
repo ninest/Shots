@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:shots/router/router.gr.dart';
-import 'package:shots/styles/theme.dart';
+import 'package:shots/app/router/router.gr.dart';
+import 'package:shots/app/styles/theme.dart';
 
 class App extends StatelessWidget {
   @override

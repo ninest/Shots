@@ -7,8 +7,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:shots/components/home/home_route.dart';
-import 'package:shots/components/game/game_route.dart';
+import 'package:shots/app/components/home/home_route.dart';
+import 'package:shots/app/components/game/game_route.dart';
 
 abstract class Routes {
   static const homeRoute = '/';

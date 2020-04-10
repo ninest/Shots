@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:shots/styles/values.dart';
+import 'package:shots/app/styles/values.dart';
 
 final ThemeData appLightTheme = _buildLightTheme();
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shots/components/core/buttons/close_buttons.dart';
-import 'package:shots/components/game/card_group.dart';
+import 'package:shots/app/components/core/buttons/close_buttons.dart';
+import 'package:shots/app/components/game/card_group.dart';
 
 class GameRoute extends StatelessWidget {
   @override
