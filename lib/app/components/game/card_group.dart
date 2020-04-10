@@ -6,7 +6,6 @@ import 'package:shots/app/providers/card_provider.dart';
 class CardGroup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     final CardProvider cardProvider = Provider.of<CardProvider>(context, listen: true);
 
     String currentCardText = cardProvider.cards[cardProvider.currentCardIndex];
@@ -28,6 +27,8 @@ class CardGroup extends StatelessWidget {
 class _CardDragTarget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final CardProvider cardProvider = Provider.of<CardProvider>(context, listen: false);
+
     return Flexible(
       flex: 1,
       child: DragTarget(
@@ -35,20 +36,20 @@ class _CardDragTarget extends StatelessWidget {
           return Container(
             // drag target should be just slighly smaller than viewport hiehg
             height: MediaQuery.of(context).size.height - 200,
+
+            // uncomment below target to visualize card drop position
             // color: Colors.red,
-            child: Text("Target"),
           );
         },
         onWillAccept: (_) {
           print("onWillAccept");
+          // current card done, go to next card
+          cardProvider.nextCard();
           return true;
         },
-        onAccept: (_) {
-          print("onAccept");
-        },
-        onLeave: (_) {
-          print("onLeave");
-        },
+        // un comment if required
+        // onAccept: (_) => print("onAccept"),
+        // onLeave: (_) => print("onLeave"),
       ),
     );
   }

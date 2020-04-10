@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CardProvider extends ChangeNotifier {
-  List<String> _cards = ["Card One", "Card Two", "Card Three"];
+  List<String> _cards = ["Card One", "Another Card Two", "Yet another Card Three", "Say hello to Card Four", "Card Five", "Card Six"];
   List<String> get cards => _cards;
 
   int _currentCardIndex = 0;

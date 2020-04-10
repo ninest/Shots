@@ -9,47 +9,34 @@ class ShotCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
-    final CardProvider cardProvider = Provider.of<CardProvider>(context, listen: false);
+    // final CardProvider cardProvider = Provider.of<CardProvider>(context, listen: false);
 
     return Draggable(
-      child: _CardContainer(text: text),
+      child: _cardContainer(context),
       childWhenDragging: Container(),
-      feedback: _CardContainer(text: text),
-      onDragStarted: () => print("Drag started"),
-      onDragEnd: (drag) => print("Drag ended"),
-      onDragCompleted: () {
-        print("DRAG COMPLETED");
-
-        // current card done, go to next card
-        cardProvider.nextCard();
-      },
+      feedback: _cardContainer(context),
+      // un comment if required
+      // onDragStarted: () => print("Drag started"),
+      // onDragEnd: (drag) => print("Drag ended"),
+      // onDragCompleted: () => print("DRAG COMPLETED"),
     );
   }
-}
 
-class _CardContainer extends StatelessWidget {
-  final String text;
-  _CardContainer({this.text});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 500.0,
-      width: 300.0,
-      padding: EdgeInsets.symmetric(
-        horizontal: Values.mainPadding,
-        vertical: Values.mainPadding,
-      ),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(Values.borderRadius),
-        border: Border.all(
-          color: Colors.grey,
-          width: 1,
+  Widget _cardContainer(context) => Container(
+        height: 500.0,
+        width: 300.0,
+        padding: EdgeInsets.symmetric(
+          horizontal: Values.mainPadding,
+          vertical: Values.mainPadding,
         ),
-      ),
-      child: Text(text, style: Theme.of(context).textTheme.body1),
-    );
-  }
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(Values.borderRadius),
+          border: Border.all(
+            color: Colors.grey,
+            width: 1,
+          ),
+        ),
+        child: Text(text, style: Theme.of(context).textTheme.body1),
+      );
 }
