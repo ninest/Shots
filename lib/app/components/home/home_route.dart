@@ -11,46 +11,56 @@ import 'package:shots/app/utils/extensions.dart';
 class HomeRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return PageTemplate(children: <Widget>[
-      Container(
+    return Scaffold(
+      body: Container(
         // 100% height
         height: MediaQuery.of(context).size.height,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            _appTitle(context),
-            _buttons(context),
+            _AppTitle(),
+            _Buttons(),
           ],
         ),
-      ).sliver(),
-    ]).scaffold();
+      ),
+    );
   }
+}
 
-  Widget _appTitle(context) => Column(
-        children: <Widget>[
-          Text(
-            Strings.appTitle,
-            style: Theme.of(context).textTheme.title,
-          ),
-        ],
-      );
+class _AppTitle extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Text(
+          Strings.appTitle,
+          style: Theme.of(context).textTheme.title,
+        ),
+      ],
+    );
+  }
+}
 
-  Widget _buttons(context) => Column(
-        children: <Widget>[
-          Button(
-            text: "Start",
-            color: Colors.indigo,
-            width: 200.0,
-            onTap: () => ExtendedNavigator.ofRouter<Router>().pushNamed(Routes.gameRoute),
-          ),
-          Spacing(height: Values.mainPadding),
-          Button(
-            text: "Terms",
-            color: Colors.indigo,
-            width: 200.0,
-            outline: true,
-          )
-        ],
-      );
+class _Buttons extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Button(
+          text: "Start",
+          color: Colors.indigo,
+          width: 200.0,
+          onTap: () => ExtendedNavigator.ofRouter<Router>().pushNamed(Routes.gameRoute),
+        ),
+        Spacing(height: Values.mainPadding),
+        Button(
+          text: "Terms",
+          color: Colors.indigo,
+          width: 200.0,
+          outline: true,
+        )
+      ],
+    );
+  }
 }
