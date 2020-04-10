@@ -5,7 +5,7 @@ class Values {
   */
   static double get em => 24;
 
-  static double get mainPadding => 20;
+  static double get mainPadding => 23;
   /*
   padding for main pageTemplate
   */
@@ -15,5 +15,5 @@ class Values {
   static double get buttonHorizontalPadding => 25.0;
   static double get buttonVerticalPadding => 13.0;
 
-  static double get borderRadius => 15.0;
+  static double get borderRadius => 13.0;
 }

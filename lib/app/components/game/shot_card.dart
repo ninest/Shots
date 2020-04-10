@@ -17,10 +17,7 @@ class ShotCard extends StatelessWidget {
     return Draggable(
       child: _cardContainer(context),
       childWhenDragging: Container(),
-      feedback: Transform.rotate(
-        angle: pi / 0.6,
-        child: _cardContainer(context),
-      ),
+      feedback: _cardContainer(context),
       // un comment if required
       // onDragStarted: () => print("Drag started"),
       // onDragEnd: (drag) => print("Drag ended"),
@@ -29,11 +26,13 @@ class ShotCard extends StatelessWidget {
   }
 
   Widget _cardContainer(context) => Container(
-      height: 500.0,
-      width: 300.0,
-      padding: EdgeInsets.symmetric(
-        horizontal: Values.mainPadding * 3,
-        vertical: Values.mainPadding,
+      height: 460.0,
+      width: 310.0,
+      padding: EdgeInsets.only(
+        top: Values.mainPadding * 3,
+        left: Values.mainPadding,
+        right: Values.mainPadding,
+        bottom: Values.mainPadding,
       ),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -45,6 +44,9 @@ class ShotCard extends StatelessWidget {
       ),
       child: Column(children: <Widget>[
         Text(line1, style: Theme.of(context).textTheme.display1),
-        if (line2 != null) Text(line2, style: Theme.of(context).textTheme.display2),
+        if (line2 != null) ...[
+          Flexible(flex: 1, child: Container()),
+          Text(line2, style: Theme.of(context).textTheme.display2),
+        ],
       ]));
 }

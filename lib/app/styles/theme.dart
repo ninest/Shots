@@ -24,10 +24,25 @@ TextTheme _buildTextTheme(TextTheme base) {
         color: Colors.white70,
       ),
     ),
-
     body1: GoogleFonts.rubik(
       textStyle: base.body1.copyWith(
         fontSize: em,
+      ),
+    ),
+
+    // card line 1
+    display1: GoogleFonts.rubik(
+      textStyle: base.display1.copyWith(
+        fontSize: em * 1.3,
+        fontWeight: FontWeight.w900,
+      ),
+    ),
+
+    // card line 2
+    display2: GoogleFonts.rubik(
+      textStyle: base.display2.copyWith(
+        fontSize: em * 0.9,
+        fontWeight: FontWeight.w500,
       ),
     ),
   );
