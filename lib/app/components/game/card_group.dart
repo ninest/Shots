@@ -19,6 +19,8 @@ class CardGroup extends StatelessWidget {
           flex: 7,
           child: ShotCard(
             line1: currentCard.line1,
+            // line 2 could be null
+            // TODO: a;ready set value as "", so remove "?? null" ?
             line2: currentCard.line2 ?? null,
             color: currentCard.color,
             rotateAngle: currentCard.rotateAngle,

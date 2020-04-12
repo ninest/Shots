@@ -12,6 +12,10 @@ The Drinking game.
   - [x] Start game to take user to game
   - [ ] Terms (everyone is over 18, ...)
   - [ ] Theme customization
+- [x] Give cards colors depending on text (for ex, if first letter is T, it is red ...)
+- [x] Rotate cards at random angles (make it look natural)
+- [x] Show card behind card on top (next card)
+  - [ ] Show slight animation when revealing "next" next card
 - [ ] Randomize card order (all cards are in a YML file)
 - [ ] Don't show cards which were already shown
 - [x] Card swiping to change cards (similar to Tinder)

@@ -4,6 +4,7 @@ import 'package:shots/app/components/game/components/shot_card.dart';
 import 'package:shots/app/models/shot_card_model.dart';
 import 'package:shots/app/providers/card_provider.dart';
 
+// this class is just a wrapper around shotCard
 class NextShotCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

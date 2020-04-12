@@ -10,6 +10,7 @@ class CardProvider extends ChangeNotifier {
   int _currentCardIndex = 0;
   int get currentCardIndex => _currentCardIndex;
 
+  // called on game start
   loadCards() async {
     // load cards
     var fileContent = await rootBundle.loadString('assets/cards/basic.yml');
@@ -21,6 +22,7 @@ class CardProvider extends ChangeNotifier {
     }
   }
 
+  // called when a card is dragged away
   nextCard() {
     // go to next card
     _currentCardIndex += 1;

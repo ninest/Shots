@@ -16,6 +16,7 @@ class GameRoute extends StatelessWidget {
               alignment: Alignment.center,
               child: NextShotCard(),
             ),
+            // current card
             Align(
               alignment: Alignment.center,
               child: CardGroup(),
