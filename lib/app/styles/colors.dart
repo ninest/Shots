@@ -9,9 +9,9 @@ class AppColors {
 
   static Color getColor(String name) {
     Color color;
-    String firstLetter = name[0].toLowerCase();
+    String secondLetter = name[1].toLowerCase();
 
-    switch (firstLetter) {
+    switch (secondLetter) {
       case 'a':
       case 'b':
       case 'c':
