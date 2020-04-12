@@ -35,6 +35,7 @@ TextTheme _buildTextTheme(TextTheme base) {
       textStyle: base.display1.copyWith(
         fontSize: em * 1.3,
         fontWeight: FontWeight.w900,
+        color: Colors.white60,
       ),
     ),
 
@@ -43,6 +44,7 @@ TextTheme _buildTextTheme(TextTheme base) {
       textStyle: base.display2.copyWith(
         fontSize: em * 0.9,
         fontWeight: FontWeight.w500,
+        color: Colors.white54,
       ),
     ),
   );

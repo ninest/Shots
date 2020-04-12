@@ -40,10 +40,6 @@ class ShotCard extends StatelessWidget {
           decoration: BoxDecoration(
             color: color,
             borderRadius: BorderRadius.circular(Values.borderRadius),
-            border: Border.all(
-              color: Colors.grey[300],
-              width: 0.5,
-            ),
             boxShadow: [
               BoxShadow(
                 color: Color.fromRGBO(0, 0, 0, 0.22),
