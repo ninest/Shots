@@ -2,13 +2,11 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shots/app/components/core/buttons/button.dart';
-import 'package:shots/app/components/core/page_template.dart';
 import 'package:shots/app/components/core/spacing.dart';
 import 'package:shots/app/providers/card_provider.dart';
 import 'package:shots/app/router/router.gr.dart';
 import 'package:shots/app/styles/values.dart';
 import 'package:shots/app/utils/strings.dart';
-import 'package:shots/app/utils/extensions.dart';
 
 class HomeRoute extends StatelessWidget {
   @override

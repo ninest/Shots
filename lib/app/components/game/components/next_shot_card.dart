@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:shots/app/components/game/components/shot_card.dart';
 import 'package:shots/app/models/shot_card.dart';
 import 'package:shots/app/providers/card_provider.dart';
-import 'package:shots/app/styles/values.dart';
 
 class NextShotCard extends StatelessWidget {
   @override
