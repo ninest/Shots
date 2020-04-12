@@ -1,8 +1,4 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:shots/app/providers/card_provider.dart';
 import 'package:shots/app/styles/values.dart';
 
 class ShotCard extends StatelessWidget {
@@ -38,9 +34,23 @@ class ShotCard extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(Values.borderRadius),
         border: Border.all(
-          color: Colors.grey,
-          width: 1,
+          color: Colors.grey[300],
+          width: 0.5,
         ),
+        boxShadow: [
+          BoxShadow(
+            color: Color.fromRGBO(0, 0, 0, 0.22),
+            offset: Offset(0, 4),
+            blurRadius: 8,
+            spreadRadius: 0,
+          ),
+          BoxShadow(
+            color: Color.fromRGBO(0, 0, 0, 0.08),
+            offset: Offset(0, 2),
+            blurRadius: 4,
+            spreadRadius: 0,
+          )
+        ],
       ),
       child: Column(children: <Widget>[
         Text(line1, style: Theme.of(context).textTheme.display1),

@@ -15,7 +15,7 @@ class ShotCardModel {
   factory ShotCardModel.fromJson(YamlMap map) {
     return new ShotCardModel(
       line1: map['line1'],
-      line2: map['line2'] ?? null,
+      line2: map['line2'] ?? "",
       nsfw: map['nsfw'] ?? false,
     );
   }
