@@ -4,17 +4,17 @@ import 'package:shots/app/styles/values.dart';
 class ShotCard extends StatelessWidget {
   final String line1;
   final String line2;
+  final Color color;
   final double rotateAngle;
   ShotCard({
     @required this.line1,
     this.line2,
+    this.color,
     this.rotateAngle,
   });
 
   @override
   Widget build(BuildContext context) {
-    // final CardProvider cardProvider = Provider.of<CardProvider>(context, listen: false);
-
     return Draggable(
       child: _cardContainer(context),
       childWhenDragging: Container(),
@@ -38,7 +38,7 @@ class ShotCard extends StatelessWidget {
             bottom: Values.mainPadding,
           ),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: color,
             borderRadius: BorderRadius.circular(Values.borderRadius),
             border: Border.all(
               color: Colors.grey[300],

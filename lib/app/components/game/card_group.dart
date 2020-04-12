@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shots/app/components/game/components/shot_card.dart';
-import 'package:shots/app/models/shot_card.dart';
+import 'package:shots/app/models/shot_card_model.dart';
 import 'package:shots/app/providers/card_provider.dart';
 
 class CardGroup extends StatelessWidget {
@@ -9,7 +9,7 @@ class CardGroup extends StatelessWidget {
   Widget build(BuildContext context) {
     final CardProvider cardProvider = Provider.of<CardProvider>(context, listen: true);
 
-    ShotCardModel currentCardText = cardProvider.cards[cardProvider.currentCardIndex];
+    ShotCardModel currentCard = cardProvider.cards[cardProvider.currentCardIndex];
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -18,9 +18,10 @@ class CardGroup extends StatelessWidget {
         Flexible(
           flex: 7,
           child: ShotCard(
-            line1: currentCardText.line1,
-            line2: currentCardText.line2 ?? null,
-            rotateAngle: currentCardText.rotateAngle,
+            line1: currentCard.line1,
+            line2: currentCard.line2 ?? null,
+            color: currentCard.color,
+            rotateAngle: currentCard.rotateAngle,
           ),
         ),
         _CardDragTarget(),

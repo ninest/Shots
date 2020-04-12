@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:shots/app/models/shot_card.dart';
+import 'package:shots/app/models/shot_card_model.dart';
 import 'package:yaml/yaml.dart';
 
 class CardProvider extends ChangeNotifier {

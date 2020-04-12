@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:shots/app/styles/colors.dart';
 import 'package:yaml/yaml.dart';
 
 class ShotCardModel {
@@ -8,12 +9,15 @@ class ShotCardModel {
   final String line2;
   final bool nsfw;
 
+  final Color color;
+
   final double rotateAngle;
 
   ShotCardModel({
     @required this.line1,
     this.line2,
     this.nsfw,
+    this.color,
     this.rotateAngle,
   });
 
@@ -29,10 +33,14 @@ class ShotCardModel {
 
     if (randNoC == 0) rotateAngle = -1 * rotateAngle;
 
+    Color cardColor = AppColors.getColor(map['line1']);
+    print(cardColor);
+
     return new ShotCardModel(
       line1: map['line1'],
       line2: map['line2'] ?? "",
       nsfw: map['nsfw'] ?? false,
+      color: cardColor,
       rotateAngle: rotateAngle,
     );
   }
