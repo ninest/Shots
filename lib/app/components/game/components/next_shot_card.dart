@@ -21,6 +21,7 @@ class NextShotCard extends StatelessWidget {
       child: ShotCard(
         line1: nextCard.line1,
         line2: nextCard.line2,
+        rotateAngle: nextCard.rotateAngle,
       ),
     );
   }

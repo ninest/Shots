@@ -20,6 +20,7 @@ class CardGroup extends StatelessWidget {
           child: ShotCard(
             line1: currentCardText.line1,
             line2: currentCardText.line2 ?? null,
+            rotateAngle: currentCardText.rotateAngle,
           ),
         ),
         _CardDragTarget(),
@@ -45,14 +46,16 @@ class _CardDragTarget extends StatelessWidget {
             // color: Colors.red,
           );
         },
-        onWillAccept: (_) {
-          print("onWillAccept");
+        // un comment if required
+        // onWillAccept: (_) {
+        //   print("onWillAccept");
+        //   return true;
+        // },
+        onAccept: (_) {
+          print("onAccept");
           // current card done, go to next card
           cardProvider.nextCard();
-          return true;
         },
-        // un comment if required
-        // onAccept: (_) => print("onAccept"),
         // onLeave: (_) => print("onLeave"),
       ),
     );
