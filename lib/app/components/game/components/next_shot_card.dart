@@ -15,8 +15,9 @@ class NextShotCard extends StatelessWidget {
 
     return Container(
       margin: EdgeInsets.only(
-        top: Values.mainPadding,
-        left: Values.mainPadding,
+        // add margin if need to show physically that there are 2 cards
+        // top: Values.mainPadding,
+        // left: Values.mainPadding,
       ),
       child: ShotCard(
         line1: nextCard.line1,
