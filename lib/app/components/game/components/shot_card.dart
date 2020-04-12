@@ -35,7 +35,7 @@ class ShotCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(Values.borderRadius),
         border: Border.all(
           color: Colors.grey[300],
-          width: 0.5,
+          // width: 0.5,
         ),
         boxShadow: [
           BoxShadow(
