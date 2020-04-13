@@ -80,18 +80,18 @@ Instead, the method od animating the alignment by moving it to the finger positi
 ### Steps
 1. Card tapped/panned down:
 
-  `controller.stop()` is called.
+    `controller.stop()` is called.
 
 2. Card is being panned/dragged around:
 
-  The position of the widget is being updated (`ShotCard` is a stateful widget).
+    The position of the widget is being updated (`ShotCard` is a stateful widget).
 
-  ```
-  setState(() {
-    _dragAlignment += Alignment(
-      // scroll sensitivity
-      details.delta.dx * 3 / (size.width / 2),
-      details.delta.dy * 3 / (size.height / 2),
-    );
-  });
-  ```
+    ```
+    setState(() {
+      _dragAlignment += Alignment(
+        // scroll sensitivity
+        details.delta.dx * 3 / (size.width / 2),
+        details.delta.dy * 3 / (size.height / 2),
+      );
+    });
+    ```
