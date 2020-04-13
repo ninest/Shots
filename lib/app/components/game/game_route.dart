@@ -19,7 +19,7 @@ class GameRoute extends StatelessWidget {
       // backgroundColor: currentCard.color.withOpacity(0.5),
       body: AnimatedContainer(
         color: currentCard.color.withOpacity(Values.containerOpacity),
-        duration: Duration(seconds: 1),
+        duration: Duration(milliseconds: 200),
         child: SafeArea(
           child: Stack(
             children: <Widget>[
@@ -27,7 +27,7 @@ class GameRoute extends StatelessWidget {
               // placeholder shot card
               Align(
                 alignment: Alignment.center,
-                child: Text("Next card"),
+                child: NextShotCard(),
               ),
               // current card
               ShotCard(

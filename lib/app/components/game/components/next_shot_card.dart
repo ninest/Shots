@@ -13,14 +13,16 @@ class NextShotCard extends StatelessWidget {
     int nextCardIndex = cardProvider.currentCardIndex + 1;
     ShotCardModel nextCard = cardProvider.cards[nextCardIndex];
 
-
-    return Opacity(
-      opacity: 0.5,
-      child: ShotCard(
-        line1: nextCard.line1,
-        line2: nextCard.line2,
-        color: nextCard.color,
-        rotateAngle: nextCard.rotateAngle,
+    // user should not be able to interact with this card
+    return IgnorePointer(
+      child: Opacity(
+        opacity: 0.9,
+        child: ShotCard(
+          line1: nextCard.line1,
+          line2: nextCard.line2,
+          color: nextCard.color,
+          rotateAngle: nextCard.rotateAngle,
+        ),
       ),
     );
   }

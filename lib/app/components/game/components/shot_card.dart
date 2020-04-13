@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shots/app/providers/card_provider.dart';
 import 'package:shots/app/styles/values.dart';
 
 class ShotCard extends StatefulWidget {
@@ -52,25 +54,36 @@ class _ShotCardState extends State<ShotCard> with SingleTickerProviderStateMixin
     var size = MediaQuery.of(context).size;
 
     return GestureDetector(
-      onPanDown: (details) {
-        _controller.stop();
-      },
-      onPanUpdate: (details) {
-        setState(() {
-          _dragAlignment += Alignment(
-            details.delta.dx / (size.width / 2),
-            details.delta.dy / (size.height / 2),
-          );
-        });
-      },
-      onPanEnd: (details) {
-        _runAnimation();
-      },
-      child: Align(
-        alignment: _dragAlignment,
-        child: _cardContainer(context),
-      )
-    );
+        onPanDown: (details) {
+          _controller.stop();
+        },
+        onPanUpdate: (details) {
+          setState(() {
+            _dragAlignment += Alignment(
+              // scroll sensitivity
+              details.delta.dx * 3 / (size.width / 2),
+              details.delta.dy * 3 / (size.height / 2),
+            );
+          });
+        },
+        onPanEnd: (details) {
+          print("Pan has ended");
+          // print(_dragAlignment.x > 0.85);
+          if (_dragAlignment.x > 0.85) {
+            setState(() {
+              _dragAlignment = Alignment.center;
+            });
+
+            final CardProvider cardProvider = Provider.of<CardProvider>(context, listen: false);
+            cardProvider.nextCard();
+          }
+
+          _runAnimation();
+        },
+        child: Align(
+          alignment: _dragAlignment,
+          child: _cardContainer(context),
+        ));
   }
 
   Widget _cardContainer(BuildContext context) => Transform.rotate(
