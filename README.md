@@ -106,24 +106,40 @@ setState(() {
 
 When the card is dropped at the side of the screen, it means the user wants to 'dismiss' it and see the next one.
 
+*If they're playing any game, it means that they want to discard the card and see the next one.*
+
 We can check if the card is dropped at the side by looking at `_dragAlignment.x`:
 
 ```
 if (_dragAlignment.x > 0.85) {
-  setState(() {
-    _dragAlignment = Alignment.center;
-  });
+  _runCardLeaveAnimation();
+  Future.delayed(Duration(milliseconds: _animationDuration + 100)).then((_) {
+    setState(() {
+      _dragAlignment = Alignment.center;
+    });
 
-  final CardProvider cardProvider = Provider.of<CardProvider>(context, listen: false);
-  cardProvider.nextCard();
+    // getting next card ...
+    final CardProvider cardProvider = Provider.of<CardProvider>(context, listen: false);
+    cardProvider.nextCard();
+  });
 }
 ```
 
-So when this happens,
+**What seems to be happening?**
+- The card is discarded (gone)
+- Next card comes into focus
 
-- The card is being sent back to the center, and 
-- The current card is replaced by the next card.
 
-The card **has** to be 'dropped' (user must release their finger from the screen) for 3b to happen.
+**What actually happens?**
+This is what's going on under the hood.
 
-Under the hood, the 'current card' that you see never changes. Only it's **color**, **text**, and **rotate angle** changes, giving the appearance that we're seeing the next one.
+1. The card is animated out of the screen with `_runCardLeaveAnimation()`.
+2. There is a slight delay (sleep). This delay **must** be more than the `_animationDuration`.
+3. After the delay, the card is moved back to the center **without any animaton**.
+4. Using state management to set the shot card to show the next card.
+
+In step 2, a delay is necessary to take into account the time taken for the animation. The delay also must be higher than the animation delay. If not, then the following will happen at the same time (we don't want this):
+- Animating the card out of the screen, and
+- Putting the card in the center without animation.
+
+The 'current card' that you see (on top of the others) never changes. Only it's **color**, **text**, and **rotate angle** changes, giving the appearance that it's gone and the next one is showing.
