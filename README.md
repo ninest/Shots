@@ -78,20 +78,52 @@ Firstly, the `Draggable` widget was not used. While it is great, it does not sup
 Instead, the method od animating the alignment by moving it to the finger position was adopted. When the child is dropped, it can be animated back to the center (`Alignment.center` in this case). See this [guide](https://flutter.dev/docs/cookbook/animation/physics-simulation).
 
 ### Steps
-1. Card tapped/panned down:
+#### 1. Card tapped/panned down:
 
-    `controller.stop()` is called.
+`controller.stop()` is called.
 
-2. Card is being panned/dragged around:
+#### 2. Card is being panned/dragged around:
 
-    The position of the widget is being updated (`ShotCard` is a stateful widget).
+The position of the widget is being updated (`ShotCard` is a stateful widget).
 
-    ```
-    setState(() {
-      _dragAlignment += Alignment(
-        // scroll sensitivity
-        details.delta.dx * 3 / (size.width / 2),
-        details.delta.dy * 3 / (size.height / 2),
-      );
-    });
-    ```
+```
+setState(() {
+  _dragAlignment += Alignment(
+    // scroll sensitivity
+    details.delta.dx * 3 / (size.width / 2),
+    details.delta.dy * 3 / (size.height / 2),
+  );
+});
+```
+
+*From here on, multiple actions can take place with `onPanEnd`*
+
+#### 3a. The card is dropped
+
+`_runAnimation()` is called. This function animates the `ShotCard` from it's current position to `Alignment.center`.
+
+#### 3b. The card is dropped *at the side*
+
+When the card is dropped at the side of the screen, it means the user wants to 'dismiss' it and see the next one.
+
+We can check if the card is dropped at the side by looking at `_dragAlignment.x`:
+
+```
+if (_dragAlignment.x > 0.85) {
+  setState(() {
+    _dragAlignment = Alignment.center;
+  });
+
+  final CardProvider cardProvider = Provider.of<CardProvider>(context, listen: false);
+  cardProvider.nextCard();
+}
+```
+
+So when this happens,
+
+- The card is being sent back to the center, and 
+- The current card is replaced by the next card.
+
+The card **has** to be 'dropped' (user must release their finger from the screen) for 3b to happen.
+
+Under the hood, the 'current card' that you see never changes. Only it's **color**, **text**, and **rotate angle** changes, giving the appearance that we're seeing the next one.
