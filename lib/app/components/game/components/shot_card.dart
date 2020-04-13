@@ -67,8 +67,6 @@ class _ShotCardState extends State<ShotCard> with SingleTickerProviderStateMixin
           });
         },
         onPanEnd: (details) {
-          print("Pan has ended");
-          // print(_dragAlignment.x > 0.85);
           if (_dragAlignment.x > 0.85) {
             setState(() {
               _dragAlignment = Alignment.center;
