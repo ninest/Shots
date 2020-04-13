@@ -96,7 +96,7 @@ setState(() {
 });
 ```
 
-*From here on, multiple actions can take place with `onPanEnd`*
+*From here on, multiple actions can take place with `onPanEnd`*:
 
 #### 3a. The card is dropped
 

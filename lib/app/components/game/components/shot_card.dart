@@ -23,9 +23,11 @@ class _ShotCardState extends State<ShotCard> with SingleTickerProviderStateMixin
   Alignment _dragAlignment = Alignment.center;
   Animation<Alignment> _animation;
 
+  int _animationDuration = 90;
+
   @override
   void initState() {
-    _controller = AnimationController(vsync: this, duration: Duration(seconds: 1));
+    _controller = AnimationController(vsync: this, duration: Duration(milliseconds: _animationDuration));
     _controller.addListener(() {
       setState(() {
         _dragAlignment = _animation.value;
@@ -49,6 +51,15 @@ class _ShotCardState extends State<ShotCard> with SingleTickerProviderStateMixin
     _controller.forward();
   }
 
+  void _runCardLeaveAnimation() {
+    _animation = _controller.drive(AlignmentTween(
+      begin: _dragAlignment,
+      end: Alignment(6.0, _dragAlignment.y),
+    ));
+    _controller.reset();
+    _controller.forward();
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -60,23 +71,29 @@ class _ShotCardState extends State<ShotCard> with SingleTickerProviderStateMixin
         onPanUpdate: (details) {
           setState(() {
             _dragAlignment += Alignment(
-              // scroll sensitivity
+              // 3 is the scroll sensitivity
               details.delta.dx * 3 / (size.width / 2),
               details.delta.dy * 3 / (size.height / 2),
             );
           });
         },
         onPanEnd: (details) {
-          if (_dragAlignment.x > 0.85) {
-            setState(() {
-              _dragAlignment = Alignment.center;
+          if (_dragAlignment.x > 0.95) {
+            _runCardLeaveAnimation();
+
+            Future.delayed(Duration(milliseconds: _animationDuration + 20)).then((_) {
+
+              setState(() {
+                _dragAlignment = Alignment.center;
+              });
+
+              print("Next card active");
+              final CardProvider cardProvider = Provider.of<CardProvider>(context, listen: false);
+              cardProvider.nextCard();
             });
-
-            final CardProvider cardProvider = Provider.of<CardProvider>(context, listen: false);
-            cardProvider.nextCard();
-          }
-
-          _runAnimation();
+          } else
+            _runAnimation();
+          // _runCardLeaveAnimation();
         },
         child: Align(
           alignment: _dragAlignment,
