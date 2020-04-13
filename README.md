@@ -143,3 +143,6 @@ In step 2, a delay is necessary to take into account the time taken for the anim
 - Putting the card in the center without animation.
 
 The 'current card' that you see (on top of the others) never changes. Only it's **color**, **text**, and **rotate angle** changes, giving the appearance that it's gone and the next one is showing.
+
+## Other information
+Project start date: April 9, 2020
