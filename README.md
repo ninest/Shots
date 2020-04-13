@@ -11,7 +11,7 @@ The Drinking game.
 - [ ] Start page where users can see a few options
   - [x] Start game to take user to game
   - [ ] Terms (everyone is over 18, ...)
-  - [ ] Theme customization
+  - [ ] Theme customization (might not implement)
 - [x] Give cards colors depending on text (for ex, if first letter is T, it is red ...)
 - [x] Give app background a color too, and animate it
 - [x] Rotate cards at random angles (make it look natural)
@@ -20,9 +20,9 @@ The Drinking game.
 - [ ] Randomize card order (all cards are in a YML file)
 - [ ] Don't show cards which were already shown
 - [x] Card swiping to change cards (similar to Tinder)
-  - [ ] Show one card behind the current card
+  - [x] Show ~~one~~ cards behind the current card
   - [ ] Make cards wave as they are moving (similar to real cards)
-  - [ ] Animation when user drops card but not on target (animation of card going back)
+  - [x] Animation when user drops card but not on target (animation of card going back)
 - [ ] Timer to show players how long they've been playing
 - [ ] Show how many cards the players have gone through
 
