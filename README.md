@@ -100,7 +100,7 @@ setState(() {
 
 #### 3a. The card is dropped
 
-`_runAnimation()` is called. This function animates the `ShotCard` from it's current position to `Alignment.center`.
+`_runCardBackToCenterAnimation()` is called. This function animates the `ShotCard` from its current position to `Alignment.center`.
 
 #### 3b. The card is dropped *at the side*
 

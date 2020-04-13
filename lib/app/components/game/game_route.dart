@@ -22,19 +22,12 @@ class GameRoute extends StatelessWidget {
           child: Stack(
             children: <Widget>[
               AppCloseButton(),
-              // placeholder shot card
-              Align(
-                alignment: Alignment.center,
-                child: NextShotCard(index: 3),
-              ),
-              Align(
-                alignment: Alignment.center,
-                child: NextShotCard(index: 2),
-              ),
-              Align(
-                alignment: Alignment.center,
-                child: NextShotCard(index: 1),
-              ),
+              // placeholder shot cards
+              _nextCard(5),
+              _nextCard(4),
+              _nextCard(3),
+              _nextCard(2),
+              _nextCard(1),
               // current card
               ShotCard(
                 line1: currentCard.line1,
@@ -48,4 +41,9 @@ class GameRoute extends StatelessWidget {
       ),
     );
   }
+
+  Widget _nextCard(int index) => Align(
+        alignment: Alignment.center,
+        child: NextShotCard(index: index),
+      );
 }

@@ -24,10 +24,12 @@ class _ShotCardState extends State<ShotCard> with SingleTickerProviderStateMixin
   Animation<Alignment> _animation;
 
   int _animationDuration = 120;
+  int _scrollSensitivity = 3;
 
   @override
   void initState() {
-    _controller = AnimationController(vsync: this, duration: Duration(milliseconds: _animationDuration));
+    _controller =
+        AnimationController(vsync: this, duration: Duration(milliseconds: _animationDuration));
     _controller.addListener(() {
       setState(() {
         _dragAlignment = _animation.value;
@@ -42,7 +44,7 @@ class _ShotCardState extends State<ShotCard> with SingleTickerProviderStateMixin
     super.dispose();
   }
 
-  void _runAnimation() {
+  void _runCardBackToCenterAnimation() {
     _animation = _controller.drive(AlignmentTween(
       begin: _dragAlignment,
       end: Alignment.center,
@@ -54,7 +56,9 @@ class _ShotCardState extends State<ShotCard> with SingleTickerProviderStateMixin
   void _runCardLeaveAnimation() {
     _animation = _controller.drive(AlignmentTween(
       begin: _dragAlignment,
-      end: Alignment(6.0, _dragAlignment.y),
+
+      // make it go out of screen
+      end: Alignment(8.0, _dragAlignment.y),
     ));
     _controller.reset();
     _controller.forward();
@@ -72,8 +76,8 @@ class _ShotCardState extends State<ShotCard> with SingleTickerProviderStateMixin
           setState(() {
             _dragAlignment += Alignment(
               // 3 is the scroll sensitivity
-              details.delta.dx * 3 / (size.width / 2),
-              details.delta.dy * 3 / (size.height / 2),
+              details.delta.dx * _scrollSensitivity / (size.width / 2),
+              details.delta.dy * _scrollSensitivity / (size.height / 2),
             );
           });
         },
@@ -84,8 +88,10 @@ class _ShotCardState extends State<ShotCard> with SingleTickerProviderStateMixin
             // this duration needs to be higher than the card move to the right side transition
             // if it is the same or lower, the card will be moving to the right and going
             // off screen at the same time
-            Future.delayed(Duration(milliseconds: _animationDuration + 50)).then((_) {
 
+            // we must wait for the animation to finish, only then we can put the card back the center and set
+            // it to the next card
+            Future.delayed(Duration(milliseconds: _animationDuration + 100)).then((_) {
               setState(() {
                 _dragAlignment = Alignment.center;
               });
@@ -95,8 +101,7 @@ class _ShotCardState extends State<ShotCard> with SingleTickerProviderStateMixin
               cardProvider.nextCard();
             });
           } else
-            _runAnimation();
-          // _runCardLeaveAnimation();
+            _runCardBackToCenterAnimation();
         },
         child: Align(
           alignment: _dragAlignment,
