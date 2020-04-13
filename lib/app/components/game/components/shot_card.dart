@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shots/app/styles/values.dart';
 
-class ShotCard extends StatelessWidget {
+class ShotCard extends StatefulWidget {
   final String line1;
   final String line2;
   final Color color;
@@ -12,22 +12,69 @@ class ShotCard extends StatelessWidget {
     this.color,
     this.rotateAngle,
   });
+  @override
+  _ShotCardState createState() => _ShotCardState();
+}
+
+class _ShotCardState extends State<ShotCard> with SingleTickerProviderStateMixin {
+  AnimationController _controller;
+  Alignment _dragAlignment = Alignment.center;
+  Animation<Alignment> _animation;
+
+  @override
+  void initState() {
+    _controller = AnimationController(vsync: this, duration: Duration(seconds: 1));
+    _controller.addListener(() {
+      setState(() {
+        _dragAlignment = _animation.value;
+      });
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void _runAnimation() {
+    _animation = _controller.drive(AlignmentTween(
+      begin: _dragAlignment,
+      end: Alignment.center,
+    ));
+    _controller.reset();
+    _controller.forward();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Draggable(
-      child: _cardContainer(context),
-      childWhenDragging: Container(),
-      feedback: _cardContainer(context),
-      // un comment if required
-      // onDragStarted: () => print("Drag started"),
-      // onDragEnd: (drag) => print("Drag ended"),
-      // onDragCompleted: () => print("DRAG COMPLETED"),
+    var size = MediaQuery.of(context).size;
+
+    return GestureDetector(
+      onPanDown: (details) {
+        _controller.stop();
+      },
+      onPanUpdate: (details) {
+        setState(() {
+          _dragAlignment += Alignment(
+            details.delta.dx / (size.width / 2),
+            details.delta.dy / (size.height / 2),
+          );
+        });
+      },
+      onPanEnd: (details) {
+        _runAnimation();
+      },
+      child: Align(
+        alignment: _dragAlignment,
+        child: _cardContainer(context),
+      )
     );
   }
 
-  Widget _cardContainer(context) => Transform.rotate(
-        angle: rotateAngle ?? 0,
+  Widget _cardContainer(BuildContext context) => Transform.rotate(
+        angle: widget.rotateAngle ?? 0,
         child: Container(
           height: 460.0,
           width: 310.0,
@@ -38,7 +85,7 @@ class ShotCard extends StatelessWidget {
             bottom: Values.mainPadding,
           ),
           decoration: BoxDecoration(
-            color: color,
+            color: widget.color,
             borderRadius: BorderRadius.circular(Values.borderRadius),
             boxShadow: [
               BoxShadow(
@@ -57,10 +104,10 @@ class ShotCard extends StatelessWidget {
           ),
           child: Column(
             children: <Widget>[
-              Text(line1, style: Theme.of(context).textTheme.display1),
-              if (line2 != null) ...[
+              Text(widget.line1, style: Theme.of(context).textTheme.display1),
+              if (widget.line2 != null) ...[
                 Flexible(flex: 1, child: Container()),
-                Text(line2, style: Theme.of(context).textTheme.display2),
+                Text(widget.line2, style: Theme.of(context).textTheme.display2),
               ],
             ],
           ),

@@ -14,7 +14,8 @@ class NextShotCard extends StatelessWidget {
     ShotCardModel nextCard = cardProvider.cards[nextCardIndex];
 
 
-    return Container(
+    return Opacity(
+      opacity: 0.5,
       child: ShotCard(
         line1: nextCard.line1,
         line2: nextCard.line2,
