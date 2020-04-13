@@ -5,6 +5,10 @@ import 'package:shots/app/router/router.gr.dart';
 import 'package:shots/app/styles/values.dart';
 
 class AppCloseButton extends StatelessWidget {
+  final IconData iconData;
+  final Color color;
+  AppCloseButton({this.iconData, this.color});
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -20,8 +24,8 @@ class AppCloseButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(100.0),
         ),
         child: Icon(
-          FontAwesomeIcons.times,
-          color: Colors.red,
+          iconData ?? FontAwesomeIcons.times,
+          color: color ?? Colors.red,
           size: Theme.of(context).textTheme.button.fontSize,
         ),
       ),

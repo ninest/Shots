@@ -28,7 +28,11 @@ class HomeButtons extends StatelessWidget {
           color: Colors.indigo,
           width: 200.0,
           outline: true,
-          onTap: () => {},
+          onTap: () {
+            // ExtendedNavigator.ofRouter<Router>().pushNamed(Routes.termsRoute);
+            ExtendedNavigator.of(context).pushNamed(Routes.termsRoute);
+
+          },
         )
       ],
     );

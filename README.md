@@ -51,7 +51,7 @@ The main app entry point is `main.dart`, then `app.dart`.
 Everythime you change `router/router.dart`, you need to run
 
 ```
-flutter packages pub run build_runner build
+flutter packages pub run build_runner build --delete-conflicting-outputs
 ```
 
 ### Build Android APK and appbundle

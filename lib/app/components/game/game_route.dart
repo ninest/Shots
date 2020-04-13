@@ -14,8 +14,6 @@ class GameRoute extends StatelessWidget {
     final CardProvider cardProvider = Provider.of<CardProvider>(context, listen: true);
     ShotCardModel currentCard = cardProvider.cards[cardProvider.currentCardIndex];
 
-    for (var i = cardProvider.nextCardsNo; i >= 1; i--) print(i);
-
     return Scaffold(
       body: AnimatedContainer(
         color: currentCard.color.withOpacity(Values.containerOpacity),
