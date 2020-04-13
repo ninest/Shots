@@ -23,7 +23,7 @@ class _ShotCardState extends State<ShotCard> with SingleTickerProviderStateMixin
   Alignment _dragAlignment = Alignment.center;
   Animation<Alignment> _animation;
 
-  int _animationDuration = 90;
+  int _animationDuration = 120;
 
   @override
   void initState() {
@@ -81,7 +81,10 @@ class _ShotCardState extends State<ShotCard> with SingleTickerProviderStateMixin
           if (_dragAlignment.x > 0.95) {
             _runCardLeaveAnimation();
 
-            Future.delayed(Duration(milliseconds: _animationDuration + 20)).then((_) {
+            // this duration needs to be higher than the card move to the right side transition
+            // if it is the same or lower, the card will be moving to the right and going
+            // off screen at the same time
+            Future.delayed(Duration(milliseconds: _animationDuration + 50)).then((_) {
 
               setState(() {
                 _dragAlignment = Alignment.center;
