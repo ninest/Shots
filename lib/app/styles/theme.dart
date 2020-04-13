@@ -21,7 +21,7 @@ TextTheme _buildTextTheme(TextTheme base) {
         fontWeight: FontWeight.w700,
         letterSpacing: 0.8,
         fontSize: em,
-        color: Colors.white70,
+        color: Colors.white,
       ),
     ),
     body1: GoogleFonts.rubik(
