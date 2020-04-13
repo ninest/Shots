@@ -16,4 +16,7 @@ class Values {
   static double get buttonVerticalPadding => 13.0;
 
   static double get borderRadius => 13.0;
+
+  // opacity uses app-wide
+  static double get containerOpacity => 0.5;
 }

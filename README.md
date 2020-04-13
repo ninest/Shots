@@ -13,6 +13,7 @@ The Drinking game.
   - [ ] Terms (everyone is over 18, ...)
   - [ ] Theme customization
 - [x] Give cards colors depending on text (for ex, if first letter is T, it is red ...)
+- [x] Give app background a color too, and animate it
 - [x] Rotate cards at random angles (make it look natural)
 - [x] Show card behind card on top (next card)
   - [ ] Show slight animation when revealing "next" next card

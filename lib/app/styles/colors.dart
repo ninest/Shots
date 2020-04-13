@@ -5,7 +5,7 @@ class AppColors {
   static Color get green => Color(0xFF55a854);
   static Color get yellow => Color(0xFFf5aa22);
   static Color get red => Color(0xFFe94234);
-  static Color get dark => Colors.black;
+  static Color get dark => Colors.black54;
 
   static Color getColor(String name) {
     Color color;
