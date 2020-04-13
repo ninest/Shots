@@ -1,4 +1,4 @@
-<h1 align="center">
+****<h1 align="center">
   <a href="">Shots</a>
 </h1>
 
@@ -70,3 +70,28 @@ Once the APK has been built, install it on a physcally connected Android device:
 ```
 flutter install
 ```
+
+## Explanation
+### How does the card swiming work?
+Firstly, the `Draggable` widget was not used. While it is great, it does not support animating the child back to the original position when it is not dragged to the drop zone.
+
+Instead, the method od animating the alignment by moving it to the finger position was adopted. When the child is dropped, it can be animated back to the center (`Alignment.center` in this case). See this [guide](https://flutter.dev/docs/cookbook/animation/physics-simulation).
+
+### Steps
+1. Card tapped/panned down:
+
+  `controller.stop()` is called.
+
+2. Card is being panned/dragged around:
+
+  The position of the widget is being updated (`ShotCard` is a stateful widget).
+
+  ```
+  setState(() {
+    _dragAlignment += Alignment(
+      // scroll sensitivity
+      details.delta.dx * 3 / (size.width / 2),
+      details.delta.dy * 3 / (size.height / 2),
+    );
+  });
+  ```
