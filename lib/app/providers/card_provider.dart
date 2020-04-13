@@ -10,6 +10,9 @@ class CardProvider extends ChangeNotifier {
   int _currentCardIndex = 0;
   int get currentCardIndex => _currentCardIndex;
 
+  int _nextCardsNo = 10;
+  int get nextCardsNo => _nextCardsNo;
+
   // called on game start
   loadCards() async {
     // load cards
@@ -22,10 +25,23 @@ class CardProvider extends ChangeNotifier {
     }
   }
 
+  shuffleCards() {
+    _cards.shuffle();
+  }
+
   // called when a card is dragged away
   nextCard() {
     // go to next card
     _currentCardIndex += 1;
+
+    /*
+    If we're 5 less than the total number of cards currently, add new ones
+
+    */
+    if (_currentCardIndex == _cards.length - _nextCardsNo) {
+      loadCards();
+    }
+
     notifyListeners();
   }
 }

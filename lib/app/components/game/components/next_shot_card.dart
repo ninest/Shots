@@ -14,16 +14,22 @@ class NextShotCard extends StatelessWidget {
     // listen true because this must update when nextCard() is called
     final CardProvider cardProvider = Provider.of<CardProvider>(context, listen: true);
     int nextCardIndex = cardProvider.currentCardIndex + index;
-    ShotCardModel nextCard = cardProvider.cards[nextCardIndex];
 
-    // user should not be able to interact with this card
-    return IgnorePointer(
-      child: ShotCard(
-        line1: nextCard.line1,
-        line2: nextCard.line2,
-        color: nextCard.color,
-        rotateAngle: nextCard.rotateAngle,
-      ),
-    );
+    try {
+      // 
+      ShotCardModel nextCard = cardProvider.cards[nextCardIndex];
+
+      // user should not be able to interact with this card
+      return IgnorePointer(
+        child: ShotCard(
+          line1: nextCard.line1,
+          line2: nextCard.line2,
+          color: nextCard.color,
+          rotateAngle: nextCard.rotateAngle,
+        ),
+      );
+    } catch (e) {
+      return Container();
+    }
   }
 }

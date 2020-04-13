@@ -34,7 +34,6 @@ class ShotCardModel {
     if (randNoC == 0) rotateAngle = -1 * rotateAngle;
 
     Color cardColor = AppColors.getColor(map['line1']);
-    print(cardColor);
 
     return new ShotCardModel(
       line1: map['line1'],

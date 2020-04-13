@@ -1,3 +1,3 @@
 class Strings {
-  static String get appTitle => "Shots";
+  static String get appTitle => " ";
 }
