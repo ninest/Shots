@@ -72,7 +72,7 @@ flutter install
 ```
 
 ## Explanation
-### How does the card swiming work?
+### How does the card swiping work?
 Firstly, the `Draggable` widget was not used. While it is great, it does not support animating the child back to the original position when it is not dragged to the drop zone.
 
 Instead, the method od animating the alignment by moving it to the finger position was adopted. When the child is dropped, it can be animated back to the center (`Alignment.center` in this case). See this [guide](https://flutter.dev/docs/cookbook/animation/physics-simulation).
