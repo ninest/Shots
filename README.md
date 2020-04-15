@@ -7,8 +7,12 @@ The Drinking game.
 </i></p>
 
 
+## 🚀 Features
+
 <details>
-<summary><h2> 🚀 Features</h2></summary>
+<summary>
+<b>Click to see the features list</b>
+</summary>
 
 
 - [ ] Start page where users can see a few options
