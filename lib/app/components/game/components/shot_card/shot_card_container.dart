@@ -12,45 +12,44 @@ class ShotCardContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Transform.rotate(
-        angle: rotateAngle ?? 0,
-        child: Container(
-          height: 460.0,
-          width: 310.0,
-          padding: EdgeInsets.only(
-            top: Values.mainPadding * 3,
-            left: Values.mainPadding,
-            right: Values.mainPadding,
-            bottom: Values.mainPadding,
-          ),
-          decoration: BoxDecoration(
-            color: color,
-            borderRadius: BorderRadius.circular(Values.borderRadius),
-            boxShadow: [
-              // 0 0 2px rgba(0,0,0,0.2), 1px 1px 1px rgba(0,0,0,0.2)
-              BoxShadow(
-                color: Color.fromRGBO(0, 0, 0, 0.22),
-                offset: Offset(0, 4),
-                blurRadius: 8,
-                spreadRadius: 0,
-              ),
-              BoxShadow(
-                color: Color.fromRGBO(0, 0, 0, 0.08),
-                offset: Offset(0, 2),
-                blurRadius: 4,
-                spreadRadius: 0,
-              )
-            ],
-          ),
-          child: Column(
-            children: <Widget>[
-              Text(line1, style: Theme.of(context).textTheme.display1),
-              if (line2 != null) ...[
-                Flexible(flex: 1, child: Container()),
-                Text(line2, style: Theme.of(context).textTheme.display2),
-              ],
-            ],
-          ),
+      angle: rotateAngle ?? 0,
+      child: Container(
+        height: 460.0,
+        width: 310.0,
+        padding: EdgeInsets.only(
+          top: Values.mainPadding * 3,
+          left: Values.mainPadding,
+          right: Values.mainPadding,
+          bottom: Values.mainPadding,
         ),
-      );
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: BorderRadius.circular(Values.borderRadius),
+          boxShadow: [
+            BoxShadow(
+              color: Color.fromRGBO(0, 0, 0, 0.22),
+              offset: Offset(0, 0),
+              blurRadius: 2,
+              spreadRadius: 0,
+            ),
+            BoxShadow(
+              color: Color.fromRGBO(0, 0, 0, 0.2),
+              offset: Offset(1, 1),
+              blurRadius: 2,
+              spreadRadius: 0,
+            )
+          ],
+        ),
+        child: Column(
+          children: <Widget>[
+            Text(line1, style: Theme.of(context).textTheme.display1),
+            if (line2 != null) ...[
+              Flexible(flex: 1, child: Container()),
+              Text(line2, style: Theme.of(context).textTheme.display2),
+            ],
+          ],
+        ),
+      ),
+    );
   }
 }
