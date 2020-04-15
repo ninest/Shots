@@ -6,7 +6,10 @@
 The Drinking game.
 </i></p>
 
-## 🚀 Features
+
+<details>
+<summary><h2> 🚀 Features</h2></summary>
+
 
 - [ ] Start page where users can see a few options
   - [x] Start game to take user to game
@@ -25,6 +28,8 @@ The Drinking game.
   - [x] Animation when user drops card but not on target (animation of card going back)
 - [ ] Timer to show players how long they've been playing
 - [ ] Show how many cards the players have gone through
+
+</details>
 
 ## Packages used
 - auto_route
