@@ -9,15 +9,18 @@ class ShotCardContainer extends StatelessWidget {
 
   ShotCardContainer({this.rotateAngle, this.color, this.line1, this.line2});
 
+  final double cardHeight = 460.0;
+  final double cardwidth = 320.0;
+
   @override
   Widget build(BuildContext context) {
     return Transform.rotate(
       angle: rotateAngle ?? 0,
       child: Container(
-        height: 460.0,
-        width: 310.0,
+        height: cardHeight,
+        width: cardwidth,
         padding: EdgeInsets.only(
-          top: Values.mainPadding * 3,
+          top: Values.mainPadding * 3.5,
           left: Values.mainPadding,
           right: Values.mainPadding,
           bottom: Values.mainPadding,
@@ -25,6 +28,10 @@ class ShotCardContainer extends StatelessWidget {
         decoration: BoxDecoration(
           color: color,
           borderRadius: BorderRadius.circular(Values.borderRadius),
+          border: Border.all(
+            color: Color(0xFF11111),
+            width: 1,
+          ),
           boxShadow: [
             BoxShadow(
               color: Color.fromRGBO(0, 0, 0, 0.22),

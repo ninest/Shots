@@ -18,7 +18,7 @@ class AppColors {
 
   static Color getColor(String name) {
     Color color;
-    String secondLetter = name[0].toLowerCase();
+    String secondLetter = name[1].toLowerCase();
 
     switch (secondLetter) {
       case 'a':
@@ -69,7 +69,7 @@ class AppColors {
       case 'y':
       case 'z':
         {
-          color = blues[5];
+          color = blues[4];
           break;
         }
     }
