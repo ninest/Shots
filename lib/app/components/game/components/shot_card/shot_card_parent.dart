@@ -2,19 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shots/app/components/game/components/shot_card/shot_card_container.dart';
 import 'package:shots/app/providers/card_provider.dart';
-import 'package:shots/app/styles/values.dart';
 
 class ShotCard extends StatefulWidget {
   final String line1;
   final String line2;
   final Color color;
   final double rotateAngle;
-  ShotCard({
-    @required this.line1,
-    this.line2,
-    this.color,
-    this.rotateAngle,
-  });
+  ShotCard({@required this.line1, this.line2, this.color, this.rotateAngle});
+
   @override
   _ShotCardState createState() => _ShotCardState();
 }
@@ -26,16 +21,17 @@ class _ShotCardState extends State<ShotCard> with SingleTickerProviderStateMixin
 
   int _animationDuration = 120;
   int _scrollSensitivity = 3;
+  // maybe make a (double) for the x-boundary where which the card is dismissed (0.95)
 
   @override
   void initState() {
     _controller =
         AnimationController(vsync: this, duration: Duration(milliseconds: _animationDuration));
+
     _controller.addListener(() {
-      setState(() {
-        _dragAlignment = _animation.value;
-      });
+      setState(() => _dragAlignment = _animation.value);
     });
+
     super.initState();
   }
 
@@ -54,12 +50,16 @@ class _ShotCardState extends State<ShotCard> with SingleTickerProviderStateMixin
     _controller.forward();
   }
 
-  void _runCardLeaveAnimation() {
+  void _runCardLeaveAnimation({bool left = false}) {
     _animation = _controller.drive(AlignmentTween(
       begin: _dragAlignment,
 
       // make it go out of screen
-      end: Alignment(8.0, _dragAlignment.y),
+      end: Alignment(
+        // if left is true, animate it to the left side
+        left ? -8.0 : 8.0,
+        _dragAlignment.y,
+      ),
     ));
     _controller.reset();
     _controller.forward();
@@ -83,8 +83,14 @@ class _ShotCardState extends State<ShotCard> with SingleTickerProviderStateMixin
           });
         },
         onPanEnd: (details) {
-          if (_dragAlignment.x > 0.95) {
-            _runCardLeaveAnimation();
+          // check if the card is at the left or right
+          if (_dragAlignment.x > 0.95 || _dragAlignment.x < -0.95) {
+            if (_dragAlignment.x > 0.95)
+              // if it's on the right, run animation
+              _runCardLeaveAnimation();
+            else
+              // otherwise run animation to the other side
+              _runCardLeaveAnimation(left: true);
 
             // this duration needs to be higher than the card move to the right side transition
             // if it is the same or lower, the card will be moving to the right and going
@@ -97,15 +103,17 @@ class _ShotCardState extends State<ShotCard> with SingleTickerProviderStateMixin
                 _dragAlignment = Alignment.center;
               });
 
-              print("Next card active");
+              // get the next card ready
               final CardProvider cardProvider = Provider.of<CardProvider>(context, listen: false);
               cardProvider.nextCard();
             });
           } else
+            // if the card is left down by the finger anywhere else, animate it going back to the center
             _runCardBackToCenterAnimation();
         },
         child: Align(
           alignment: _dragAlignment,
+          // seperate widget to make it less confusing
           child: ShotCardContainer(
             rotateAngle: widget.rotateAngle,
             color: widget.color,
