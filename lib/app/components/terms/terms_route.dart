@@ -8,11 +8,11 @@ class TermsRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageTemplate(
+      showBackButton: true,
       children: <Widget>[
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            AppCloseButton(),
             TitleText(text: "Terms",)
           ],
         ).sliver(),

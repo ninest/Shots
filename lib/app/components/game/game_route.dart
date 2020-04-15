@@ -15,14 +15,16 @@ class GameRoute extends StatelessWidget {
     ShotCardModel currentCard = cardProvider.cards[cardProvider.currentCardIndex];
 
     return Scaffold(
+      backgroundColor: Colors.black,
       body: AnimatedContainer(
         color: currentCard.color.withOpacity(Values.containerOpacity),
+        // color: Colors.white.withOpacity(0.5),
         duration: Duration(milliseconds: 100),
         child: SafeArea(
           child: Stack(
             children: <Widget>[
               // x button
-              AppCloseButton(),
+              // AppCloseButton(),
 
               // placeholder shot cards
               for (var i = cardProvider.nextCardsNo; i >= 1; i--) _nextCard(i),

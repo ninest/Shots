@@ -14,10 +14,6 @@ class AppCloseButton extends StatelessWidget {
     return InkWell(
       borderRadius: BorderRadius.circular(100.0),
       child: Container(
-        margin: EdgeInsets.only(
-          top: Values.mainPadding,
-          left: Values.mainPadding,
-        ),
         padding: EdgeInsets.all(Values.buttonVerticalPadding),
         decoration: BoxDecoration(
           color: Colors.red.withOpacity(0.3),

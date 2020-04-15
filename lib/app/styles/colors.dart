@@ -5,7 +5,7 @@ class AppColors {
   // static Color get green => Color(0xFF55a854);
   // static Color get yellow => Color(0xFFf5aa22);
   // static Color get red => Color(0xFFe94234);
-  // static Color get dark => Color(0xFF111111);
+  static Color get dark => Color(0xFF111111);
 
   // https://coolors.co/e5d9f2-091540-cdc1ff-a594f9-7371fc
   static List<Color> get blues => [
@@ -16,62 +16,82 @@ class AppColors {
         Color(0xff7371FC),
       ];
 
+  static List<Color> get greens => [
+        Color(0xff407076),
+        Color(0xff6ABEA7),
+        Color(0xff82C09A),
+      ];
+
   static Color getColor(String name) {
     Color color;
     String secondLetter = name[1].toLowerCase();
 
     switch (secondLetter) {
       case 'a':
-      case 'b':
-      case 'c':
-      case 'd':
         {
           color = blues[0];
           break;
         }
-      case 'e':
-      case 'f':
-      case 'g':
-      case 'h':
+      case 'b':
         {
           color = blues[1];
           break;
         }
-      case 'i':
-      case 'j':
-      case 'k':
-      case 'l':
+      case 'c':
         {
           color = blues[2];
           break;
         }
-      case 'm':
-      case 'n':
-      case 'o':
-      case 'p':
+      case 'd':
         {
           color = blues[3];
           break;
         }
-
-      case 'q':
-      case 'r':
-      case 's':
-      case 't':
+      case 'e':
         {
           color = blues[4];
           break;
         }
-      case 'u':
-      case 'v':
-      case 'w':
-      case 'x':
-      case 'y':
-      case 'z':
+      case 'f':
         {
           color = blues[4];
           break;
         }
+      case 'g':
+        {
+          color = greens[0];
+          break;
+        }
+      case 'h':
+        {
+          color = greens[1];
+          break;
+        }
+      case 'i':
+        {
+          color = greens[2];
+          break;
+        }
+      // case 'j':
+      // case 'k':
+      // case 'l':
+      // case 'm':
+      // case 'n':
+      // case 'o':
+      // case 'p':
+      // case 'q':
+      // case 'r':
+      // case 's':
+      // case 't':
+      // case 'u':
+      // case 'v':
+      // case 'w':
+      // case 'x':
+      // case 'y':
+      // case 'z':
+      default: {
+        color = dark;
+      } 
     }
     return color;
   }

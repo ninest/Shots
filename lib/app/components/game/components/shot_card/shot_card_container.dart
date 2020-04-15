@@ -20,7 +20,7 @@ class ShotCardContainer extends StatelessWidget {
         height: cardHeight,
         width: cardwidth,
         padding: EdgeInsets.only(
-          top: Values.mainPadding * 3.5,
+          top: Values.mainPadding * 2,
           left: Values.mainPadding,
           right: Values.mainPadding,
           bottom: Values.mainPadding,
@@ -48,8 +48,9 @@ class ShotCardContainer extends StatelessWidget {
           ],
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text(line1, style: Theme.of(context).textTheme.display1),
+            Text(line1, style: Theme.of(context).textTheme.display1,),
             if (line2 != null) ...[
               Flexible(flex: 1, child: Container()),
               Text(line2, style: Theme.of(context).textTheme.display2),

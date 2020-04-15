@@ -5,7 +5,7 @@ class Values {
   */
   static double get em => 24;
 
-  static double get mainPadding => 23;
+  static double get mainPadding => 33;
   /*
   padding for main pageTemplate
   */
@@ -18,5 +18,5 @@ class Values {
   static double get borderRadius => 10.0;
 
   // opacity uses app-wide
-  static double get containerOpacity => 0.5;
+  static double get containerOpacity => 0.3;
 }
