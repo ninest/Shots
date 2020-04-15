@@ -1,6 +1,4 @@
-<h1 align="center">
-  <a href="">Shots</a>
-</h1>
+<h1 align="center"><!-- <a href="">Shots</a> -->Shots</h1>
 
 <p align="center"><i>
 The Drinking game.

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shots/app/components/game/components/shot_card.dart';
+import 'package:shots/app/components/game/components/shot_card/shot_card_parent.dart';
 import 'package:shots/app/models/shot_card_model.dart';
 import 'package:shots/app/providers/card_provider.dart';
 
