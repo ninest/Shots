@@ -26,6 +26,7 @@ class ShotCardContainer extends StatelessWidget {
             color: color,
             borderRadius: BorderRadius.circular(Values.borderRadius),
             boxShadow: [
+              // 0 0 2px rgba(0,0,0,0.2), 1px 1px 1px rgba(0,0,0,0.2)
               BoxShadow(
                 color: Color.fromRGBO(0, 0, 0, 0.22),
                 offset: Offset(0, 4),
