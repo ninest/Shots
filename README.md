@@ -9,11 +9,13 @@ The Drinking game.
 
 <details>
 <summary>
-<b>Click to see the features list</b>
+
+**Click to see the features list**
+
 </summary>
 
 
-- [ ] Start page where users can see a few options
+- [x] Start page where users can see a few options
   - [x] Start game to take user to game
   - [ ] Terms (everyone is over 18, ...)
   - [ ] Theme customization (might not implement)
@@ -22,15 +24,15 @@ The Drinking game.
 - [x] Rotate cards at random angles (make it look natural)
 - [x] Show card behind card on top (next card)
   - [ ] Show slight animation when revealing "next" next card
-- [ ] Randomize card order (all cards are in a YML file)
-- [ ] Don't show cards which were already shown
+- [x] Randomize card order (all cards are in a YML file)
+- [ ] Don't show cards which were already shown (might not implement)
 - [x] Card swiping to change cards (similar to Tinder)
   - [x] Show ~~one~~ cards behind the current card
   - [ ] Make cards wave as they are moving (similar to real cards)
   - [x] Animation when user drops card but not on target (animation of card going back)
 - [x] Show how many cards the players have gone through
 - [x] Allow users to shuffle deck midgame
-- [ ] Timer to show players how long they've been playing
+- [x] Timer to show players how long they've been playing
 
 </details>
 
@@ -54,7 +56,15 @@ Once Flutter has been set up, run the app with
 flutter run
 ```
 
-The main app entry point is `main.dart`, then `app.dart`.
+The main app entry point is `main.dart`, then `app/app.dart`.
+
+### Generating icons and splash screens
+After updating `pubspec.yaml`, run these commands:
+```
+flutter pub run flutter_launcher_icons:main
+flutter pub pub run flutter_native_splash:create
+
+```
 
 ### Editing `router.dart`
 Everythime you change `router/router.dart`, you need to run
