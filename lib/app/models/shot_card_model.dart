@@ -24,7 +24,7 @@ class ShotCardModel {
   factory ShotCardModel.fromJson(YamlMap map) {
     Random random = new Random();
     // we need number frm 0.01 to 0.10 for angle in radian
-    int randNo = random.nextInt(10) + 1; // generates rannd no from 1 to 10
+    int randNo = random.nextInt(5) + 1; // generates rannd no from 1 to 10
     double rotateAngle = randNo /100;
 
     Random randC = new Random();

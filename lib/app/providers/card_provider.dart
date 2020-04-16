@@ -10,7 +10,8 @@ class CardProvider extends ChangeNotifier {
   int _currentCardIndex = 0;
   int get currentCardIndex => _currentCardIndex;
 
-  int _nextCardsNo = 10;
+  // number of cards to show behind current card
+  int _nextCardsNo = 5;
   int get nextCardsNo => _nextCardsNo;
 
   // called on game start

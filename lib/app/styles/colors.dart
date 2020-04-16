@@ -5,7 +5,7 @@ class AppColors {
   // static Color get green => Color(0xFF55a854);
   // static Color get yellow => Color(0xFFf5aa22);
   // static Color get red => Color(0xFFe94234);
-  static Color get dark => Color(0xFF111111);
+  static Color get dark => Color(0xFF333333);
 
   // https://coolors.co/e5d9f2-091540-cdc1ff-a594f9-7371fc
   static List<Color> get blues => [
