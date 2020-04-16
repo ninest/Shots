@@ -6,13 +6,18 @@ import 'package:shots/app/providers/card_provider.dart';
 class StatsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     final CardProvider cardProvider = Provider.of<CardProvider>(context, listen: true);
 
     return SlidingPanelSection(
       title: "Stats",
       children: <Widget>[
-        Text("${cardProvider.currentCardIndex} cards")
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Text("${cardProvider.currentCardIndex} cards"),
+            Text("00:00"),
+          ],
+        )
       ],
     );
   }

@@ -26,8 +26,11 @@ class CardProvider extends ChangeNotifier {
     }
   }
 
-  shuffleCards() {
+  shuffleCards({bool shouldNotifyListeners = false}) {
     _cards.shuffle();
+
+    // only need to notify listeners when user re-shuffles
+    if (shouldNotifyListeners) notifyListeners();
   }
 
   // called when a card is dragged away
