@@ -16,7 +16,6 @@ The Drinking game.
 - [x] Start page where users can see a few options
   - [x] Start game to take user to game
   - [ ] Terms (everyone is over 18, ...)
-  - [ ] Theme customization (might not implement)
 - [x] Give cards colors depending on text (for ex, if first letter is T, it is red ...)
 - [x] Give app background a color too, and animate it
 - [x] Rotate cards at random angles (make it look natural)
@@ -31,6 +30,7 @@ The Drinking game.
 - [x] Show how many cards the players have gone through
 - [x] Allow users to shuffle deck midgame
 - [x] Timer to show players how long they've been playing
+- [ ] Allow card packs to be retreived from web
 
 </details>
 

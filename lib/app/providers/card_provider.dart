@@ -14,6 +14,10 @@ class CardProvider extends ChangeNotifier {
   int _nextCardsNo = 5;
   int get nextCardsNo => _nextCardsNo;
 
+  // game started is to determine whether to re-load the cards
+  bool _gameStarted = false;
+  bool get gameStarted => _gameStarted;
+
   // called on game start
   loadCards() async {
     // load cards
@@ -26,6 +30,8 @@ class CardProvider extends ChangeNotifier {
     }
 
     shuffleCards();
+
+    _gameStarted = true;
   }
 
   shuffleCards({bool shouldNotifyListeners = false}) {
@@ -55,5 +61,6 @@ class CardProvider extends ChangeNotifier {
     // clear cards (empty array)
     _currentCardIndex = 0;
     _cards = [];
+    _gameStarted = false;
   }
 }

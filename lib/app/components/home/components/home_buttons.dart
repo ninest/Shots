@@ -19,10 +19,11 @@ class HomeButtons extends StatelessWidget {
           width: 200.0,
           onTap: () async {
             final CardProvider cardProvider = Provider.of<CardProvider>(context, listen: false);
-            await cardProvider.loadCards();
+            if (!cardProvider.gameStarted) await cardProvider.loadCards();
 
             // start counting seconds
-            final StopwatchProvider stopwatchProvider = Provider.of<StopwatchProvider>(context, listen: false);
+            final StopwatchProvider stopwatchProvider =
+                Provider.of<StopwatchProvider>(context, listen: false);
             stopwatchProvider.start();
 
             ExtendedNavigator.ofRouter<Router>().pushNamed(Routes.gameRoute);
