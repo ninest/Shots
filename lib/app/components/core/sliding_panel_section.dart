@@ -14,7 +14,8 @@ class SlidingPanelSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text(title),
+        Spacing(height: Values.mainPadding),
+        Text(title, style: Theme.of(context).textTheme.display3),
         Spacing(height: Values.mainPadding),
         ...children,
       ],

@@ -25,17 +25,11 @@ TextTheme _buildTextTheme(TextTheme base) {
         color: Colors.white60,
       ),
     ),
-    body1: GoogleFonts.rubik(
-      textStyle: base.body1.copyWith(
-        fontSize: em,
-        color: Colors.white70,
-      ),
-    ),
 
     // card line 1
     display1: GoogleFonts.rubik(
       textStyle: base.display1.copyWith(
-        fontSize: em * 1.3,
+        fontSize: em * 1.6,
         fontWeight: FontWeight.w900,
         color: Colors.white,
       ),
@@ -44,8 +38,25 @@ TextTheme _buildTextTheme(TextTheme base) {
     // card line 2
     display2: GoogleFonts.rubik(
       textStyle: base.display2.copyWith(
-        fontSize: em * 0.9,
+        fontSize: em * 1.1,
         fontWeight: FontWeight.w500,
+        color: Colors.white70,
+      ),
+    ),
+
+
+    // sliding panel section heading
+    display3: GoogleFonts.rubik(
+      textStyle: base.body1.copyWith(
+        fontSize: em * 1.5,
+        fontWeight: FontWeight.w500,
+        color: Colors.white70,
+      ),
+    ),
+
+    body1: GoogleFonts.rubik(
+      textStyle: base.body1.copyWith(
+        fontSize: em,
         color: Colors.white70,
       ),
     ),
