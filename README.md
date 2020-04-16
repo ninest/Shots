@@ -34,13 +34,19 @@ The Drinking game.
 
 </details>
 
-## Packages used
+<details>
+<summary>
+<b>Packages used</b>
+</summary>
+
 - auto_route
 - google_fonts
 - font_awesome_flutter
 - provider
 - yaml
 - sliding_up_panel
+
+</details>
 
 ## FAQs
 - coming soon
