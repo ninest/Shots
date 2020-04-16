@@ -14,6 +14,7 @@ TextTheme _buildTextTheme(TextTheme base) {
         fontWeight: FontWeight.w900,
         fontSize: 2.2 * em,
         letterSpacing: 0.7,
+        color: Colors.white,
       ),
     ),
     button: GoogleFonts.rubik(
@@ -21,12 +22,13 @@ TextTheme _buildTextTheme(TextTheme base) {
         fontWeight: FontWeight.w700,
         letterSpacing: 0.8,
         fontSize: em,
-        color: Colors.white,
+        color: Colors.white60,
       ),
     ),
     body1: GoogleFonts.rubik(
       textStyle: base.body1.copyWith(
         fontSize: em,
+        color: Colors.white70,
       ),
     ),
 

@@ -7,8 +7,8 @@ class AppColors {
   // static Color get red => Color(0xFFe94234);
   static Color get dark => Color(0xFF333333);
 
-  static Color get slidingPanelColor => Color(0xff222222);
-  static Color get slidingPanelBorderColor => Colors.black;
+  static Color get pageColor => Color(0xff222222);
+  static Color get pageBorderColor => Colors.black;
 
   // https://coolors.co/e5d9f2-091540-cdc1ff-a594f9-7371fc
   static List<Color> get blues => [

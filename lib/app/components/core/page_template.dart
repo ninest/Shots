@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shots/app/components/core/buttons/close_buttons.dart';
 import 'package:shots/app/components/core/buttons/title_text.dart';
 import 'package:shots/app/components/core/spacing.dart';
+import 'package:shots/app/styles/colors.dart';
 import 'package:shots/app/styles/values.dart';
 import 'package:shots/app/utils/extensions.dart';
 
@@ -18,6 +19,7 @@ class PageTemplate extends StatelessWidget {
     // double statusBarHeight = MediaQuery.of(context).padding.top;
 
     return Container(
+      color: AppColors.pageColor,
       padding: EdgeInsets.symmetric(horizontal: Values.mainPadding),
       child: CustomScrollView(slivers: <Widget>[
         if (showBackButton)

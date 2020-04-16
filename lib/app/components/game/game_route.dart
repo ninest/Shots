@@ -27,9 +27,9 @@ class GameRoute extends StatelessWidget {
         ),
         border: Border.all(
           width: 1,
-          color: AppColors.slidingPanelBorderColor,
+          color: AppColors.pageBorderColor,
         ),
-        color: AppColors.slidingPanelColor,
+        color: AppColors.pageColor,
         panel: SlidingPanel(),
         body: AnimatedContainer(
           color: currentCard.color.withOpacity(Values.containerOpacity),

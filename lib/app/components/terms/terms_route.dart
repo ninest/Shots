@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:shots/app/components/core/page_template.dart';
+import 'package:shots/app/utils/strings.dart';
+import 'package:shots/app/utils/extensions.dart';
 
 class TermsRoute extends StatelessWidget {
   @override
@@ -8,6 +11,7 @@ class TermsRoute extends StatelessWidget {
       showBackButton: true,
       title: "Terms",
       children: <Widget>[
+        MarkdownBody(data: Strings.terms,).sliver()
       ],
     ).scaffold();
   }
