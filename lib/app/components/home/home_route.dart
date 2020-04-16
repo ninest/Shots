@@ -27,6 +27,5 @@ class HomeRoute extends StatelessWidget {
     );
   }
 
-  Widget _linearGradient() {
-  }
+  // Widget _linearGradient() {}
 }

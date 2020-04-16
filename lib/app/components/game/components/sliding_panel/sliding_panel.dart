@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shots/app/components/core/buttons/button.dart';
-import 'package:shots/app/components/core/spacing.dart';
 import 'package:shots/app/components/game/components/sliding_panel/sections/options.dart';
 import 'package:shots/app/components/game/components/sliding_panel/scrolling_indicator.dart';
 import 'package:shots/app/components/game/components/sliding_panel/sections/stats.dart';

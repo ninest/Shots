@@ -9,9 +9,7 @@ The Drinking game.
 
 <details>
 <summary>
-
-**Click to see the features list**
-
+<b>Click to see the features list</b>
 </summary>
 
 
