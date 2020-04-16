@@ -44,6 +44,12 @@ class Button extends StatelessWidget {
           : Theme.of(context).textTheme.button,
     );
 
-    return Align(alignment: Alignment.center, child: textChild);
+    if (width != null) {
+      // if width is specified, make it an align element so the child is centered
+      return Align(alignment: Alignment.center, child: textChild);
+    } else {
+      // if no width specified, no need for align
+      return textChild;
+    }
   }
 }

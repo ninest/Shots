@@ -14,7 +14,7 @@ class HomeButtons extends StatelessWidget {
       children: <Widget>[
         Button(
           text: "Start",
-          color: Colors.indigo,
+          color: Theme.of(context).accentColor,
           width: 200.0,
           onTap: () async {
             final CardProvider cardProvider = Provider.of<CardProvider>(context, listen: false);
@@ -25,7 +25,7 @@ class HomeButtons extends StatelessWidget {
         Spacing(height: Values.mainPadding),
         Button(
           text: "Terms",
-          color: Colors.indigo,
+          color: Theme.of(context).accentColor,
           width: 200.0,
           outline: true,
           onTap: () {

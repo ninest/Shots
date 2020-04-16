@@ -55,6 +55,7 @@ TextTheme _buildTextTheme(TextTheme base) {
 ThemeData _buildLightTheme() {
   final ThemeData base = ThemeData(
     brightness: Brightness.light,
+    accentColor: Colors.indigo,
   );
 
   return base.copyWith(
