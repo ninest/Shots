@@ -21,6 +21,7 @@ class HomeButtons extends StatelessWidget {
             final CardProvider cardProvider = Provider.of<CardProvider>(context, listen: false);
             await cardProvider.loadCards();
 
+            // start counting seconds
             final StopwatchProvider stopwatchProvider = Provider.of<StopwatchProvider>(context, listen: false);
             stopwatchProvider.start();
 
@@ -33,11 +34,7 @@ class HomeButtons extends StatelessWidget {
           color: Theme.of(context).accentColor,
           width: 200.0,
           outline: true,
-          onTap: () {
-            // ExtendedNavigator.ofRouter<Router>().pushNamed(Routes.termsRoute);
-            ExtendedNavigator.of(context).pushNamed(Routes.termsRoute);
-
-          },
+          onTap: () => ExtendedNavigator.of(context).pushNamed(Routes.termsRoute),
         )
       ],
     );

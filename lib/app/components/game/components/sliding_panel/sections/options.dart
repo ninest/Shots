@@ -5,6 +5,7 @@ import 'package:shots/app/components/core/buttons/button.dart';
 import 'package:shots/app/components/core/sliding_panel_section.dart';
 import 'package:shots/app/components/core/spacing.dart';
 import 'package:shots/app/providers/card_provider.dart';
+import 'package:shots/app/providers/stopwatch_provider.dart';
 import 'package:shots/app/router/router.gr.dart';
 import 'package:shots/app/styles/values.dart';
 
@@ -30,8 +31,13 @@ class OptionsSection extends StatelessWidget {
           color: Theme.of(context).errorColor,
           width: double.infinity,
           onTap: () {
-            ExtendedNavigator.ofRouter<Router>().pop();
             cardProvider.endGame();
+            
+            // end timer
+            final StopwatchProvider stopwatchProvider = Provider.of<StopwatchProvider>(context, listen: false);
+            stopwatchProvider.stop();
+
+            ExtendedNavigator.ofRouter<Router>().pop();
           },
         ),
       ],
