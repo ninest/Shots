@@ -17,13 +17,15 @@ class CardProvider extends ChangeNotifier {
   // called on game start
   loadCards() async {
     // load cards
-    var fileContent = await rootBundle.loadString('assets/cards/nsfw.yml');
+    var fileContent = await rootBundle.loadString('assets/cards/basic.yml');
     var doc = loadYaml(fileContent);
 
     for (var cardJson in doc) {
       ShotCardModel scm = ShotCardModel.fromJson(cardJson);
       _cards.add(scm);
     }
+
+    shuffleCards();
   }
 
   shuffleCards({bool shouldNotifyListeners = false}) {

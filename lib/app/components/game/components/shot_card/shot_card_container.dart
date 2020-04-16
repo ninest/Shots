@@ -21,7 +21,7 @@ class ShotCardContainer extends StatelessWidget {
         height: cardHeight,
         width: cardwidth,
         padding: EdgeInsets.only(
-          top: Values.mainPadding * 2,
+          top: Values.mainPadding * 1.8,
           left: Values.mainPadding,
           right: Values.mainPadding,
           bottom: Values.mainPadding,
@@ -30,7 +30,7 @@ class ShotCardContainer extends StatelessWidget {
           color: color,
           borderRadius: BorderRadius.circular(Values.borderRadius),
           border: Border.all(
-            color: Color(0xFF11111),
+            color: Color(0xFF000000).withOpacity(0.1),
             width: 1,
           ),
           boxShadow: [

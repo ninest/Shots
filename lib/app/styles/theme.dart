@@ -29,7 +29,7 @@ TextTheme _buildTextTheme(TextTheme base) {
     // card line 1
     display1: GoogleFonts.rubik(
       textStyle: base.display1.copyWith(
-        fontSize: em * 1.6,
+        fontSize: em * 1.4,
         fontWeight: FontWeight.w900,
         color: Colors.white,
       ),
