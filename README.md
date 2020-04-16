@@ -28,9 +28,9 @@ The Drinking game.
   - [x] Show ~~one~~ cards behind the current card
   - [ ] Make cards wave as they are moving (similar to real cards)
   - [x] Animation when user drops card but not on target (animation of card going back)
-- [ ] Timer to show players how long they've been playing
 - [x] Show how many cards the players have gone through
-- [ ] Allow users to shuffle deck midgame
+- [x] Allow users to shuffle deck midgame
+- [ ] Timer to show players how long they've been playing
 
 </details>
 
