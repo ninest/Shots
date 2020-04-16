@@ -21,7 +21,7 @@ class Button extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           color: outline ? Colors.transparent : color,
-          borderRadius: BorderRadius.circular(100.0),
+          borderRadius: BorderRadius.circular(Values.borderRadius),
           // putting border for regular buttons so that they are the same width and height as
           // outline buttons
           border: Border.all(
@@ -44,12 +44,6 @@ class Button extends StatelessWidget {
           : Theme.of(context).textTheme.button,
     );
 
-    if (width != null) {
-      // if width is specified, make it an align element so the child is centered
-      return Align(alignment: Alignment.center, child: textChild);
-    } else {
-      // if no width specified, no need for align
-      return textChild;
-    }
+    return Align(alignment: Alignment.center, child: textChild);
   }
 }
