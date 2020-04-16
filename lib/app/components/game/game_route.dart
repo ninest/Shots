@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shots/app/components/core/buttons/close_buttons.dart';
 import 'package:shots/app/components/game/components/next_shot_card.dart';
 import 'package:shots/app/components/game/components/shot_card/shot_card_parent.dart';
 import 'package:shots/app/components/game/components/sliding_panel/sliding_panel.dart';
@@ -20,7 +19,7 @@ class GameRoute extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.black,
       body: SlidingUpPanel(
-        minHeight: 50.0,
+        minHeight: 60.0,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(Values.borderRadius),
           topRight: Radius.circular(Values.borderRadius),

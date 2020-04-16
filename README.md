@@ -40,6 +40,7 @@ The Drinking game.
 - font_awesome_flutter
 - provider
 - yaml
+- sliding_up_panel
 
 ## FAQs
 - coming soon

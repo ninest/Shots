@@ -17,8 +17,8 @@ class ScrollingIndicator extends StatelessWidget {
   }
 
   Widget spacing() => Column(children: <Widget>[
-        Spacing(height: 10.0),
+        Spacing(height: 13.0),
         this,
-        Spacing(height: 10.0),
+        Spacing(height: 13.0),
       ]);
 }

@@ -48,4 +48,10 @@ class CardProvider extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  endGame() {
+    // clear cards (empty array)
+    _currentCardIndex = 0;
+    _cards = [];
+  }
 }
