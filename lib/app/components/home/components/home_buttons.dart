@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:shots/app/components/core/buttons/button.dart';
 import 'package:shots/app/components/core/spacing.dart';
 import 'package:shots/app/providers/card_provider.dart';
+import 'package:shots/app/providers/stopwatch_provider.dart';
 import 'package:shots/app/router/router.gr.dart';
 import 'package:shots/app/styles/values.dart';
 
@@ -19,6 +20,10 @@ class HomeButtons extends StatelessWidget {
           onTap: () async {
             final CardProvider cardProvider = Provider.of<CardProvider>(context, listen: false);
             await cardProvider.loadCards();
+
+            final StopwatchProvider stopwatchProvider = Provider.of<StopwatchProvider>(context, listen: false);
+            stopwatchProvider.start();
+
             ExtendedNavigator.ofRouter<Router>().pushNamed(Routes.gameRoute);
           },
         ),
