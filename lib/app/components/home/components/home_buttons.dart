@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:shots/app/components/core/buttons/button.dart';
 import 'package:shots/app/components/core/spacing.dart';
 import 'package:shots/app/providers/card_provider.dart';
+import 'package:shots/app/providers/packs_provider.dart';
 import 'package:shots/app/providers/stopwatch_provider.dart';
 import 'package:shots/app/router/router.gr.dart';
 import 'package:shots/app/styles/values.dart';
@@ -20,7 +21,7 @@ class HomeButtons extends StatelessWidget {
           width: 250.0,
           onTap: () async {
             final CardProvider cardProvider = Provider.of<CardProvider>(context, listen: false);
-            if (!cardProvider.gameStarted) await cardProvider.loadCards();
+            if (!cardProvider.gameStarted) await cardProvider.loadCards(context);
 
             // start counting seconds
             final StopwatchProvider stopwatchProvider =

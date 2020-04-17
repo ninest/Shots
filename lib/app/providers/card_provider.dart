@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'package:shots/app/models/pack_model.dart';
 import 'package:shots/app/models/shot_card_model.dart';
+import 'package:shots/app/providers/packs_provider.dart';
+import 'package:shots/app/services/card_loading.dart';
 import 'package:yaml/yaml.dart';
 
 class CardProvider extends ChangeNotifier {
@@ -19,16 +23,12 @@ class CardProvider extends ChangeNotifier {
   bool get gameStarted => _gameStarted;
 
   // called on game start
-  loadCards() async {
-    // load cards
-    var fileContent = await rootBundle.loadString('assets/cards/basic.yml');
-    var doc = loadYaml(fileContent);
+  loadCards(BuildContext context) async {
+    // load each pack and cards in respective packs
+    final PacksProvider packsProvider = Provider.of<PacksProvider>(context, listen: false);
+    _cards = await CardLoadingService.loadPacks(packsProvider.packs);
 
-    for (var cardJson in doc) {
-      ShotCardModel scm = ShotCardModel.fromJson(cardJson);
-      _cards.add(scm);
-    }
-
+    // randomize order
     shuffleCards();
 
     _gameStarted = true;
@@ -51,7 +51,8 @@ class CardProvider extends ChangeNotifier {
 
     */
     if (_currentCardIndex == _cards.length - _nextCardsNo) {
-      loadCards();
+      // TODO: implement load next set of cards
+      // loadCards();
     }
 
     notifyListeners();

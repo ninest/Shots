@@ -19,7 +19,7 @@ class PacksRoute extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            for (PackModel pack in packsProvider.availablePackModels) PackChoice(pack: pack)
+            for (PackModel pack in packsProvider.packs) PackChoice(pack: pack)
           ],
         ).sliver(),
       ],
