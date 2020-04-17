@@ -9,11 +9,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:shots/app/components/home/home_route.dart';
 import 'package:shots/app/components/game/game_route.dart';
+import 'package:shots/app/components/packs/packs_route.dart';
 import 'package:shots/app/components/terms/terms_route.dart';
 
 abstract class Routes {
   static const homeRoute = '/';
   static const gameRoute = '/game-route';
+  static const packsRoute = '/packs-route';
   static const termsRoute = '/terms-route';
 }
 
@@ -37,6 +39,11 @@ class Router extends RouterBase {
           builder: (_) => GameRoute(),
           settings: settings,
           fullscreenDialog: true,
+        );
+      case Routes.packsRoute:
+        return MaterialPageRoute<dynamic>(
+          builder: (_) => PacksRoute(),
+          settings: settings,
         );
       case Routes.termsRoute:
         return MaterialPageRoute<dynamic>(

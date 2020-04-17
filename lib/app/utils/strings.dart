@@ -2,7 +2,10 @@ class Strings {
   static String get appTitle => "Shots";
   
   static String get startButton => "Start";
+  static String get choosePacks => "Choose Packs";
   static String get termsButton => "Terms";
+
+  static String get packsRouteTitle => "Choose card packs";
 
   static String get statsSectionTitle => "Stats";
   static String get optionsSectionTitle => "Options";

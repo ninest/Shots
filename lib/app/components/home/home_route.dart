@@ -16,7 +16,7 @@ class _HomeRouteState extends State<HomeRoute> {
   // used for animating background
   List<Alignment> _top = [Alignment.topLeft, Alignment.topCenter, Alignment.topRight];
   List<Alignment> _bottom = [Alignment.bottomLeft, Alignment.bottomCenter, Alignment.bottomRight];
-  List<Color> _colors = [...AppColors.blacks, ...AppColors.reds];
+  List<Color> _colors = [...AppColors.blacks];
 
   LinearGradient _background;
 

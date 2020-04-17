@@ -17,7 +17,7 @@ class HomeButtons extends StatelessWidget {
         Button(
           text: Strings.startButton,
           color: Theme.of(context).accentColor,
-          width: 200.0,
+          width: 250.0,
           onTap: () async {
             final CardProvider cardProvider = Provider.of<CardProvider>(context, listen: false);
             if (!cardProvider.gameStarted) await cardProvider.loadCards();
@@ -32,9 +32,17 @@ class HomeButtons extends StatelessWidget {
         ),
         Spacing(height: Values.mainPadding),
         Button(
+          text: Strings.choosePacks,
+          color: Theme.of(context).accentColor,
+          width: 250.0,
+          outline: true,
+          onTap: () => ExtendedNavigator.of(context).pushNamed(Routes.packsRoute),
+        ),
+        Spacing(height: Values.mainPadding),
+        Button(
           text: Strings.termsButton,
           color: Theme.of(context).accentColor,
-          width: 200.0,
+          width: 250.0,
           outline: true,
           onTap: () => ExtendedNavigator.of(context).pushNamed(Routes.termsRoute),
         )
