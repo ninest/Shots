@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shots/app/components/core/page_template.dart';
 import 'package:shots/app/components/packs/components/pack_choice.dart';
+import 'package:shots/app/models/pack_model.dart';
+import 'package:shots/app/providers/packs_provider.dart';
 import 'package:shots/app/utils/strings.dart';
 import 'package:shots/app/utils/extensions.dart';
 
 class PacksRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    PacksProvider packsProvider = Provider.of<PacksProvider>(context, listen: true);
+
     return PageTemplate(
       showBackButton: true,
       title: Strings.packsRouteTitle,
@@ -14,9 +19,7 @@ class PacksRoute extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            PackChoice(name: 'Basic', filename: 'basic', selected: true),
-            PackChoice(name: 'Close friends only', filename: 'close'),
-            PackChoice(name: 'Developer', filename: 'developer'),
+            for (PackModel pack in packsProvider.availablePackModels) PackChoice(pack: pack)
           ],
         ).sliver(),
       ],
