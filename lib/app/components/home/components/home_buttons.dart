@@ -7,6 +7,7 @@ import 'package:shots/app/providers/card_provider.dart';
 import 'package:shots/app/providers/stopwatch_provider.dart';
 import 'package:shots/app/router/router.gr.dart';
 import 'package:shots/app/styles/values.dart';
+import 'package:shots/app/utils/strings.dart';
 
 class HomeButtons extends StatelessWidget {
   @override
@@ -14,7 +15,7 @@ class HomeButtons extends StatelessWidget {
     return Column(
       children: <Widget>[
         Button(
-          text: "Start",
+          text: Strings.startButton,
           color: Theme.of(context).accentColor,
           width: 200.0,
           onTap: () async {
@@ -31,7 +32,7 @@ class HomeButtons extends StatelessWidget {
         ),
         Spacing(height: Values.mainPadding),
         Button(
-          text: "Terms",
+          text: Strings.termsButton,
           color: Theme.of(context).accentColor,
           width: 200.0,
           outline: true,

@@ -34,9 +34,12 @@ The Drinking game.
 
 </details>
 
+
+## Packages used
+
 <details>
 <summary>
-<b>Packages used</b>
+<b>Click to reveal packages</b>
 </summary>
 
 - auto_route

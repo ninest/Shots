@@ -8,6 +8,7 @@ import 'package:shots/app/providers/card_provider.dart';
 import 'package:shots/app/providers/stopwatch_provider.dart';
 import 'package:shots/app/router/router.gr.dart';
 import 'package:shots/app/styles/values.dart';
+import 'package:shots/app/utils/strings.dart';
 
 class OptionsSection extends StatelessWidget {
   @override
@@ -16,7 +17,7 @@ class OptionsSection extends StatelessWidget {
     final CardProvider cardProvider = Provider.of<CardProvider>(context, listen: false);
     
     return SlidingPanelSection(
-      title: "Options",
+      title: Strings.optionsSectionTitle,
       children: <Widget>[
         Button(
           text: "Re-shuffle",

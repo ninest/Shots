@@ -1,5 +1,11 @@
 class Strings {
-  static String get appTitle => " ";
+  static String get appTitle => "Shots";
+  
+  static String get startButton => "Start";
+  static String get termsButton => "Terms";
+
+  static String get statsSectionTitle => "Stats";
+  static String get optionsSectionTitle => "Options";
 
   static String get terms => """
 By playing the game, you agree to the following terms:
