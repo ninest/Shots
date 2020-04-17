@@ -7,19 +7,30 @@ class AppColors {
   static Color get pageBorderColor => Colors.black;
 
   static List<Color> get blacks => [
-    Color(0xff04030F),
-    Color(0xff08090A),
-    Color(0xff373E40),
-    Color(0xff00171F),
-  ];
+        Color(0xff04030F),
+        Color(0xff08090A),
+        Color(0xff373E40),
+        Color(0xff00171F),
+      ];
 
   // https://coolors.co/e5d9f2-091540-cdc1ff-a594f9-7371fc
   static List<Color> get blues => [
+        // #6969B3
         Color(0xff6969B3),
+
+        // #091540
         Color(0xff091540),
+
+        // #CDC1FF
         Color(0xffCDC1FF),
+
+        // #A594F9
         Color(0xffA594F9),
+
+        // #7371FC
         Color(0xff7371FC),
+
+        // #255C99
         Color(0xff255C99),
       ];
 
