@@ -33,7 +33,7 @@ class GameRoute extends StatelessWidget {
         body: AnimatedContainer(
           color: currentCard.color.withOpacity(Values.containerOpacity),
           // color: Colors.white.withOpacity(0.5),
-          duration: Duration(milliseconds: 100),
+          duration: Duration(milliseconds: 250),
           child: SafeArea(
             child: Stack(
               children: <Widget>[

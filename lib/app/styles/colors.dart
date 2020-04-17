@@ -6,6 +6,13 @@ class AppColors {
   static Color get pageColor => Color(0xff222222);
   static Color get pageBorderColor => Colors.black;
 
+  static List<Color> get blacks => [
+    Color(0xff04030F),
+    Color(0xff08090A),
+    Color(0xff373E40),
+    Color(0xff00171F),
+  ];
+
   // https://coolors.co/e5d9f2-091540-cdc1ff-a594f9-7371fc
   static List<Color> get blues => [
         Color(0xff6969B3),
@@ -13,12 +20,17 @@ class AppColors {
         Color(0xffCDC1FF),
         Color(0xffA594F9),
         Color(0xff7371FC),
+        Color(0xff255C99),
       ];
 
   static List<Color> get greens => [
         Color(0xff407076),
         Color(0xff6ABEA7),
         Color(0xff82C09A),
+      ];
+
+  static List<Color> get reds => [
+        Color(0xffB3001B),
       ];
 
   static Color getColor(String name) {
@@ -88,9 +100,10 @@ class AppColors {
       // case 'x':
       // case 'y':
       // case 'z':
-      default: {
-        color = dark;
-      } 
+      default:
+        {
+          color = dark;
+        }
     }
     return color;
   }
