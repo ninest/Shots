@@ -272,7 +272,7 @@
 
 - line1: The player opposite you must drink
 
-- line1: Dance until your next round or down your drink
+- line1: Dance until your next round or finish your drink
 
 - line1: Quote a movie
   line2: If the player on your left cannot guess the move they must drink
@@ -493,3 +493,8 @@
 - line1: Drink if you play sports
 
 - line1: If you would have sex with another player take a drink
+
+- line1: Take a sip for every tab you have open on your phone
+
+- line1: Check how many apps you have open on your phone
+  line2: One app = one sip, finish your drink if you're too lazy to count
