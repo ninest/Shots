@@ -4,6 +4,11 @@
 The Drinking game.
 </i></p>
 
+![Made with Flutter](https://img.shields.io/badge/Made%20With-Flutter-blue?style=flat-square)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+<!-- ![GitHub](https://img.shields.io/github/license/themindstorm/Shots?style=flat-square) -->
+<!-- [![HitCount](http://hits.dwyl.com/themindstorm/NextBusSG.svg)](http://hits.dwyl.com/themindstorm/NextBusSG)  -->
+
 
 ## 🚀 Features
 
