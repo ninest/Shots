@@ -16,8 +16,7 @@ class StatsSection extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Text("${cardProvider.currentCardIndex} cards"),
-            
+            Text("${cardProvider.cardsGoneThrough} cards"),
             StopwatchDisplay(),
           ],
         )

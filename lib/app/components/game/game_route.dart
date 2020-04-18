@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shots/app/components/game/components/next_shot_card.dart';
 import 'package:shots/app/components/game/components/shot_card/shot_card_parent.dart';
+import 'package:shots/app/components/game/components/sliding_panel/sections/options.dart';
+import 'package:shots/app/components/game/components/sliding_panel/sections/stats.dart';
 import 'package:shots/app/components/game/components/sliding_panel/sliding_panel.dart';
 import 'package:shots/app/models/shot_card_model.dart';
 import 'package:shots/app/providers/card_provider.dart';
@@ -14,7 +16,18 @@ class GameRoute extends StatelessWidget {
   Widget build(BuildContext context) {
     // including theis here to change the background color
     final CardProvider cardProvider = Provider.of<CardProvider>(context, listen: true);
-    ShotCardModel currentCard = cardProvider.cards[cardProvider.currentCardIndex];
+
+    // when all cards are over, this will be null
+    ShotCardModel currentCard;
+    try {
+      currentCard = cardProvider.cards[cardProvider.currentCardIndex];
+    } catch (e) {
+      print("CURRENT CARD NULL");
+      currentCard = null;
+    }
+
+    int cardsLeft = cardProvider.cards.length - cardProvider.currentCardIndex;
+    print(cardsLeft);
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -31,8 +44,9 @@ class GameRoute extends StatelessWidget {
         color: AppColors.pageColor,
         panel: SlidingPanel(),
         body: AnimatedContainer(
-          color: currentCard.color.withOpacity(Values.containerOpacity),
-          // color: Colors.white.withOpacity(0.5),
+          color: currentCard == null
+              ? Colors.black
+              : currentCard.color.withOpacity(Values.containerOpacity),
           duration: Duration(milliseconds: 250),
           child: SafeArea(
             child: Stack(
@@ -40,16 +54,18 @@ class GameRoute extends StatelessWidget {
                 // x button
                 // AppCloseButton(),
 
-                // placeholder shot cards
-                for (var i = cardProvider.nextCardsNo; i >= 1; i--) _nextCard(i),
+                if (currentCard != null) ...[
+                  // placeholder shot cards
+                  for (var i = cardProvider.nextCardsNo; i >= 1; i--) _nextCard(i),
 
-                // current card
-                ShotCard(
-                  line1: currentCard.line1,
-                  line2: currentCard.line2,
-                  color: currentCard.color,
-                  rotateAngle: currentCard.rotateAngle,
-                ),
+                  ShotCard(
+                    line1: currentCard.line1,
+                    line2: currentCard.line2,
+                    color: currentCard.color,
+                    rotateAngle: currentCard.rotateAngle,
+                  ),
+                ] else
+                  _deckComplete()
               ],
             ),
           ),
@@ -61,5 +77,13 @@ class GameRoute extends StatelessWidget {
   Widget _nextCard(int index) => Align(
         alignment: Alignment.center,
         child: NextShotCard(index: index),
+      );
+
+  Widget _deckComplete() => Padding(
+        padding: EdgeInsets.all(Values.mainPadding),
+        child: Column(children: <Widget>[
+          OptionsSection(title: "End of deck"),
+          StatsSection(),
+        ]),
       );
 }

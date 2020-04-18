@@ -19,11 +19,21 @@ class CardProvider extends ChangeNotifier {
   bool _gameStarted = false;
   bool get gameStarted => _gameStarted;
 
+  // cards gone through (for stats)
+  int _cardsGoneThrough = 0;
+  int get cardsGoneThrough => _cardsGoneThrough;
+
+  // cache of cards
+  List<ShotCardModel> _cardsCache;
+
   // called on game start
   loadCards(BuildContext context) async {
     // load each pack and cards in respective packs
     final PacksProvider packsProvider = Provider.of<PacksProvider>(context, listen: false);
     _cards = await CardLoadingService.loadPacks(packsProvider.packs);
+
+    // save a copy of the cards list for later
+    _cardsCache = [..._cards];
 
     // randomize order
     shuffleCards();
@@ -32,7 +42,9 @@ class CardProvider extends ChangeNotifier {
   }
 
   shuffleCards({bool shouldNotifyListeners = false}) {
-    _cards.shuffle();
+    // _cards.shuffle();
+    _cards = [..._cardsCache]..shuffle();
+    _currentCardIndex = 0;
 
     // only need to notify listeners when user re-shuffles
     if (shouldNotifyListeners) notifyListeners();
@@ -42,6 +54,9 @@ class CardProvider extends ChangeNotifier {
   nextCard() {
     // go to next card
     _currentCardIndex += 1;
+
+    // add number to no of cards gone throgh
+    _cardsGoneThrough += 1;
 
     /*
     If we're 5 less than the total number of cards currently, add new ones

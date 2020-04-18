@@ -11,13 +11,15 @@ import 'package:shots/app/styles/values.dart';
 import 'package:shots/app/utils/strings.dart';
 
 class OptionsSection extends StatelessWidget {
+  final String title;
+  OptionsSection({this.title});
+
   @override
   Widget build(BuildContext context) {
-
     final CardProvider cardProvider = Provider.of<CardProvider>(context, listen: false);
-    
+
     return SlidingPanelSection(
-      title: Strings.optionsSectionTitle,
+      title: this.title ?? Strings.optionsSectionTitle,
       children: <Widget>[
         Button(
           text: "Re-shuffle",
@@ -33,9 +35,10 @@ class OptionsSection extends StatelessWidget {
           width: double.infinity,
           onTap: () {
             cardProvider.endGame();
-            
+
             // end timer
-            final StopwatchProvider stopwatchProvider = Provider.of<StopwatchProvider>(context, listen: false);
+            final StopwatchProvider stopwatchProvider =
+                Provider.of<StopwatchProvider>(context, listen: false);
             stopwatchProvider.stop();
 
             ExtendedNavigator.ofRouter<Router>().pop();

@@ -14,7 +14,7 @@ class StopwatchProvider extends ChangeNotifier {
     if (!_stopwatchRunning) {
       _stopwatchRunning = true;
       _timer = Timer.periodic(Duration(seconds: 1), (timer) {
-        print(timer.tick);
+        // print(timer.tick);
         _seconds = timer.tick;
         notifyListeners();
       });

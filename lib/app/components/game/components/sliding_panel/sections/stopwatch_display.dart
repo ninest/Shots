@@ -8,7 +8,6 @@ class StopwatchDisplay extends StatelessWidget {
     final StopwatchProvider stopwatchProvider =
         Provider.of<StopwatchProvider>(context, listen: true);
 
-    print(stopwatchProvider.seconds);
     int minutes = stopwatchProvider.seconds ~/ 60;
     int seconds = stopwatchProvider.seconds - minutes * 60;
 
