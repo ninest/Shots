@@ -14,8 +14,6 @@ class PackChoice extends StatelessWidget {
   Widget build(BuildContext context) {
     PacksProvider packsProvider = Provider.of<PacksProvider>(context, listen: false);
 
-    print('rebuild');
-
     return GestureDetector(
       child: AnimatedContainer(
         duration: Duration(milliseconds: 200),
