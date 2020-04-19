@@ -64,8 +64,10 @@ class GameRoute extends StatelessWidget {
                     color: currentCard.color,
                     rotateAngle: currentCard.rotateAngle,
                   ),
-                ] else
-                  _deckComplete()
+                ],
+
+                // animate it showing
+                _deckComplete(show: currentCard == null),
               ],
             ),
           ),
@@ -79,11 +81,15 @@ class GameRoute extends StatelessWidget {
         child: NextShotCard(index: index),
       );
 
-  Widget _deckComplete() => Padding(
-        padding: EdgeInsets.all(Values.mainPadding),
-        child: Column(children: <Widget>[
-          OptionsSection(title: "End of deck"),
-          StatsSection(),
-        ]),
+  Widget _deckComplete({bool show = false}) => AnimatedOpacity(
+        duration: Duration(milliseconds: 200),
+        opacity: show == true ? 1.0 : 0.0,
+        child: Padding(
+          padding: EdgeInsets.all(Values.mainPadding),
+          child: Column(children: <Widget>[
+            OptionsSection(title: "End of deck"),
+            StatsSection(),
+          ]),
+        ),
       );
 }
