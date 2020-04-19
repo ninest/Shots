@@ -61,6 +61,9 @@ The Drinking game.
 ## FAQs
 - coming soon
 
+## Other information
+Project start date: April 9, 2020
+
 ## Build setup
 Your system requires the Flutter SDK. Follow the steps here to [install](https://flutter.dev/docs/get-started/install) it on your system. After Flutter is installed, clone or fork this repository.
 
@@ -71,6 +74,8 @@ flutter run
 ```
 
 The main app entry point is `main.dart`, then `app/app.dart`.
+
+**Note**: I highly recommend you to run the debug version of the app on a physical device instead of an emulator. The card swiping action and animations are more smooth on actual devices.
 
 ### Generating icons and splash screens
 After updating `pubspec.yaml`, run these commands:
@@ -176,6 +181,3 @@ In step 2, a delay is necessary to take into account the time taken for the anim
 - Putting the card in the center without animation.
 
 The 'current card' that you see (on top of the others) never changes. Only it's **color**, **text**, and **rotate angle** changes, giving the appearance that it's gone and the next one is showing.
-
-## Other information
-Project start date: April 9, 2020
