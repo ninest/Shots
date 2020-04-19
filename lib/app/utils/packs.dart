@@ -1,5 +1,10 @@
 import 'package:shots/app/models/pack_model.dart';
 
+/*
+These are the card packs, and they're used in the in the packs provider class
+When the pack is selected, it's selected attribute is set to true
+*/
+
 class Packs {
   static PackModel get basic => PackModel(name: 'Basic', filename: 'basic', selected: false);
   static PackModel get close => PackModel(name: 'Close friends only', filename: 'close');

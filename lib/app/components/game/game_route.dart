@@ -24,6 +24,7 @@ class GameRoute extends StatelessWidget {
     } catch (e) {
       print("CURRENT CARD NULL");
       currentCard = null;
+      // change to more descriptive name such as "cardsComplete"
     }
 
     int cardsLeft = cardProvider.cards.length - cardProvider.currentCardIndex;
@@ -32,7 +33,9 @@ class GameRoute extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.black,
       body: SlidingUpPanel(
-        minHeight: 60.0,
+        // hide slide up panel when there's no current card (deck complete), because
+        // the same screen is shown in place of the cards
+        minHeight: currentCard == null ? 0.0 : 60.0,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(Values.borderRadius),
           topRight: Radius.circular(Values.borderRadius),

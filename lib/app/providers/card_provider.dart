@@ -19,11 +19,12 @@ class CardProvider extends ChangeNotifier {
   bool _gameStarted = false;
   bool get gameStarted => _gameStarted;
 
-  // cards gone through (for stats)
+  // cards gone through (for stats); this is not reset when cards are shuffled
   int _cardsGoneThrough = 0;
   int get cardsGoneThrough => _cardsGoneThrough;
 
-  // cache of cards
+  // cache of cards; used when user re-shuffles cards
+  // if there was no _cardsCache, the YAML file will have to be loaded every time the user wants to re-shuff;e
   List<ShotCardModel> _cardsCache;
 
   // called on game start
@@ -41,6 +42,9 @@ class CardProvider extends ChangeNotifier {
     _gameStarted = true;
   }
 
+  /// Adds all cards back to deck (including those discarded), and randomizes order.
+  ///
+  /// Set [shouldNotifyListeners] to [true] to rebuild UI
   shuffleCards({bool shouldNotifyListeners = false}) {
     // _cards.shuffle();
     _cards = [..._cardsCache]..shuffle();
@@ -50,7 +54,7 @@ class CardProvider extends ChangeNotifier {
     if (shouldNotifyListeners) notifyListeners();
   }
 
-  // called when a card is dragged away
+  /// Called when a card is dragged away.
   nextCard() {
     // go to next card
     _currentCardIndex += 1;
@@ -58,21 +62,14 @@ class CardProvider extends ChangeNotifier {
     // add number to no of cards gone throgh
     _cardsGoneThrough += 1;
 
-    /*
-    If we're 5 less than the total number of cards currently, add new ones
-
-    */
-    if (_currentCardIndex == _cards.length - _nextCardsNo) {
-      // TODO: implement load next set of cards
-      // loadCards();
-    }
-
     notifyListeners();
   }
 
+  /// Resets cards array, current card index, cards gone through, and sets game started to false
   endGame() {
     // clear cards (empty array)
     _currentCardIndex = 0;
+    _cardsGoneThrough = 0;
     _cards = [];
     _gameStarted = false;
   }
