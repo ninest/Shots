@@ -9,6 +9,9 @@ class PacksProvider extends ChangeNotifier {
 
   // filenames of selected packs
 
+  /// Add pack to the list packs being played.
+  /// 
+  /// This sets the [select] attribute of the pack model in the packs array to trye
   addPack(PackModel pack) {
     print("adding pack");
     int index = _packs.indexOf(pack);
@@ -25,7 +28,7 @@ class PacksProvider extends ChangeNotifier {
     print("remvoved pack");
 
     // if packs list empty, add basic pack
-
+    // Game cannot start with no cards
     int selectedPacksNo = 0;
     for (PackModel pack in _packs) {
       if (pack.selected) selectedPacksNo++;

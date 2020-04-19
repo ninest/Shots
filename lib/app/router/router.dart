@@ -14,6 +14,5 @@ class $Router {
 
   PacksRoute packsRoute;
 
-  // @CupertinoRoute()
   TermsRoute termsRoute;
 }

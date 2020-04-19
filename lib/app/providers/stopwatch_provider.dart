@@ -11,10 +11,11 @@ class StopwatchProvider extends ChangeNotifier {
   bool _stopwatchRunning = false;
 
   start() {
+    // If stop watch is already running, it means that a game is going on (the previous game wasn't quit by the user)
+    // The stop watch is only started when a NEW game starts
     if (!_stopwatchRunning) {
       _stopwatchRunning = true;
       _timer = Timer.periodic(Duration(seconds: 1), (timer) {
-        // print(timer.tick);
         _seconds = timer.tick;
         notifyListeners();
       });

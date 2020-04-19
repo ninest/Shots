@@ -5,6 +5,7 @@ import 'package:shots/app/components/home/components/app_title.dart';
 import 'package:shots/app/components/home/components/home_buttons.dart';
 import 'package:shots/app/styles/colors.dart';
 
+// Refactor in process: Do we need an animated gradient background?
 class HomeRoute extends StatefulWidget {
   @override
   _HomeRouteState createState() => _HomeRouteState();
@@ -26,12 +27,6 @@ class _HomeRouteState extends State<HomeRoute> {
 
     // set initial value so a white screen isn't seen
     _background = _getLinearGradient();
-    // timer = Timer.periodic(Duration(milliseconds: 5000), (callback) {
-    //   print(timer.tick);
-    //   setState(() {
-    //     _background = _getLinearGradient();
-    //   });
-    // });
   }
 
   @override
