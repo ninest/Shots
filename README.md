@@ -9,6 +9,12 @@ The Drinking game.
 <!-- ![GitHub](https://img.shields.io/github/license/themindstorm/Shots?style=flat-square) -->
 <!-- [![HitCount](http://hits.dwyl.com/themindstorm/NextBusSG.svg)](http://hits.dwyl.com/themindstorm/NextBusSG)  -->
 
+**How to play?** One player reads out cards. All other players have to drink based off of what the card says. See the images below for a clearer explanation.
+
+## Gallery
+![app images](./readme-images/gallery/1.png)
+![app images](./readme-images/gallery/2.png)
+![app images](./readme-images/gallery/3.png)
 
 ## 🚀 Features
 
