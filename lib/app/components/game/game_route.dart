@@ -35,7 +35,7 @@ class GameRoute extends StatelessWidget {
       body: SlidingUpPanel(
         // hide slide up panel when there's no current card (deck complete), because
         // the same screen is shown in place of the cards
-        minHeight: currentCard == null ? 0.0 : 60.0,
+        minHeight: currentCard == null ? 0.0 : 95.0,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(Values.borderRadius),
           topRight: Radius.circular(Values.borderRadius),
@@ -67,6 +67,11 @@ class GameRoute extends StatelessWidget {
                     color: currentCard.color,
                     rotateAngle: currentCard.rotateAngle,
                   ),
+
+                  // If you're using an emulator, uncomment below line
+                  // button below changes to next card (no need to swipe on emulator)
+                  // RaisedButton(onPressed: () => cardProvider.nextCard(), child: Text("N"))
+                  // RaisedButton(onPressed: () => cardProvider.shuffleCards(shouldNotifyListeners: true), child: Text("R"))
                 ],
 
                 // animate it showing

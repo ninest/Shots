@@ -14,5 +14,5 @@ class Packs {
   static PackModel get test => PackModel(name: 'Test', filename: 'test', selected: true);
 
   /// Get a list of all card packs
-  static List<PackModel> get all => [basic, close, dev, test];
+  static List<PackModel> get all => [basic, close, dev, ];
 }
