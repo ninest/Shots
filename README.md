@@ -1,8 +1,6 @@
 <h1 align="center"><!-- <a href="">Shots</a> -->Shots</h1>
 
-<p align="center"><i>
-The Drinking game.
-</i></p>
+<p align="center">A social game to help you learn more about your friends.</p>
 
 ![Made with Flutter](https://img.shields.io/badge/Made%20With-Flutter-blue?style=flat-square)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
