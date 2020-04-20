@@ -1,4 +1,4 @@
-<h1 align="center"><!-- <a href="">Shots</a> -->Shots</h1>
+<h1 align="center"><!-- <a href="">Shots</a> --><img height='27' src='./icons/android.png'/> Shots</h1>
 
 <p align="center">A social game to help you learn more about your friends.</p>
 
