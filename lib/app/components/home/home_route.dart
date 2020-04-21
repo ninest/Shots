@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:shots/app/components/core/spacing.dart';
 import 'package:shots/app/components/home/components/app_title.dart';
 import 'package:shots/app/components/home/components/home_buttons.dart';
 import 'package:shots/app/styles/colors.dart';
@@ -39,6 +40,10 @@ class _HomeRouteState extends State<HomeRoute> {
 
   @override
   Widget build(BuildContext context) {
+    
+    // used for height spacing in column
+    double statusBarHeight = MediaQuery.of(context).padding.top;
+
     return Scaffold(
       body: AnimatedContainer(
         duration: Duration(milliseconds: 4500),
@@ -46,11 +51,13 @@ class _HomeRouteState extends State<HomeRoute> {
           gradient: _background,
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
+            Spacing(height: statusBarHeight),
             AppTitle(),
+            Expanded(child: Container(),),
             HomeButtons(),
+            Spacing(height: statusBarHeight * 2),
           ],
         ),
       ),

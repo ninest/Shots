@@ -113,6 +113,15 @@ Once the APK has been built, install it on a physcally connected Android device:
 flutter install
 ```
 
+## 🎗 Support
+Like this project?
+
+- ⭐️ Star the repository
+- 📩 Send a pull request to add new features
+- 💌 Share this package with other developers
+- 📲 Download the mobile apps (scroll to the top for links)
+
+
 ## Explanation
 ### How does the card swiping work?
 Firstly, the `Draggable` widget was not used. While it is great, it does not support animating the child back to the original position when it is not dragged to the drop zone.
