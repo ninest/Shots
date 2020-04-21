@@ -29,9 +29,6 @@ class AppColors {
 
         // #255C99
         Color(0xff255C99),
-
-        // #4e075e
-        Color(0xff4e075e),
       ];
 
   static List<Color> get greens => [
@@ -77,18 +74,18 @@ class AppColors {
           color = blues[3];
           break;
         }
-      case 'm':
-      case 'n':
       case 'o':
         {
           color = blues[4];
           break;
         }
+      case 'm':
+      case 'n':
       case 'p':
       case 'q':
       case 'r':
         {
-          color = blues[4];
+          color = dark;
           break;
         }
       case 's':
