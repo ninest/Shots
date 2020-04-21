@@ -39,4 +39,13 @@ class PacksProvider extends ChangeNotifier {
       _packs[0] = _packs[0].select();
     }
   }
+
+  /// selects all card packs
+  selectAll() {
+    for (var i = 0; i < _packs.length; i++) {
+      // replacing all card packs in the list with selected versions of themselves
+      _packs[i] = _packs[i].select();
+    }
+    notifyListeners();
+  }
 }

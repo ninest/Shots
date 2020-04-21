@@ -6,6 +6,7 @@ import 'package:shots/app/components/core/buttons/close_buttons.dart';
 import 'package:shots/app/components/core/page_template.dart';
 import 'package:shots/app/components/packs/components/pack_choice.dart';
 import 'package:shots/app/models/pack_model.dart';
+import 'package:shots/app/providers/card_provider.dart';
 import 'package:shots/app/providers/packs_provider.dart';
 import 'package:shots/app/router/router.gr.dart';
 import 'package:shots/app/styles/colors.dart';
@@ -34,12 +35,24 @@ class PacksRoute extends StatelessWidget {
       bottomNavigationBar: Container(
         padding: EdgeInsets.all(Values.mainPadding),
         decoration: BoxDecoration(
-          color: AppColors.pageColor,
-          border: Border(
-            top: BorderSide(width: 1, color: AppColors.pageBorderColor)
-          )
+            color: AppColors.pageColor,
+            border: Border(top: BorderSide(width: 1, color: AppColors.pageBorderColor))),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Button(
+              text: "Select all",
+              color: Colors.green,
+              outline: true,
+              onTap: () => packsProvider.selectAll(),
+            ),
+            Button(
+              text: "Done",
+              color: Theme.of(context).accentColor,
+              onTap: () => ExtendedNavigator.ofRouter<Router>().pop(),
+            ),
+          ],
         ),
-        child: Button(text: "Done", color: Theme.of(context).accentColor, onTap: () => ExtendedNavigator.ofRouter<Router>().pop(),),
       ),
     );
   }
