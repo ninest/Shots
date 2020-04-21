@@ -21,17 +21,17 @@ class AppColors {
         // #091540
         Color(0xff091540),
 
-        // #CDC1FF
-        Color(0xffCDC1FF),
+        // #7371FC
+        Color(0xff7371FC),
 
         // #A594F9
         Color(0xffA594F9),
 
-        // #7371FC
-        Color(0xff7371FC),
-
         // #255C99
         Color(0xff255C99),
+
+        // #4e075e
+        Color(0xff4e075e),
       ];
 
   static List<Color> get greens => [
