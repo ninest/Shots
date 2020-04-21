@@ -50,46 +50,63 @@ class AppColors {
 
     switch (secondLetter) {
       case 'a':
+      case 'b':
+      case 'c':
         {
           color = blues[0];
           break;
         }
-      case 'b':
+      case 'd':
+      case 'e':
+      case 'f':
         {
           color = blues[1];
           break;
         }
-      case 'c':
+      case 'g':
+      case 'h':
+      case 'i':
         {
           color = blues[2];
           break;
         }
-      case 'd':
+      case 'j':
+      case 'k':
+      case 'l':
         {
           color = blues[3];
           break;
         }
-      case 'e':
+      case 'm':
+      case 'n':
+      case 'o':
         {
           color = blues[4];
           break;
         }
-      case 'f':
+      case 'p':
+      case 'q':
+      case 'r':
         {
           color = blues[4];
           break;
         }
-      case 'g':
+      case 's':
         {
           color = greens[0];
           break;
         }
-      case 'h':
+      case 't':
+      case 'u':
+      case 'v':
         {
           color = greens[1];
           break;
         }
-      case 'i':
+      case 'w':
+      case 'x':
+      case 'y':
+      case 'z':
         {
           color = greens[2];
           break;

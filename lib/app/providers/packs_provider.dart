@@ -20,6 +20,7 @@ class PacksProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// add the card pack [pack] to [_cards]
   removePack(PackModel pack) {
     int index = _packs.indexOf(pack);
     _packs[index] = pack.remove();
