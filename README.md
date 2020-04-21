@@ -7,7 +7,7 @@
 <!-- ![GitHub](https://img.shields.io/github/license/themindstorm/Shots?style=flat-square) -->
 <!-- [![HitCount](http://hits.dwyl.com/themindstorm/NextBusSG.svg)](http://hits.dwyl.com/themindstorm/NextBusSG)  -->
 
-**How to play?** One player reads out cards. All other players have to drink based off of what the card says. See the images below for a clearer explanation.
+**How to play?** One player reads out cards. All other players have to drink based off of what the card says. Those who fail to do so are out of the game. See the images below for a clearer explanation.
 
 ## Gallery
 ![app images](./readme-images/gallery/1.png)
@@ -29,7 +29,7 @@
 - [x] Give app background a color too, and animate it
 - [x] Rotate cards at random angles (make it look natural)
 - [x] Show card behind card on top (next card)
-  - [ ] Show slight animation when revealing "next" next card
+  - [ ] Show slight animation when revealing a new "next" next card (such as slide in from top)
 - [x] Randomize card order (all cards are in a YML file)
 - [ ] Don't show cards which were already shown (might not implement)
 - [x] Card swiping to change cards (similar to Tinder)
