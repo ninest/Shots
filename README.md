@@ -4,8 +4,8 @@
 
 ![Made with Flutter](https://img.shields.io/badge/Made%20With-Flutter-blue?style=flat-square)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+[![HitCount](http://hits.dwyl.com/themindstorm/Shots.svg)](http://hits.dwyl.com/themindstorm/Shots) 
 <!-- ![GitHub](https://img.shields.io/github/license/themindstorm/Shots?style=flat-square) -->
-<!-- [![HitCount](http://hits.dwyl.com/themindstorm/NextBusSG.svg)](http://hits.dwyl.com/themindstorm/NextBusSG)  -->
 
 **How to play?** One player reads out cards. All other players have to drink based off of what the card says. Those who fail to do so are out of the game. See the images below for a clearer explanation.
 

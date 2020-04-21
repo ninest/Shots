@@ -14,20 +14,12 @@ class AppColors {
       ];
 
   // https://coolors.co/e5d9f2-091540-cdc1ff-a594f9-7371fc
+  // previous color scheme: https://github.com/themindstorm/Shots/blob/1e1849aeef5511976826b3c75226ae14f8d229d2/lib/app/styles/colors.dart
   static List<Color> get blues => [
-        // #6969B3
         Color(0xff6969B3),
-
-        // #091540
         Color(0xff091540),
-
-        // #7371FC
         Color(0xff7371FC),
-
-        // #A594F9
         Color(0xffA594F9),
-
-        // #255C99
         Color(0xff255C99),
       ];
 
