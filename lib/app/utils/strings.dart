@@ -2,6 +2,7 @@ class Strings {
   static String get appTitle => "Example";
   
   static String get startButton => "Start";
+  static String get continueButton => "Continue";
   static String get choosePacks => "Choose Packs";
   static String get termsButton => "Terms";
 

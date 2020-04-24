@@ -35,7 +35,7 @@ class GameRoute extends StatelessWidget {
       body: SlidingUpPanel(
         // hide slide up panel when there's no current card (deck complete), because
         // the same screen is shown in place of the cards
-        minHeight: currentCard == null ? 0.0 : 95.0,
+        minHeight: currentCard == null ? 0.0 : 55.0,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(Values.borderRadius),
           topRight: Radius.circular(Values.borderRadius),
@@ -50,7 +50,7 @@ class GameRoute extends StatelessWidget {
           color: currentCard == null
               ? Colors.black
               : currentCard.color.withOpacity(Values.containerOpacity),
-          duration: Duration(milliseconds: 250),
+          duration: Duration(milliseconds: 1000),
           child: SafeArea(
             child: Stack(
               children: <Widget>[

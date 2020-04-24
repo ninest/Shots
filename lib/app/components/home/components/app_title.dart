@@ -12,7 +12,9 @@ class AppTitle extends StatelessWidget {
           'icons/android.png',
           scale: 4.5,
         ),
-        Spacing(height: Values.mainPadding),
+
+        // don't put image and title too close together
+        Spacing(height: Values.mainPadding * 1.25),
         Text(
           Strings.appTitle,
           style: Theme.of(context).textTheme.title,

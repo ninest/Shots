@@ -12,10 +12,17 @@ import 'package:shots/app/utils/strings.dart';
 class HomeButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
+    // if there is already a game in progress, it should say continue instead of start
+    final CardProvider cardProvider = Provider.of<CardProvider>(context, listen: true);
+    bool gameStarted = cardProvider.gameStarted;
+
+    print("Building HomeButtons, $gameStarted");
+
     return Column(
       children: <Widget>[
         Button(
-          text: Strings.startButton,
+          text: gameStarted ? Strings.continueButton : Strings.startButton,
           color: Theme.of(context).accentColor,
           width: 250.0,
           onTap: () async {
