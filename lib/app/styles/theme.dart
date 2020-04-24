@@ -30,7 +30,7 @@ TextTheme _buildTextTheme(TextTheme base) {
     display1: GoogleFonts.rubik(
       textStyle: base.display1.copyWith(
         fontSize: em * 1.4,
-        fontWeight: FontWeight.w900,
+        fontWeight: FontWeight.w800,
         color: Colors.white,
       ),
     ),

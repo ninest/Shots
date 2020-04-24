@@ -5,7 +5,6 @@ import 'package:yaml/yaml.dart';
 
 class CardLoadingService {
   /// Returns a list of cards from each card pack.
-  ///
   /// If a card pack is not available as a YAML file, this will try to fetch
   /// it from the API (feature currently in progress)
   static Future<List<ShotCardModel>> loadPacks(List<PackModel> packs) async {

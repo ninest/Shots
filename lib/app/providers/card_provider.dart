@@ -16,10 +16,6 @@ class CardProvider extends ChangeNotifier {
   int _nextCardsNo = 5;
   int get nextCardsNo => _nextCardsNo;
 
-  // game started is to determine whether to re-load the cards
-  // bool _gameStarted = false;
-  // bool get gameStarted => _gameStarted;
-
   // cards gone through (for stats); this is not reset when cards are shuffled
   int _cardsGoneThrough = 0;
   int get cardsGoneThrough => _cardsGoneThrough;
@@ -45,7 +41,6 @@ class CardProvider extends ChangeNotifier {
   }
 
   /// Adds all cards back to deck (including those discarded), and randomizes order.
-  ///
   /// Set [shouldNotifyListeners] to [true] to rebuild UI
   shuffleCards({bool shouldNotifyListeners = false}) {
     // _cards.shuffle();
