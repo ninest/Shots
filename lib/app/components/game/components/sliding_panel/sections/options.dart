@@ -34,7 +34,7 @@ class OptionsSection extends StatelessWidget {
           color: Theme.of(context).errorColor,
           width: double.infinity,
           onTap: () {
-            cardProvider.endGame();
+            cardProvider.endGame(context);
 
             // end timer
             final StopwatchProvider stopwatchProvider =

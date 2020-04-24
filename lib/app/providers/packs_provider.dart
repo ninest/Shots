@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:shots/app/models/pack_model.dart';
 import 'package:shots/app/utils/packs.dart';
 
+/// This is used mainly in the choosing packs screen, although it is used once in the
+/// cardProvider to get a list of packs
 class PacksProvider extends ChangeNotifier {
   // maybe put these in yaml files for easier getting
   List<PackModel> _packs = [...Packs.all];

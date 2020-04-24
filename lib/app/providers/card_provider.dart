@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shots/app/models/shot_card_model.dart';
+import 'package:shots/app/providers/game_provider.dart';
 import 'package:shots/app/providers/packs_provider.dart';
-import 'package:shots/app/services/card_loading.dart';
+import 'package:shots/app/services/card_loading_service.dart';
 
 class CardProvider extends ChangeNotifier {
   List<ShotCardModel> _cards = [];
@@ -16,8 +17,8 @@ class CardProvider extends ChangeNotifier {
   int get nextCardsNo => _nextCardsNo;
 
   // game started is to determine whether to re-load the cards
-  bool _gameStarted = false;
-  bool get gameStarted => _gameStarted;
+  // bool _gameStarted = false;
+  // bool get gameStarted => _gameStarted;
 
   // cards gone through (for stats); this is not reset when cards are shuffled
   int _cardsGoneThrough = 0;
@@ -39,7 +40,8 @@ class CardProvider extends ChangeNotifier {
     // randomize order
     shuffleCards();
 
-    _gameStarted = true;
+    final GameProvider gameProvider= Provider.of<GameProvider>(context, listen: false);
+    gameProvider.gameStarted = true;
   }
 
   /// Adds all cards back to deck (including those discarded), and randomizes order.
@@ -66,11 +68,13 @@ class CardProvider extends ChangeNotifier {
   }
 
   /// Resets cards array, current card index, cards gone through, and sets game started to false
-  endGame() {
+  endGame(BuildContext context) {
     // clear cards (empty array)
     _currentCardIndex = 0;
     _cardsGoneThrough = 0;
     _cards = [];
-    _gameStarted = false;
+
+    final GameProvider gameProvider= Provider.of<GameProvider>(context, listen: false);
+    gameProvider.gameStarted = false;
   }
 }
