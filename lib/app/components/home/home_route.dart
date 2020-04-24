@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:shots/app/components/core/spacing.dart';
 import 'package:shots/app/components/home/components/app_title.dart';

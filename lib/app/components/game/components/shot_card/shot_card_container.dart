@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:shots/app/styles/text_styles.dart';
 import 'package:shots/app/styles/values.dart';
 
 class ShotCardContainer extends StatelessWidget {
@@ -53,13 +54,13 @@ class ShotCardContainer extends StatelessWidget {
           children: <Widget>[
             Text(
               line1,
-              style: Theme.of(context).textTheme.display1,
+              style: TextStyles.cardLine1,
             ),
             if (line2 != null) ...[
               Flexible(flex: 1, child: Container()),
               MarkdownBody(
                 data: line2,
-                styleSheet: MarkdownStyleSheet(p: Theme.of(context).textTheme.display2),
+                styleSheet: MarkdownStyleSheet(p: TextStyles.cardLine2),
               )
             ],
           ],

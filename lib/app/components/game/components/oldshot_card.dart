@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shots/app/providers/card_provider.dart';
+import 'package:shots/app/styles/text_styles.dart';
 import 'package:shots/app/styles/values.dart';
 
 class ShotCard extends StatefulWidget {
@@ -140,10 +141,10 @@ class _ShotCardState extends State<ShotCard> with SingleTickerProviderStateMixin
           ),
           child: Column(
             children: <Widget>[
-              Text(widget.line1, style: Theme.of(context).textTheme.display1),
+              Text(widget.line1, style: TextStyles.cardLine1),
               if (widget.line2 != null) ...[
                 Flexible(flex: 1, child: Container()),
-                Text(widget.line2, style: Theme.of(context).textTheme.display2),
+                Text(widget.line2, style: TextStyles.cardLine2),
               ],
             ],
           ),

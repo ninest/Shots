@@ -5,3 +5,7 @@ extension E on Widget {
     return SliverToBoxAdapter(child: this);
   }
 }
+
+extension T on TextStyle {
+  TextStyle c(Color value) => copyWith(color: value);
+}

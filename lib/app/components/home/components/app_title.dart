@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shots/app/components/core/spacing.dart';
+import 'package:shots/app/styles/text_styles.dart';
 import 'package:shots/app/styles/values.dart';
 import 'package:shots/app/utils/strings.dart';
 
@@ -17,7 +18,7 @@ class AppTitle extends StatelessWidget {
         Spacing(height: Values.mainPadding * 1.25),
         Text(
           Strings.appTitle,
-          style: Theme.of(context).textTheme.title,
+          style: TextStyles.title,
         ),
       ],
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shots/app/styles/text_styles.dart';
 
 class TitleText extends StatelessWidget {
   final String text;
@@ -9,7 +10,7 @@ class TitleText extends StatelessWidget {
     return Container(
       child: Text(
         text,
-        style: Theme.of(context).textTheme.title,
+        style: TextStyles.title,
       ),
     );
   }

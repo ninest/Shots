@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shots/app/components/core/spacing.dart';
+import 'package:shots/app/styles/text_styles.dart';
 import 'package:shots/app/styles/values.dart';
 
 class SlidingPanelSection extends StatelessWidget {
@@ -13,7 +14,9 @@ class SlidingPanelSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Spacing(height: Values.mainPadding),
-        Text(title, style: Theme.of(context).textTheme.display3),
+
+        // title
+        Text(title, style: TextStyles.sectionHeading),
         Spacing(height: Values.mainPadding),
         ...children,
       ],

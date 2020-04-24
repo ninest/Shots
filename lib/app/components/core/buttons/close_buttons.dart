@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shots/app/router/router.gr.dart';
+import 'package:shots/app/styles/text_styles.dart';
 import 'package:shots/app/styles/values.dart';
 
 class AppCloseButton extends StatelessWidget {
@@ -22,7 +23,7 @@ class AppCloseButton extends StatelessWidget {
         child: Icon(
           iconData ?? FontAwesomeIcons.times,
           color: color ?? Colors.red,
-          size: Theme.of(context).textTheme.button.fontSize,
+          size: TextStyles.button.fontSize,
         ),
       ),
       onTap: () => ExtendedNavigator.ofRouter<Router>().pop(),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:shots/app/styles/text_styles.dart';
 import 'package:shots/app/styles/values.dart';
+import 'package:shots/app/utils/extensions.dart';
 
 class Button extends StatelessWidget {
   final String text;
@@ -39,9 +41,7 @@ class Button extends StatelessWidget {
     // text
     Widget textChild = Text(
       text,
-      style: outline
-          ? Theme.of(context).textTheme.button.copyWith(color: color)
-          : Theme.of(context).textTheme.button,
+      style: outline ? TextStyles.button.c(color) : TextStyles.button
     );
 
     if (width != null) {

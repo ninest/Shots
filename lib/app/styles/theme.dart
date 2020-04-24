@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:shots/app/styles/text_styles.dart';
 import 'package:shots/app/styles/values.dart';
 
 final ThemeData appLightTheme = _buildLightTheme();
@@ -9,57 +9,7 @@ TextTheme _buildTextTheme(TextTheme base) {
   double em = Values.em;
 
   return base.copyWith(
-    title: GoogleFonts.rubik(
-      textStyle: base.title.copyWith(
-        fontWeight: FontWeight.w900,
-        fontSize: 2.2 * em,
-        letterSpacing: 0.7,
-        color: Colors.white,
-      ),
-    ),
-    button: GoogleFonts.rubik(
-      textStyle: base.button.copyWith(
-        fontWeight: FontWeight.w700,
-        letterSpacing: 0.8,
-        fontSize: em,
-        color: Colors.white60,
-      ),
-    ),
-
-    // card line 1
-    display1: GoogleFonts.rubik(
-      textStyle: base.display1.copyWith(
-        fontSize: em * 1.4,
-        fontWeight: FontWeight.w800,
-        color: Colors.white,
-      ),
-    ),
-
-    // card line 2
-    display2: GoogleFonts.rubik(
-      textStyle: base.display2.copyWith(
-        fontSize: em * 1.1,
-        fontWeight: FontWeight.w500,
-        color: Colors.white70,
-      ),
-    ),
-
-
-    // sliding panel section heading
-    display3: GoogleFonts.rubik(
-      textStyle: base.body1.copyWith(
-        fontSize: em * 1.5,
-        fontWeight: FontWeight.w500,
-        color: Colors.white70,
-      ),
-    ),
-
-    body1: GoogleFonts.rubik(
-      textStyle: base.body1.copyWith(
-        fontSize: em,
-        color: Colors.white70,
-      ),
-    ),
+    body1: TextStyles.body1,
   );
 }
 
