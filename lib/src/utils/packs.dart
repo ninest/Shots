@@ -1,0 +1,3 @@
+
+/// slug : PackModel
+Map packsMap = {};
