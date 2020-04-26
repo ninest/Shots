@@ -8,4 +8,7 @@ class Values {
 
   /// Border radius to use app-wide
   static double get borderRadius => 8.0;
+
+  /// Padding used when a specified padding is not known
+  static double get mainPadding => 33;
 }

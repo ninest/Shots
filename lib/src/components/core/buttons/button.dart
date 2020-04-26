@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/styles/text_styles.dart';
 import 'package:shots/src/styles/values.dart';
 import 'package:shots/src/utils/extensions.dart';
@@ -22,7 +23,10 @@ class Button extends StatelessWidget {
           vertical: Values.buttonVerticalPadding,
         ),
         decoration: BoxDecoration(
-          color: outline ? Colors.transparent : color,
+          // check if it's an outline button first (because it'll have no color then)
+          // if not outline, check if a color has been provided
+          // if not, just give the accent color
+          color: outline ? Colors.transparent : (color ?? AppColors.accentColor),
           borderRadius: BorderRadius.circular(Values.borderRadius),
           // putting border for regular buttons so that they are the same width and height as
           // outline buttons

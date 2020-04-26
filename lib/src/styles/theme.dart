@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/styles/values.dart';
 
 import 'text_styles.dart';
@@ -14,7 +15,7 @@ TextTheme _buildTextTheme(TextTheme base) {
 ThemeData _buildTheme() {
   final ThemeData base = ThemeData(
     brightness: Brightness.light,
-    accentColor: Colors.indigo,
+    accentColor: AppColors.accentColor,
   );
 
   return base.copyWith(
