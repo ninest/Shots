@@ -14,7 +14,7 @@ TextTheme _buildTextTheme(TextTheme base) {
 ThemeData _buildTheme() {
   final ThemeData base = ThemeData(
     brightness: Brightness.light,
-    accentColor: AppColors.accentColor,
+    accentColor: AppColors.accent,
   );
 
   return base.copyWith(

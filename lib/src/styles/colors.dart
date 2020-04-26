@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 class AppColors {
   static Color get dark => Color(0xFF333333);
 
-  static Color get accentColor => Colors.indigo;
+  static Color get accent => Colors.indigo;
+  static Color get secondary => Colors.green;
+  static Color get danger => Colors.red;
   static Color get pageColor => Color(0xff222222);
   static Color get pageBorderColor => Colors.black;
 

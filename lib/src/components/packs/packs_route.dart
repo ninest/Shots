@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shots/src/components/core/scrollable_template.dart';
-import 'package:shots/src/components/home/choice.dart';
+import 'package:shots/src/components/packs/bottom_bar.dart';
+import 'package:shots/src/components/packs/choice.dart';
 import 'package:shots/src/models/pack_model.dart';
 import 'package:shots/src/providers/packs_provider.dart';
 import 'package:shots/src/services/pack_service.dart';
@@ -36,6 +37,7 @@ class PacksRoute extends StatelessWidget {
           ),
         ],
       ),
+      bottomNavigationBar: BottomBar(),
     );
   }
 

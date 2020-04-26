@@ -18,7 +18,7 @@ class HomeOptions extends StatelessWidget {
         // start button (takes to pack selesction first)
         Button(
           text: Strings.startButton,
-          color: AppColors.accentColor,
+          color: AppColors.accent,
           width: 250.0,
           onTap: () => ExtendedNavigator.of(context).pushNamed(Routes.packsRoute),
         ),
@@ -29,7 +29,7 @@ class HomeOptions extends StatelessWidget {
         // Open terms page
         Button(
           text: Strings.termsButton,
-          color: AppColors.accentColor,
+          color: AppColors.accent,
           width: 250.0,
           onTap: () => {},
         )

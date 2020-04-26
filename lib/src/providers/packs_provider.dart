@@ -8,6 +8,7 @@ class PacksProvider extends ChangeNotifier {
 
   loadPacks(List<Pack> packs) {
     unSelectedPacks = packs;
+    notifyListeners();
   }
 
   select(Pack pack) {
@@ -20,6 +21,21 @@ class PacksProvider extends ChangeNotifier {
   unSelect(Pack pack) {
     selectedPacks.remove(pack);
     unSelectedPacks.add(pack);
+
+    notifyListeners();
+  }
+
+  selectAll() {
+    // Dump Everything in selected packs list then empty unselected packs list
+    selectedPacks = [...selectedPacks, ...unSelectedPacks];
+    unSelectedPacks = [];
+
+    notifyListeners();
+  }
+
+  unSelectAll() {
+    unSelectedPacks = [...unSelectedPacks, ...selectedPacks];
+    selectedPacks = [];
 
     notifyListeners();
   }
