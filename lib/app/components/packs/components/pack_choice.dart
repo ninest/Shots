@@ -6,9 +6,8 @@ import 'package:shots/app/styles/colors.dart';
 import 'package:shots/app/styles/values.dart';
 
 class PackChoice extends StatelessWidget {
-  final PackModel pack;
-
   PackChoice({this.pack});
+  final PackModel pack;
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +15,9 @@ class PackChoice extends StatelessWidget {
 
     return GestureDetector(
       child: AnimatedContainer(
-        duration: Duration(milliseconds: 200),
-        padding: EdgeInsets.all(Values.mainPadding / 1.5),
         margin: EdgeInsets.only(bottom: Values.mainPadding),
+        padding: EdgeInsets.all(Values.mainPadding / 1.5),
+        duration: Duration(milliseconds: 200),
         decoration: BoxDecoration(
           color: Colors.transparent.withOpacity(0.1),
           borderRadius: BorderRadius.circular(Values.borderRadius),
@@ -31,9 +30,9 @@ class PackChoice extends StatelessWidget {
       ),
       onTap: () {
         if (!pack.selected) {
-          packsProvider.addPack(pack);
+          packsProvider.selectPack(pack);
         } else
-          packsProvider.removePack(pack);
+          packsProvider.unSelectPack(pack);
       },
     );
   }

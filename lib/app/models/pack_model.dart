@@ -13,7 +13,7 @@ class PackModel {
     return PackModel(name: name, filename: filename, url: url, selected: true);
   }
 
-  PackModel remove() {
+  PackModel unSelect() {
     return PackModel(name: name, filename: filename, url: url, selected: false);
   }
 }
