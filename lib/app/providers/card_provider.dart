@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shots/app/models/shot_card_model.dart';
 import 'package:shots/app/providers/game_provider.dart';
-import 'package:shots/app/providers/packs_provider.dart';
-import 'package:shots/app/services/card_loading_service.dart';
 
 class CardProvider extends ChangeNotifier {
   List<ShotCardModel> _cards = [];
