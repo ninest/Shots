@@ -26,7 +26,7 @@ class Button extends StatelessWidget {
           // check if it's an outline button first (because it'll have no color then)
           // if not outline, check if a color has been provided
           // if not, just give the accent color
-          color: outline ? Colors.transparent : (color ?? AppColors.accentColor),
+          color: outline ? Colors.transparent : color,
           borderRadius: BorderRadius.circular(Values.borderRadius),
           // putting border for regular buttons so that they are the same width and height as
           // outline buttons

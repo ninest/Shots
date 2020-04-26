@@ -1,6 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:shots/src/components/core/Button.dart';
+import 'package:shots/src/components/core/buttons/button.dart';
 import 'package:shots/src/components/core/spacing.dart';
+import 'package:shots/src/router/router.gr.dart';
+import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/styles/values.dart';
 import 'package:shots/src/utils/strings.dart';
 
@@ -15,8 +18,9 @@ class HomeOptions extends StatelessWidget {
         // start button (takes to pack selesction first)
         Button(
           text: Strings.startButton,
+          color: AppColors.accentColor,
           width: 250.0,
-          onTap: () => {},
+          onTap: () => ExtendedNavigator.of(context).pushNamed(Routes.packsRoute),
         ),
 
         // spacing to make it look cleaner
@@ -25,6 +29,7 @@ class HomeOptions extends StatelessWidget {
         // Open terms page
         Button(
           text: Strings.termsButton,
+          color: AppColors.accentColor,
           width: 250.0,
           onTap: () => {},
         )
