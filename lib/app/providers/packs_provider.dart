@@ -5,14 +5,13 @@ import 'package:shots/app/utils/packs.dart';
 /// This is used mainly in the choosing packs screen, although it is used once in the
 /// cardProvider to get a list of packs
 class PacksProvider extends ChangeNotifier {
-  // maybe put these in yaml files for easier getting
-  List<PackModel> _packs = [...Packs.all];
+  List<PackModel> _packs = [];
   List<PackModel> get packs => _packs;
+  set packs(List<PackModel> value) => _packs = value;
 
   // filenames of selected packs
 
   /// Add pack to the list packs being played.
-  ///
   /// This sets the [select] attribute of the pack model in the packs array to trye
   selectPack(PackModel pack) {
     int index = _packs.indexOf(pack);

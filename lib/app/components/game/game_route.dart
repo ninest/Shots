@@ -22,7 +22,7 @@ class GameRoute extends StatelessWidget {
     try {
       currentCard = cardProvider.cards[cardProvider.currentCardIndex];
     } catch (e) {
-      print("CURRENT CARD NULL");
+      // print("CURRENT CARD NULL");
       currentCard = null;
       // change to more descriptive name such as "cardsComplete"
     }

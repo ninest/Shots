@@ -25,10 +25,13 @@ class CardProvider extends ChangeNotifier {
   List<ShotCardModel> _cardsCache;
 
   // called on game start
-  loadCards(BuildContext context) async {
+  loadCards(BuildContext context, List<ShotCardModel> cards) async {
     // load each pack and cards in respective packs
-    final PacksProvider packsProvider = Provider.of<PacksProvider>(context, listen: false);
-    _cards = await CardLoadingService.loadPacks(packsProvider.packs);
+    // final PacksProvider packsProvider = Provider.of<PacksProvider>(context, listen: false);
+    // _cards = await CardLoadingService.loadCards(packsProvider.packs);
+
+    // save cards to state
+    _cards = cards;
 
     // save a copy of the cards list for later
     _cardsCache = [..._cards];
@@ -36,7 +39,7 @@ class CardProvider extends ChangeNotifier {
     // randomize order
     shuffleCards();
 
-    final GameProvider gameProvider= Provider.of<GameProvider>(context, listen: false);
+    final GameProvider gameProvider = Provider.of<GameProvider>(context, listen: false);
     gameProvider.gameStarted = true;
   }
 
@@ -69,7 +72,7 @@ class CardProvider extends ChangeNotifier {
     _cardsGoneThrough = 0;
     _cards = [];
 
-    final GameProvider gameProvider= Provider.of<GameProvider>(context, listen: false);
+    final GameProvider gameProvider = Provider.of<GameProvider>(context, listen: false);
     gameProvider.gameStarted = false;
   }
 }
