@@ -2,16 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:shots/src/models/pack_model.dart';
 
 class PacksProvider extends ChangeNotifier {
-  // only the slugs, not the full pack name
   List<Pack> selectedPacks = [];
   List<Pack> unSelectedPacks = [];
 
   loadPacks(List<Pack> packs) {
     unSelectedPacks = packs;
+
+    // Need tp update UI because the bottom bar is listening.
+    // Otherwise, the bottom bar will think unSelectedPacks is still empty
+    // because it is empty by default.
     notifyListeners();
   }
 
   select(Pack pack) {
+    // Remove from unselected list, add it to selected list
     unSelectedPacks.remove(pack);
     selectedPacks.add(pack);
 
@@ -19,6 +23,7 @@ class PacksProvider extends ChangeNotifier {
   }
 
   unSelect(Pack pack) {
+    // Remove from selected list, add it to unselected list
     selectedPacks.remove(pack);
     unSelectedPacks.add(pack);
 
@@ -34,6 +39,7 @@ class PacksProvider extends ChangeNotifier {
   }
 
   unSelectAll() {
+    // Move everything into unselected list, empty list
     unSelectedPacks = [...unSelectedPacks, ...selectedPacks];
     selectedPacks = [];
 

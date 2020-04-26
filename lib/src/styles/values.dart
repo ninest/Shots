@@ -3,7 +3,7 @@ class Values {
   static double get em => 19;
 
   /// button padding
-  static double get buttonHorizontalPadding => 25.0;
+  static double get buttonHorizontalPadding => 15.0;
   static double get buttonVerticalPadding => 13.0;
 
   /// Border radius to use app-wide

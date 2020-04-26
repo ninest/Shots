@@ -11,10 +11,10 @@ class BottomBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Needs to listen for state changes for (un)select all button
     PacksProvider packsProvider = Provider.of<PacksProvider>(context, listen: true);
 
     bool everythingSelected = packsProvider.unSelectedPacks.isEmpty;
-    print("Everything selected: $everythingSelected");
 
     return Container(
       padding: EdgeInsets.symmetric(
@@ -31,6 +31,8 @@ class BottomBar extends StatelessWidget {
             text: everythingSelected ? Strings.unSelectAllButton : Strings.selectAllButton,
             color: everythingSelected ? AppColors.danger : AppColors.secondary,
             outline: true,
+
+            // if everything is selected, button press should unselect all
             onTap: everythingSelected
                 ? () => packsProvider.unSelectAll()
                 : () => packsProvider.selectAll(),
@@ -38,10 +40,21 @@ class BottomBar extends StatelessWidget {
           Button(
             text: Strings.doneButton,
             color: AppColors.accent,
-            onTap: () => {},
+            onTap: () => _donePressed(),
           ),
         ],
       ),
     );
+  }
+
+  Future _donePressed() async {
+    /*
+    Few things to do:
+    1. Load the cards (they are already in the packs)
+    2. Set gamestarted to true in GameProvider
+    3. Start the stopwatch
+    */
+    await Future.delayed(Duration(seconds: 1));
+    print("Doning");
   }
 }
