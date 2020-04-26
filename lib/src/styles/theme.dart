@@ -6,7 +6,8 @@ final ThemeData appTheme = _buildTheme();
 
 TextTheme _buildTextTheme(TextTheme base) {
   return base.copyWith(
-    bodyText1: TextStyles.body1,
+    // deprecated :/ change later
+    body1: TextStyles.body1,
   );
 }
 

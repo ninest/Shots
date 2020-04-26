@@ -1,15 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:shots/src/models/pack_model.dart';
 
 class PacksProvider extends ChangeNotifier {
   // only the slugs, not the full pack name
-  List<String> selectedPackSlugs = ['basic'];
-  List<String> unSelectedPacksSlugs = ['test'];
+  List<Pack> selectedPacks = [];
+  List<Pack> unSelectedPacks = [];
 
-  /// Select pack based on slug by moving it from the unSelected
-  /// list to the selected list, throwing an error if invalid slug
-  selectPack(String slug) {}
+  loadPacks(List<Pack> packs) {
+    unSelectedPacks = packs;
+  }
 
-  /// UnSelect pack based on slug by moving it from the selected
-  /// list to the unSelected list, throwing an error if invalid slug
-  unSelectPack(String slug) {}
+  select(Pack pack) {
+    unSelectedPacks.remove(pack);
+    selectedPacks.add(pack);
+
+    notifyListeners();
+  }
+
+  unSelect(Pack pack) {
+    selectedPacks.remove(pack);
+    unSelectedPacks.add(pack);
+
+    notifyListeners();
+  }
 }

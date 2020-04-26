@@ -1,0 +1,6 @@
+- name: Basic
+  slug: basic
+  description: The basic card pack, selected by default
+- name: Test
+  slug: test
+  description: The test pack for testing purposes
