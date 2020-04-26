@@ -23,4 +23,14 @@ class TextStyles {
           color: Colors.white70,
         ),
       );
+
+  /// Button text style
+  static TextStyle get button => GoogleFonts.rubik(
+        textStyle: TextStyle(
+          fontWeight: FontWeight.w700,
+          letterSpacing: 0.8,
+          fontSize: em,
+          color: Colors.white60,
+        ),
+      );
 }
