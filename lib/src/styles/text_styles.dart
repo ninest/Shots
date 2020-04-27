@@ -51,4 +51,13 @@ class TextStyles {
           color: Colors.white70,
         ),
       );
+
+  /// Title of section (Options and Stats)
+  static TextStyle get sectionHeading => GoogleFonts.rubik(
+        textStyle: TextStyle(
+          fontSize: em * 1.5,
+          fontWeight: FontWeight.w500,
+          color: Colors.white70,
+        ),
+      );
 }

@@ -18,8 +18,9 @@ class CardProvider extends ChangeNotifier {
 
   // called on the game start
   loadCards(List<ShotCard> _cards) {
-    print(_cards);
     cards = _cards;
+    _cardsCache = _cards;
+    shuffleCards();
   }
 
   shuffleCards({bool shouldNotifyListeners = false}) {
