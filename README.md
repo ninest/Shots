@@ -118,7 +118,7 @@ Like this project?
 
 - ⭐️ Star the repository
 - 📩 Send a pull request to add new features
-- 💌 Share this package with other developers
+- 💌 Share this app with other developers
 - 📲 Download the mobile apps (scroll to the top for links)
 
 
