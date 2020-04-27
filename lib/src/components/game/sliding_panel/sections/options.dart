@@ -4,6 +4,7 @@ import 'package:shots/src/components/core/buttons/button.dart';
 import 'package:shots/src/components/core/section.dart';
 import 'package:shots/src/components/core/spacing.dart';
 import 'package:shots/src/providers/card_provider.dart';
+import 'package:shots/src/services/game_service.dart';
 import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/styles/values.dart';
 import 'package:shots/src/utils/strings.dart';
@@ -30,9 +31,13 @@ class OptionsSection extends StatelessWidget {
           outline: true,
           color: AppColors.danger,
           width: double.infinity,
-          onTap: () => {},
+          onTap: () => _endGame(context),
         )
       ],
     );
+  }
+
+  _endGame(BuildContext context) {
+    GameService.end(context);
   }
 }

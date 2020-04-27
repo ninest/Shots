@@ -23,6 +23,7 @@ class CardProvider extends ChangeNotifier {
     shuffleCards();
   }
 
+  /// [shouldNotifyListeners] is
   shuffleCards({bool shouldNotifyListeners = false}) {
     cards = [..._cardsCache]..shuffle();
     currentCardIndex = 0;
@@ -45,6 +46,9 @@ class CardProvider extends ChangeNotifier {
     // reset everything
     currentCardIndex = 0;
     cardsGoneThrough = 0;
+
+    // emptying cards
     cards = [];
+    _cardsCache = [];
   }
 }

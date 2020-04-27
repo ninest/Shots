@@ -15,6 +15,8 @@ class Strings {
   static String get statsSectionTitle => "Stats";
   static String get optionsSectionTitle => "Options";
 
+  static String get endOfDeck => "End of deck";
+
   static String get terms => """
 By playing the game, you agree to the following terms:
 

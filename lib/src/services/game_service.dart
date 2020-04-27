@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shots/src/components/core/buttons/button.dart';
 import 'package:shots/src/models/card_model.dart';
 import 'package:shots/src/providers/card_provider.dart';
 import 'package:shots/src/providers/game_provider.dart';
@@ -16,6 +15,7 @@ class GameService {
     1. Load the cards (they are already in the packs)
     2. Set gamestarted to true in GameProvider
     3. Start the stopwatch
+    4. Navigate to the game route
     */
 
     // Loading the cards
@@ -42,7 +42,23 @@ class GameService {
   }
 
   static end(BuildContext context) {
-    // Stop the timer
+    /*
+    1. Empty the cards list
+    2. Empty the packs list
+    3. Stop the stopwatch
+    4. Set gamestarted to false in GameProvider
+    5. Navigate to the home route
+    */
+
+    // empty the cards list
+    CardProvider cardProvider = Provider.of<CardProvider>(context, listen: false);
+    cardProvider.endGame();
+
+    // also need to empty the pacls
+    PacksProvider packsProvider = Provider.of<PacksProvider>(context, listen: false);
+    packsProvider.endGame();
+
+    // Stop the staopwatch
     StopwatchProvider stopwatchProvider = Provider.of<StopwatchProvider>(context, listen: false);
     stopwatchProvider.stop();
 
@@ -51,6 +67,9 @@ class GameService {
     gameProvider.endGame();
 
     // go to game routes to home page
-    ExtendedNavigator.of(context).pushNamed(Routes.homeRoute);
+    // popping first time to go back to pack selection screen
+    ExtendedNavigator.of(context).pop();
+    // second time to go to main screen
+    ExtendedNavigator.of(context).pop();
   }
 }

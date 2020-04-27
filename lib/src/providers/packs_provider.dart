@@ -45,4 +45,11 @@ class PacksProvider extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  endGame() {
+    // empyt/rest all packs
+    // packs should not go into the next game
+    selectedPacks = [];
+    unSelectedPacks = [];
+  }
 }
