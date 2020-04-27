@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shots/src/components/game/shot_card/card_display.dart';
 import 'package:shots/src/models/card_model.dart';
+import 'package:shots/src/providers/card_provider.dart';
 
 class ShotCardParent extends StatefulWidget {
   const ShotCardParent({Key key, this.shotCard}) : super(key: key);
@@ -71,8 +73,8 @@ class _ShotCardParentState extends State<ShotCardParent> with SingleTickerProvid
       onPanUpdate: (details) {
         // update position
         setState(() => _dragAlignment += Alignment(
-              details.delta.dx / (size.width / 2),
-              details.delta.dy / (size.height / 2),
+              details.delta.dx * _scrollSensitivity / (size.width / 2),
+              details.delta.dy * _scrollSensitivity / (size.height / 2),
             ));
       },
       onPanEnd: (details) {
@@ -98,8 +100,8 @@ class _ShotCardParentState extends State<ShotCardParent> with SingleTickerProvid
             setState(() => _dragAlignment = Alignment.center);
 
             // get the next card ready
-            // final CardProvider cardProvider = Provider.of<CardProvider>(context, listen: false);
-            // cardProvider.nextCard();
+            final CardProvider cardProvider = Provider.of<CardProvider>(context, listen: false);
+            cardProvider.nextCard();
           });
         } else
           // if card is left down by finger at any other location, animate it going

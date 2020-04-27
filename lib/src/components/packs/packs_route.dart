@@ -14,6 +14,10 @@ class PacksRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
+    // first check if a game is already going one, and quit it if it is
+    
+
     return Scaffold(
       body: ScrollableTemplate(
         showBackButton: true,

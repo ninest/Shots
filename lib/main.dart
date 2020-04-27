@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shots/src/app.dart';
 import 'package:provider/provider.dart';
 // import 'package:shots/src/app.dart';
-// import 'package:shots/app/providers/card_provider.dart';
+import 'package:shots/src/providers/card_provider.dart';
 // import 'package:shots/app/providers/game_provider.dart';
 import 'package:shots/src/providers/packs_provider.dart';
 // import 'package:shots/app/providers/stopwatch_provider.dart';
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         // ChangeNotifierProvider<GameProvider>(create: (_) => GameProvider()),
-        // ChangeNotifierProvider<CardProvider>(create: (_) => CardProvider()),
+        ChangeNotifierProvider<CardProvider>(create: (_) => CardProvider()),
         ChangeNotifierProvider<PacksProvider>(create: (_) => PacksProvider()),
         // ChangeNotifierProvider<StopwatchProvider>(create: (_) => StopwatchProvider()),
       ],

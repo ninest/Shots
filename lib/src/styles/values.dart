@@ -11,4 +11,7 @@ class Values {
 
   /// Border radius to use app-wide
   static double get borderRadius => 8.0;
+
+  /// opacity uses app-wide
+  static double get containerOpacity => 0.3;
 }
