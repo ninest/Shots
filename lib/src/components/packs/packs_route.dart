@@ -14,9 +14,7 @@ class PacksRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     // first check if a game is already going one, and quit it if it is
-    
 
     return Scaffold(
       body: ScrollableTemplate(
@@ -45,10 +43,12 @@ class PacksRoute extends StatelessWidget {
     );
   }
 
-  Future<List<Pack>> loadPacks(context) async {
-    print("Loading packs ...");
+  Future<List<Pack>> loadPacks(BuildContext context) async {
+    // Loading all packs from metadata.yml
     List<Pack> packs = await PackService.loadPacks();
 
+    // all these packs go into the unselected packs yaml
+    // they will be manually selected by the user
     final PacksProvider packsProvider = Provider.of<PacksProvider>(context, listen: false);
     packsProvider.loadPacks(packs);
 

@@ -8,6 +8,7 @@ import 'package:shots/src/providers/game_provider.dart';
 import 'package:shots/src/providers/packs_provider.dart';
 import 'package:shots/src/providers/stopwatch_provider.dart';
 import 'package:shots/src/router/router.gr.dart';
+import 'package:shots/src/services/game_service.dart';
 import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/styles/values.dart';
 import 'package:shots/src/utils/strings.dart';
@@ -53,35 +54,7 @@ class BottomBar extends StatelessWidget {
     );
   }
 
-  Future _donePressed(BuildContext context) {
-    // TODO: move to a new service file
-    /*
-    Few things to do:
-    1. Load the cards (they are already in the packs)
-    2. Set gamestarted to true in GameProvider
-    3. Start the stopwatch
-    */
-
-    // Loading the cards
-    PacksProvider packsProvider = Provider.of<PacksProvider>(context, listen: false);
-    CardProvider cardProvider = Provider.of<CardProvider>(context, listen: false);
-
-    List<ShotCard> cards = [];
-    for (var eachPack in packsProvider.selectedPacks) {
-      cards = [...cards, ...eachPack.cards];
-      print(eachPack.cards);
-    }
-    cardProvider.loadCards(cards);
-
-    // Setting game started to true
-    GameProvider gameProvider = Provider.of<GameProvider>(context, listen: false);
-    gameProvider.startGame();
-
-    // Start the timer
-    StopwatchProvider stopwatchProvider = Provider.of<StopwatchProvider>(context, listen: false);
-    stopwatchProvider.start();
-
-    // go to game routes to start game
-    ExtendedNavigator.of(context).pushNamed(Routes.gameRoute);
+  _donePressed(BuildContext context) {
+    GameService.start(context);
   }
 }
