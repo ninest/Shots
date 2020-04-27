@@ -34,6 +34,8 @@ class PackService {
   }
 
   /// [slug] is the filename (filename.yml)
+  /// This function will not be called on its own; it is only supposed to be called
+  /// from the [[loadPacks()]] function
   static Future<List<ShotCard>> _loadCards(String slug) async {
     /*
     1. Read filename and return list of cards
