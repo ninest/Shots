@@ -33,4 +33,22 @@ class TextStyles {
           color: Colors.white60,
         ),
       );
+
+  /// Line1 of card
+  static TextStyle get cardLine1 => GoogleFonts.rubik(
+        textStyle: TextStyle(
+          fontWeight: FontWeight.w800,
+          fontSize: em * 1.3,
+          color: Colors.white,
+        ),
+      );
+
+  /// Line2 of card
+  static TextStyle get cardLine2 => GoogleFonts.rubik(
+        textStyle: TextStyle(
+          fontSize: em * 1.1,
+          fontWeight: FontWeight.w500,
+          color: Colors.white70,
+        ),
+      );
 }
