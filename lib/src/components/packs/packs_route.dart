@@ -53,6 +53,12 @@ class PacksRoute extends StatelessWidget {
     // Loading all packs from metadata.yml
     List<Pack> packs = await PackService.loadPacks();
 
+    // remove nsfw packs if nsfw setting is off
+    final SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context, listen: false);
+    if (!settingsProvider.nsfw) {
+      packs = packs.where((eachPack) => eachPack.nsfw == false).toList();
+    }
+
     // all these packs go into the unselected packs yaml
     // they will be manually selected by the user
     final PacksProvider packsProvider = Provider.of<PacksProvider>(context, listen: false);

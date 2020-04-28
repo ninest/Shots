@@ -27,7 +27,7 @@ class Choice extends StatelessWidget {
           color: Colors.transparent.withOpacity(0.1),
           borderRadius: BorderRadius.circular(Values.borderRadius),
           border: Border.all(
-            width: selected ? 2 : 1,
+            width: selected ? 2 : 1.4,
             color: selected ? AppColors.accent : AppColors.pageBorderColor,
           ),
         ),

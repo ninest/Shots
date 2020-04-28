@@ -39,7 +39,7 @@ class TextStyles {
   // pack description text (used only in choice.dart for the buttons)
   static TextStyle get packDescription => GoogleFonts.rubik(
         textStyle: TextStyle(
-          fontSize: 0.9 * em,
+          fontSize: 0.8 * em,
           fontWeight: FontWeight.w400,
           color: Colors.white60,
         ),
