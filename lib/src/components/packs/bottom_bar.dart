@@ -6,6 +6,7 @@ import 'package:shots/src/services/game_service.dart';
 import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/styles/values.dart';
 import 'package:shots/src/constants/strings.dart';
+
 class BottomBar extends StatelessWidget {
   const BottomBar({Key key}) : super(key: key);
 
@@ -16,14 +17,18 @@ class BottomBar extends StatelessWidget {
 
     bool everythingSelected = packsProvider.unSelectedPacks.isEmpty;
 
+    // true if no packs selected
+    bool disableButton = packsProvider.selectedPacks.isEmpty;
+
     return Container(
       padding: EdgeInsets.symmetric(
         horizontal: Values.mainPadding,
         vertical: Values.mainPadding / 2,
       ),
       decoration: BoxDecoration(
-          color: AppColors.pageColor,
-          border: Border(top: BorderSide(width: 1, color: AppColors.pageBorderColor))),
+        color: AppColors.pageColor,
+        border: Border(top: BorderSide(width: 1, color: AppColors.pageBorderColor)),
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
@@ -41,6 +46,7 @@ class BottomBar extends StatelessWidget {
             text: Strings.doneButton,
             color: AppColors.accent,
             onTap: () => _donePressed(context),
+            disabled: disableButton,
           ),
         ],
       ),
