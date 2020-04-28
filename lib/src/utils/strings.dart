@@ -10,12 +10,11 @@ class Strings {
   static String get unSelectAllButton => "Unselect all";
   static String get doneButton => "Done";
 
-
   static String get statsSectionTitle => "Stats";
   static String get optionsSectionTitle => "Options";
-
   static String get endOfDeck => "End of deck";
 
+  static String get termsRouteTitle => "Terms";
   static String get terms => """
 By playing the game, you agree to the following terms:
 

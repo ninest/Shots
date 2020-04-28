@@ -52,5 +52,6 @@ class ScrollableTemplate extends StatelessWidget {
     );
   }
 
+  // shortcut for wrapping widget in scaffold
   Widget scaffold() => Scaffold(body: this);
 }
