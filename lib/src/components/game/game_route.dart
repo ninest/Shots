@@ -13,7 +13,9 @@ import 'package:shots/src/utils/strings.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class GameRoute extends StatelessWidget {
-  const GameRoute({Key key}) : super(key: key);
+  // const GameRoute({Key key}) : super(key: key);
+
+  final PanelController _panelController = PanelController();
 
   @override
   Widget build(BuildContext context) {
@@ -68,6 +70,11 @@ class GameRoute extends StatelessWidget {
     );
   }
 
+  _exit(PanelController controller) async {
+    if (controller.isPanelOpen) await controller.close();
+    else await controller.open();
+  }
+
   Widget _nextCard(int index) => Align(
         alignment: Alignment.center,
         child: NextShotCard(index: index),
@@ -89,16 +96,22 @@ class GameRoute extends StatelessWidget {
     // the rounded corners make it harder to drag up
     final double safeAreaPaddingBottom = MediaQuery.of(context).padding.bottom;
 
-    return SlidingUpPanel(
-      minHeight: showSlidingPanel ? (safeAreaPaddingBottom + 65.0) : 0.0,
-      borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(Values.borderRadius),
-        topRight: Radius.circular(Values.borderRadius),
+    print(_panelController);
+
+    return WillPopScope(
+      onWillPop: () => _exit(_panelController),
+      child: SlidingUpPanel(
+        controller: _panelController,
+        minHeight: showSlidingPanel ? (safeAreaPaddingBottom + 65.0) : 0.0,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(Values.borderRadius),
+          topRight: Radius.circular(Values.borderRadius),
+        ),
+        border: Border.all(width: 1, color: AppColors.pageBorderColor),
+        color: AppColors.pageColor,
+        panel: SlidingPanel(),
+        body: body,
       ),
-      border: Border.all(width: 1, color: AppColors.pageBorderColor),
-      color: AppColors.pageColor,
-      panel: SlidingPanel(),
-      body: body,
     );
   }
 }

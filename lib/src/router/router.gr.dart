@@ -48,12 +48,8 @@ class Router extends RouterBase {
           settings: settings,
         );
       case Routes.gameRoute:
-        if (hasInvalidArgs<GameRouteArguments>(args)) {
-          return misTypedArgsRoute<GameRouteArguments>(args);
-        }
-        final typedArgs = args as GameRouteArguments ?? GameRouteArguments();
         return CupertinoPageRoute<dynamic>(
-          builder: (_) => GameRoute(key: typedArgs.key),
+          builder: (_) => GameRoute(),
           settings: settings,
           fullscreenDialog: true,
         );
@@ -86,12 +82,6 @@ class HomeRouteArguments {
 class PacksRouteArguments {
   final Key key;
   PacksRouteArguments({this.key});
-}
-
-//GameRoute arguments holder class
-class GameRouteArguments {
-  final Key key;
-  GameRouteArguments({this.key});
 }
 
 //TermsRoute arguments holder class
