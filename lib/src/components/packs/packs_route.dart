@@ -16,10 +16,6 @@ class PacksRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // no need to listen because settings is controlled in a different screen
-    SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context, listen: false);
-    bool nsfwEnabled = settingsProvider.nsfw;
-
     return Scaffold(
       body: ScrollableTemplate(
         showBackButton: true,
@@ -29,9 +25,7 @@ class PacksRoute extends StatelessWidget {
             future: loadPacks(context),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (!snapshot.hasData)
-                return LoadingText(
-                  text: "Loading packs ...",
-                ).sliver();
+                return LoadingText(text: "Loading packs ...").sliver();
               else
                 return SliverList(
                   delegate: SliverChildBuilderDelegate(

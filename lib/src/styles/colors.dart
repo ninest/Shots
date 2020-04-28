@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class AppColors {
@@ -38,9 +40,14 @@ class AppColors {
 
   static Color getColor(String name) {
     Color color;
-    String secondLetter = name[1].toLowerCase();
+    Random random = new Random();
+    int randNo = random.nextInt(2); // generate either 0 or 1
 
-    switch (secondLetter) {
+    // depending on the letter (either the 1st or 2nd letter), pick
+    // a random color
+    String letter = name[randNo].toLowerCase();
+
+    switch (letter) {
       case 'a':
       case 'b':
       case 'c':

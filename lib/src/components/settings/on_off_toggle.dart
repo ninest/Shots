@@ -8,6 +8,9 @@ class OnOffToggle extends StatelessWidget {
   final bool enabled;
   final Function onTap;
 
+  // When nsfw (in settings) is enabled, on has the blue border around it
+  // otherwise, off has the blue border
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
