@@ -18,8 +18,6 @@ class Choice extends StatelessWidget {
     PacksProvider packsProvider = Provider.of<PacksProvider>(context, listen: true);
     bool selected = packsProvider.selectedPacks.contains(pack);
 
-    print(pack.nsfw);
-
     return GestureDetector(
       child: AnimatedContainer(
         duration: Duration(milliseconds: 200),

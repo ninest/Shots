@@ -11,12 +11,14 @@ import 'package:shots/src/components/home/home_route.dart';
 import 'package:shots/src/components/packs/packs_route.dart';
 import 'package:shots/src/components/game/game_route.dart';
 import 'package:shots/src/components/terms/terms_route.dart';
+import 'package:shots/src/components/settings/settings_route.dart';
 
 abstract class Routes {
   static const homeRoute = '/';
   static const packsRoute = '/packs-route';
   static const gameRoute = '/game-route';
   static const termsRoute = '/terms-route';
+  static const settingsRoute = '/settings-route';
 }
 
 class Router extends RouterBase {
@@ -62,6 +64,16 @@ class Router extends RouterBase {
           builder: (_) => TermsRoute(key: typedArgs.key),
           settings: settings,
         );
+      case Routes.settingsRoute:
+        if (hasInvalidArgs<SettingsRouteArguments>(args)) {
+          return misTypedArgsRoute<SettingsRouteArguments>(args);
+        }
+        final typedArgs =
+            args as SettingsRouteArguments ?? SettingsRouteArguments();
+        return MaterialPageRoute<dynamic>(
+          builder: (_) => SettingsRoute(key: typedArgs.key),
+          settings: settings,
+        );
       default:
         return unknownRoutePage(settings.name);
     }
@@ -88,4 +100,10 @@ class PacksRouteArguments {
 class TermsRouteArguments {
   final Key key;
   TermsRouteArguments({this.key});
+}
+
+//SettingsRoute arguments holder class
+class SettingsRouteArguments {
+  final Key key;
+  SettingsRouteArguments({this.key});
 }

@@ -19,7 +19,6 @@ class PacksRoute extends StatelessWidget {
     // no need to listen because settings is controlled in a different screen
     SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context, listen: false);
     bool nsfwEnabled = settingsProvider.nsfw;
-    print(nsfwEnabled);
 
     return Scaffold(
       body: ScrollableTemplate(

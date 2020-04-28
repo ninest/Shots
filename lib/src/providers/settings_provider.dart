@@ -11,3 +11,15 @@ class SettingsProvider extends ChangeNotifier {
 
   bool nsfw;
 }
+
+class SettingsService {
+  static enableNsfw() {
+    final settingsBox = Hive.box(HiveBoxes.settings);
+    settingsBox.put(SettingsBox.nsfw, true);
+  }
+
+  static disableNsfw() {
+    final settingsBox = Hive.box(HiveBoxes.settings);
+    settingsBox.put(SettingsBox.nsfw, false);
+  }
+}

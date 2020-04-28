@@ -2,8 +2,8 @@ class Strings {
   static String get appTitle => "Example";
   
   static String get startButton => "Start";
-  static String get continueButton => "Continue";
-  static String get termsButton => "Terms";
+  static String get termsRouteButton => "Terms";
+  static String get settingsRouteButton => "Settings";
 
   static String get packsRouteTitle => "Choose packs";
   static String get selectAllButton => "Select all";

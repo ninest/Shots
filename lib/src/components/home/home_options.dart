@@ -6,6 +6,7 @@ import 'package:shots/src/router/router.gr.dart';
 import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/styles/values.dart';
 import 'package:shots/src/constants/strings.dart';
+
 /// Contains buttons to start game, see terms, or tutorial
 class HomeOptions extends StatelessWidget {
   const HomeOptions({Key key}) : super(key: key);
@@ -27,11 +28,23 @@ class HomeOptions extends StatelessWidget {
 
         // Open terms page
         Button(
-          text: Strings.termsButton,
+          text: Strings.termsRouteTitle,
+          outline: true,
           color: AppColors.accent,
           width: 210.0,
           onTap: () => ExtendedNavigator.of(context).pushNamed(Routes.termsRoute),
-        )
+        ),
+
+        // spacing to make it look cleaner
+        Spacing(height: Values.mainPadding),
+
+        Button(
+          text: Strings.settingsRouteButton,
+          outline: true,
+          color: AppColors.accent,
+          width: 210.0,
+          onTap: () => ExtendedNavigator.of(context).pushNamed(Routes.settingsRoute),
+        ),
       ],
     );
   }
