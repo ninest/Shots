@@ -30,13 +30,16 @@ class TextStyles {
         ),
       );
 
+  // TODO have all text styles build off of body1 using extension methods?
+
   // pack name (only in choice.dart)
-  static TextStyle get packName => body1.w(FontWeight.w700);
+  static TextStyle get packName => body1 //
+      .w(FontWeight.w700);
 
   // pack description text (used only in choice.dart for the buttons)
   static TextStyle get packDescription => GoogleFonts.rubik(
         textStyle: TextStyle(
-          fontSize: em * 0.9,
+          fontSize: 0.9 * em,
           fontWeight: FontWeight.w400,
           color: Colors.white60,
         ),
@@ -56,7 +59,7 @@ class TextStyles {
   static TextStyle get cardLine1 => GoogleFonts.rubik(
         textStyle: TextStyle(
           fontWeight: FontWeight.w800,
-          fontSize: em * 1.3,
+          fontSize: 1.3 * em,
           color: Colors.white,
         ),
       );
@@ -64,18 +67,23 @@ class TextStyles {
   /// Line2 of card
   static TextStyle get cardLine2 => GoogleFonts.rubik(
         textStyle: TextStyle(
-          fontSize: em * 1.1,
+          fontSize: 1.1 * em,
           fontWeight: FontWeight.w500,
-          color: Colors.white70,
         ),
       );
 
   /// Title of section (Options and Stats)
   static TextStyle get sectionHeading => GoogleFonts.rubik(
         textStyle: TextStyle(
-          fontSize: em * 1.5,
+          fontSize: 1.5 * em,
           fontWeight: FontWeight.w500,
-          color: Colors.white70,
         ),
       );
+
+  static TextStyle get loadingText => body1 //
+      .w(FontWeight.w700)
+      .s(1.3 * em);
+
+  static TextStyle get loadingSubText => body1 //
+      .w(FontWeight.w400);
 }

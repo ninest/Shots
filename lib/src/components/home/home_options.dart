@@ -19,7 +19,7 @@ class HomeOptions extends StatelessWidget {
         Button(
           text: Strings.startButton,
           color: AppColors.accent,
-          width: 250.0,
+          width: 210.0,
           onTap: () => ExtendedNavigator.of(context).pushNamed(Routes.packsRoute),
         ),
 
@@ -30,7 +30,7 @@ class HomeOptions extends StatelessWidget {
         Button(
           text: Strings.termsButton,
           color: AppColors.accent,
-          width: 250.0,
+          width: 210.0,
           onTap: () => ExtendedNavigator.of(context).pushNamed(Routes.termsRoute),
         )
       ],

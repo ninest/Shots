@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shots/src/components/core/loading_text.dart';
 import 'package:shots/src/components/core/scrollable_template.dart';
 import 'package:shots/src/components/packs/bottom_bar.dart';
 import 'package:shots/src/components/packs/choice.dart';
@@ -25,7 +26,7 @@ class PacksRoute extends StatelessWidget {
             future: loadPacks(context),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (!snapshot.hasData)
-                return Text("Loading").sliver();
+                return LoadingText(text: "Loading packs ...",).sliver();
               else
                 return SliverList(
                   delegate: SliverChildBuilderDelegate(
@@ -53,7 +54,7 @@ class PacksRoute extends StatelessWidget {
     packsProvider.loadPacks(packs);
 
     // un comment below to test the loading indicator widget
-    // await Future.delayed(Duration(seconds: 1));
+    await Future.delayed(Duration(seconds: 10));
 
     return packs;
   }

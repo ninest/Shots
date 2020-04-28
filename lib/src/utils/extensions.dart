@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shots/src/styles/text_styles.dart';
+import 'package:shots/src/styles/values.dart';
 
 extension E on Widget {
   Widget sliver() {
@@ -12,4 +14,7 @@ extension T on TextStyle {
 
   // font weight
   TextStyle w(FontWeight weight) => copyWith(fontWeight: weight);
+
+  // size
+  TextStyle s(double value) => copyWith(fontSize: value);
 }
