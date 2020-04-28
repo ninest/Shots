@@ -14,4 +14,7 @@ class Values {
 
   /// opacity uses app-wide
   static double get containerOpacity => 0.3;
+
+  // animation duration in milliseconds (for inputs like selectables or toggles)
+  static int get durationMs => 200;
 }

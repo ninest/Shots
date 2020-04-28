@@ -20,7 +20,7 @@ class Choice extends StatelessWidget {
 
     return GestureDetector(
       child: AnimatedContainer(
-        duration: Duration(milliseconds: 200),
+        duration: Duration(milliseconds: Values.durationMs),
         margin: EdgeInsets.only(bottom: Values.mainPadding),
         padding: EdgeInsets.all(Values.mainPadding / 1.5),
         decoration: BoxDecoration(

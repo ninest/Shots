@@ -12,8 +12,7 @@ class SettingsRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // not listening because Hive (and valueListenableBuilder) rebuilds everything
-    // for us
+    // not listening because Hive (and valueListenableBuilder) rebuilds everything for us
     SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context, listen: false);
 
     return ScrollableTemplate(
