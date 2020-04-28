@@ -1,4 +1,4 @@
-<h1 align="center"><!-- <a href="">Shots</a> --><img height='27' src='./icons/android.png'/> Shots</h1>
+<h1 align="center"><!-- <a href="">Shots</a> --><img height="27" src="./icons/android.png"/> Shots</h1>
 
 <p align="center">A social game to help you learn more about your friends.</p>
 
@@ -87,6 +87,8 @@ The main app entry point is `main.dart`, then `app/app.dart`.
 After updating `pubspec.yaml`, run these commands:
 ```
 flutter pub run flutter_launcher_icons:main
+
+// Note: splash screen not implemented yet
 flutter pub pub run flutter_native_splash:create
 ```
 
