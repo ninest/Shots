@@ -1,13 +1,7 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shots/src/components/core/buttons/button.dart';
-import 'package:shots/src/models/card_model.dart';
-import 'package:shots/src/providers/card_provider.dart';
-import 'package:shots/src/providers/game_provider.dart';
 import 'package:shots/src/providers/packs_provider.dart';
-import 'package:shots/src/providers/stopwatch_provider.dart';
-import 'package:shots/src/router/router.gr.dart';
 import 'package:shots/src/services/game_service.dart';
 import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/styles/values.dart';

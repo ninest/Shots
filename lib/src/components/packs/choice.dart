@@ -41,10 +41,10 @@ class Choice extends StatelessWidget {
     PacksProvider packsProvider = Provider.of<PacksProvider>(context, listen: false);
 
     if (packsProvider.selectedPacks.contains(pack)) {
-      print("Already selected, need to unselect");
+      // Already selected, need to unselect
       packsProvider.unSelect(pack);
     } else {
-      print("Need to select");
+      // Need to select
       packsProvider.select(pack);
     }
   }
