@@ -6,15 +6,20 @@ import 'package:shots/src/components/packs/bottom_bar.dart';
 import 'package:shots/src/components/packs/choice.dart';
 import 'package:shots/src/models/pack_model.dart';
 import 'package:shots/src/providers/packs_provider.dart';
+import 'package:shots/src/providers/settings_provider.dart';
 import 'package:shots/src/services/pack_service.dart';
 import 'package:shots/src/utils/extensions.dart';
 import 'package:shots/src/constants/strings.dart';
+
 class PacksRoute extends StatelessWidget {
   const PacksRoute({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // first check if a game is already going one, and quit it if it is
+    // no need to listen because settings is controlled in a different screen
+    SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context, listen: false);
+    bool nsfwEnabled = settingsProvider.nsfw;
+    print(nsfwEnabled);
 
     return Scaffold(
       body: ScrollableTemplate(
@@ -25,7 +30,9 @@ class PacksRoute extends StatelessWidget {
             future: loadPacks(context),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (!snapshot.hasData)
-                return LoadingText(text: "Loading packs ...",).sliver();
+                return LoadingText(
+                  text: "Loading packs ...",
+                ).sliver();
               else
                 return SliverList(
                   delegate: SliverChildBuilderDelegate(

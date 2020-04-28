@@ -24,6 +24,8 @@ class PackService {
         name: packMap['name'],
         slug: packMap['slug'],
         description: packMap['description'],
+        // If not explictly stated, they are not NSFW
+        nsfw: packMap['nsfw'] ?? false,
         cards: cards,
       );
 

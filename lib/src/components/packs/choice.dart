@@ -6,6 +6,7 @@ import 'package:shots/src/providers/packs_provider.dart';
 import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/styles/text_styles.dart';
 import 'package:shots/src/styles/values.dart';
+import 'package:shots/src/utils/extensions.dart';
 
 class Choice extends StatelessWidget {
   const Choice({Key key, this.pack}) : super(key: key);
@@ -16,6 +17,8 @@ class Choice extends StatelessWidget {
     // to check if pack is selected or unselected
     PacksProvider packsProvider = Provider.of<PacksProvider>(context, listen: true);
     bool selected = packsProvider.selectedPacks.contains(pack);
+
+    print(pack.nsfw);
 
     return GestureDetector(
       child: AnimatedContainer(
@@ -33,7 +36,12 @@ class Choice extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Text(pack.name, style: TextStyles.packName),
+            Text(
+              pack.name,
+              // if NSFW, make it red
+              style: pack.nsfw ? TextStyles.packName.c(AppColors.danger) : TextStyles.packName,
+              // style: TextStyles.packName,
+            ),
             Spacing(height: Values.mainPadding / 2),
             Text(pack.description, style: TextStyles.packDescription),
           ],
