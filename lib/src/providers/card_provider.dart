@@ -23,7 +23,8 @@ class CardProvider extends ChangeNotifier {
     shuffleCards();
   }
 
-  /// [shouldNotifyListeners] is
+  /// [shouldNotifyListeners] tells the listeners to rebuild
+  /// It's only true when the user decides to re-shuffle cards
   shuffleCards({bool shouldNotifyListeners = false}) {
     cards = [..._cardsCache]..shuffle();
     currentCardIndex = 0;

@@ -86,7 +86,6 @@ After updating `pubspec.yaml`, run these commands:
 ```
 flutter pub run flutter_launcher_icons:main
 flutter pub pub run flutter_native_splash:create
-
 ```
 
 ### Editing `router.dart`
