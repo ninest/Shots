@@ -7,8 +7,7 @@ import 'package:shots/src/providers/card_provider.dart';
 import 'package:shots/src/services/game_service.dart';
 import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/styles/values.dart';
-import 'package:shots/src/utils/strings.dart';
-
+import 'package:shots/src/constants/strings.dart';
 class OptionsSection extends StatelessWidget {
   const OptionsSection({Key key, this.overrideTitle}) : super(key: key);
   final String overrideTitle;

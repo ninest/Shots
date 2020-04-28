@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shots/src/components/core/spacing.dart';
 import 'package:shots/src/styles/text_styles.dart';
 import 'package:shots/src/styles/values.dart';
-import 'package:shots/src/utils/strings.dart';
-
+import 'package:shots/src/constants/strings.dart';
 class AppTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

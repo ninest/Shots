@@ -5,8 +5,7 @@ import 'package:shots/src/components/core/spacing.dart';
 import 'package:shots/src/router/router.gr.dart';
 import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/styles/values.dart';
-import 'package:shots/src/utils/strings.dart';
-
+import 'package:shots/src/constants/strings.dart';
 /// Contains buttons to start game, see terms, or tutorial
 class HomeOptions extends StatelessWidget {
   const HomeOptions({Key key}) : super(key: key);

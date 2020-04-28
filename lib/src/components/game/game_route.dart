@@ -9,8 +9,7 @@ import 'package:shots/src/models/card_model.dart';
 import 'package:shots/src/providers/card_provider.dart';
 import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/styles/values.dart';
-import 'package:shots/src/utils/strings.dart';
-import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'package:shots/src/constants/strings.dart';import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class GameRoute extends StatelessWidget {
   // const GameRoute({Key key}) : super(key: key);

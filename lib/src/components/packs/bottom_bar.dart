@@ -5,8 +5,7 @@ import 'package:shots/src/providers/packs_provider.dart';
 import 'package:shots/src/services/game_service.dart';
 import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/styles/values.dart';
-import 'package:shots/src/utils/strings.dart';
-
+import 'package:shots/src/constants/strings.dart';
 class BottomBar extends StatelessWidget {
   const BottomBar({Key key}) : super(key: key);
 

@@ -3,8 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:shots/src/components/core/section.dart';
 import 'package:shots/src/components/game/sliding_panel/sections/stopwatch_display.dart';
 import 'package:shots/src/providers/card_provider.dart';
-import 'package:shots/src/utils/strings.dart';
-
+import 'package:shots/src/constants/strings.dart';
 class StatsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
