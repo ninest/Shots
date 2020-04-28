@@ -1,9 +1,8 @@
-import 'package:audioplayers/audioplayers.dart';
+import 'package:audioplayers/audio_cache.dart';
 
 class AudioService {
   static play(String url) async {
-    AudioPlayer audioPlayer = AudioPlayer();
-    int result = await audioPlayer.play(url, isLocal: true);
-    if (result != 1) print("Error in playing audio");
+    AudioCache audioCache = AudioCache();
+    audioCache.play(url);
   }
 }
