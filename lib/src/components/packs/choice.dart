@@ -34,11 +34,33 @@ class Choice extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Text(
-              pack.name,
-              // if NSFW, make it red
-              style: pack.nsfw ? TextStyles.packName.c(AppColors.danger) : TextStyles.packName,
-              // style: TextStyles.packName,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                // flex 1 resizes it to take the remaining space because the amount of space
+                // the no of cards takes should not change
+                Flexible(
+                  flex: 1,
+                  child: Text(
+                    pack.name,
+                    // if NSFW, make it red
+                    style:
+                        pack.nsfw ? TextStyles.packName.c(AppColors.danger) : TextStyles.packName,
+
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+
+                // using expanded so that the cards display will always take the same width of space
+                Expanded(
+                  flex: 0,
+                  child: Text(
+                    "${pack.cards.length} cards",
+                    style: TextStyles.body1.s(0.8 * Values.em),
+                  ),
+                )
+              ],
             ),
             Spacing(height: Values.mainPadding / 2),
             Text(pack.description, style: TextStyles.packDescription),
