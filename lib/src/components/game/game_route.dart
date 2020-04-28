@@ -70,9 +70,12 @@ class GameRoute extends StatelessWidget {
     );
   }
 
+  // overriden back button
   _exit(PanelController controller) async {
-    if (controller.isPanelOpen) await controller.close();
-    else await controller.open();
+    if (controller.isPanelOpen)
+      await controller.close();
+    else
+      await controller.open();
   }
 
   Widget _nextCard(int index) => Align(
@@ -98,6 +101,8 @@ class GameRoute extends StatelessWidget {
 
     print(_panelController);
 
+    // WillPopScope provides the onWillPop function, which overrides the action when the Android
+    // back button is pressed
     return WillPopScope(
       onWillPop: () => _exit(_panelController),
       child: SlidingUpPanel(

@@ -3,10 +3,9 @@ class Strings {
   
   static String get startButton => "Start";
   static String get continueButton => "Continue";
-  static String get choosePacks => "Choose Packs";
   static String get termsButton => "Terms";
 
-  static String get packsRouteTitle => "Choose card packs";
+  static String get packsRouteTitle => "Choose packs";
   static String get selectAllButton => "Select all";
   static String get unSelectAllButton => "Unselect all";
   static String get doneButton => "Done";

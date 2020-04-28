@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shots/src/components/core/spacing.dart';
 import 'package:shots/src/models/pack_model.dart';
 import 'package:shots/src/providers/packs_provider.dart';
 import 'package:shots/src/styles/colors.dart';
+import 'package:shots/src/styles/text_styles.dart';
 import 'package:shots/src/styles/values.dart';
 
 class Choice extends StatelessWidget {
@@ -28,8 +30,13 @@ class Choice extends StatelessWidget {
             color: selected ? AppColors.accent : AppColors.pageBorderColor,
           ),
         ),
-        child: Text(
-          pack.name,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Text(pack.name, style: TextStyles.packName),
+            Spacing(height: Values.mainPadding / 2),
+            Text(pack.description, style: TextStyles.packDescription),
+          ],
         ),
       ),
       onTap: () => _selectOrUnselect(context),

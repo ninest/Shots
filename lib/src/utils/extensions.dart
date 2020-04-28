@@ -7,5 +7,9 @@ extension E on Widget {
 }
 
 extension T on TextStyle {
+  // custom color
   TextStyle c(Color value) => copyWith(color: value);
+
+  // font weight
+  TextStyle w(FontWeight weight) => copyWith(fontWeight: weight);
 }

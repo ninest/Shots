@@ -19,7 +19,7 @@ class PacksRoute extends StatelessWidget {
     return Scaffold(
       body: ScrollableTemplate(
         showBackButton: true,
-        title: Strings.choosePacks,
+        title: Strings.packsRouteTitle,
         children: <Widget>[
           FutureBuilder(
             future: loadPacks(context),
