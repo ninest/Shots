@@ -54,7 +54,7 @@ class PacksRoute extends StatelessWidget {
     packsProvider.loadPacks(packs);
 
     // un comment below to test the loading indicator widget
-    await Future.delayed(Duration(seconds: 10));
+    // await Future.delayed(Duration(seconds: 10));
 
     return packs;
   }

@@ -42,6 +42,7 @@
 - [ ] Add multiple card packs
   - [x] Allow players to select and choose from different card packs (new screen)
   - [ ] Allow card packs to be retreived from web
+- [ ] Add settings page where people can enable NSFW mode
 
 </details>
 
