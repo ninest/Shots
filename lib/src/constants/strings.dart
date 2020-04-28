@@ -1,5 +1,5 @@
 class Strings {
-  static String get appTitle => "Example";
+  static String get appTitle => "Shots";
   
   static String get startButton => "Start";
   static String get termsRouteButton => "Terms";

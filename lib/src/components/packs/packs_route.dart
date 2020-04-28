@@ -8,6 +8,7 @@ import 'package:shots/src/models/pack_model.dart';
 import 'package:shots/src/providers/packs_provider.dart';
 import 'package:shots/src/providers/settings_provider.dart';
 import 'package:shots/src/services/pack_service.dart';
+import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/utils/extensions.dart';
 import 'package:shots/src/constants/strings.dart';
 
@@ -17,6 +18,7 @@ class PacksRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.pageColor,
       body: ScrollableTemplate(
         showBackButton: true,
         title: Strings.packsRouteTitle,

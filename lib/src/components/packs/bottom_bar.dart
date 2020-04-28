@@ -20,35 +20,39 @@ class BottomBar extends StatelessWidget {
     // true if no packs selected
     bool disableButton = packsProvider.selectedPacks.isEmpty;
 
-    return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: Values.mainPadding,
-        vertical: Values.mainPadding / 2,
-      ),
-      decoration: BoxDecoration(
-        color: AppColors.pageColor,
-        border: Border(top: BorderSide(width: 1, color: AppColors.pageBorderColor)),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Button(
-            text: everythingSelected ? Strings.unSelectAllButton : Strings.selectAllButton,
-            color: everythingSelected ? AppColors.danger : AppColors.secondary,
-            outline: true,
+    return SafeArea(
+      // for phones such as iPhone X with rounded bottom corners
+      bottom: true,
+      child: Container(
+        padding: EdgeInsets.symmetric(
+          horizontal: Values.mainPadding,
+          vertical: Values.mainPadding / 2,
+        ),
+        decoration: BoxDecoration(
+          color: AppColors.pageColor,
+          border: Border(top: BorderSide(width: 1, color: AppColors.pageBorderColor)),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Button(
+              text: everythingSelected ? Strings.unSelectAllButton : Strings.selectAllButton,
+              color: everythingSelected ? AppColors.danger : AppColors.secondary,
+              outline: true,
 
-            // if everything is selected, button press should unselect all
-            onTap: everythingSelected
-                ? () => packsProvider.unSelectAll()
-                : () => packsProvider.selectAll(),
-          ),
-          Button(
-            text: Strings.doneButton,
-            color: AppColors.accent,
-            onTap: () => _donePressed(context),
-            disabled: disableButton,
-          ),
-        ],
+              // if everything is selected, button press should unselect all
+              onTap: everythingSelected
+                  ? () => packsProvider.unSelectAll()
+                  : () => packsProvider.selectAll(),
+            ),
+            Button(
+              text: Strings.doneButton,
+              color: AppColors.accent,
+              onTap: () => _donePressed(context),
+              disabled: disableButton,
+            ),
+          ],
+        ),
       ),
     );
   }
