@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shots/src/components/core/scrollable_template.dart';
+import 'package:shots/src/components/settings/on_off_toggle.dart';
 import 'package:shots/src/constants/strings.dart';
 import 'package:shots/src/providers/settings_provider.dart';
 import 'package:shots/src/styles/values.dart';
@@ -22,34 +23,16 @@ class SettingsRoute extends StatelessWidget {
         OnOffToggle(
           title: "NSFW",
           enabled: settingsProvider.nsfw,
+          onTap: () {
+            SettingsProvider settingsProvider =
+                Provider.of<SettingsProvider>(context, listen: false);
+            if (settingsProvider.nsfw)
+              SettingsService.disableNsfw();
+            else
+              SettingsService.enableNsfw();
+          },
         ).sliver()
       ],
     ).scaffold();
-  }
-}
-
-class OnOffToggle extends StatelessWidget {
-  const OnOffToggle({Key key, this.title, this.enabled = false}) : super(key: key);
-  final String title;
-  final bool enabled;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      child: Container(
-        margin: EdgeInsets.only(bottom: Values.mainPadding),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[Text(title), Text(enabled ? "On" : "Off")],
-        ),
-      ),
-      onTap: () {
-        SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context, listen: false);
-        if (settingsProvider.nsfw)
-          SettingsService.disableNsfw();
-        else
-          SettingsService.enableNsfw();
-      },
-    );
   }
 }

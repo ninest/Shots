@@ -56,6 +56,7 @@ class PacksRoute extends StatelessWidget {
     // remove nsfw packs if nsfw setting is off
     final SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context, listen: false);
     if (!settingsProvider.nsfw) {
+      // set list to only have cards where nsfw is false
       packs = packs.where((eachPack) => eachPack.nsfw == false).toList();
     }
 
