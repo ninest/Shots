@@ -5,12 +5,12 @@
   slug: nsfw
   description: Basic NSFW card pack. Do not use if you're playing with people older than you or married couples.
   nsfw: true
-- name: Test
-  slug: test
-  description: The test pack for testing purposes.
 - name: Challenges
   slug: challenges
   description: Just some fun challenges to spice up your game.
 - name: Developer
   slug: developer
   description: For all those who code.
+- name: Test
+  slug: test
+  description: The test pack for testing purposes.

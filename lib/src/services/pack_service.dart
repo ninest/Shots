@@ -18,18 +18,23 @@ class PackService {
 
     for (var packMap in metadata) {
       // load cards by reading their files
-      final List<ShotCard> cards = await _loadCards(packMap['slug']);
+      try {
+        final List<ShotCard> cards = await _loadCards(packMap['slug']);
 
-      final newPack = Pack(
-        name: packMap['name'],
-        slug: packMap['slug'],
-        description: packMap['description'],
-        // If not explictly stated, they are not NSFW
-        nsfw: packMap['nsfw'] ?? false,
-        cards: cards,
-      );
+        final newPack = Pack(
+          name: packMap['name'],
+          slug: packMap['slug'],
+          description: packMap['description'],
+          // If not explictly stated, they are not NSFW
+          nsfw: packMap['nsfw'] ?? false,
+          cards: cards,
+        );
 
-      packs.add(newPack);
+        packs.add(newPack);
+      } catch (e) {
+        // If there's a card pack listed in metadata.yml, but with no {pack}.yml file,
+        // there will be a silent error so the app doesn't crash
+      }
     }
 
     return packs;
