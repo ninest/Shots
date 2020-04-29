@@ -37,7 +37,11 @@ lib/generated_plugin_registrant.dart
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 
 # packs/basic.yml
-packs/basic.yml
-packs/challenges.yml
-packs/developer.yml
-packs/nsfw.yml
+# packs/basic.yml
+# packs/challenges.yml
+# packs/developer.yml
+# packs/nsfw.yml
+assets/packs/basic.yml
+assets/packs/challenges.yml
+assets/packs/developer.yml
+assets/packs/nsfw.yml
