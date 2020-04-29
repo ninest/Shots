@@ -31,6 +31,7 @@ class App extends StatelessWidget {
             SettingsProvider settingsProvider =
                 Provider.of<SettingsProvider>(context, listen: false);
             settingsProvider.loadSettings();
+            print("build app");
 
             return ExtendedNavigator<Router>(router: Router());
           },
