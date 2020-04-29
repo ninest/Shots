@@ -65,7 +65,18 @@
 </details>
 
 ## FAQs
-- coming soon
+1. What is this game
+
+    In short, it aims to get you closer to your friends through a series of interesting questions and challenges. It's intended to be played in a party setting (and with drinks of course!). There are different card packs to choose from (Basic, NSFW, Challenges, and Developer).
+
+2. How do I play?
+     - Click play and choose your card packs
+     - Click "Done"
+     - Start swiping the cards!
+
+3. Can I add or suggest more cards?
+
+    Yes. Stay tuned for further information.
 
 ## Other information
 Project start date: April 9, 2020
