@@ -4,6 +4,7 @@
 
 ![Made with Flutter](https://img.shields.io/badge/Made%20With-Flutter-blue?style=flat-square)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+[![BMAC](https://img.shields.io/badge/Donate-Buy%20Me%20A%20Coffee-orange.svg?style=flat-square)](https://www.buymeacoffee.com/themindstorm) 
 [![HitCount](http://hits.dwyl.com/themindstorm/Shots.svg)](http://hits.dwyl.com/themindstorm/Shots) 
 <!-- ![GitHub](https://img.shields.io/github/license/themindstorm/Shots?style=flat-square) -->
 
@@ -98,8 +99,6 @@ The main app entry point is `main.dart`, then `app/app.dart`.
 After updating `pubspec.yaml`, run these commands:
 ```
 flutter pub run flutter_launcher_icons:main
-
-// Note: splash screen not implemented yet
 flutter pub pub run flutter_native_splash:create
 ```
 

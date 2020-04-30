@@ -40,13 +40,18 @@ dev_dependencies:
   auto_route_generator: ^0.4.3
   build_runner: ^1.8.1
   flutter_launcher_icons: ^0.7.4
-  # flutter_native_splash: ^0.1.9
+  flutter_native_splash: ^0.1.9
 
 flutter_icons:
   android: "ic_launcher"
   image_path_android: "icons/android.png"
   ios: true
-  image_path_ios: "icons/ios.png"
+  image_path_ios: "icons/ios.jpg"
+
+flutter_native_splash:
+  image: "icons/android.png"
+  color: "111111"
+  android: false
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

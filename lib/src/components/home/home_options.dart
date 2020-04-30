@@ -35,6 +35,7 @@ class HomeOptions extends StatelessWidget {
           onTap: () => ExtendedNavigator.of(context).pushNamed(Routes.termsRoute),
         ),
 
+
         // spacing to make it look cleaner
         Spacing(height: Values.mainPadding),
 
