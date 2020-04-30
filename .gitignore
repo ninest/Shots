@@ -45,6 +45,9 @@ assets/packs/basic.yml
 assets/packs/challenges.yml
 assets/packs/developer.yml
 assets/packs/nsfw.yml
+assets/packs/powerups.yml
+assets/packs/technology.yml
+assets/packs/close.yml
 
 # app key
 **/android/key.properties
