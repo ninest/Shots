@@ -22,7 +22,6 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // return App();
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<SettingsProvider>(create: (_) => SettingsProvider()),

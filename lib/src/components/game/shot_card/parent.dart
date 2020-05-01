@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shots/src/components/game/shot_card/card_display.dart';
@@ -50,12 +52,15 @@ class _ShotCardParentState extends State<ShotCardParent> with SingleTickerProvid
   }
 
   void _runCardLeaveAnimation({bool left = false}) {
+    // Found these values after testing. 7.0 works smoothly for Android, while 15.0 is smooth
+    // for Android (tested on OnePlus 5T and iPhone XS)
+    double _sideValue = Platform.isAndroid ? 8.0 : 15.0;
     _animation = _controller.drive(AlignmentTween(
         begin: _dragAlignment,
         // make it go off screen
         end: Alignment(
           // if left true, animate it going off the left side
-          left ? -7.0 : 8.0,
+          left ? -1 * _sideValue : _sideValue,
 
           // make it go a little lower (more natural)
           _dragAlignment.y + 0.2,

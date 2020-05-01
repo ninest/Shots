@@ -24,7 +24,7 @@ class OptionsSection extends StatelessWidget {
           width: double.infinity,
           onTap: () => cardProvider.shuffleCards(shouldNotifyListeners: true),
         ),
-        Spacing(height: Values.mainPadding),
+        Spacing(height: Values.mainPadding/2),
         Button(
           text: "End game",
           outline: true,

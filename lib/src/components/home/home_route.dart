@@ -14,7 +14,7 @@ class HomeRoute extends StatelessWidget {
 
     List<Widget> children = [
       // extra space above so it doesn't look too weird
-      Spacing(height: statusBarHeight * 2.5),
+      Spacing(height: statusBarHeight * 2),
 
       AppTitle(),
 
@@ -23,7 +23,7 @@ class HomeRoute extends StatelessWidget {
       HomeOptions(),
 
       // more spacing so it doesn't touch the bottom of the screen
-      Spacing(height: statusBarHeight * 3.5),
+      Spacing(height: statusBarHeight * 2),
     ];
 
     return Scaffold(
