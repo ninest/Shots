@@ -28,6 +28,6 @@
   slug: developer
   description: For all those who code.
 
-- name: Test pack
+- name: Swiper pack
   slug: test
-  description: The test pack for testing purposes. Only use this if you're interested in seeing how the swiping action works
+  description: Use this if you want to test how the card swiping

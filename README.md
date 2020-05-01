@@ -10,6 +10,8 @@
 
 **How to play?** One player reads out cards. All other players have to drink based off of what the card says. Those who fail to do so are out of the game. See the images below for a clearer explanation.
 
+<a href='https://play.google.com/store/apps/details?id=com.themindstorm.shots'><img height="55" alt='Get it on Google Play' src='./readme-images/badges/google_play.png'/></a>
+
 ## Gallery
 ![app images](./readme-images/gallery/1.png)
 ![app images](./readme-images/gallery/2.png)
