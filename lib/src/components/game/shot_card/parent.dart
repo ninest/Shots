@@ -25,14 +25,16 @@ class _ShotCardParentState extends State<ShotCardParent> with SingleTickerProvid
 
   @override
   void initState() {
-    _controller =
-        AnimationController(vsync: this, duration: Duration(milliseconds: _animationDuration));
-
-    _controller.addListener(
-      () => setState(
-        () => _dragAlignment = _animation.value,
-      ),
+    _controller = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: _animationDuration),
     );
+
+    _controller.addListener(() {
+      setState(() {
+        _dragAlignment = _animation.value;
+      });
+    });
     super.initState();
   }
 
