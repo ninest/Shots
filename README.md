@@ -83,6 +83,7 @@
 
 ## Other information
 Project start date: April 9, 2020
+Shots gets its [own website](https://shotsapp.now.sh/): April 30, 2020
 
 ## Build setup
 Your system requires the Flutter SDK. Follow the steps here to [install](https://flutter.dev/docs/get-started/install) it on your system. After Flutter is installed, clone or fork this repository.
