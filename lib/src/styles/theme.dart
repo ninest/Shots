@@ -17,7 +17,16 @@ ThemeData _buildTheme() {
     accentColor: AppColors.accent,
   );
 
+  // for better back transition
+PageTransitionsTheme _pageTransitionsTheme = PageTransitionsTheme(
+  builders: <TargetPlatform, PageTransitionsBuilder>{
+    TargetPlatform.android: CupertinoPageTransitionsBuilder(),
+    TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+  },
+);
+
   return base.copyWith(
     textTheme: _buildTextTheme(base.textTheme),
+    pageTransitionsTheme: _pageTransitionsTheme,
   );
 }
