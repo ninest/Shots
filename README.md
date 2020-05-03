@@ -130,6 +130,9 @@ Once the APK has been built, install it on a physcally connected Android device:
 flutter install
 ```
 
+In the production app, I was getting `ClasscastException at FlutterSplashView.java`. This [SO question](https://stackoverflow.com/questions/61075984/getting-classcastexception-at-fluttersplashview-java-for-one-of-my-published-app) helped.
+
+
 ## 🎗 Support
 Like this project?
 

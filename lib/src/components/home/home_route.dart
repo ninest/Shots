@@ -10,11 +10,11 @@ class HomeRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // used for height spacing in column
-    double statusBarHeight = MediaQuery.of(context).padding.top;
+    double heightUnit = MediaQuery.of(context).size.height / 12;
 
     List<Widget> children = [
       // extra space above so it doesn't look too weird
-      Spacing(height: statusBarHeight * 2),
+      Spacing(height: heightUnit),
 
       AppTitle(),
 
@@ -23,7 +23,7 @@ class HomeRoute extends StatelessWidget {
       HomeOptions(),
 
       // more spacing so it doesn't touch the bottom of the screen
-      Spacing(height: statusBarHeight * 2),
+      Spacing(height: heightUnit),
     ];
 
     return Scaffold(

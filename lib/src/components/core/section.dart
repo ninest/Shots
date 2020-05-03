@@ -18,7 +18,7 @@ class Section extends StatelessWidget {
 
         // title
         Text(title, style: TextStyles.sectionHeading),
-        Spacing(height: Values.mainPadding),
+        Spacing(height: Values.mainPadding / 1.5),
         ...children,
       ],
     );
