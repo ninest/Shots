@@ -51,7 +51,7 @@ flutter_icons:
 flutter_native_splash:
   image: "icons/android.png"
   color: "111111"
-  android: false
+  android: true
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
