@@ -39,6 +39,7 @@
 - [x] Card swiping to change cards (similar to Tinder)
   - [x] Show ~~one~~ cards behind the current card
   - [ ] Make cards wave as they are moving (similar to real cards)
+  - [x] Add random translation offset to make it look more real
   - [x] Animation when user drops card but not on target (animation of card going back)
 - [x] Show how many cards the players have gone through
 - [x] Allow users to shuffle deck midgame
