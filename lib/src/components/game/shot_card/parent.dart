@@ -56,7 +56,7 @@ class _ShotCardParentState extends State<ShotCardParent> with SingleTickerProvid
   void _runCardLeaveAnimation({bool left = false}) {
     // Found these values after testing. 7.0 works smoothly for Android, while 15.0 is smooth
     // for Android (tested on OnePlus 5T and iPhone XS)
-    double _sideValue = Platform.isAndroid ? 8.0 : 15.0;
+    double _sideValue = Platform.isAndroid ? 8.5 : 15.0;
     _animation = _controller.drive(AlignmentTween(
         begin: _dragAlignment,
         // make it go off screen

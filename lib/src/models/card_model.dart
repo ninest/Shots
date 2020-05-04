@@ -6,10 +6,11 @@ import 'package:yaml/yaml.dart';
 
 // this is called shot card and not card because card and material's card will interfire
 class ShotCard {
-  ShotCard({@required this.line1, this.line2, this.color, this.rotateAngle});
+  ShotCard({@required this.line1, this.line2, this.color, this.rotateAngle, this.offset});
   final String line1, line2;
   final Color color;
   final double rotateAngle;
+  final Offset offset;
 
   factory ShotCard.fromJson(YamlMap map) {
     // we need number frm 0.01 to 0.10 for angle in radian
@@ -26,11 +27,21 @@ class ShotCard {
     // generate color from app colors depending on second letter
     Color cardColor = AppColors.getColor(map['line1']);
 
+    // random offset
+    Random randO = new Random();
+    final offset = Offset(
+      randO.nextInt(10).toDouble() - 5,
+
+      // bigger range in y because cards are taller than they are wide
+      randO.nextInt(16).toDouble() - 8,
+    );
+
     return ShotCard(
       line1: map['line1'],
       line2: map['line2'],
       color: cardColor,
       rotateAngle: rotateAngle,
+      offset: offset,
     );
   }
 }
