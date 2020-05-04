@@ -26,9 +26,10 @@ dependencies:
   yaml: ^2.2.0
   flutter_markdown: ^0.3.4
   sliding_up_panel: ^1.0.2
-  audioplayers: ^0.15.1
   hive: ^1.4.1+1
   hive_flutter: ^0.3.0+2
+
+  audioplayers: 0.13.2
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -69,6 +70,8 @@ flutter:
 
     - assets/packs/
     - assets/metadata.yml
+    - assets/sounds/pop/primary/
+    - assets/sounds/pop/secondary/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see

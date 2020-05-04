@@ -1,17 +1,30 @@
 import 'dart:math';
 
+import 'package:audioplayers/audio_cache.dart';
+import 'package:shots/src/utils/audio.dart';
+
+// import 'package:audioplayer/audio_cache.dart';
+// import 'package:audioplayer/audioplayer.dart';
+
 class SoundService {
   // no of primary and secondary sounds available
   static int noPrimaryPop = 2;
   static int noSecondaryPop = 3;
 
-  static primaryPop() {
+  static pop({bool secondary = false}) async {
     final random = new Random();
-    int randomNumber = random.nextInt(noPrimaryPop);
-    print(randomNumber);
-  }
 
-  static secondaryPop() {
-    final random = new Random();
+    // there are a different no of primary and secondary sounds, so get the
+    // number accordingly
+    int randomNumber = random.nextInt(secondary ? noSecondaryPop : noPrimaryPop) + 1;
+
+    String url;
+    if (secondary)
+      url = 'sounds/pop/secondary/s$randomNumber.mp3';
+    else
+      url = 'sounds/pop/primary/s$randomNumber.mp3';
+
+    playAudio(url);
+    print(url);
   }
 }

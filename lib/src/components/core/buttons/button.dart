@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shots/src/services/sound_service.dart';
 import 'package:shots/src/styles/text_styles.dart';
 import 'package:shots/src/styles/values.dart';
 import 'package:shots/src/utils/extensions.dart';
@@ -51,13 +52,21 @@ class Button extends StatelessWidget {
       ),
 
       // if button disabled, tapping shouldn't do anything
-      onTap: disabled ? () => {} : () => onTap(),
+      onTap: () {
+        onTap();
+
+        // play pop button sound
+        SoundService.pop();
+      },
     );
   }
 
   child(context) {
     // text
-    Widget textChild = Text(text, style: outline ? TextStyles.button.c(color) : TextStyles.button);
+    Widget textChild = Text(text,
+        style: outline
+            ? TextStyles.button.c(color) //
+            : TextStyles.button);
 
     if (width != null) {
       // if width is specified, make it an align element so the child is centered

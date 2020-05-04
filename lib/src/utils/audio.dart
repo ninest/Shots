@@ -1,6 +1,14 @@
+import 'dart:io';
+
 import 'package:audioplayers/audio_cache.dart';
 
-play(String url) async {
-  AudioCache audioCache = AudioCache();
-  audioCache.play(url);
+playAudio(String url) {
+  if (Platform.isIOS) {
+    AudioCache audioCache = AudioCache();
+    try {
+      audioCache.play(url);
+    } catch (e) {
+      print("ERROR: $e");
+    }
+  }
 }
