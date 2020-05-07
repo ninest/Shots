@@ -29,8 +29,12 @@ class CardDisplay extends StatelessWidget {
           ),
           decoration: BoxDecoration(
             color: shotCard.color,
-            borderRadius: BorderRadius.circular(Values.borderRadius),
-            border: Border.all(color: Colors.black.withOpacity(0.1), width: 1),
+            borderRadius: BorderRadius.circular(Values.borderRadius*2),
+            border: Border.all(
+              width: 12,
+              color: Colors.transparent.withOpacity(0.3),
+              // color: Colors.black,
+            ),
             boxShadow: [
               BoxShadow(
                 color: Color.fromRGBO(0, 0, 0, 0.22),
