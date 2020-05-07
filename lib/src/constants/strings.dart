@@ -23,6 +23,8 @@ By playing the game, you agree to the following terms:
 - I am 18 years old of age or older
 - I am responsible for my actions and their consequences
 
-**Always be responsible.**
+**Always be responsible.** The creators of the Shots app will not be held liable for any damage or injury occuring during or after playing the game.
+
+Do not force anyone to drink.
 """;
 }
