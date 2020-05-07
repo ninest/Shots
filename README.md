@@ -28,9 +28,10 @@
 
 - [x] Start page where users can see a few options
   - [x] Start game to take user to game
-  - [ ] Terms (everyone is over 18, ...)
+  - [x] Terms (everyone is over 18, ...)
 - [x] Give cards colors depending on text (for ex, if first letter is T, it is red ...)
 - [x] Give app background a color too, and animate it
+  - [x] Give cards a border to make them look more friendly
 - [x] Rotate cards at random angles (make it look natural)
 - [x] Show card behind card on top (next card)
   - [ ] Show slight animation when revealing a new "next" next card (such as slide in from top)
