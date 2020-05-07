@@ -50,13 +50,16 @@ class Button extends StatelessWidget {
           child: child(context),
         ),
       ),
-
-      // if button disabled, tapping shouldn't do anything
       onTap: () {
-        onTap();
+        // if button disabled, tapping shouldn't do anything
+        if (disabled) {
+          SoundService.pop(secondary: true);
+        } else {
+          onTap();
 
-        // play pop button sound
-        SoundService.pop();
+          // play pop button sound
+          SoundService.pop();
+        }
       },
     );
   }
