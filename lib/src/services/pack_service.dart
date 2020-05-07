@@ -18,6 +18,10 @@ class PackService {
 
     for (var packMap in metadata) {
       // load cards by reading their files
+
+      // BUG: error in the loop sometimes ocurs. Cannot replroduce it
+      
+      print("Adding pack");
       try {
         final List<ShotCard> cards = await _loadCards(packMap['slug']);
 

@@ -25,6 +25,8 @@ class SoundService {
       url = 'sounds/pop/primary/s$randomNumber.mp3';
 
     playAudio(url);
-    print(url);
+
+    // uncomment for debugging
+    // print(url);
   }
 }

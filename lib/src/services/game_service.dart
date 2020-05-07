@@ -25,7 +25,6 @@ class GameService {
     List<ShotCard> cards = [];
     for (var eachPack in packsProvider.selectedPacks) {
       cards = [...cards, ...eachPack.cards];
-      print(eachPack.cards);
     }
     cardProvider.loadCards(cards);
 

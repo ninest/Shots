@@ -98,7 +98,6 @@ class GameRoute extends StatelessWidget {
     // the rounded corners make it harder to drag up
     final double safeAreaPaddingBottom = MediaQuery.of(context).padding.bottom;
 
-    print(_panelController);
 
     // WillPopScope provides the onWillPop function, which overrides the action when the Android
     // back button is pressed
