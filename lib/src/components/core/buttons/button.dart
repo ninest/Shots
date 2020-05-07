@@ -43,7 +43,7 @@ class Button extends StatelessWidget {
             // putting border for regular buttons so that they are the same width and height as
             // outline buttons
             border: Border.all(
-              color: color,
+              color: outline ? color : Colors.transparent.withOpacity(0.1),
               width: 4.0,
             ),
           ),
