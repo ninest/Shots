@@ -5,6 +5,7 @@ import 'package:shots/src/components/game/sliding_panel/sections/stopwatch_displ
 import 'package:shots/src/providers/card_provider.dart';
 import 'package:shots/src/constants/strings.dart';
 import 'package:shots/src/providers/game_provider.dart';
+import 'package:shots/src/styles/values.dart';
 
 class StatsSection extends StatelessWidget {
   @override
@@ -18,9 +19,9 @@ class StatsSection extends StatelessWidget {
       title: Strings.statsSectionTitle,
       children: <Widget>[
         Opacity(
-          // show opacity to show that timer and card counter are disabled in 
+          // show opacity to show that timer and card counter are disabled in
           // tutorial mode
-          opacity: gameProvider.isTutorial ? 0.5 : 1.0,
+          opacity: gameProvider.isTutorial ? Values.disabledOpacity : 1.0,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[

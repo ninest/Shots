@@ -13,9 +13,13 @@ class TutorialService {
 
     // set up the tutorial cards
     cardProvider.cards = [
-      ShotCard(line1: "Tutorial!", color: Colors.red),
-      ShotCard(line1: "Dones this twerks", color: Colors.blue),
-      ShotCard(line1: "LMAO!221", color: Colors.green),
+      ShotCard(
+        line1: "Welcome to the Shots tutorial",
+        line2: "Swipe this card left or right to continue",
+        color: Colors.red,
+      ),
+      ShotCard(line1: "Tutorial 2", color: Colors.blue),
+      ShotCard(line1: "Tutorial 3", color: Colors.green),
     ];
     // enable the tutorial flag
     gameProvider.isTutorial = true;

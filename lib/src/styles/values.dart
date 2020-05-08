@@ -17,4 +17,7 @@ class Values {
 
   // animation duration in milliseconds (for inputs like selectables or toggles)
   static int get durationMs => 200;
+
+  // for any disabled items (buttons, text)
+  static double get disabledOpacity => 0.4;
 }

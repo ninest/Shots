@@ -27,7 +27,7 @@ class Button extends StatelessWidget {
       borderRadius: BorderRadius.circular(100.0),
       child: AnimatedOpacity(
         duration: Duration(milliseconds: Values.durationMs),
-        opacity: disabled ? 0.4 : 1.0,
+        opacity: disabled ? Values.disabledOpacity : 1.0,
         child: Container(
           width: width,
           padding: EdgeInsets.symmetric(
