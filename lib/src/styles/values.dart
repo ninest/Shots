@@ -3,7 +3,7 @@ class Values {
   static double get em => 19;
 
   /// Padding used when a specified padding is not known
-  static double get mainPadding => 33;
+  static double get mainPadding => 31;
 
   /// button padding
   static double get buttonHorizontalPadding => 15.0;

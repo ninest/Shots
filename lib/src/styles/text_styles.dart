@@ -59,7 +59,7 @@ class TextStyles {
   static TextStyle get cardLine1 => GoogleFonts.rubik(
         textStyle: TextStyle(
           fontWeight: FontWeight.w800,
-          fontSize: 1.3 * em,
+          fontSize: 1.29 * em,
           color: Colors.white,
         ),
       );

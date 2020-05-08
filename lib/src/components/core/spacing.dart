@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class Spacing extends StatelessWidget {
@@ -13,4 +12,10 @@ class Spacing extends StatelessWidget {
       ),
     );
   }
+
+  Widget horizontal() => Padding(
+        padding: EdgeInsets.only(
+          left: height.toDouble(),
+        ),
+      );
 }

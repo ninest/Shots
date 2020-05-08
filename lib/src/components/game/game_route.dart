@@ -10,7 +10,8 @@ import 'package:shots/src/models/card_model.dart';
 import 'package:shots/src/providers/card_provider.dart';
 import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/styles/values.dart';
-import 'package:shots/src/constants/strings.dart';import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'package:shots/src/constants/strings.dart';
+import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class GameRoute extends StatelessWidget {
   // const GameRoute({Key key}) : super(key: key);
@@ -49,11 +50,12 @@ class GameRoute extends StatelessWidget {
           color: currentCard == null
               ? Colors.black
               : currentCard.color.withOpacity(Values.containerOpacity),
-          duration: Duration(seconds: 1),
+
+          // nice non-distracing color changing effect
+          duration: Duration(seconds: 6),
           child: SafeArea(
             child: Stack(
               children: <Widget>[
-                
                 // un comment to easily swipe cards on an emulator
                 // Button(text: "Next", onTap: () => cardProvider.nextCard()),
 
@@ -102,7 +104,6 @@ class GameRoute extends StatelessWidget {
     // if it's the iPhoneX or newer phones, we need the minHeight to be higher because
     // the rounded corners make it harder to drag up
     final double safeAreaPaddingBottom = MediaQuery.of(context).padding.bottom;
-
 
     // WillPopScope provides the onWillPop function, which overrides the action when the Android
     // back button is pressed

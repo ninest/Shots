@@ -64,19 +64,11 @@ class Button extends StatelessWidget {
     );
   }
 
-  child(context) {
-    // text
-    Widget textChild = Text(text,
+  child(context) => Text(
+        text,
         style: outline
             ? TextStyles.button.c(color) //
-            : TextStyles.button);
-
-    if (width != null) {
-      // if width is specified, make it an align element so the child is centered
-      return Align(alignment: Alignment.center, child: textChild);
-    } else {
-      // if no width specified, no need for align
-      return textChild;
-    }
-  }
+            : TextStyles.button,
+        textAlign: TextAlign.center,
+      );
 }

@@ -17,4 +17,5 @@ extension T on TextStyle {
 
   // size
   TextStyle s(double value) => copyWith(fontSize: value);
+
 }

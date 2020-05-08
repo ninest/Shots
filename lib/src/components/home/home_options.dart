@@ -13,40 +13,56 @@ class HomeOptions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        // start button (takes to pack selesction first)
-        Button(
-          text: Strings.startButton,
-          color: AppColors.accent,
-          width: 210.0,
-          onTap: () => ExtendedNavigator.of(context).pushNamed(Routes.packsRoute),
-        ),
+    return Padding(
+      padding: EdgeInsets.all(Values.mainPadding),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          // start button (takes to pack selesction first)
+          Button(
+            text: Strings.startButton,
+            color: AppColors.accent,
+            width: 210.0,
+            onTap: () => ExtendedNavigator.of(context).pushNamed(Routes.packsRoute),
+          ),
 
-        // spacing to make it look cleaner
-        Spacing(height: Values.mainPadding),
+          // spacing to make it look cleaner
+          Spacing(height: Values.mainPadding),
 
-        // Open terms page
-        Button(
-          text: Strings.termsRouteTitle,
-          outline: true,
-          color: AppColors.accent,
-          width: 210.0,
-          onTap: () => ExtendedNavigator.of(context).pushNamed(Routes.termsRoute),
-        ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Expanded(
+                child: Button(
+                  text: Strings.termsRouteTitle,
+                  outline: true,
+                  color: AppColors.accent,
+                  onTap: () => ExtendedNavigator.of(context).pushNamed(Routes.termsRoute),
+                ),
+              ),
+              Spacing(height: Values.mainPadding).horizontal(),
+              Expanded(
+                child: Button(
+                  text: Strings.settingsRouteButton,
+                  outline: true,
+                  color: AppColors.accent,
+                  onTap: () => ExtendedNavigator.of(context).pushNamed(Routes.settingsRoute),
+                ),
+              ),
+            ],
+          ),
 
-
-        // spacing to make it look cleaner
-        Spacing(height: Values.mainPadding),
-
-        Button(
-          text: Strings.settingsRouteButton,
-          outline: true,
-          color: AppColors.accent,
-          width: 210.0,
-          onTap: () => ExtendedNavigator.of(context).pushNamed(Routes.settingsRoute),
-        ),
-      ],
+          // spacing to make it look cleaner
+          Spacing(height: Values.mainPadding),
+          Button(
+            text: Strings.tutorialButton,
+            color: AppColors.accent,
+            width: 210.0,
+            outline: true,
+            onTap: () => ExtendedNavigator.of(context).pushNamed(Routes.packsRoute),
+          ),
+        ],
+      ),
     );
   }
 }

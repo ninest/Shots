@@ -4,6 +4,7 @@ class Strings {
   static String get startButton => "Start";
   static String get termsRouteButton => "Terms";
   static String get settingsRouteButton => "Settings";
+  static String get tutorialButton => "Tutorial";
 
   static String get packsRouteTitle => "Choose packs";
   static String get selectAllButton => "Select all";
