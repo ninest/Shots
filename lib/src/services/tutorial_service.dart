@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shots/src/constants/tutorial_cards.dart';
 import 'package:shots/src/models/card_model.dart';
 import 'package:shots/src/providers/card_provider.dart';
 import 'package:shots/src/providers/game_provider.dart';
@@ -22,16 +23,7 @@ class TutorialService {
     final GameProvider gameProvider = Provider.of<GameProvider>(context, listen: false);
 
     // set up the tutorial cards
-    cardProvider.cards = [
-      ShotCard(
-        line1: "Welcome to the Shots tutorial",
-        line2: "Swipe this card left or right to continue",
-        color: Colors.red,
-      ),
-      ShotCard(line1: "Tutorial 2", color: Colors.blue),
-      ShotCard(line1: "Tutorial 3", color: Colors.green),
-      ShotCard(line1: "Last card! Some easter egg here!", color: Colors.orange),
-    ];
+    cardProvider.cards = tutorialCards;
     // enable the tutorial flag
     gameProvider.isTutorial = true;
 
@@ -50,7 +42,6 @@ class TutorialService {
     cardProvider.endGame();
 
     // go back home
-
 
     /*
     Useing delayed because
