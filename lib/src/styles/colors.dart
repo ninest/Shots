@@ -18,8 +18,6 @@ class AppColors {
         Color(0xff00171F),
       ];
 
-  // https://coolors.co/e5d9f2-091540-cdc1ff-a594f9-7371fc
-  // previous color scheme: https://github.com/themindstorm/Shots/blob/1e1849aeef5511976826b3c75226ae14f8d229d2/lib/app/styles/colors.dart
   static List<Color> get blues => [
         Color(0xff6969B3),
         Color(0xff091540),
@@ -44,7 +42,7 @@ class AppColors {
         Color(0xffEEA957),
       ];
 
-  static Color getColor(String name) {
+  static Color getColor() {
     List<Color> colorsList = [
       ...blues,
       ...greens,
@@ -56,6 +54,8 @@ class AppColors {
 
     return color;
 
+
+    // Old color picker
 
     /*
     Color color;

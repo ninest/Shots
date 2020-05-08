@@ -55,7 +55,7 @@ class GameRoute extends StatelessWidget {
               children: <Widget>[
                 
                 // un comment to easily swipe cards on an emulator
-                Button(text: "Next", onTap: () => cardProvider.nextCard()),
+                // Button(text: "Next", onTap: () => cardProvider.nextCard()),
 
                 if (currentCardExists) ...[
                   // placeholder shot cards

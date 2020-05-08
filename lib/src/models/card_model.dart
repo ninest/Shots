@@ -12,29 +12,28 @@ class ShotCard {
   final double rotateAngle;
   final Offset offset;
 
+
   factory ShotCard.fromJson(YamlMap map) {
-    // we need number frm 0.01 to 0.10 for angle in radian
     Random random = new Random();
+
+    // we need number frm 0.01 to 0.10 for angle in radian
     int randNo = random.nextInt(3) + 1; // generates rannd no from 1 to 10
     double rotateAngle = randNo / 100;
 
     // we also need a 50% chance to multiply the angle by -1
-    Random randC = new Random();
-    int randNoC = randC.nextInt(2); // generates rand no either 0 or 1
+    int randNoC = random.nextInt(2); // generates rand no either 0 or 1
     // if it's 0, multiple angle by -1
     if (randNoC == 0) rotateAngle = -1 * rotateAngle;
 
-    // generate color from app colors depending on second letter
-    Color cardColor = AppColors.getColor(map['line1']);
-
     // random offset
-    Random randO = new Random();
     final offset = Offset(
-      randO.nextInt(10).toDouble() - 5,
+      random.nextInt(10).toDouble() - 5,
 
       // bigger range in y because cards are taller than they are wide
-      randO.nextInt(16).toDouble() - 8,
+      random.nextInt(16).toDouble() - 8,
     );
+
+    Color cardColor = AppColors.getColor();
 
     return ShotCard(
       line1: map['line1'],
