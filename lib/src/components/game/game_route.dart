@@ -10,6 +10,7 @@ import 'package:shots/src/components/game/sliding_panel/sliding_panel.dart';
 import 'package:shots/src/models/card_model.dart';
 import 'package:shots/src/providers/card_provider.dart';
 import 'package:shots/src/providers/game_provider.dart';
+import 'package:shots/src/services/tutorial_service.dart';
 import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/styles/values.dart';
 import 'package:shots/src/constants/strings.dart';
@@ -49,10 +50,7 @@ class GameRoute extends StatelessWidget {
     print(cardsLeft);
     // if the cards left is 0 and it's a tutorial, leave!
     if (gameProvider.isTutorial && cardsLeft <= 0) {
-      ExtendedNavigator.of(context).pop();
-
-      // also, set tutorial to false
-      gameProvider.isTutorial = false;
+      TutorialService.endTutorial(context);
     }
 
     return Scaffold(

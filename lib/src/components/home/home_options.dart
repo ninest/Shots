@@ -7,6 +7,7 @@ import 'package:shots/src/models/card_model.dart';
 import 'package:shots/src/providers/card_provider.dart';
 import 'package:shots/src/providers/game_provider.dart';
 import 'package:shots/src/router/router.gr.dart';
+import 'package:shots/src/services/tutorial_service.dart';
 import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/styles/values.dart';
 import 'package:shots/src/constants/strings.dart';
@@ -64,14 +65,7 @@ class HomeOptions extends StatelessWidget {
             width: 210.0,
             outline: true,
             onTap: () {
-              Provider.of<CardProvider>(context, listen: false).cards = [
-                ShotCard(line1: "Tutorial!", color: Colors.red),
-                ShotCard(line1: "Dones this twerks", color: Colors.blue),
-                ShotCard(line1: "LMAO!221", color: Colors.green),
-              ];
-              final GameProvider gameProvider = Provider.of<GameProvider>(context, listen: false);
-              gameProvider.isTutorial = true;
-              ExtendedNavigator.of(context).pushNamed(Routes.gameRoute);
+              TutorialService.startTutorial(context);
             },
           ),
         ],
