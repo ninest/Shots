@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shots/src/components/core/buttons/button.dart';
@@ -8,6 +9,7 @@ import 'package:shots/src/components/game/sliding_panel/sections/stats.dart';
 import 'package:shots/src/components/game/sliding_panel/sliding_panel.dart';
 import 'package:shots/src/models/card_model.dart';
 import 'package:shots/src/providers/card_provider.dart';
+import 'package:shots/src/providers/game_provider.dart';
 import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/styles/values.dart';
 import 'package:shots/src/constants/strings.dart';
@@ -15,11 +17,17 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class GameRoute extends StatelessWidget {
   // const GameRoute({Key key}) : super(key: key);
+  GameRoute({this.tutorial});
+  final bool tutorial;
 
   final PanelController _panelController = PanelController();
 
   @override
   Widget build(BuildContext context) {
+    // tell game provider if this is a tutorial "game" or not
+    final GameProvider gameProvider = Provider.of<GameProvider>(context, listen: false);
+    gameProvider.isTutorial = tutorial ?? false;
+
     // including this here to change the background color
     final CardProvider cardProvider = Provider.of<CardProvider>(context, listen: true);
 
@@ -38,6 +46,13 @@ class GameRoute extends StatelessWidget {
     }
 
     int cardsLeft = cardProvider.cards.length - cardProvider.currentCardIndex;
+    print(cardsLeft);
+    // if the cards left is 0 and it's a tutorial, leave!
+    if ( cardsLeft <= 0) {
+      print("0 cards left");
+      print(gameProvider.isTutorial);
+      // ExtendedNavigator.of(context).pop();
+    }
 
     return Scaffold(
       backgroundColor: Colors.black,

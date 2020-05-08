@@ -1,7 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shots/src/components/core/buttons/button.dart';
 import 'package:shots/src/components/core/spacing.dart';
+import 'package:shots/src/models/card_model.dart';
+import 'package:shots/src/providers/card_provider.dart';
 import 'package:shots/src/router/router.gr.dart';
 import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/styles/values.dart';
@@ -59,7 +62,14 @@ class HomeOptions extends StatelessWidget {
             color: AppColors.accent,
             width: 210.0,
             outline: true,
-            onTap: () => ExtendedNavigator.of(context).pushNamed(Routes.packsRoute),
+            onTap: () {
+              Provider.of<CardProvider>(context, listen: false).cards = [
+                ShotCard(line1: "Tutorial!", color: Colors.red),
+                ShotCard(line1: "Dones this twerks", color: Colors.blue),
+                ShotCard(line1: "LMAO!221", color: Colors.green),
+              ];
+              ExtendedNavigator.of(context).pushNamed(Routes.gameRoute);
+            },
           ),
         ],
       ),

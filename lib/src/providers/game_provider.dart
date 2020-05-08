@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 class GameProvider extends ChangeNotifier {
   bool gameStarted = false;
 
+  bool isTutorial = false;
+
   startGame() {
     gameStarted = true;
     notifyListeners();

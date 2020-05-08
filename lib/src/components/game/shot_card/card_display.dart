@@ -15,7 +15,7 @@ class CardDisplay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Transform.translate(
-      offset: shotCard.offset,
+      offset: shotCard.offset ?? Offset(0, 0),
       child: Transform.rotate(
         angle: shotCard.rotateAngle ?? 0,
         child: Container(
