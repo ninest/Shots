@@ -36,9 +36,28 @@ class AppColors {
 
   static List<Color> get reds => [
         Color(0xffB3001B),
+        Color(0xffD7707F),
+      ];
+
+  static List<Color> get oranges => [
+        Color(0xffB36100),
+        Color(0xffEEA957),
       ];
 
   static Color getColor(String name) {
+    List<Color> colorsList = [
+      ...blues,
+      ...greens,
+      ...reds,
+      ...oranges,
+    ];
+
+    Color color = (colorsList..shuffle()).first;
+
+    return color;
+
+
+    /*
     Color color;
     Random random = new Random();
     int randNo = random.nextInt(2); // generate either 0 or 1
@@ -116,5 +135,7 @@ class AppColors {
         }
     }
     return color;
+
+    */
   }
 }
