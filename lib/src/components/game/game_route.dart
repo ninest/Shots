@@ -76,15 +76,20 @@ class GameRoute extends StatelessWidget {
                 // un comment to easily swipe cards on an emulator
                 // Button(text: "Next", onTap: () => cardProvider.nextCard()),
 
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Padding(
-                    padding: EdgeInsets.all(Values.mainPadding),
-                    child: AppCloseButton(
-                      overrideOnTap: () => _endGame(context),
+                // show x button
+                // don't show it when the end of deck menu is showing 
+                // because there are two buttons (End game and X) that do the 
+                // same thing
+                if (currentCardExists)
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Padding(
+                      padding: EdgeInsets.all(Values.mainPadding),
+                      child: AppCloseButton(
+                        overrideOnTap: () => _endGame(context),
+                      ),
                     ),
                   ),
-                ),
 
                 if (currentCardExists) ...[
                   // placeholder shot cards
@@ -96,9 +101,8 @@ class GameRoute extends StatelessWidget {
                 ],
 
                 // show end of deck menu
-                // only if it's not the tutorial
                 if (!currentCardExists)
-                  if (!gameProvider.isTutorial) _endOfDeck(),
+                  _endOfDeck(),
               ],
             ),
           ),
@@ -107,7 +111,7 @@ class GameRoute extends StatelessWidget {
     );
   }
 
-  // TODO: move everyting relating to sliding panel to separate file 
+  // TODO: move everyting relating to sliding panel to separate file
   // (sliding_panel.dart)
 
   // overriden back button
