@@ -9,6 +9,7 @@ class GameProvider extends ChangeNotifier {
 
   startGame() {
     gameStarted = true;
+    isTutorial = false;
     notifyListeners();
   }
   endGame() {

@@ -5,6 +5,7 @@ import 'package:shots/src/components/core/buttons/button.dart';
 import 'package:shots/src/components/core/spacing.dart';
 import 'package:shots/src/models/card_model.dart';
 import 'package:shots/src/providers/card_provider.dart';
+import 'package:shots/src/providers/game_provider.dart';
 import 'package:shots/src/router/router.gr.dart';
 import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/styles/values.dart';
@@ -68,6 +69,8 @@ class HomeOptions extends StatelessWidget {
                 ShotCard(line1: "Dones this twerks", color: Colors.blue),
                 ShotCard(line1: "LMAO!221", color: Colors.green),
               ];
+              final GameProvider gameProvider = Provider.of<GameProvider>(context, listen: false);
+              gameProvider.isTutorial = true;
               ExtendedNavigator.of(context).pushNamed(Routes.gameRoute);
             },
           ),
