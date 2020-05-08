@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shots/src/components/core/buttons/button.dart';
+import 'package:shots/src/components/core/buttons/close_button.dart';
 import 'package:shots/src/components/game/shot_card/next_card.dart';
 import 'package:shots/src/components/game/shot_card/parent.dart';
 import 'package:shots/src/components/game/sliding_panel/sections/options.dart';
@@ -10,6 +11,7 @@ import 'package:shots/src/components/game/sliding_panel/sliding_panel.dart';
 import 'package:shots/src/models/card_model.dart';
 import 'package:shots/src/providers/card_provider.dart';
 import 'package:shots/src/providers/game_provider.dart';
+import 'package:shots/src/services/game_service.dart';
 import 'package:shots/src/services/tutorial_service.dart';
 import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/styles/values.dart';
@@ -74,6 +76,16 @@ class GameRoute extends StatelessWidget {
                 // un comment to easily swipe cards on an emulator
                 // Button(text: "Next", onTap: () => cardProvider.nextCard()),
 
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Padding(
+                    padding: EdgeInsets.all(Values.mainPadding),
+                    child: AppCloseButton(
+                      overrideOnTap: () => _endGame(context),
+                    ),
+                  ),
+                ),
+
                 if (currentCardExists) ...[
                   // placeholder shot cards
                   for (var i = cardProvider.nextCardsNo; i >= 1; i--) _nextCard(i),
@@ -95,8 +107,11 @@ class GameRoute extends StatelessWidget {
     );
   }
 
+  // TODO: move everyting relating to sliding panel to separate file 
+  // (sliding_panel.dart)
+
   // overriden back button
-  _exit(PanelController controller) async {
+  _onBackGesture(PanelController controller) async {
     if (controller.isPanelOpen)
       await controller.close();
     else
@@ -127,7 +142,7 @@ class GameRoute extends StatelessWidget {
     // WillPopScope provides the onWillPop function, which overrides the action when the Android
     // back button is pressed
     return WillPopScope(
-      onWillPop: () => _exit(_panelController),
+      onWillPop: () => _onBackGesture(_panelController),
       child: SlidingUpPanel(
         controller: _panelController,
         minHeight: showSlidingPanel ? (safeAreaPaddingBottom + 65.0) : 0.0,
@@ -141,5 +156,13 @@ class GameRoute extends StatelessWidget {
         body: body,
       ),
     );
+  }
+
+  void _endGame(BuildContext context) {
+    final GameProvider gameProvider = Provider.of<GameProvider>(context, listen: false);
+    if (gameProvider.isTutorial)
+      TutorialService.endTutorial(context);
+    else
+      GameService.end(context);
   }
 }

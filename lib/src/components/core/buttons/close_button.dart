@@ -9,7 +9,8 @@ import 'package:shots/src/styles/values.dart';
 class AppCloseButton extends StatelessWidget {
   final IconData iconData;
   final Color color;
-  AppCloseButton({this.iconData, this.color});
+  final Function overrideOnTap;
+  AppCloseButton({this.iconData, this.color, this.overrideOnTap});
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +31,11 @@ class AppCloseButton extends StatelessWidget {
       ),
       onTap: () {
         // go to previous page
-        ExtendedNavigator.ofRouter<Router>().pop();
-        
+        if (overrideOnTap == null)
+          ExtendedNavigator.ofRouter<Router>().pop();
+        else
+          overrideOnTap();
+
         // play pop button sound
         SoundService.pop(secondary: true);
       },
