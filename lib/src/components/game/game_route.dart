@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shots/src/components/core/buttons/button.dart';
 import 'package:shots/src/components/game/shot_card/next_card.dart';
 import 'package:shots/src/components/game/shot_card/parent.dart';
 import 'package:shots/src/components/game/sliding_panel/sections/options.dart';
@@ -52,6 +53,10 @@ class GameRoute extends StatelessWidget {
           child: SafeArea(
             child: Stack(
               children: <Widget>[
+                
+                // un comment to easily swipe cards on an emulator
+                Button(text: "Next", onTap: () => cardProvider.nextCard()),
+
                 if (currentCardExists) ...[
                   // placeholder shot cards
                   for (var i = cardProvider.nextCardsNo; i >= 1; i--) _nextCard(i),
