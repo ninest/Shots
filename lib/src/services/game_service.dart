@@ -9,6 +9,7 @@ import 'package:shots/src/providers/stopwatch_provider.dart';
 import 'package:shots/src/router/router.gr.dart';
 
 class GameService {
+  /// Execute all functions required for the game to start
   static start(BuildContext context) {
     /*
     Few things to do:
@@ -40,6 +41,7 @@ class GameService {
     ExtendedNavigator.of(context).pushNamed(Routes.gameRoute);
   }
 
+  /// Execute all functions required for the game to end
   static end(BuildContext context) {
     /*
     1. Empty the cards list
