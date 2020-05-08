@@ -14,9 +14,9 @@
 <a href='https://play.google.com/store/apps/details?id=com.themindstorm.shots'><img height="55" alt='Get it on Google Play' src='./readme-images/badges/google_play.png'/></a>
 
 ## Gallery
-![app images](./readme-images/gallery/1.png)
-![app images](./readme-images/gallery/2.png)
-![app images](./readme-images/gallery/3.png)
+![app images](./readme-images/gallery/n1.png)
+![app images](./readme-images/gallery/n2.png)
+![app images](./readme-images/gallery/n3.png)
 
 ## 🚀 Features
 
