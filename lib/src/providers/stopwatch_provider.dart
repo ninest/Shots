@@ -19,7 +19,7 @@ class StopwatchProvider extends ChangeNotifier {
     }
   }
 
-  stop () {
+  stop() {
     _timer.cancel();
     _stopwatchRunning = false;
   }

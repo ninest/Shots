@@ -48,8 +48,9 @@ class GameRoute extends StatelessWidget {
 
     int cardsLeft = cardProvider.cards.length - cardProvider.currentCardIndex;
     print(cardsLeft);
+    print(!gameProvider.isTutorial);
     // if the cards left is 0 and it's a tutorial, leave!
-    if (gameProvider.isTutorial && cardsLeft <= 0) {
+    if (gameProvider.isTutorial && cardsLeft <= 1) {
       TutorialService.endTutorial(context);
     }
 
@@ -66,7 +67,7 @@ class GameRoute extends StatelessWidget {
               : currentCard.color.withOpacity(Values.containerOpacity),
 
           // nice non-distracing color changing effect
-          duration: Duration(seconds: 6),
+          duration: Duration(seconds: gameProvider.isTutorial ? 0 : 6),
           child: SafeArea(
             child: Stack(
               children: <Widget>[
@@ -80,8 +81,12 @@ class GameRoute extends StatelessWidget {
                   ShotCardParent(
                     shotCard: currentCard,
                   )
-                ] else
-                  _endOfDeck(),
+                ],
+
+                // show end of deck menu
+                // only if it's not the tutorial
+                if (!currentCardExists)
+                  if (!gameProvider.isTutorial) _endOfDeck(),
               ],
             ),
           ),

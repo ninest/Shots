@@ -16,7 +16,6 @@ class GameService {
     1. Load the cards (they are already in the packs)
     2. Set gamestarted to true in GameProvider
     3. Start the stopwatch
-    4. Navigate to the game route
     */
 
     // Loading the cards
@@ -48,7 +47,6 @@ class GameService {
     2. Empty the packs list
     3. Stop the stopwatch
     4. Set gamestarted to false in GameProvider
-    5. Navigate to the home route
     */
 
     // empty the cards list
@@ -69,8 +67,9 @@ class GameService {
 
     // go to game routes to home page
     // popping first time to go back to pack selection screen
-    ExtendedNavigator.of(context).pop();
     // second time to go to main screen
-    ExtendedNavigator.of(context).pop();
+    ExtendedNavigator.ofRouter<Router>().popUntil(
+      (ModalRoute.withName(Routes.homeRoute)),
+    );
   }
 }

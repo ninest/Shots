@@ -27,7 +27,6 @@ class StatsSection extends StatelessWidget {
             children: <Widget>[
               Text("${cardProvider.cardsGoneThrough} cards"),
 
-              // Text('00:00'),
               StopwatchDisplay(),
             ],
           ),

@@ -8,6 +8,7 @@ import 'package:shots/src/components/terms/terms_route.dart';
 @MaterialAutoRouter()
 class $Router {
   @initial
+  @CupertinoRoute(fullscreenDialog: true)
   HomeRoute homeRoute;
 
   PacksRoute packsRoute;
