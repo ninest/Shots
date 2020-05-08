@@ -67,7 +67,7 @@ class GameRoute extends StatelessWidget {
               : currentCard.color.withOpacity(Values.containerOpacity),
 
           // nice non-distracing color changing effect
-          duration: Duration(seconds: gameProvider.isTutorial ? 0 : 6),
+          duration: Duration(seconds: 6),
           child: SafeArea(
             child: Stack(
               children: <Widget>[

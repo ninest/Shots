@@ -12,9 +12,13 @@ final List<ShotCard> tutorialCards = [
     line2: "We recommend trying out the 'Basic' pack first",
     color: Colors.blue,
   ),
-  ShotCard(line1: "Once you start, you can choose how to play ...", color: Colors.green),
   ShotCard(
-    line1: "For example, each player can read out 5 cards at a time ...",
+    line1: "Once you start, you can choose how to play ...",
+    color: Colors.green,
+  ),
+  ShotCard(
+    line1:
+        "For example, each player can read out 5 cards at a time then pass the device to the next player",
     line2: "... or you can make your own rules!",
     color: Colors.purple,
   ),
