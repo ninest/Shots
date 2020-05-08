@@ -54,12 +54,18 @@ class CardDisplay extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               // line1 is there for all cards
-              Text(shotCard.line1, style: TextStyles.cardLine1),
+              Text(
+                shotCard.line1,
+                style: TextStyles.cardLine1,
+                textScaleFactor: 1.0,
+              ),
               // line2 is optional
               if (shotCard.line2 != null) ...[
                 Flexible(flex: 1, child: Container()),
                 MarkdownBody(
-                    data: shotCard.line2, styleSheet: MarkdownStyleSheet(p: TextStyles.cardLine2))
+                  data: shotCard.line2,
+                  styleSheet: MarkdownStyleSheet(p: TextStyles.cardLine2),
+                )
               ],
             ],
           ),
