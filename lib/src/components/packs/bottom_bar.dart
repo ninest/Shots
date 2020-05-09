@@ -48,16 +48,12 @@ class BottomBar extends StatelessWidget {
             Button(
               text: Strings.doneButton,
               color: AppColors.accent,
-              onTap: () => _donePressed(context),
+              onTap: () => GameService.start(context),
               disabled: disableButton,
             ),
           ],
         ),
       ),
     );
-  }
-
-  _donePressed(BuildContext context) {
-    GameService.start(context);
   }
 }

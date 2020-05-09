@@ -219,7 +219,7 @@ The 'current card' that you see (on top of the others) never changes. Only it's 
 
 ## License
 
-[GPL-3.0](https://github.com/themindstorm/Shots/blob/master/LICENSE)
+[GPL-3.0](https://github.com/ninest/Shots/blob/master/LICENSE)
 
 ## Legal attribution
 
