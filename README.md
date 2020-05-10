@@ -4,7 +4,7 @@
 
 ![Made with Flutter](https://img.shields.io/badge/Made%20With-Flutter-blue?style=flat-square)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-[![BMAC](https://img.shields.io/badge/Donate-Buy%20Me%20A%20Coffee-orange.svg?style=flat-square)](https://www.buymeacoffee.com/themindstorm) 
+[![BMAC](https://img.shields.io/badge/Donate-Buy%20Me%20A%20Coffee-orange.svg?style=flat-square)](https://www.buymeacoffee.com/ninest) 
 [![HitCount](http://hits.dwyl.com/themindstorm/Shots.svg)](http://hits.dwyl.com/themindstorm/Shots) 
 ![GitHub](https://img.shields.io/github/license/themindstorm/Shots?style=flat-square)
 
