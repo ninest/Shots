@@ -13,6 +13,11 @@
 <a href='https://apps.apple.com/my/app/shots-a-social-drinking-game/id1511015571'><img height="55" alt='Get it on app store' src='./readme-images/badges/appstore.png'/></a>
 <a href='https://play.google.com/store/apps/details?id=com.themindstorm.shots'><img height="55" alt='Get it on Google Play' src='./readme-images/badges/google_play.png'/></a>
 
+## Demo
+
+<img alt="Demo" src="./readme-images/videos/demo.gif" height="500">
+
+
 ## Gallery
 ![app images](./readme-images/gallery/n1.png)
 ![app images](./readme-images/gallery/n2.png)
