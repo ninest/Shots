@@ -20,17 +20,14 @@ import 'package:shots/src/constants/strings.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class GameRoute extends StatelessWidget {
-  // const GameRoute({Key key}) : super(key: key);
-  // GameRoute({this.tutorial});
-  // final bool tutorial;
 
+  // controller required to programmatically open sliding panel
   final PanelController _panelController = PanelController();
 
   @override
   Widget build(BuildContext context) {
     // tell game provider if this is a tutorial "game" or not
     final GameProvider gameProvider = Provider.of<GameProvider>(context, listen: false);
-    // gameProvider.isTutorial = tutorial ?? false;
 
     // including this here to change the background color
     final CardProvider cardProvider = Provider.of<CardProvider>(context, listen: true);
@@ -59,11 +56,15 @@ class GameRoute extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.black,
+
+      // see [_slidingUpPanel] to see how the sliding up panel is coming about
       body: _slidingUpPanel(
         context,
         // if there no cards left, hide the sliding panel because all of its contents
         // (options and stats) are already being shown by _endFfDeck()
         showSlidingPanel: currentCardExists,
+
+        // actual page body
         body: AnimatedContainer(
           color: currentCard == null
               ? Colors.black
@@ -78,8 +79,8 @@ class GameRoute extends StatelessWidget {
                 // Button(text: "Next", onTap: () => cardProvider.nextCard()),
 
                 // show x button
-                // don't show it when the end of deck menu is showing 
-                // because there are two buttons (End game and X) that do the 
+                // don't show it when the end of deck menu is showing
+                // because there are two buttons (End game and X) that do the
                 // same thing
                 if (currentCardExists)
                   Align(
@@ -163,5 +164,4 @@ class GameRoute extends StatelessWidget {
       ),
     );
   }
-
 }
