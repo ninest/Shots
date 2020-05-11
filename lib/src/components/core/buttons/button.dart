@@ -74,7 +74,7 @@ class Button extends StatelessWidget {
 
     if (outline) ts = TextStyles.button.c(color);
 
-    if (focus) ts = TextStyles.button.s(1.5 * Values.em);
+    if (focus) ts = TextStyles.button.s(1.7 * Values.em);
 
     return Text(
       text,
