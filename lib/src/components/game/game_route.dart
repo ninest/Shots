@@ -20,7 +20,6 @@ import 'package:shots/src/constants/strings.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class GameRoute extends StatelessWidget {
-
   // controller required to programmatically open sliding panel
   final PanelController _panelController = PanelController();
 
@@ -47,8 +46,7 @@ class GameRoute extends StatelessWidget {
     }
 
     int cardsLeft = cardProvider.cards.length - cardProvider.currentCardIndex;
-    print(cardsLeft);
-    print(!gameProvider.isTutorial);
+
     // if the cards left is 0 and it's a tutorial, leave!
     if (gameProvider.isTutorial && cardsLeft <= 1) {
       TutorialService.endTutorial(context);
@@ -58,11 +56,11 @@ class GameRoute extends StatelessWidget {
       backgroundColor: Colors.black,
 
       // see [_slidingUpPanel] to see how the sliding up panel is coming about
-      body: _slidingUpPanel(
-        context,
+      body: SlidingPanel(
         // if there no cards left, hide the sliding panel because all of its contents
         // (options and stats) are already being shown by _endFfDeck()
         showSlidingPanel: currentCardExists,
+        panelController: _panelController,
 
         // actual page body
         body: AnimatedContainer(
@@ -117,14 +115,6 @@ class GameRoute extends StatelessWidget {
   // TODO: move everyting relating to sliding panel to separate file
   // (sliding_panel.dart)
 
-  // overriden back button
-  _onBackGesture(PanelController controller) async {
-    if (controller.isPanelOpen)
-      await controller.close();
-    else
-      await controller.open();
-  }
-
   Widget _nextCard(int index) => Align(
         alignment: Alignment.center,
         child: NextShotCard(index: index),
@@ -140,28 +130,10 @@ class GameRoute extends StatelessWidget {
         ),
       );
 
-  Widget _slidingUpPanel(BuildContext context,
-      {bool showSlidingPanel = false, @required Widget body}) {
-    // if it's the iPhoneX or newer phones, we need the minHeight to be higher because
-    // the rounded corners make it harder to drag up
-    final double safeAreaPaddingBottom = MediaQuery.of(context).padding.bottom;
+  // Widget _slidingUpPanel(BuildContext context,
+  //     {bool showSlidingPanel = false, @required Widget body}) {
+  // if it's the iPhoneX or newer phones, we need the minHeight to be higher because
+  // the rounded corners make it harder to drag up
 
-    // WillPopScope provides the onWillPop function, which overrides the action when the Android
-    // back button is pressed
-    return WillPopScope(
-      onWillPop: () => _onBackGesture(_panelController),
-      child: SlidingUpPanel(
-        controller: _panelController,
-        minHeight: showSlidingPanel ? (safeAreaPaddingBottom + 65.0) : 0.0,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(Values.borderRadius),
-          topRight: Radius.circular(Values.borderRadius),
-        ),
-        border: Border.all(width: 1, color: AppColors.pageBorderColor),
-        color: AppColors.pageColor,
-        panel: SlidingPanel(),
-        body: body,
-      ),
-    );
-  }
+  // }
 }
