@@ -22,7 +22,8 @@ showEndDialog(BuildContext context) {
         child: Container(
           decoration: BoxDecoration(
             color: AppColors.pageColor,
-            borderRadius: BorderRadius.circular(Values.borderRadius),
+            // a bigger border radius looks better
+            borderRadius: BorderRadius.circular(Values.borderRadius * 2),
             border: Border.all(
               width: 1,
               color: AppColors.pageBorderColor,
