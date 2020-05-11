@@ -12,9 +12,7 @@ import 'package:shots/src/components/game/sliding_panel/sliding_panel.dart';
 import 'package:shots/src/models/card_model.dart';
 import 'package:shots/src/providers/card_provider.dart';
 import 'package:shots/src/providers/game_provider.dart';
-import 'package:shots/src/services/game_service.dart';
 import 'package:shots/src/services/tutorial_service.dart';
-import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/styles/values.dart';
 import 'package:shots/src/constants/strings.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
@@ -112,9 +110,6 @@ class GameRoute extends StatelessWidget {
     );
   }
 
-  // TODO: move everyting relating to sliding panel to separate file
-  // (sliding_panel.dart)
-
   Widget _nextCard(int index) => Align(
         alignment: Alignment.center,
         child: NextShotCard(index: index),
@@ -129,11 +124,4 @@ class GameRoute extends StatelessWidget {
           ],
         ),
       );
-
-  // Widget _slidingUpPanel(BuildContext context,
-  //     {bool showSlidingPanel = false, @required Widget body}) {
-  // if it's the iPhoneX or newer phones, we need the minHeight to be higher because
-  // the rounded corners make it harder to drag up
-
-  // }
 }

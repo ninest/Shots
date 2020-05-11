@@ -20,6 +20,7 @@ class SlidingPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // to provider more space for phones with rounded cornered screens (iPhoneX)
     final double safeAreaPaddingBottom = MediaQuery.of(context).padding.bottom;
 
     // WillPopScope provides the onWillPop function, which overrides the action when the Android
