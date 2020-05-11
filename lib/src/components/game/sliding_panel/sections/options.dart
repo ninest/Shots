@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:shots/src/components/core/buttons/button.dart';
 import 'package:shots/src/components/core/section.dart';
 import 'package:shots/src/components/core/spacing.dart';
+import 'package:shots/src/components/game/end_alert.dart';
 import 'package:shots/src/providers/card_provider.dart';
 import 'package:shots/src/providers/game_provider.dart';
 import 'package:shots/src/services/game_service.dart';
@@ -39,13 +40,9 @@ class OptionsSection extends StatelessWidget {
           color: AppColors.danger,
           width: double.infinity,
           disabled: isTutorial ? true : false,
-          onTap: () => _endGame(context),
+          onTap: () => showEndDialog(context),
         )
       ],
     );
-  }
-
-  _endGame(BuildContext context) {
-    GameService.end(context);
   }
 }

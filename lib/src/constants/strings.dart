@@ -15,6 +15,11 @@ class Strings {
   static String get optionsSectionTitle => "Options";
   static String get endOfDeck => "End of deck";
 
+
+  // end game dialog strings
+  static String get endDialogTitle => "Sure you wanna end?";
+
+
   static String get settingsRouteTitle => "Settings";
 
   static String get termsRouteTitle => "Terms";

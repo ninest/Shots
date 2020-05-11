@@ -45,12 +45,14 @@ class PacksRoute extends StatelessWidget {
     );
   }
 
+  /// Loading all packs so that they can be displayed.
+  /// When all the packs are being loaded, all cards are also loaded
   Future<List<Pack>> loadPacks(BuildContext context) async {
     // Loading all packs from metadata.yml
     List<Pack> packs = await PackService.loadPacks();
 
     // remove nsfw packs if nsfw setting is off
-    final SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context, listen: false);
+    final settingsProvider = Provider.of<SettingsProvider>(context, listen: false);
     if (!settingsProvider.nsfw) {
       // set list to only have cards where nsfw is false
       packs = packs.where((eachPack) => eachPack.nsfw == false).toList();
@@ -58,7 +60,7 @@ class PacksRoute extends StatelessWidget {
 
     // all these packs go into the unselected packs yaml
     // they will be manually selected by the user
-    final PacksProvider packsProvider = Provider.of<PacksProvider>(context, listen: false);
+    final packsProvider = Provider.of<PacksProvider>(context, listen: false);
     packsProvider.loadPacks(packs);
 
     // un comment below to test the loading indicator widget
