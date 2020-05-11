@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shots/src/components/core/buttons/button.dart';
-import 'package:shots/src/components/core/scrollable_template.dart';
 import 'package:shots/src/components/core/spacing.dart';
 import 'package:shots/src/constants/strings.dart';
 import 'package:shots/src/providers/game_provider.dart';
@@ -17,7 +16,6 @@ showEndDialog(BuildContext context) {
     context: context,
     builder: (BuildContext context) {
       return Dialog(
-        // contentPadding: EdgeInsets.all(0),
         backgroundColor: Colors.transparent,
         child: Container(
           decoration: BoxDecoration(
@@ -44,6 +42,7 @@ showEndDialog(BuildContext context) {
               // spacing to make it look cleaner
               Spacing(height: Values.mainPadding),
 
+              // options (continue game and end game)
               Button(
                 text: "Continue playing",
                 color: AppColors.accent,
@@ -55,7 +54,7 @@ showEndDialog(BuildContext context) {
 
               Button(
                 text: "End game",
-                outline: true,
+                // outline: true,
                 color: AppColors.danger,
                 onTap: () => _endGame(context),
               ),
