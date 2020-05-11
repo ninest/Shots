@@ -6,7 +6,6 @@ import 'package:shots/src/components/core/spacing.dart';
 import 'package:shots/src/components/game/end_alert.dart';
 import 'package:shots/src/providers/card_provider.dart';
 import 'package:shots/src/providers/game_provider.dart';
-import 'package:shots/src/services/game_service.dart';
 import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/styles/values.dart';
 import 'package:shots/src/constants/strings.dart';

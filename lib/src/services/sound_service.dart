@@ -1,10 +1,6 @@
 import 'dart:math';
 
-import 'package:audioplayers/audio_cache.dart';
 import 'package:shots/src/utils/audio.dart';
-
-// import 'package:audioplayer/audio_cache.dart';
-// import 'package:audioplayer/audioplayer.dart';
 
 class SoundService {
   // no of primary and secondary sounds available

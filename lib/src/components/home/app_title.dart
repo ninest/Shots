@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shots/src/components/core/spacing.dart';
 import 'package:shots/src/styles/text_styles.dart';
-import 'package:shots/src/styles/values.dart';
 import 'package:shots/src/constants/strings.dart';
 
 class AppTitle extends StatelessWidget {
@@ -10,6 +8,8 @@ class AppTitle extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
+
+        // un comment to show logo
         // Image.asset(
         //   'icons/android.png',
         //   scale: 7.5,

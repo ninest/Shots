@@ -1,7 +1,5 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shots/src/components/core/buttons/button.dart';
 import 'package:shots/src/components/core/buttons/close_button.dart';
 import 'package:shots/src/components/game/end_alert.dart';
 import 'package:shots/src/components/game/shot_card/next_card.dart';

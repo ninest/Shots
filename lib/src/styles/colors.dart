@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 class AppColors {
@@ -53,7 +51,6 @@ class AppColors {
     Color color = (colorsList..shuffle()).first;
 
     return color;
-
 
     // Old color picker
 

@@ -30,7 +30,6 @@ class TextStyles {
         ),
       );
 
-  // TODO have all text styles build off of body1 using extension methods?
 
   // pack name (only in choice.dart)
   static TextStyle get packName => body1 //
