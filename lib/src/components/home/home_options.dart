@@ -29,6 +29,7 @@ class HomeOptions extends StatelessWidget {
             text: Strings.startButton,
             color: AppColors.accent,
             width: 200.0,
+            focus: true,
             onTap: () => ExtendedNavigator.of(context).pushNamed(Routes.packsRoute),
           ),
 

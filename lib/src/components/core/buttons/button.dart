@@ -12,6 +12,7 @@ class Button extends StatelessWidget {
     this.width,
     this.outline = false,
     this.disabled = false,
+    this.focus = false,
   });
 
   final String text;
@@ -20,6 +21,9 @@ class Button extends StatelessWidget {
   final double width;
   final bool outline;
   final bool disabled;
+
+  /// Give the button more attension
+  final bool focus;
 
   @override
   Widget build(BuildContext context) {
@@ -64,11 +68,18 @@ class Button extends StatelessWidget {
     );
   }
 
-  child(context) => Text(
-        text,
-        style: outline
-            ? TextStyles.button.c(color) //
-            : TextStyles.button,
-        textAlign: TextAlign.center,
-      );
+  child(context) {
+    TextStyle ts;
+    ts = TextStyles.button;
+
+    if (outline) ts = TextStyles.button.c(color);
+
+    if (focus) ts = TextStyles.button.s(1.5 * Values.em);
+
+    return Text(
+      text,
+      style: ts,
+      textAlign: TextAlign.center,
+    );
+  }
 }
