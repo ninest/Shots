@@ -3,6 +3,7 @@ import 'package:shots/src/components/core/spacing.dart';
 import 'package:shots/src/components/home/app_title.dart';
 import 'package:shots/src/components/home/home_options.dart';
 import 'package:shots/src/styles/colors.dart';
+import 'package:shots/src/styles/values.dart';
 
 class HomeRoute extends StatelessWidget {
   const HomeRoute({Key key}) : super(key: key);
@@ -14,7 +15,7 @@ class HomeRoute extends StatelessWidget {
 
     List<Widget> children = [
       // extra space above so it doesn't look too weird
-      Spacing(height: heightUnit),
+      Spacing(height: heightUnit/2),
 
       AppTitle(),
 
@@ -23,15 +24,30 @@ class HomeRoute extends StatelessWidget {
       HomeOptions(),
 
       // more spacing so it doesn't touch the bottom of the screen
-      Spacing(height: heightUnit),
+      // Spacing(height: heightUnit),
     ];
 
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Container(
+        // margin: EdgeInsets.symmetric(
+        //   horizontal: Values.mainPadding,
+        //   vertical: Values.mainPadding * 2,
+        // ),
+        padding: EdgeInsets.all(Values.mainPadding),
         decoration: BoxDecoration(
-          gradient: _getLinearGradient(),
+          // gradient: _getLinearGradient(),
+          color: AppColors.blacks[3],
+          borderRadius: BorderRadius.circular(Values.borderRadius * 2),
+          border: Border.all(
+            width: Values.mainPadding / 2,
+            color: Colors.transparent.withOpacity(Values.containerOpacity),
+          ),
         ),
-        child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: children),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: children,
+        ),
       ),
     );
   }
@@ -39,7 +55,11 @@ class HomeRoute extends StatelessWidget {
   LinearGradient _getLinearGradient() {
     // used for animating background
     List<Alignment> _top = [Alignment.topLeft, Alignment.topCenter, Alignment.topRight];
-    List<Alignment> _bottom = [Alignment.bottomLeft, Alignment.bottomCenter, Alignment.bottomRight];
+    List<Alignment> _bottom = [
+      Alignment.bottomLeft,
+      Alignment.bottomCenter,
+      Alignment.bottomRight
+    ];
     List<Color> _colors = [...AppColors.blacks];
 
     // get random

@@ -32,7 +32,7 @@ class CardDisplay extends StatelessWidget {
             borderRadius: BorderRadius.circular(Values.borderRadius * 2),
             border: Border.all(
               width: Values.mainPadding / 2.5,
-              color: Colors.transparent.withOpacity(0.3),
+              color: Colors.transparent.withOpacity(Values.containerOpacity),
               // color: Colors.black,
             ),
             boxShadow: [

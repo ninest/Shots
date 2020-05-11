@@ -22,51 +22,44 @@ class HomeOptions extends StatelessWidget {
       padding: EdgeInsets.all(Values.mainPadding),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
+        // crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           // start button (takes to pack selesction first)
           Button(
             text: Strings.startButton,
             color: AppColors.accent,
-            width: 210.0,
+            width: 200.0,
             onTap: () => ExtendedNavigator.of(context).pushNamed(Routes.packsRoute),
           ),
 
           // spacing to make it look cleaner
           Spacing(height: Values.mainPadding),
 
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Expanded(
-                child: Button(
-                  text: Strings.termsRouteTitle,
-                  outline: true,
-                  color: AppColors.accent,
-                  onTap: () => ExtendedNavigator.of(context).pushNamed(Routes.termsRoute),
-                ),
-              ),
-              Spacing(height: Values.mainPadding).horizontal(),
-              Expanded(
-                child: Button(
-                  text: Strings.settingsRouteButton,
-                  outline: true,
-                  color: AppColors.accent,
-                  onTap: () => ExtendedNavigator.of(context).pushNamed(Routes.settingsRoute),
-                ),
-              ),
-            ],
+          Button(
+            text: Strings.termsRouteTitle,
+            // outline: true,
+            color: AppColors.greens[0],
+            onTap: () => ExtendedNavigator.of(context).pushNamed(Routes.termsRoute),
           ),
 
           // spacing to make it look cleaner
           Spacing(height: Values.mainPadding),
+
+          Button(
+            text: Strings.settingsRouteButton,
+            // outline: true,
+            color: AppColors.reds[0],
+            onTap: () => ExtendedNavigator.of(context).pushNamed(Routes.settingsRoute),
+          ),
+
+          // spacing to make it look cleaner
+          Spacing(height: Values.mainPadding),
+
           Button(
             text: Strings.tutorialButton,
-            color: AppColors.accent,
-            width: 210.0,
-            outline: true,
-            onTap: () {
-              TutorialService.startTutorial(context);
-            },
+            color: AppColors.oranges[0],
+            // outline: true,
+            onTap: () => TutorialService.startTutorial(context),
           ),
         ],
       ),
