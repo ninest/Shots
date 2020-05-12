@@ -23,13 +23,13 @@ class Choice extends StatelessWidget {
     return GestureDetector(
       child: AnimatedContainer(
         duration: Duration(milliseconds: Values.durationMs),
-        margin: EdgeInsets.only(bottom: Values.mainPadding),
-        padding: EdgeInsets.all(Values.mainPadding / 1.5),
+        padding: EdgeInsets.all(Values.mainPadding * .67),
         decoration: BoxDecoration(
           color: Colors.transparent.withOpacity(0.1),
           borderRadius: BorderRadius.circular(Values.borderRadius),
           border: Border.all(
-            width: selected ? 2 : 1.4,
+            // erased width change so buttons won't move on click
+            width: 2,
             color: selected ? AppColors.accent : AppColors.pageBorderColor,
           ),
         ),
@@ -37,12 +37,9 @@ class Choice extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                // flex 1 resizes it to take the remaining space because the amount of space
-                // the no of cards takes should not change
-                Flexible(
-                  flex: 1,
+                // Expand to get whole available space
+                Expanded(
                   child: Text(
                     pack.name,
                     // if NSFW, make it red
@@ -54,18 +51,13 @@ class Choice extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
-
-                // using expanded so that the cards display will always take the same width of space
-                Expanded(
-                  flex: 0,
-                  child: Text(
-                    "${pack.cards.length} cards",
-                    style: TextStyles.body1.s(0.8 * Values.em),
-                  ),
-                )
+                Text(
+                  "${pack.cards.length} cards",
+                  style: TextStyles.body1.s(0.8 * Values.em),
+                ),
               ],
             ),
-            Spacing(height: Values.mainPadding / 2),
+            SizedBox(height: Values.mainPadding / 2),
             Text(pack.description, style: TextStyles.packDescription),
           ],
         ),

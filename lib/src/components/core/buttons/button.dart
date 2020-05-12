@@ -51,7 +51,7 @@ class Button extends StatelessWidget {
               width: 4.0,
             ),
           ),
-          child: child(context),
+          child: buttonText(context),
         ),
       ),
       onTap: () {
@@ -68,7 +68,7 @@ class Button extends StatelessWidget {
     );
   }
 
-  child(context) {
+  buttonText(context) {
     TextStyle ts;
     ts = TextStyles.button;
 

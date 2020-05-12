@@ -1,27 +1,74 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:shots/src/components/core/spacing.dart';
-import 'package:shots/src/components/home/app_title.dart';
-import 'package:shots/src/components/home/home_options.dart';
 import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/styles/values.dart';
 
+import '../../constants/strings.dart';
+import '../../router/router.gr.dart';
+import '../../services/tutorial_service.dart';
+import '../core/buttons/button.dart';
+import 'package:shots/src/styles/text_styles.dart';
+import 'package:shots/src/constants/strings.dart';
+
 class HomeRoute extends StatelessWidget {
-  const HomeRoute({Key key}) : super(key: key);
+  const HomeRoute({this.showLogo = true, Key key}) : super(key: key);
+  final bool showLogo;
 
   @override
   Widget build(BuildContext context) {
-    // used for height spacing in column
-    double heightUnit = MediaQuery.of(context).size.height / 12;
+    final buttons = [
+      Button(
+        text: Strings.startButton,
+        color: AppColors.accent,
+        width: 200.0,
+        focus: true,
+        onTap: () => ExtendedNavigator.of(context).pushNamed(Routes.packsRoute),
+      ),
+      SizedBox(height: Values.buttonVerticalPadding),
+      Button(
+        text: Strings.termsRouteTitle,
+        // outline: true,
+        color: AppColors.greens[0],
+        onTap: () => ExtendedNavigator.of(context).pushNamed(Routes.termsRoute),
+      ),
+      SizedBox(height: Values.buttonVerticalPadding),
+      Button(
+        text: Strings.settingsRouteButton,
+        // outline: true,
+        color: AppColors.reds[0],
+        onTap: () =>
+            ExtendedNavigator.of(context).pushNamed(Routes.settingsRoute),
+      ),
+      SizedBox(height: Values.buttonVerticalPadding),
+      Button(
+        text: Strings.tutorialButton,
+        color: AppColors.oranges[0],
+        // outline: true,
+        onTap: () => TutorialService.startTutorial(context),
+      ),
+    ];
 
     List<Widget> children = [
-      // extra space above so it doesn't look too weird
+      SizedBox(height: Values.buttonVerticalPadding),
+      Spacer(),
+      if (showLogo)
+        Align(
+          child: Image.asset(
+            'icons/android.png',
+            scale: 7.5,
+          ),
+        ),
 
-      SizedBox(height: heightUnit / 2),
-      AppTitle(),
-      Spacer(),
-      HomeOptions(),
+      // title
+      Align(child: Text(Strings.appTitle, style: TextStyles.title)),
+      SizedBox(height: Values.buttonVerticalPadding),
+      Spacer(flex: 3),
+      ...buttons,
+      // HomeOptions(),
       // more spacing so it doesn't touch the bottom of the screen
-      Spacer(),
+      SizedBox(height: Values.buttonVerticalPadding),
+      Spacer(flex: 2),
     ];
 
     return Scaffold(
@@ -32,6 +79,7 @@ class HomeRoute extends StatelessWidget {
         //   vertical: Values.mainPadding * 2,
         // ),
         padding: EdgeInsets.all(Values.mainPadding),
+        alignment: Alignment.center,
         decoration: BoxDecoration(
           // gradient: _getLinearGradient(),
           color: AppColors.blacks[3],
@@ -41,10 +89,16 @@ class HomeRoute extends StatelessWidget {
             color: Colors.transparent.withOpacity(Values.containerOpacity),
           ),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: children,
-        ),
+        child: LayoutBuilder(
+            builder: (context, size) => size.maxHeight > 510
+                ? Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: children,
+                  )
+                : ListView.builder(
+                    itemCount: children.length,
+                    itemBuilder: (context, i) => children[i],
+                  )),
       ),
     );
   }

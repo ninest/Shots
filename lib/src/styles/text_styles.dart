@@ -14,8 +14,9 @@ class TextStyles {
       //     ? GoogleFonts.rubik(
       // textStyle:
       TextStyle(
-        fontWeight: FontWeight.w900,
+        fontFamily: 'Rubik',
         fontSize: 2 * em,
+        fontWeight: FontWeight.w900,
         letterSpacing: 0.7,
         color: Colors.white,
         //     ),
@@ -36,6 +37,7 @@ class TextStyles {
       //  GoogleFonts.rubik(
       //       textStyle:
       TextStyle(
+        fontFamily: 'Rubik',
         fontSize: em,
         fontWeight: FontWeight.w500,
         color: Colors.white70,
@@ -51,6 +53,7 @@ class TextStyles {
       // GoogleFonts.rubik(
       //       textStyle:
       TextStyle(
+        fontFamily: 'Rubik',
         fontSize: 0.8 * em,
         fontWeight: FontWeight.w400,
         color: Colors.white60,
@@ -62,9 +65,10 @@ class TextStyles {
       // GoogleFonts.rubik(
       //       textStyle:
       TextStyle(
+        fontFamily: 'Rubik',
+        fontSize: em,
         fontWeight: FontWeight.w700,
         letterSpacing: 0.8,
-        fontSize: em,
         color: Colors.white60,
         // ),
       );
@@ -74,8 +78,9 @@ class TextStyles {
       // GoogleFonts.rubik(
       //       textStyle:
       TextStyle(
-        fontWeight: FontWeight.w800,
+        fontFamily: 'Rubik',
         fontSize: 1.29 * em,
+        fontWeight: FontWeight.w800,
         color: Colors.white,
         // ),
       );
@@ -85,6 +90,7 @@ class TextStyles {
       // GoogleFonts.rubik(
       //       textStyle:
       TextStyle(
+        fontFamily: 'Rubik',
         fontSize: 1.1 * em,
         fontWeight: FontWeight.w500,
         // ),
@@ -95,6 +101,7 @@ class TextStyles {
       // GoogleFonts.rubik(
       //       textStyle:
       TextStyle(
+        fontFamily: 'Rubik',
         fontSize: 1.5 * em,
         fontWeight: FontWeight.w500,
         // ),

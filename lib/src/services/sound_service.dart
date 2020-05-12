@@ -12,15 +12,16 @@ class SoundService {
 
     // there are a different no of primary and secondary sounds, so get the
     // number accordingly
-    int randomNumber = random.nextInt(secondary ? noSecondaryPop : noPrimaryPop) + 1;
+    int randomNumber =
+        random.nextInt(secondary ? noSecondaryPop : noPrimaryPop) + 1;
 
-    String url;
+    String audio;
     if (secondary)
-      url = 'sounds/pop/secondary/s$randomNumber.mp3';
+      audio = 'sounds/pop/secondary/s$randomNumber.mp3';
     else
-      url = 'sounds/pop/primary/s$randomNumber.mp3';
+      audio = 'sounds/pop/primary/s$randomNumber.mp3';
 
-    playAudio(url);
+    playAudio(audio);
 
     // uncomment for debugging
     // print(url);
