@@ -25,7 +25,6 @@ class GameRoute extends StatelessWidget {
     // tell game provider if this is a tutorial "game" or not
     final GameProvider gameProvider =
         Provider.of<GameProvider>(context, listen: false);
-
     // including this here to change the background color
     final CardProvider cardProvider =
         Provider.of<CardProvider>(context, listen: true);

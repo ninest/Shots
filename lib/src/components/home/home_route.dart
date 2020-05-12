@@ -12,63 +12,64 @@ import 'package:shots/src/styles/values.dart';
 class HomeRoute extends StatelessWidget {
   const HomeRoute({this.showLogo = true, Key key}) : super(key: key);
   final bool showLogo;
+  List<Widget> _buildButtons(BuildContext context) => [
+        Button(
+          text: Strings.startButton,
+          color: AppColors.accent,
+          width: 200.0,
+          focus: true,
+          onTap: () =>
+              ExtendedNavigator.of(context).pushNamed(Routes.packsRoute),
+        ),
+        SizedBox(height: Values.buttonVerticalPadding),
+        Button(
+          text: Strings.termsRouteTitle,
+          // outline: true,
+          color: AppColors.greens[0],
+          onTap: () =>
+              ExtendedNavigator.of(context).pushNamed(Routes.termsRoute),
+        ),
+        SizedBox(height: Values.buttonVerticalPadding),
+        Button(
+          text: Strings.settingsRouteButton,
+          // outline: true,
+          color: AppColors.reds[0],
+          onTap: () =>
+              ExtendedNavigator.of(context).pushNamed(Routes.settingsRoute),
+        ),
+        SizedBox(height: Values.buttonVerticalPadding),
+        Button(
+          text: Strings.tutorialButton,
+          color: AppColors.oranges[0],
+          // outline: true,
+          onTap: () => TutorialService.startTutorial(context),
+        ),
+      ];
+
+  List<Widget> _buildChildren(BuildContext context, bool flexible) => [
+        SizedBox(height: Values.buttonVerticalPadding),
+        if (flexible) Spacer(),
+        if (showLogo)
+          Align(
+            child: Image.asset(
+              'icons/android.png',
+              scale: 7.5,
+            ),
+          ),
+
+        // title
+        Align(child: Text(Strings.appTitle, style: TextStyles.title)),
+        SizedBox(height: Values.buttonVerticalPadding),
+        if (flexible) Spacer(flex: 3),
+        ..._buildButtons(context),
+        // HomeOptions(),
+        // more spacing so it doesn't touch the bottom of the screen
+        SizedBox(height: Values.buttonVerticalPadding),
+        if (flexible) Spacer(flex: 2),
+      ];
 
   @override
   Widget build(BuildContext context) {
-    final buttons = [
-      Button(
-        text: Strings.startButton,
-        color: AppColors.accent,
-        width: 200.0,
-        focus: true,
-        onTap: () => ExtendedNavigator.of(context).pushNamed(Routes.packsRoute),
-      ),
-      SizedBox(height: Values.buttonVerticalPadding),
-      Button(
-        text: Strings.termsRouteTitle,
-        // outline: true,
-        color: AppColors.greens[0],
-        onTap: () => ExtendedNavigator.of(context).pushNamed(Routes.termsRoute),
-      ),
-      SizedBox(height: Values.buttonVerticalPadding),
-      Button(
-        text: Strings.settingsRouteButton,
-        // outline: true,
-        color: AppColors.reds[0],
-        onTap: () =>
-            ExtendedNavigator.of(context).pushNamed(Routes.settingsRoute),
-      ),
-      SizedBox(height: Values.buttonVerticalPadding),
-      Button(
-        text: Strings.tutorialButton,
-        color: AppColors.oranges[0],
-        // outline: true,
-        onTap: () => TutorialService.startTutorial(context),
-      ),
-    ];
-
-    List<Widget> children = [
-      SizedBox(height: Values.buttonVerticalPadding),
-      Spacer(),
-      if (showLogo)
-        Align(
-          child: Image.asset(
-            'icons/android.png',
-            scale: 7.5,
-          ),
-        ),
-
-      // title
-      Align(child: Text(Strings.appTitle, style: TextStyles.title)),
-      SizedBox(height: Values.buttonVerticalPadding),
-      Spacer(flex: 3),
-      ...buttons,
-      // HomeOptions(),
-      // more spacing so it doesn't touch the bottom of the screen
-      SizedBox(height: Values.buttonVerticalPadding),
-      Spacer(flex: 2),
-    ];
-
     return Scaffold(
       backgroundColor: Colors.black,
       body: Container(
@@ -87,16 +88,18 @@ class HomeRoute extends StatelessWidget {
             color: Colors.transparent.withOpacity(Values.containerOpacity),
           ),
         ),
-        child: LayoutBuilder(
-            builder: (context, size) => size.maxHeight > 510
-                ? Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: children,
-                  )
-                : ListView.builder(
-                    itemCount: children.length,
-                    itemBuilder: (context, i) => children[i],
-                  )),
+        child: LayoutBuilder(builder: (context, size) {
+          bool flexible = size.maxHeight > 510;
+          final children = _buildChildren(context, flexible);
+          return flexible
+              ? Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: _buildChildren(context, true),
+                )
+              : ListView.builder(
+                  itemCount: children.length,
+                  itemBuilder: (context, i) => children[i]);
+        }),
       ),
     );
   }
