@@ -62,7 +62,7 @@ If you're interested in the swipeable cards, check out my package [swipeable_car
 </details>
 
 
-## Packages used
+## 📦 Packages used
 
 <details>
 <summary>
@@ -78,8 +78,8 @@ If you're interested in the swipeable cards, check out my package [swipeable_car
 
 </details>
 
-## FAQs
-1. What is this game
+## 📝 FAQs
+1. What is this game?
 
     In short, it aims to get you closer to your friends through a series of interesting questions and challenges. It's intended to be played in a party setting (and with drinks of course!). There are different card packs to choose from (Basic, NSFW, Challenges, and Developer).
 
@@ -92,11 +92,15 @@ If you're interested in the swipeable cards, check out my package [swipeable_car
 
     Yes. Stay tuned for further information.
 
+4. I'm not an adult 😐, how do I play?
+
+    Change the rules! Instead of taking a sip, do a sit-up. Instead of taking a shot, do a push-up!
+
 ## Other information
 Project start date: April 9, 2020
 Shots gets its [own website](https://shotsapp.now.sh/): April 30, 2020
 
-## Build setup
+## 🛠 Build setup
 Your system requires the Flutter SDK. Follow the steps here to [install](https://flutter.dev/docs/get-started/install) it on your system. After Flutter is installed, clone or fork this repository.
 
 Once Flutter has been set up, run the app with
@@ -150,9 +154,13 @@ Like this project?
 - 📩 Send a pull request to add new features
 - 💌 Share this app with other developers
 - 📲 Download the mobile apps (scroll to the top for links)
+- 🂱 Use the [swipeable_card](https://github.com/ninest/swipeable_card)s package
 
 
-## Explanation
+## 😲 Explanation
+
+Check out my flutter package [swipeable_widget](https://github.com/ninest/swipeable_card) to use the swiping cards in your own app.
+
 ### How does the card swiping work?
 Firstly, the `Draggable` widget was not used. While it is great, it does not support animating the child back to the original position when it is not dragged to the drop zone.
 
