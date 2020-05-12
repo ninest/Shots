@@ -14,31 +14,35 @@ class AppCloseButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      borderRadius: BorderRadius.circular(100.0),
-      child: Container(
-        padding: EdgeInsets.all(Values.buttonVerticalPadding),
-        decoration: BoxDecoration(
-          color: Colors.red.withOpacity(0.3),
-          borderRadius: BorderRadius.circular(100.0),
+    return Container(
+      margin: EdgeInsets.only(top: Values.mainPadding),
+      alignment: Alignment.topLeft,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(100.0),
+        child: Container(
+          padding: EdgeInsets.all(Values.buttonVerticalPadding),
+          decoration: BoxDecoration(
+            color: Colors.red.withOpacity(0.3),
+            borderRadius: BorderRadius.circular(100.0),
+          ),
+          child: Icon(
+            // by default, show the cross icon unless another one is specified
+            iconData ?? FontAwesomeIcons.times,
+            color: color ?? Colors.red,
+            size: TextStyles.button.fontSize,
+          ),
         ),
-        child: Icon(
-          // by default, show the cross icon unless another one is specified
-          iconData ?? FontAwesomeIcons.times,
-          color: color ?? Colors.red,
-          size: TextStyles.button.fontSize,
-        ),
-      ),
-      onTap: () {
-        // go to previous page
-        if (overrideOnTap == null)
-          ExtendedNavigator.ofRouter<Router>().pop();
-        else
-          overrideOnTap();
+        onTap: () {
+          // go to previous page
+          if (overrideOnTap == null)
+            ExtendedNavigator.ofRouter<Router>().pop();
+          else
+            overrideOnTap();
 
-        // play pop button sound
-        SoundService.pop(secondary: true);
-      },
+          // play pop button sound
+          SoundService.pop(secondary: true);
+        },
+      ),
     );
   }
 }

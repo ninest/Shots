@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shots/src/styles/text_styles.dart';
 
+import '../../styles/values.dart';
+
 class TitleText extends StatelessWidget {
   TitleText({this.text});
   final String text;
@@ -8,6 +10,8 @@ class TitleText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      alignment: Alignment.topLeft,
+      margin: EdgeInsets.only(top: Values.mainPadding),
       child: Text(
         text,
         style: TextStyles.title,

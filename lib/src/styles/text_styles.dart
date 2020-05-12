@@ -16,16 +16,10 @@ class TextStyles {
       TextStyle(
         fontFamily: 'Rubik',
         fontSize: 2 * em,
+        // fontStyle: FontStyle.italic,
         fontWeight: FontWeight.w900,
         letterSpacing: 0.7,
         color: Colors.white,
-        //     ),
-        //   )
-        // : TextStyle(
-        //     fontWeight: FontWeight.w900,
-        //     fontSize: 2 * em,
-        //     letterSpacing: 0.7,
-        //     color: Colors.white,
       );
 
   // Main font
