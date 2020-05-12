@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import 'package:shots/src/providers/stopwatch_provider.dart';
 
 class StopwatchDisplay extends StatelessWidget {

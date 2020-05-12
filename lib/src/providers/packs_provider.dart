@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:shots/src/models/pack_model.dart';
 
 class PacksProvider extends ChangeNotifier {

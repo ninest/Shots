@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shots/src/styles/text_styles.dart';
 
-import '../../styles/values.dart';
+import 'package:shots/src/styles/text_styles.dart';
+import 'package:shots/src/styles/values.dart';
 
 class TitleText extends StatelessWidget {
   TitleText({this.text});

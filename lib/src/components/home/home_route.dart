@@ -1,14 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:shots/src/styles/colors.dart';
-import 'package:shots/src/styles/values.dart';
 
-import '../../constants/strings.dart';
-import '../../router/router.gr.dart';
-import '../../services/tutorial_service.dart';
-import '../core/buttons/button.dart';
-import 'package:shots/src/styles/text_styles.dart';
+import 'package:shots/src/components/core/buttons/button.dart';
 import 'package:shots/src/constants/strings.dart';
+import 'package:shots/src/router/router.gr.dart';
+import 'package:shots/src/services/tutorial_service.dart';
+import 'package:shots/src/styles/colors.dart';
+import 'package:shots/src/styles/text_styles.dart';
+import 'package:shots/src/styles/values.dart';
 
 class HomeRoute extends StatelessWidget {
   const HomeRoute({this.showLogo = true, Key key}) : super(key: key);

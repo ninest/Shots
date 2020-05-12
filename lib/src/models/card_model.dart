@@ -1,8 +1,7 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
+
 import 'package:shots/src/styles/colors.dart';
-import 'package:yaml/yaml.dart';
 
 // this is called shot card and not card because card and material's card will interfire
 @immutable

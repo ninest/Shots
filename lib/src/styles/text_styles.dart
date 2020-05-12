@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 // import 'package:google_fonts/google_fonts.dart';
+// import 'package:universal_platform/universal_platform.dart';
+
 import 'package:shots/src/styles/values.dart';
 import 'package:shots/src/utils/extensions.dart';
-// import 'package:universal_platform/universal_platform.dart';
 
 class TextStyles {
   /// main font size

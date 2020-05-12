@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:shots/src/styles/colors.dart';
-import 'text_styles.dart';
+import 'package:shots/src/styles/text_styles.dart';
 
 final ThemeData appTheme = _buildTheme();
 

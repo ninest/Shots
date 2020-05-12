@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+
 import 'package:shots/src/components/core/buttons/close_button.dart';
 import 'package:shots/src/components/core/title_text.dart';
 import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/styles/values.dart';
 import 'package:shots/src/utils/extensions.dart';
-
-import 'buttons/close_button.dart';
 
 class ScrollableTemplate extends StatelessWidget {
   final List<Widget> children;

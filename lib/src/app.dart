@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
+
 import 'package:shots/src/constants/hive_strings.dart';
 import 'package:shots/src/providers/settings_provider.dart';
 import 'package:shots/src/router/router.gr.dart';

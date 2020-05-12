@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import 'package:shots/src/components/core/buttons/button.dart';
 import 'package:shots/src/constants/strings.dart';
 import 'package:shots/src/providers/game_provider.dart';

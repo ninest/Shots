@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:shots/src/models/card_model.dart';
 
 class CardProvider extends ChangeNotifier {

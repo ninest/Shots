@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+
 import 'package:shots/src/constants/hive_strings.dart';
 
 class SettingsProvider extends ChangeNotifier {

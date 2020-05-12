@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import 'package:shots/src/components/game/shot_card/card_display.dart';
 import 'package:shots/src/models/card_model.dart';
 import 'package:shots/src/providers/card_provider.dart';
@@ -11,7 +12,8 @@ class NextShotCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // listen true because this must update when nextCard() is called
-    final CardProvider cardProvider = Provider.of<CardProvider>(context, listen: true);
+    final CardProvider cardProvider =
+        Provider.of<CardProvider>(context, listen: true);
     int nextCardIndex = cardProvider.currentCardIndex + index;
 
     try {

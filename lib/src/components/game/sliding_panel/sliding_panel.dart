@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:sliding_up_panel/sliding_up_panel.dart';
+
 import 'package:shots/src/components/core/scroll_indicator.dart';
 import 'package:shots/src/components/game/sliding_panel/sections/options.dart';
 import 'package:shots/src/components/game/sliding_panel/sections/stats.dart';
 import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/styles/values.dart';
-import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class SlidingPanel extends StatelessWidget {
   const SlidingPanel({

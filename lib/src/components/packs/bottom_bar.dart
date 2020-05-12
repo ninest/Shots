@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import 'package:shots/src/components/core/buttons/button.dart';
+import 'package:shots/src/constants/strings.dart';
 import 'package:shots/src/providers/packs_provider.dart';
 import 'package:shots/src/services/game_service.dart';
 import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/styles/values.dart';
-import 'package:shots/src/constants/strings.dart';
 
 class BottomBar extends StatelessWidget {
   const BottomBar({Key key}) : super(key: key);

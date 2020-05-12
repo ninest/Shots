@@ -1,7 +1,7 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import 'package:shots/src/components/game/shot_card/card_display.dart';
 import 'package:shots/src/models/card_model.dart';
 import 'package:shots/src/providers/card_provider.dart';
@@ -14,7 +14,8 @@ class ShotCardParent extends StatefulWidget {
   _ShotCardParentState createState() => _ShotCardParentState();
 }
 
-class _ShotCardParentState extends State<ShotCardParent> with SingleTickerProviderStateMixin {
+class _ShotCardParentState extends State<ShotCardParent>
+    with SingleTickerProviderStateMixin {
   AnimationController _controller;
   Alignment _dragAlignment = Alignment.center; // intial card position
   Animation<Alignment> _animation;
@@ -100,14 +101,16 @@ class _ShotCardParentState extends State<ShotCardParent> with SingleTickerProvid
 
           // We must wait for the animation to finish, only then we can put the card back the center and set
           // it to the next card
-          Future.delayed(Duration(milliseconds: _animationDuration + 100)).then((_) {
+          Future.delayed(Duration(milliseconds: _animationDuration + 100))
+              .then((_) {
             // Taking the card back to the center without animation. This gives an appearance
             // the next card has come to the top, when it's actually the same one the users keep
             // swiping away.
             setState(() => _dragAlignment = Alignment.center);
 
             // get the next card ready
-            final CardProvider cardProvider = Provider.of<CardProvider>(context, listen: false);
+            final CardProvider cardProvider =
+                Provider.of<CardProvider>(context, listen: false);
             cardProvider.nextCard();
           });
         } else

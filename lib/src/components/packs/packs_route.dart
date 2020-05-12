@@ -4,15 +4,13 @@ import 'package:provider/provider.dart';
 import 'package:shots/src/components/core/scrollable_template.dart';
 import 'package:shots/src/components/packs/bottom_bar.dart';
 import 'package:shots/src/components/packs/choice.dart';
+import 'package:shots/src/constants/strings.dart';
 import 'package:shots/src/models/pack_model.dart';
 import 'package:shots/src/providers/packs_provider.dart';
 import 'package:shots/src/services/pack_service.dart';
 import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/styles/text_styles.dart';
 import 'package:shots/src/utils/extensions.dart';
-import 'package:shots/src/constants/strings.dart';
-
-import '../../providers/settings_provider.dart';
 
 class PacksRoute extends StatelessWidget {
   const PacksRoute({Key key}) : super(key: key);

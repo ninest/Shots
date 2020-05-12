@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:shots/src/app.dart';
 import 'package:provider/provider.dart';
+import 'package:universal_platform/universal_platform.dart';
+
+import 'package:shots/src/app.dart';
 import 'package:shots/src/constants/hive_strings.dart';
 import 'package:shots/src/providers/card_provider.dart';
 import 'package:shots/src/providers/game_provider.dart';
 import 'package:shots/src/providers/packs_provider.dart';
 import 'package:shots/src/providers/settings_provider.dart';
 import 'package:shots/src/providers/stopwatch_provider.dart';
-import 'package:universal_platform/universal_platform.dart';
 
 void main() async {
   await _initHive();

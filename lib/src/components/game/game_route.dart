@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sliding_up_panel/sliding_up_panel.dart';
+
 import 'package:shots/src/components/core/buttons/close_button.dart';
 import 'package:shots/src/components/game/end_alert.dart';
 import 'package:shots/src/components/game/shot_card/next_card.dart';
@@ -7,13 +9,12 @@ import 'package:shots/src/components/game/shot_card/parent.dart';
 import 'package:shots/src/components/game/sliding_panel/sections/options.dart';
 import 'package:shots/src/components/game/sliding_panel/sections/stats.dart';
 import 'package:shots/src/components/game/sliding_panel/sliding_panel.dart';
+import 'package:shots/src/constants/strings.dart';
 import 'package:shots/src/models/card_model.dart';
 import 'package:shots/src/providers/card_provider.dart';
 import 'package:shots/src/providers/game_provider.dart';
 import 'package:shots/src/services/tutorial_service.dart';
 import 'package:shots/src/styles/values.dart';
-import 'package:shots/src/constants/strings.dart';
-import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class GameRoute extends StatelessWidget {
   // controller required to programmatically open sliding panel
@@ -22,10 +23,12 @@ class GameRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // tell game provider if this is a tutorial "game" or not
-    final GameProvider gameProvider = Provider.of<GameProvider>(context, listen: false);
+    final GameProvider gameProvider =
+        Provider.of<GameProvider>(context, listen: false);
 
     // including this here to change the background color
-    final CardProvider cardProvider = Provider.of<CardProvider>(context, listen: true);
+    final CardProvider cardProvider =
+        Provider.of<CardProvider>(context, listen: true);
 
     // when all cards are over, this will be null
     ShotCard currentCard;
@@ -90,7 +93,8 @@ class GameRoute extends StatelessWidget {
 
                 if (currentCardExists) ...[
                   // placeholder shot cards
-                  for (var i = cardProvider.nextCardsNo; i >= 1; i--) _nextCard(i),
+                  for (var i = cardProvider.nextCardsNo; i >= 1; i--)
+                    _nextCard(i),
 
                   ShotCardParent(
                     shotCard: currentCard,
@@ -98,8 +102,7 @@ class GameRoute extends StatelessWidget {
                 ],
 
                 // show end of deck menu
-                if (!currentCardExists)
-                  _endOfDeck(),
+                if (!currentCardExists) _endOfDeck(),
               ],
             ),
           ),
