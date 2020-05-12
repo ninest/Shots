@@ -23,6 +23,9 @@
 ![app images](./readme-images/gallery/n2.png)
 ![app images](./readme-images/gallery/n3.png)
 
+
+If you're interested in the swipeable cards, check out my package [swipeable_card](https://github.com/ninest/swipeable_card).
+
 ## 🚀 Features
 
 <details>
