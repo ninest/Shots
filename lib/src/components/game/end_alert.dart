@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shots/src/components/core/buttons/button.dart';
-import 'package:shots/src/components/core/spacing.dart';
 import 'package:shots/src/constants/strings.dart';
 import 'package:shots/src/providers/game_provider.dart';
 import 'package:shots/src/services/game_service.dart';
@@ -40,7 +39,7 @@ showEndDialog(BuildContext context) {
               ),
 
               // spacing to make it look cleaner
-              Spacing(height: Values.mainPadding),
+              SizedBox(height: Values.mainPadding),
 
               // options (continue game and end game)
               Button(
@@ -50,7 +49,7 @@ showEndDialog(BuildContext context) {
               ),
 
               // spacing to make it look cleaner
-              Spacing(height: Values.mainPadding / 2),
+              SizedBox(height: Values.mainPadding / 2),
 
               Button(
                 text: "End game",

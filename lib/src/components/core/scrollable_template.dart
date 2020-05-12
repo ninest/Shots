@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:shots/src/components/core/buttons/close_button.dart';
-import 'package:shots/src/components/core/spacing.dart';
 import 'package:shots/src/components/core/title_text.dart';
 import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/styles/values.dart';
@@ -11,7 +10,8 @@ class ScrollableTemplate extends StatelessWidget {
   final bool showBackButton;
   final String title;
 
-  ScrollableTemplate({@required this.children, this.showBackButton = false, this.title});
+  ScrollableTemplate(
+      {@required this.children, this.showBackButton = false, this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +27,12 @@ class ScrollableTemplate extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                Spacing(height: Values.mainPadding),
+                SizedBox(height: Values.mainPadding),
                 AppCloseButton(),
               ]).sliver(),
 
         // some spacing so the content doesn't touch the top of the screen
-        Spacing(height: Values.mainPadding).sliver(),
+        SizedBox(height: Values.mainPadding).sliver(),
 
         // un comment if required
         // padding for status bar; we still want content to be able to scroll and be seen behind it
@@ -43,7 +43,7 @@ class ScrollableTemplate extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               TitleText(text: title),
-              Spacing(height: Values.mainPadding),
+              SizedBox(height: Values.mainPadding),
             ],
           ).sliver(),
 

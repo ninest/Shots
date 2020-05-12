@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shots/src/components/core/buttons/button.dart';
 import 'package:shots/src/components/core/section.dart';
-import 'package:shots/src/components/core/spacing.dart';
 import 'package:shots/src/components/game/end_alert.dart';
 import 'package:shots/src/providers/card_provider.dart';
 import 'package:shots/src/providers/game_provider.dart';
@@ -16,10 +15,12 @@ class OptionsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final CardProvider cardProvider = Provider.of<CardProvider>(context, listen: false);
+    final CardProvider cardProvider =
+        Provider.of<CardProvider>(context, listen: false);
 
     // know whether it's the tutorial or not
-    final bool isTutorial = Provider.of<GameProvider>(context, listen: false).isTutorial;
+    final bool isTutorial =
+        Provider.of<GameProvider>(context, listen: false).isTutorial;
 
     return Section(
       title: overrideTitle ?? Strings.optionsSectionTitle,
@@ -32,7 +33,7 @@ class OptionsSection extends StatelessWidget {
           disabled: isTutorial ? true : false,
           onTap: () => cardProvider.shuffleCards(shouldNotifyListeners: true),
         ),
-        Spacing(height: Values.mainPadding / 2),
+        SizedBox(height: Values.mainPadding / 2),
         Button(
           text: "End game",
           outline: true,

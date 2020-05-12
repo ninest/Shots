@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shots/src/components/core/spacing.dart';
 import 'package:shots/src/models/pack_model.dart';
 import 'package:shots/src/providers/packs_provider.dart';
 import 'package:shots/src/services/sound_service.dart';

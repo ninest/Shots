@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shots/src/components/core/spacing.dart';
 
 class ScrollIndicator extends StatelessWidget {
   @override
@@ -17,8 +16,8 @@ class ScrollIndicator extends StatelessWidget {
   }
 
   Widget spacing() => Column(children: <Widget>[
-        Spacing(height: 13.0),
+        SizedBox(height: 13.0),
         this,
-        Spacing(height: 13.0),
+        SizedBox(height: 13.0),
       ]);
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:shots/src/components/core/scroll_indicator.dart';
-import 'package:shots/src/components/core/spacing.dart';
 import 'package:shots/src/components/game/sliding_panel/sections/options.dart';
 import 'package:shots/src/components/game/sliding_panel/sections/stats.dart';
 import 'package:shots/src/styles/colors.dart';
@@ -60,7 +59,7 @@ class SlidingPanel extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             ScrollIndicator().spacing(),
-            Spacing(height: Values.mainPadding),
+            SizedBox(height: Values.mainPadding),
             StatsSection(),
             OptionsSection(),
           ],

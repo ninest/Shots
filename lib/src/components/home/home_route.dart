@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:shots/src/components/core/spacing.dart';
 import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/styles/values.dart';
 

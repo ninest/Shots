@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shots/src/components/core/spacing.dart';
 import 'package:shots/src/styles/text_styles.dart';
 import 'package:shots/src/styles/values.dart';
 
@@ -14,11 +13,9 @@ class Section extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Spacing(height: Values.mainPadding),
-
-        // title
+        SizedBox(height: Values.mainPadding),
         Text(title, style: TextStyles.sectionHeading),
-        Spacing(height: Values.mainPadding / 1.5),
+        SizedBox(height: Values.mainPadding / 1.5),
         ...children,
       ],
     );
