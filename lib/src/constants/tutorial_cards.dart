@@ -3,27 +3,27 @@ import 'package:shots/src/models/card_model.dart';
 
 const List<ShotCard> tutorialCards = [
   const ShotCard(
-    line1: "Welcome to the Shots tutorial",
-    line2: "Swipe this card left or right to continue",
+    title: "Welcome to the Shots tutorial",
+    subtitle: "Swipe this card left or right to continue",
     color: Colors.red,
   ),
   const ShotCard(
-    line1: "You can chose from different card packs",
-    line2: "We recommend trying out the 'Basic' pack first",
+    title: "You can chose from different card packs",
+    subtitle: "We recommend trying out the 'Basic' pack first",
     color: Colors.blue,
   ),
   const ShotCard(
-    line1: "Once you start, you can choose how to play ...",
+    title: "Once you start, you can choose how to play ...",
     color: Colors.green,
   ),
   const ShotCard(
-    line1:
+    title:
         "For example, each player can read out 5 cards at a time then pass the device to the next player",
-    line2: "... or you can make your own rules!",
+    subtitle: "... or you can make your own rules!",
     color: Colors.purple,
   ),
   const ShotCard(
-    line1: "Explore more options by pulling up the bottom sheet!",
+    title: "Explore more options by pulling up the bottom sheet!",
     color: Colors.grey,
   ),
 
@@ -38,7 +38,7 @@ const List<ShotCard> tutorialCards = [
   anyways on the tutorial).
   */
   const ShotCard(
-    line1: "Enjoy the game!",
+    title: "Enjoy the game!",
     color: Colors.orange,
   ),
 ];

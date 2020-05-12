@@ -11,17 +11,17 @@ class ShotCard {
   static final _rng = Random();
 
   const ShotCard(
-      {@required this.line1,
-      this.line2,
+      {@required this.title,
+      this.subtitle,
       this.color,
       this.rotateAngle,
       this.offset});
-  final String line1, line2;
+  final String title, subtitle;
   final Color color;
   final double rotateAngle;
   final Offset offset;
 
-  factory ShotCard.fromJson(YamlMap map) {
+  factory ShotCard.fromJson(Map<dynamic, dynamic> json) {
     // we need number from 0.01 to 0.10 for angle in radian
     double rotateAngle = .01 * (1 + _rng.nextInt(10));
 
@@ -38,8 +38,8 @@ class ShotCard {
     Color cardColor = AppColors.getColor();
 
     return ShotCard(
-      line1: map['line1'],
-      line2: map['line2'],
+      title: json['line1'],
+      subtitle: json['line2'],
       color: cardColor,
       rotateAngle: rotateAngle,
       offset: offset,

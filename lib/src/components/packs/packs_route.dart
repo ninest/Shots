@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shots/src/components/core/loading_text.dart';
+
 import 'package:shots/src/components/core/scrollable_template.dart';
 import 'package:shots/src/components/packs/bottom_bar.dart';
 import 'package:shots/src/components/packs/choice.dart';
 import 'package:shots/src/models/pack_model.dart';
 import 'package:shots/src/providers/packs_provider.dart';
-import 'package:shots/src/providers/settings_provider.dart';
 import 'package:shots/src/services/pack_service.dart';
 import 'package:shots/src/styles/colors.dart';
+import 'package:shots/src/styles/text_styles.dart';
 import 'package:shots/src/utils/extensions.dart';
 import 'package:shots/src/constants/strings.dart';
+
+import '../../providers/settings_provider.dart';
 
 class PacksRoute extends StatelessWidget {
   const PacksRoute({Key key}) : super(key: key);
@@ -29,9 +31,16 @@ class PacksRoute extends StatelessWidget {
                 AsyncSnapshot<Map<String, Pack>> snapshot) {
               if (snapshot.connectionState != ConnectionState.done ||
                   !snapshot.hasData) {
-                return LoadingText(text: "Loading packs ...").sliver();
+                return Text(
+                  "Loading packs ...",
+                  style: TextStyles.loadingText,
+                ).sliver();
               } else {
-                final packs = snapshot.data.values.toList();
+                final packs = snapshot.data.values
+                    // .where((pack) =>
+                    //     Provider.of<SettingsProvider>(context).nsfw ||
+                    //     !pack.nsfw)
+                    .toList();
                 return SliverList(
                   delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index) {
@@ -70,7 +79,7 @@ class PacksRoute extends StatelessWidget {
     final packsProvider = Provider.of<PacksProvider>(context, listen: false);
     packsProvider.loadPacks(packs);
 
-    // un comment below to test the loading indicator widget
+    // DEBUG uncomment below to test the loading indicator widget
     // await Future.delayed(Duration(seconds: 10));
 
     return packs;
