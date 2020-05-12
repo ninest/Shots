@@ -1,10 +1,10 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:shots/src/components/game/shot_card/card_display.dart';
 import 'package:shots/src/models/card_model.dart';
 import 'package:shots/src/providers/card_provider.dart';
+import 'package:universal_platform/universal_platform.dart';
 
 class ShotCardParent extends StatefulWidget {
   const ShotCardParent({Key key, this.shotCard}) : super(key: key);
@@ -56,8 +56,10 @@ class _ShotCardParentState extends State<ShotCardParent>
 
   void _runCardLeaveAnimation({bool left = false}) {
     // Found these values after testing. 7.0 works smoothly for Android, while 15.0 is smooth
-    // for Android (tested on OnePlus 5T and iPhone XS)
-    double _sideValue = Platform.isAndroid ? 8.5 : 15.0;
+    // for Iphone (tested on OnePlus 5T and iPhone XS)
+    // guess it depends on dpi, thus creutches like this work
+    double _sideValue =
+        7.5 * (UniversalPlatform.isIOS || UniversalPlatform.isMacOS ? 2 : 1);
     _animation = _controller.drive(AlignmentTween(
         begin: _dragAlignment,
         // make it go off screen
