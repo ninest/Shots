@@ -20,8 +20,8 @@ class PacksRoute extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.pageColor,
       body: ScrollableTemplate(
-        showBackButton: true,
         title: Strings.packsRouteTitle,
+        showBackButton: true,
         children: <Widget>[
           FutureBuilder(
             future: loadPacks(context),

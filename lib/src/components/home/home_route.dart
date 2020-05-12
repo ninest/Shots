@@ -12,6 +12,7 @@ import 'package:shots/src/styles/values.dart';
 class HomeRoute extends StatelessWidget {
   const HomeRoute({this.showLogo = true, Key key}) : super(key: key);
   final bool showLogo;
+
   List<Widget> _buildButtons(BuildContext context) => [
         Button(
           text: Strings.startButton,
@@ -25,7 +26,7 @@ class HomeRoute extends StatelessWidget {
         Button(
           text: Strings.termsRouteTitle,
           // outline: true,
-          color: AppColors.greens[0],
+          color: AppColors.teal[0],
           onTap: () =>
               ExtendedNavigator.of(context).pushNamed(Routes.termsRoute),
         ),
@@ -33,14 +34,14 @@ class HomeRoute extends StatelessWidget {
         Button(
           text: Strings.settingsRouteButton,
           // outline: true,
-          color: AppColors.reds[0],
+          color: AppColors.red[0],
           onTap: () =>
               ExtendedNavigator.of(context).pushNamed(Routes.settingsRoute),
         ),
         SizedBox(height: Values.buttonVerticalPadding),
         Button(
           text: Strings.tutorialButton,
-          color: AppColors.oranges[0],
+          color: AppColors.orange[0],
           // outline: true,
           onTap: () => TutorialService.startTutorial(context),
         ),
@@ -81,7 +82,7 @@ class HomeRoute extends StatelessWidget {
         alignment: Alignment.center,
         decoration: BoxDecoration(
           // gradient: _getLinearGradient(),
-          color: AppColors.blacks[3],
+          color: AppColors.black[2],
           borderRadius: BorderRadius.circular(Values.borderRadius * 2),
           border: Border.all(
             width: Values.mainPadding / 2,

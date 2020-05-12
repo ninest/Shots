@@ -34,7 +34,7 @@ class ShotCard {
       _rng.nextInt(16) - 8.0,
     );
 
-    Color cardColor = AppColors.getColor();
+    Color cardColor = AppColors.random;
 
     return ShotCard(
       title: json['line1'],
