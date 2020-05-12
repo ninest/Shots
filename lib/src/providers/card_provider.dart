@@ -14,19 +14,21 @@ class CardProvider extends ChangeNotifier {
 
   // cache of cards, used when cards re-shuffled so we don't have to read
   // yaml files again
-  List<ShotCard> _cardsCache = [];
+  // u don't need to cache cards, coz u already have them in the list
+  // List<ShotCard> _cardsCache = [];
 
   // called on the game start
   loadCards(List<ShotCard> _cards) {
     cards = _cards;
-    _cardsCache = _cards;
+    // _cardsCache = _cards;
     shuffleCards();
   }
 
   /// [shouldNotifyListeners] tells the listeners to rebuild
   /// It's only true when the user decides to re-shuffle cards
   shuffleCards({bool shouldNotifyListeners = false}) {
-    cards = [..._cardsCache]..shuffle();
+    // cards = [..._cardsCache]..shuffle();
+    cards.shuffle();
     currentCardIndex = 0;
 
     // only need to notify listeners when user re-shuffles
@@ -35,21 +37,19 @@ class CardProvider extends ChangeNotifier {
   }
 
   nextCard() {
-    currentCardIndex += 1;
-
-    // add no of cards gone through (for stats)
-    cardsGoneThrough += 1;
-
+    currentCardIndex++;
+    // no of cards gone through (for stats)
+    cardsGoneThrough++;
     notifyListeners();
   }
 
   endGame() {
-    // reset everything
+    // reset state
     currentCardIndex = 0;
     cardsGoneThrough = 0;
 
     // emptying cards
     cards = [];
-    _cardsCache = [];
+    // _cardsCache = [];
   }
 }

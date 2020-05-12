@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:shots/src/models/pack_model.dart';
 
 class PacksProvider extends ChangeNotifier {
-  List<Pack> selectedPacks = [];
-  List<Pack> unSelectedPacks = [];
+  Map<String, Pack> selectedPacks = {};
+  Map<String, Pack> deselectedPacks = {};
 
-  loadPacks(List<Pack> packs) {
-    unSelectedPacks = packs;
+  void loadPacks(Map<String, Pack> packs) {
+    deselectedPacks = packs;
 
     // Need tp update UI because the bottom bar is listening.
     // Otherwise, the bottom bar will think unSelectedPacks is still empty
@@ -14,42 +14,41 @@ class PacksProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  select(Pack pack) {
+  bool packSelected(Pack pack) => selectedPacks.containsKey(pack.slug);
+
+  void toggle(Pack pack) => packSelected(pack) ? deselect(pack) : select(pack);
+
+  void select(Pack pack) {
     // Remove from unselected list, add it to selected list
-    unSelectedPacks.remove(pack);
-    selectedPacks.add(pack);
-
+    selectedPacks[pack.slug] = deselectedPacks.remove(pack.slug);
     notifyListeners();
   }
 
-  unSelect(Pack pack) {
+  void deselect(Pack pack) {
     // Remove from selected list, add it to unselected list
-    selectedPacks.remove(pack);
-    unSelectedPacks.add(pack);
-
+    deselectedPacks[pack.slug] = selectedPacks.remove(pack.slug);
     notifyListeners();
   }
 
-  selectAll() {
+  void selectAll() {
     // Dump Everything in selected packs list then empty unselected packs list
-    selectedPacks = [...selectedPacks, ...unSelectedPacks];
-    unSelectedPacks = [];
-
+    selectedPacks.addAll(deselectedPacks);
+    deselectedPacks.clear();
     notifyListeners();
   }
 
-  unSelectAll() {
+  void deselectAll() {
     // Move everything into unselected list, empty list
-    unSelectedPacks = [...unSelectedPacks, ...selectedPacks];
-    selectedPacks = [];
+    deselectedPacks.addAll(deselectedPacks);
+    selectedPacks.clear();
 
     notifyListeners();
   }
 
-  endGame() {
+  void endGame() {
     // empyt/rest all packs
     // packs should not go into the next game
-    selectedPacks = [];
-    unSelectedPacks = [];
+    selectedPacks.clear();
+    deselectedPacks.clear();
   }
 }

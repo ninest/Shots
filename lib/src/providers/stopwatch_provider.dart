@@ -20,10 +20,10 @@ class StopwatchProvider extends ChangeNotifier {
   }
 
   stop() {
-    _timer.cancel();
-
     // reset seconds
     seconds = 0;
     _stopwatchRunning = false;
+
+    _timer.cancel();
   }
 }

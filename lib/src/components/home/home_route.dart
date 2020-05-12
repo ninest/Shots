@@ -15,16 +15,13 @@ class HomeRoute extends StatelessWidget {
 
     List<Widget> children = [
       // extra space above so it doesn't look too weird
-      Spacing(height: heightUnit/2),
 
+      SizedBox(height: heightUnit / 2),
       AppTitle(),
-
-      Expanded(child: Container()),
-
+      Spacer(),
       HomeOptions(),
-
       // more spacing so it doesn't touch the bottom of the screen
-      // Spacing(height: heightUnit),
+      Spacer(),
     ];
 
     return Scaffold(
@@ -52,25 +49,25 @@ class HomeRoute extends StatelessWidget {
     );
   }
 
-  LinearGradient _getLinearGradient() {
-    // used for animating background
-    List<Alignment> _top = [Alignment.topLeft, Alignment.topCenter, Alignment.topRight];
-    List<Alignment> _bottom = [
-      Alignment.bottomLeft,
-      Alignment.bottomCenter,
-      Alignment.bottomRight
-    ];
-    List<Color> _colors = [...AppColors.blacks];
+  // LinearGradient _getLinearGradient() {
+  //   // used for animating background
+  //   List<Alignment> _top = [Alignment.topLeft, Alignment.topCenter, Alignment.topRight];
+  //   List<Alignment> _bottom = [
+  //     Alignment.bottomLeft,
+  //     Alignment.bottomCenter,
+  //     Alignment.bottomRight
+  //   ];
+  //   List<Color> _colors = [...AppColors.blacks];
 
-    // get random
-    Alignment topAlignment = (_top..shuffle()).first;
-    Alignment bottomAlignment = (_bottom..shuffle()).first;
-    List<Color> color = (_colors..shuffle());
+  //   // get random
+  //   Alignment topAlignment = (_top..shuffle()).first;
+  //   Alignment bottomAlignment = (_bottom..shuffle()).first;
+  //   List<Color> color = (_colors..shuffle());
 
-    return LinearGradient(
-      begin: topAlignment,
-      end: bottomAlignment,
-      colors: [color[0], color[1]],
-    );
-  }
+  //   return LinearGradient(
+  //     begin: topAlignment,
+  //     end: bottomAlignment,
+  //     colors: [color[0], color[1]],
+  //   );
+  // }
 }

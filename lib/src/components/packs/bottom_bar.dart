@@ -13,9 +13,10 @@ class BottomBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Needs to listen for state changes for (un)select all button
-    PacksProvider packsProvider = Provider.of<PacksProvider>(context, listen: true);
+    PacksProvider packsProvider =
+        Provider.of<PacksProvider>(context, listen: true);
 
-    bool everythingSelected = packsProvider.unSelectedPacks.isEmpty;
+    bool everythingSelected = packsProvider.deselectedPacks.isEmpty;
 
     // true if no packs selected
     bool disableButton = packsProvider.selectedPacks.isEmpty;
@@ -30,19 +31,23 @@ class BottomBar extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           color: AppColors.pageColor,
-          border: Border(top: BorderSide(width: 1, color: AppColors.pageBorderColor)),
+          border: Border(
+              top: BorderSide(width: 1, color: AppColors.pageBorderColor)),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Button(
-              text: everythingSelected ? Strings.unSelectAllButton : Strings.selectAllButton,
-              color: everythingSelected ? AppColors.danger : AppColors.secondary,
+              text: everythingSelected
+                  ? Strings.unSelectAllButton
+                  : Strings.selectAllButton,
+              color:
+                  everythingSelected ? AppColors.danger : AppColors.secondary,
               outline: true,
 
               // if everything is selected, button press should unselect all
               onTap: everythingSelected
-                  ? () => packsProvider.unSelectAll()
+                  ? () => packsProvider.deselectAll()
                   : () => packsProvider.selectAll(),
             ),
             Button(

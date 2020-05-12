@@ -13,7 +13,10 @@ class TermsRoute extends StatelessWidget {
       showBackButton: true,
       title: Strings.termsRouteTitle,
       children: <Widget>[
-        MarkdownBody(data: Strings.terms).sliver(),
+        Padding(
+                padding: const EdgeInsets.only(bottom: 12.0),
+                child: MarkdownBody(data: Strings.terms))
+            .sliver()
       ],
     ).scaffold();
   }

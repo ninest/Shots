@@ -7,6 +7,11 @@
   description: Basic NSFW card pack. Do not use if you're playing with people older than you or married couples.
   nsfw: true
 
+- name: NSFW placeholder
+  slug: nsfw_placeholder
+  description: placeholder
+  nsfw: true
+
 - name: Close friends
   slug: close
   description: Only play this pack with closer friends (not with parents, of course)
@@ -28,6 +33,6 @@
   slug: developer
   description: For all those who code.
 
-- name: Swiper pack
+- name: Test pack
   slug: test
   description: Use this if you want to test how the card swiping

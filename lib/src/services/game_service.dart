@@ -9,31 +9,32 @@ import 'package:shots/src/providers/stopwatch_provider.dart';
 import 'package:shots/src/router/router.gr.dart';
 
 class GameService {
-  /// Execute all functions required for the game to start
+  /// Initialize game state
   static start(BuildContext context) {
-    /*
-    Few things to do:
-    1. Load the cards (they are already in the packs)
-    2. Set gamestarted to true in GameProvider
-    3. Start the stopwatch
-    */
+    // Few things to do:
+    // 1. Load the cards (they are already in the packs)
+    // 2. Set gameStarted to true in GameProvider
+    // 3. Start the stopwatch
+
+    PacksProvider packsProvider =
+        Provider.of<PacksProvider>(context, listen: false);
+    CardProvider cardProvider =
+        Provider.of<CardProvider>(context, listen: false);
 
     // Loading the cards
-    PacksProvider packsProvider = Provider.of<PacksProvider>(context, listen: false);
-    CardProvider cardProvider = Provider.of<CardProvider>(context, listen: false);
-
     List<ShotCard> cards = [];
-    for (var eachPack in packsProvider.selectedPacks) {
-      cards = [...cards, ...eachPack.cards];
-    }
+    cards.addAll(
+        packsProvider.selectedPacks.values.expand((pack) => pack.cards));
     cardProvider.loadCards(cards);
 
     // Setting game started to true
-    GameProvider gameProvider = Provider.of<GameProvider>(context, listen: false);
+    GameProvider gameProvider =
+        Provider.of<GameProvider>(context, listen: false);
     gameProvider.startGame();
 
     // Start the timer
-    StopwatchProvider stopwatchProvider = Provider.of<StopwatchProvider>(context, listen: false);
+    StopwatchProvider stopwatchProvider =
+        Provider.of<StopwatchProvider>(context, listen: false);
     stopwatchProvider.start();
 
     // go to game routes to start game
@@ -50,19 +51,23 @@ class GameService {
     */
 
     // empty the cards list
-    CardProvider cardProvider = Provider.of<CardProvider>(context, listen: false);
+    CardProvider cardProvider =
+        Provider.of<CardProvider>(context, listen: false);
     cardProvider.endGame();
 
     // also need to empty the pacls
-    PacksProvider packsProvider = Provider.of<PacksProvider>(context, listen: false);
+    PacksProvider packsProvider =
+        Provider.of<PacksProvider>(context, listen: false);
     packsProvider.endGame();
 
     // Stop the staopwatch
-    StopwatchProvider stopwatchProvider = Provider.of<StopwatchProvider>(context, listen: false);
+    StopwatchProvider stopwatchProvider =
+        Provider.of<StopwatchProvider>(context, listen: false);
     stopwatchProvider.stop();
 
     // Setting game started to false
-    GameProvider gameProvider = Provider.of<GameProvider>(context, listen: false);
+    GameProvider gameProvider =
+        Provider.of<GameProvider>(context, listen: false);
     gameProvider.endGame();
 
     // go to game routes to home page

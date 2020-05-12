@@ -26,7 +26,8 @@ class HomeOptions extends StatelessWidget {
             color: AppColors.accent,
             width: 200.0,
             focus: true,
-            onTap: () => ExtendedNavigator.of(context).pushNamed(Routes.packsRoute),
+            onTap: () =>
+                ExtendedNavigator.of(context).pushNamed(Routes.packsRoute),
           ),
 
           // spacing to make it look cleaner
@@ -36,7 +37,8 @@ class HomeOptions extends StatelessWidget {
             text: Strings.termsRouteTitle,
             // outline: true,
             color: AppColors.greens[0],
-            onTap: () => ExtendedNavigator.of(context).pushNamed(Routes.termsRoute),
+            onTap: () =>
+                ExtendedNavigator.of(context).pushNamed(Routes.termsRoute),
           ),
 
           // spacing to make it look cleaner
@@ -46,7 +48,8 @@ class HomeOptions extends StatelessWidget {
             text: Strings.settingsRouteButton,
             // outline: true,
             color: AppColors.reds[0],
-            onTap: () => ExtendedNavigator.of(context).pushNamed(Routes.settingsRoute),
+            onTap: () =>
+                ExtendedNavigator.of(context).pushNamed(Routes.settingsRoute),
           ),
 
           // spacing to make it look cleaner
