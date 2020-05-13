@@ -13,7 +13,7 @@ class ScrollableTemplate extends StatelessWidget {
   final String title;
 
   ScrollableTemplate(
-      {@required this.children,
+      {this.children = const [],
       this.hideReturnButton = false,
       this.hideBottomBorder = false,
       this.title});
@@ -65,7 +65,7 @@ class ScrollableTemplate extends StatelessWidget {
         SizedBox(height: Values.mainPadding).sliver(),
         ...children,
         // added so end of content is readable with maximum bottom scroll
-        SizedBox(height: Values.mainPadding).sliver(),
+        if (children.isNotEmpty) SizedBox(height: Values.mainPadding).sliver(),
       ]),
     );
   }

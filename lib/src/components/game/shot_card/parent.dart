@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shots/src/services/sound_service.dart';
 import 'package:universal_platform/universal_platform.dart';
 
 import 'package:shots/src/components/game/shot_card/card_display.dart';
@@ -61,6 +62,7 @@ class _TopCardState extends State<TopCard> with SingleTickerProviderStateMixin {
         end: Alignment.center,
       ),
     );
+    SoundService.cardSwipe();
     _controller
       ..reset()
       ..forward();
@@ -76,7 +78,7 @@ class _TopCardState extends State<TopCard> with SingleTickerProviderStateMixin {
           // make it go a little lower (more natural)
           _dragAlignment.y + 0.2,
         )));
-
+    SoundService.cardSwipe();
     _controller.reset();
     return _controller.forward();
   }

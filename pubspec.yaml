@@ -19,7 +19,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  audioplayers: 0.13.2
+  audioplayers: ^0.15.1
   auto_route: ^0.4.3
   google_fonts: ^0.4.0
   flutter_markdown: ^0.3.4
@@ -70,8 +70,7 @@ flutter:
 
     - assets/packs/
     - assets/metadata.yml
-    - assets/sounds/pop/primary/
-    - assets/sounds/pop/secondary/
+    - assets/sounds/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see

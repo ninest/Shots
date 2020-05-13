@@ -39,7 +39,8 @@ class AppCloseButton extends StatelessWidget {
           // go to previous page
           (overrideOnTap ?? () => ExtendedNavigator.ofRouter<Router>().pop())();
           // play pop button sound
-          SoundService.pop(secondary: true);
+
+          SoundService.btnPress();
         },
       ),
     );

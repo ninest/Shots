@@ -63,7 +63,8 @@ class Choice extends StatelessWidget {
       onTap: () {
         provider.toggle(index);
         // play pop button sound
-        SoundService.pop(secondary: true);
+
+        SoundService.btnPress();
       },
     );
   }

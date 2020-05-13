@@ -61,7 +61,11 @@ class Button extends StatelessWidget {
       onTap: () {
         if (!disabled) onTap();
         // play pop button sound
-        SoundService.pop(secondary: disabled);
+        print('button press');
+        if (disabled)
+          SoundService.btnFail();
+        else
+          SoundService.btnPress();
       },
     );
   }

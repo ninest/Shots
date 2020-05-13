@@ -21,18 +21,18 @@ class PackService {
       for (var packMap in metadata) {
         // load cards by reading their files
         String slug = packMap['slug'];
-        print('loading $slug');
+        // print('loading $slug');
 
         // BUG: error in the loop sometimes ocurs. Cannot replroduce it
         List<ShotCard> cards;
         try {
           cards = await _loadCards(slug);
-          print('loaded pack $slug');
+          // print('loaded pack $slug');
         } catch (e) {
           // If there's a card pack listed in metadata.yml, but with no {pack}.yml file,
           // there will be a silent error so the app doesn't crash
-          print('error loading pack $slug:');
-          print(e);
+          // print('error loading pack $slug:');
+          // print(e);
         }
 
         if (cards != null)

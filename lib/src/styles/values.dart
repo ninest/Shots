@@ -3,7 +3,7 @@ class Values {
   static const em = 19.0;
 
   /// Padding used when a specified padding is not known
-  static const mainPadding = 31.0;
+  static const mainPadding = 24.0;
 
   // border
   static const borderBlurRadius = 2.0;
@@ -13,7 +13,7 @@ class Values {
 
   // buttons
   static const buttonHorizontalPadding = 15.0;
-  static const buttonVerticalPadding = 13.0;
+  static const buttonVerticalPadding = 8.5;
   static const disabledButtonOpacity = 0.5;
 
   // animation duration in milliseconds (for inputs like selectables or toggles)

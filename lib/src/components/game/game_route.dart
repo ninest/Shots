@@ -54,7 +54,7 @@ class _GameRouteState extends State<GameRoute> {
           child: Consumer<GameStateProvider>(
             builder: (context, provider, child) {
               if (provider.loading) {
-                print('loading');
+                // print('loading');
                 return ScrollableTemplate(
                   children: [
                     Text(
@@ -66,17 +66,15 @@ class _GameRouteState extends State<GameRoute> {
               }
 
               if (provider.isTutorial && provider.topCard == null) {
-                print('empty tutorial');
-                print('render frame then pop');
+                // print('empty tutorial');
+                // print('render frame then pop');
                 WidgetsBinding.instance.addPostFrameCallback((_) {
                   ExtendedNavigator.of(context).pop();
                 });
-                return ScrollableTemplate(
-                  children: [],
-                );
+                return ScrollableTemplate();
               }
 
-              print('normal game State');
+              // print('normal game State');
               return provider.topCard != null
                   ? SlidingPanel(
                       panelController: _panelController,
@@ -85,13 +83,9 @@ class _GameRouteState extends State<GameRoute> {
                         child: Stack(
                           fit: StackFit.loose,
                           children: <Widget>[
-                            // uncomment to easily swipe cards on an emulator
-                            // Button(text: "Next", onTap: () => cardProvider.nextCard()),
                             Positioned(
                               top: Values.mainPadding,
                               left: Values.mainPadding,
-                              // child: Padding(
-                              // padding: EdgeInsets.all(Values.mainPadding),
                               child: AppCloseButton(
                                 // do not ask when in tutorial
                                 overrideOnTap: provider.isTutorial
@@ -100,26 +94,18 @@ class _GameRouteState extends State<GameRoute> {
                                 // ),
                               ),
                             ),
-                            // FittedBox(
-                            //   fit: BoxFit.fitHeight,
-                            //   child:
-                            Stack(
-                              children: [
-                                ...provider.deck
-                                    .map(
-                                      (e) => Center(
-                                        child: DeckCard(e,
-                                            key: ValueKey(
-                                                provider.cards.indexOf(e))),
-                                      ),
-                                    )
-                                    .toList(),
-                                TopCard(
-                                  shotCard: provider.topCard,
-                                  key: ValueKey(provider.top),
-                                ),
-                              ],
-                              // ),
+                            ...provider.deck
+                                .map(
+                                  (e) => Center(
+                                    child: DeckCard(e,
+                                        key: ValueKey(
+                                            provider.cards.indexOf(e))),
+                                  ),
+                                )
+                                .toList(),
+                            TopCard(
+                              shotCard: provider.topCard,
+                              key: ValueKey(provider.top),
                             ),
                           ],
                         ),
@@ -128,9 +114,8 @@ class _GameRouteState extends State<GameRoute> {
                   : ScrollableTemplate(
                       hideReturnButton: true,
                       hideBottomBorder: true,
-                      children: [
-                          GameMenu().sliver(),
-                        ]);
+                      children: [GameMenu().sliver()],
+                    );
             },
           )),
     );
