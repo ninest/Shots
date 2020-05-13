@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shots/src/components/core/buttons/button.dart';
 import 'package:shots/src/components/core/buttons/close_button.dart';
 import 'package:shots/src/components/game/end_alert.dart';
 import 'package:shots/src/components/game/shot_card/next_card.dart';
@@ -67,7 +68,9 @@ class GameRoute extends StatelessWidget {
           // nice non-distracing color changing effect
           duration: Duration(seconds: 6),
           child: SafeArea(
-            child: Stack(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              // mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 // un comment to easily swipe cards on an emulator
                 // Button(text: "Next", onTap: () => cardProvider.nextCard()),
@@ -77,23 +80,21 @@ class GameRoute extends StatelessWidget {
                 // because there are two buttons (End game and X) that do the
                 // same thing
                 if (currentCardExists)
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Padding(
-                      padding: EdgeInsets.all(Values.mainPadding),
-                      child: AppCloseButton(
-                        // overrideOnTap: () => _endGame(context),
-                        overrideOnTap: () => showEndDialog(context),
-                      ),
+                  Padding(
+                    padding: EdgeInsets.all(Values.mainPadding),
+                    child: AppCloseButton(
+                      overrideOnTap: () => showEndDialog(context),
                     ),
                   ),
 
                 if (currentCardExists) ...[
                   // placeholder shot cards
-                  for (var i = cardProvider.nextCardsNo; i >= 1; i--) _nextCard(i),
 
                   ShotCardParent(
                     shotCard: currentCard,
+                    nextCards: [
+                      for (var i = cardProvider.nextCardsNo; i >= 1; i--) _nextCard(i),
+                    ],
                   )
                 ],
 

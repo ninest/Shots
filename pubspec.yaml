@@ -28,6 +28,7 @@ dependencies:
   sliding_up_panel: ^1.0.2
   hive: ^1.4.1+1
   hive_flutter: ^0.3.0+2
+  swipeable_card: ^1.0.0
 
   audioplayers: 0.13.2
 
