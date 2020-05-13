@@ -22,7 +22,12 @@ class ScrollableTemplate extends StatelessWidget {
   Widget build(BuildContext context) {
     // uncomment if we want use this as a safe area for notch/rounded corners
     // double statusBarHeight = MediaQuery.of(context).padding.top;
-
+    // final btnGlobalKey = GlobalKey();
+    // WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    //   final renderObj = btnGlobalKey.currentContext.findRenderObject();
+    //   final positionRed = (renderObj as RenderBox).localToGlobal(Offset.zero);
+    //   print("POSITION of Red: $positionRed ");
+    // });
     return Container(
       margin: hideBottomBorder
           ? EdgeInsets.only(

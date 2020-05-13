@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shots/src/providers/game_state_provider.dart';
 import 'package:universal_platform/universal_platform.dart';
 
 import 'package:shots/src/components/game/shot_card/card_display.dart';
 import 'package:shots/src/models/card_model.dart';
+import 'package:shots/src/providers/game_state_provider.dart';
 
 /// is responsible for card drags and location, creates child with actual
 /// representation of the card

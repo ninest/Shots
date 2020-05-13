@@ -25,40 +25,42 @@ showEndDialog(BuildContext context) {
             ),
           ),
           padding: EdgeInsets.all(Values.mainPadding),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Text(
-                AppStrings.endDialogTitle,
-                // make font size smaller
-                style: TextStyles.pageTitle //
-                    .s(1.5 * Values.em),
-              ),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Text(
+                  AppStrings.endDialogTitle,
+                  // make font size smaller
+                  style: TextStyles.pageTitle //
+                      .s(1.5 * Values.em),
+                ),
 
-              // spacing to make it look cleaner
-              SizedBox(height: Values.mainPadding),
+                // spacing to make it look cleaner
+                SizedBox(height: Values.mainPadding),
 
-              // options (continue game and end game)
-              Button(
-                text: "Continue playing",
-                color: AppColors.acceptColor,
-                onTap: () => ExtendedNavigator.of(context).pop(context),
-              ),
+                // options (continue game and end game)
+                Button(
+                  text: "Continue playing",
+                  color: AppColors.acceptColor,
+                  onTap: () => ExtendedNavigator.of(context).pop(context),
+                ),
 
-              // spacing to make it look cleaner
-              SizedBox(height: Values.mainPadding / 2),
+                // spacing to make it look cleaner
+                SizedBox(height: Values.mainPadding / 2),
 
-              Button(
-                text: "End game",
-                // outline: true,
-                color: AppColors.rejectColor,
-                onTap: () => ExtendedNavigator.of(context)
-                    .popUntil((route) => route.isFirst
-                        // ||  route.settings.name == Routes.homeRoute),
-                        ),
-              ),
-            ],
+                Button(
+                  text: "End game",
+                  // outline: true,
+                  color: AppColors.rejectColor,
+                  onTap: () => ExtendedNavigator.of(context)
+                      .popUntil((route) => route.isFirst
+                          // ||  route.settings.name == Routes.homeRoute),
+                          ),
+                ),
+              ],
+            ),
           ),
         ),
       );

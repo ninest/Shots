@@ -28,16 +28,15 @@ const List<ShotCard> tutorialCards = [
     color: Colors.grey,
   ),
 
-  /*
-  This last card exists as a cover at the end. The user should not interact
-  with this one, rather when the user sees this on top, there's 0.5 seconds
-  until the tutorial screen is popped.
+  // This last card exists as a cover at the end. The user should not interact
+  // with this one, rather when the user sees this on top, there's 0.5 seconds
+  // until the tutorial screen is popped.
 
-  When the last card is swiped away, gameProvider.isTutorial is set to false
-  immediately. Because of the animation of the page, the user will see a flash
-  of the end of deck menu, and they are not suppoed to (that menu is disabled
-  anyways on the tutorial).
-  */
+  // When the last card is swiped away, gameProvider.isTutorial is set to false
+  // immediately. Because of the animation of the page, the user will see a flash
+  // of the end of deck menu, and they are not suppoed to (that menu is disabled
+  // anyways on the tutorial).
+
   const ShotCard(
     title: "Enjoy the game!",
     color: Colors.orange,

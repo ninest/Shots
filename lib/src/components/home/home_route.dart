@@ -2,13 +2,13 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import 'package:shots/src/components/core/buttons/button.dart';
-import 'package:shots/src/components/core/scrollable_template.dart';
+// import 'package:shots/src/components/core/scrollable_template.dart';
 import 'package:shots/src/constants/strings.dart';
 import 'package:shots/src/router/router.gr.dart';
 import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/styles/text_styles.dart';
 import 'package:shots/src/styles/values.dart';
-import 'package:shots/src/utils/extensions.dart';
+// import 'package:shots/src/utils/extensions.dart';
 
 class HomeRoute extends StatelessWidget {
   const HomeRoute({this.showLogo = true, Key key}) : super(key: key);
@@ -109,26 +109,4 @@ class HomeRoute extends StatelessWidget {
       ),
     );
   }
-
-  // LinearGradient _getLinearGradient() {
-  //   // used for animating background
-  //   List<Alignment> _top = [Alignment.topLeft, Alignment.topCenter, Alignment.topRight];
-  //   List<Alignment> _bottom = [
-  //     Alignment.bottomLeft,
-  //     Alignment.bottomCenter,
-  //     Alignment.bottomRight
-  //   ];
-  //   List<Color> _colors = [...AppColors.blacks];
-
-  //   // get random
-  //   Alignment topAlignment = (_top..shuffle()).first;
-  //   Alignment bottomAlignment = (_bottom..shuffle()).first;
-  //   List<Color> color = (_colors..shuffle());
-
-  //   return LinearGradient(
-  //     begin: topAlignment,
-  //     end: bottomAlignment,
-  //     colors: [color[0], color[1]],
-  //   );
-  // }
 }

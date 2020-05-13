@@ -12,7 +12,8 @@ class AppCloseButton extends StatelessWidget {
   final IconData iconData;
   final Color color;
   final VoidCallback overrideOnTap;
-  AppCloseButton({this.iconData, this.color, this.overrideOnTap});
+  AppCloseButton({this.iconData, this.color, this.overrideOnTap, Key key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

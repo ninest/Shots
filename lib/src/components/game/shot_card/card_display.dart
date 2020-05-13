@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 
@@ -11,28 +13,33 @@ class CardDisplay extends StatelessWidget {
   final ShotCard shotCard;
 
   // Might change values later or use MediaQuery
-  static const _cardHeight = 460.0;
-  static const _cardWidth = 320.0;
 
   @override
   Widget build(BuildContext context) {
+    final h = MediaQuery.of(context).size.height;
+    final w = MediaQuery.of(context).size.width;
+    final double _cardHeight = 480;
+    final double _cardWidth = 320;
+    final scaleFactor = min(1.0, min(w / 400.0, h / 630.0));
     return Transform.translate(
       offset: shotCard.offset ?? const Offset(0, 0),
       child: Container(
-        height: _cardHeight,
-        width: _cardWidth,
+        height: _cardHeight * scaleFactor,
+        width: _cardWidth * scaleFactor,
         transform: Matrix4.rotationZ(shotCard.rotateAngle ?? 0),
         padding: const EdgeInsets.only(
-          top: Values.mainPadding * 1.4,
-          left: Values.mainPadding,
-          right: Values.mainPadding,
-          bottom: Values.mainPadding,
-        ),
+              top: Values.mainPadding * 1.4,
+              left: Values.mainPadding,
+              right: Values.mainPadding,
+              bottom: Values.mainPadding,
+            ) *
+            scaleFactor,
         decoration: BoxDecoration(
           color: shotCard.color,
-          borderRadius: BorderRadius.circular(Values.borderRadius * 3),
+          borderRadius:
+              BorderRadius.circular(Values.borderRadius * 3 * scaleFactor),
           border: Border.all(
-            width: Values.mainPadding * .4,
+            width: Values.mainPadding * .4 * scaleFactor,
             color: AppColors.pageBG.withOpacity(Values.borderOpacity),
             // color: Colors.black,
           ),
@@ -46,8 +53,8 @@ class CardDisplay extends StatelessWidget {
             BoxShadow(
               color: Color.fromRGBO(0, 0, 0, 0.2),
               offset: Offset(0, -8),
-              blurRadius: 8,
-              spreadRadius: 2,
+              blurRadius: 8 * scaleFactor,
+              spreadRadius: 2 * scaleFactor,
             )
           ],
         ),
@@ -59,14 +66,17 @@ class CardDisplay extends StatelessWidget {
               child: Text(
                 shotCard.title,
                 style: TextStyles.cardLine1,
-                textScaleFactor: 1.0,
+                textScaleFactor: scaleFactor,
               ),
             ),
             // line2 is optional
             if (shotCard.subtitle != null)
               MarkdownBody(
                 data: shotCard.subtitle,
-                styleSheet: MarkdownStyleSheet(p: TextStyles.cardLine2),
+                styleSheet: MarkdownStyleSheet(
+                  p: TextStyles.cardLine2,
+                  textScaleFactor: scaleFactor,
+                ),
               )
           ],
         ),

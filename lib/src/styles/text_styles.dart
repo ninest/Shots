@@ -24,10 +24,10 @@ class TextStyles {
       );
 
   // Main font
-  /*
-  Used in
-  - text in Options and Stats section (no of cards left, time elapsed)
-  */
+
+  // Used in
+  // - text in Options and Stats section (no of cards left, time elapsed)
+
   static TextStyle get body1 =>
       //  GoogleFonts.rubik(
       //       textStyle:
