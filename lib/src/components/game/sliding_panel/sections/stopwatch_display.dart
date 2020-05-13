@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'package:shots/src/providers/game_state_provider.dart';
 
-class StopwatchDisplay extends StatelessWidget {
+class TimerText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<GameStateProvider>(

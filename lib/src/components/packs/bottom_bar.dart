@@ -32,7 +32,9 @@ class BottomBar extends StatelessWidget {
           color: AppColors.pageColor,
           border: Border(
               top: BorderSide(
-                  width: Values.borderWidth, color: AppColors.pageBG)),
+            width: Values.borderWidth,
+            color: AppColors.borderColor,
+          )),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

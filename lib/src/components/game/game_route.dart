@@ -126,12 +126,12 @@ class _GameRouteState extends State<GameRoute> {
                             ),
                           ),
                         )
-                      : ScrollableTemplate(hideReturnButton: true, children: [
-                          Container(
-                            color: AppColors.black[2],
-                            child: GameMenu(),
-                          ).sliver(),
-                        ]);
+                      : ScrollableTemplate(
+                          hideReturnButton: true,
+                          hideBottomBorder: true,
+                          children: [
+                              GameMenu().sliver(),
+                            ]);
                 },
               )),
         ));

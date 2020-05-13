@@ -9,7 +9,7 @@ class AppColors {
   static const acceptColor = Color(0xff269671);
   static const rejectColor = Color(0xffb0413e);
   static const miscColor = Color(0xff255C99);
-  static const borderColor = Color(0xff08090A);
+  static const borderColor = Color(0xff1c1a18);
   static const choiceCard = Color(0xff473335);
 
   // TODO adjust constants so they wont try to pluck ur eyes out

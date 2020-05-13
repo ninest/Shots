@@ -23,7 +23,7 @@ class StatsSection extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Text("${provider.top} cards"),
-              StopwatchDisplay(),
+              TimerText(),
             ],
           ),
         )

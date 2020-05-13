@@ -2,11 +2,13 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import 'package:shots/src/components/core/buttons/button.dart';
+import 'package:shots/src/components/core/scrollable_template.dart';
 import 'package:shots/src/constants/strings.dart';
 import 'package:shots/src/router/router.gr.dart';
 import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/styles/text_styles.dart';
 import 'package:shots/src/styles/values.dart';
+import 'package:shots/src/utils/extensions.dart';
 
 class HomeRoute extends StatelessWidget {
   const HomeRoute({this.showLogo = true, Key key}) : super(key: key);
@@ -68,24 +70,30 @@ class HomeRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // // well, this works, but won't resize on fullscreen
+    // return ScrollableTemplate(
+    //   children: _buildChildren(context, false).map((e) => e.sliver()).toList(),
+    //   hideReturnButton: true,
+    // ).scaffold();
+
     return Scaffold(
       backgroundColor: AppColors.pageBG,
       body: Container(
-        // margin: EdgeInsets.symmetric(
-        //   horizontal: Values.mainPadding,
-        //   vertical: Values.mainPadding * 2,
-        // ),
-        padding: EdgeInsets.all(Values.mainPadding),
-        alignment: Alignment.center,
+        margin: EdgeInsets.all(Values.mainPadding),
         decoration: BoxDecoration(
           // gradient: _getLinearGradient(),
           color: AppColors.pageColor,
-          borderRadius: BorderRadius.circular(Values.borderRadius * 2),
-          border: Border.all(
-            width: Values.mainPadding / 2,
-            color: AppColors.pageBG.withOpacity(Values.borderOpacity),
-          ),
+          borderRadius: BorderRadius.circular(Values.mainPadding),
+          boxShadow: [
+            BoxShadow(
+              spreadRadius: Values.mainPadding * .5,
+              blurRadius: Values.borderBlurRadius,
+              color: AppColors.borderColor,
+            )
+          ],
         ),
+        padding: EdgeInsets.symmetric(horizontal: Values.mainPadding),
+        alignment: Alignment.center,
         child: LayoutBuilder(builder: (context, size) {
           bool flexible = size.maxHeight > 510;
           final children = _buildChildren(context, flexible);

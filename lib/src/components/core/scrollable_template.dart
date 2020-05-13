@@ -9,10 +9,14 @@ import 'package:shots/src/utils/extensions.dart';
 class ScrollableTemplate extends StatelessWidget {
   final List<Widget> children;
   final bool hideReturnButton;
+  final bool hideBottomBorder;
   final String title;
 
   ScrollableTemplate(
-      {@required this.children, this.hideReturnButton = false, this.title});
+      {@required this.children,
+      this.hideReturnButton = false,
+      this.hideBottomBorder = false,
+      this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -20,14 +24,26 @@ class ScrollableTemplate extends StatelessWidget {
     // double statusBarHeight = MediaQuery.of(context).padding.top;
 
     return Container(
+      margin: hideBottomBorder
+          ? EdgeInsets.only(
+              top: Values.mainPadding,
+              left: Values.mainPadding,
+              right: Values.mainPadding)
+          : EdgeInsets.all(Values.mainPadding),
       decoration: BoxDecoration(
         // gradient: _getLinearGradient(),
         color: AppColors.pageColor,
-        borderRadius: BorderRadius.circular(Values.mainPadding),
-        border: Border.all(
-          width: Values.mainPadding * .5,
-          color: AppColors.pageBG.withOpacity(Values.borderOpacity),
-        ),
+        borderRadius: hideBottomBorder
+            ? BorderRadius.only(
+                topLeft: Radius.circular(Values.mainPadding),
+                topRight: Radius.circular(Values.mainPadding))
+            : BorderRadius.circular(Values.mainPadding),
+        boxShadow: [
+          BoxShadow(
+            spreadRadius: Values.mainPadding * .5,
+            color: AppColors.borderColor,
+          )
+        ],
       ),
       padding: EdgeInsets.symmetric(horizontal: Values.mainPadding),
       child: CustomScrollView(slivers: <Widget>[

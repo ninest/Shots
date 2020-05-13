@@ -25,12 +25,57 @@ class SlidingPanel extends StatelessWidget {
       onWillPop: () => _onBackGesture(panelController),
       child: SlidingUpPanel(
         controller: panelController,
-        minHeight: (safeAreaPaddingBottom + 65.0),
+        minHeight: (safeAreaPaddingBottom + Values.mainPadding),
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(Values.borderRadius),
-          topRight: Radius.circular(Values.borderRadius),
+          topLeft: Radius.circular(Values.mainPadding),
+          topRight: Radius.circular(Values.mainPadding),
         ),
-        border: Border.all(width: 1, color: AppColors.pageBG),
+        // color: Colors.transparent,
+        // panel notch
+        margin: EdgeInsets.only(
+          left: Values.mainPadding,
+          right: Values.mainPadding,
+          top: Values.mainPadding,
+        ),
+        boxShadow: [
+          BoxShadow(
+            spreadRadius: Values.mainPadding,
+            // blurRadius: Values.borderBlurRadius,
+            color: AppColors.borderColor,
+          )
+        ],
+
+        // header: Container(
+        //   width: MediaQuery.of(context).size.width,
+        //   alignment: Alignment.center,
+        //   decoration: BoxDecoration(
+        //       borderRadius: BorderRadius.only(
+        //     topLeft: Radius.circular(Values.mainPadding),
+        //     topRight: Radius.circular(Values.mainPadding),
+        //   )),
+        //   child: Container(
+        //     // padding: EdgeInsets.all(Values.mainPadding),
+
+        //     decoration: BoxDecoration(
+        //       color: Colors.pink,
+        //       gradient: LinearGradient(
+        //         begin: Alignment(0, -1),
+        //         end: Alignment(0, 1),
+        //         // radius: MediaQuery.of(context).size.width * .3,
+
+        //         colors: [
+        //           AppColors.borderColor.withOpacity(Values.borderOpacity),
+        //           Colors.transparent
+        //         ],
+        //       ),
+        //       borderRadius: BorderRadius.only(
+        //         topLeft: Radius.circular(Values.mainPadding),
+        //         topRight: Radius.circular(Values.mainPadding),
+        //       ),
+        //     ),
+        //     height: Values.mainPadding,
+        //   ),
+        // ),
         color: AppColors.pageColor,
         panel: GameMenu(
           sliderCloseCallback: () {
@@ -42,7 +87,7 @@ class SlidingPanel extends StatelessWidget {
     );
   }
 
-  // overriden back button
+  // override back button
   _onBackGesture(PanelController controller) async {
     if (controller.isPanelOpen)
       await controller.close();

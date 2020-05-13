@@ -6,6 +6,7 @@ class Values {
   static const mainPadding = 31.0;
 
   // border
+  static const borderBlurRadius = 2.0;
   static const borderOpacity = 0.3;
   static const borderRadius = 8.0;
   static const borderWidth = 4.0;
