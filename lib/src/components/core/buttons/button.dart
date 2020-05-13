@@ -23,7 +23,7 @@ class Button extends StatelessWidget {
   final bool outline;
   final bool disabled;
 
-  /// Give the button more attension
+  /// Give the button more attention
   final bool focus;
 
   @override
@@ -57,14 +57,9 @@ class Button extends StatelessWidget {
       ),
       onTap: () {
         // if button disabled, tapping shouldn't do anything
-        if (disabled) {
-          SoundService.pop(secondary: true);
-        } else {
-          onTap();
-
-          // play pop button sound
-          SoundService.pop();
-        }
+        if (!disabled) onTap();
+        // play pop button sound
+        SoundService.pop(secondary: disabled);
       },
     );
   }

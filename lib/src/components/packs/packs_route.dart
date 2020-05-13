@@ -17,69 +17,47 @@ class PacksRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.pageColor,
-      body: ScrollableTemplate(
-        title: Strings.packsRouteTitle,
-        showBackButton: true,
-        children: <Widget>[
-          FutureBuilder(
-            future: loadPacks(context),
-            builder: (BuildContext context,
-                AsyncSnapshot<Map<String, Pack>> snapshot) {
-              if (snapshot.connectionState != ConnectionState.done ||
-                  !snapshot.hasData) {
-                return Text(
-                  "Loading packs ...",
-                  style: TextStyles.loadingText,
-                ).sliver();
-              } else {
-                final packs = snapshot.data.values
-                    // .where((pack) =>
-                    //     Provider.of<SettingsProvider>(context).nsfw ||
-                    //     !pack.nsfw)
-                    .toList();
-                return SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                      return Choice(pack: packs[index]);
-                    },
-                    childCount: packs.length,
+    return FutureBuilder(
+        future: PackService.loadPacks(),
+        builder:
+            (BuildContext context, AsyncSnapshot<Map<String, Pack>> snapshot) {
+          if (snapshot.connectionState != ConnectionState.done ||
+              !snapshot.hasData)
+            return ScrollableTemplate(
+                title: Strings.packsRouteTitle,
+                showBackButton: true,
+                children: <Widget>[
+                  Text(
+                    "Loading packs ...",
+                    style: TextStyles.loadingText,
+                  ).sliver()
+                ]).scaffold();
+          else
+            return ChangeNotifierProvider(
+                create: (context) => PacksProvider(context, snapshot.data),
+                child: Consumer<PacksProvider>(
+                  builder: (context, provider, child) => Scaffold(
+                    backgroundColor: AppColors.pageColor,
+                    body: ScrollableTemplate(
+                      title: Strings.packsRouteTitle,
+                      showBackButton: true,
+                      children: [
+                        SliverList(
+                          delegate: SliverChildBuilderDelegate(
+                            (BuildContext context, int i) {
+                              return Choice(
+                                  key: ValueKey(i),
+                                  index: i,
+                                  provider: provider);
+                            },
+                            childCount: provider.all.length,
+                          ),
+                        ),
+                      ],
+                    ),
+                    bottomNavigationBar: BottomBar(provider: provider),
                   ),
-                );
-              }
-            },
-          ),
-        ],
-      ),
-      bottomNavigationBar: BottomBar(),
-    );
-  }
-
-  /// Loading all packs so that they can be displayed.
-  /// When all the packs are being loaded, all cards are also loaded
-  Future<Map<String, Pack>> loadPacks(BuildContext context) async {
-    // Loading all packs from metadata.yml
-    Map<String, Pack> packs = await PackService.loadPacks();
-
-    // imo easier to filter in the view
-
-    // remove nsfw packs if nsfw setting is off
-    // final settingsProvider =
-    //     Provider.of<SettingsProvider>(context, listen: false);
-    // if (!settingsProvider.nsfw) {
-    //   // set list to only have cards where nsfw is false
-    //   packs = packs.where((eachPack) => eachPack.nsfw == false).toList();
-    // }
-
-    // all these packs go into the unselected packs yaml
-    // they will be manually selected by the user
-    final packsProvider = Provider.of<PacksProvider>(context, listen: false);
-    packsProvider.loadPacks(packs);
-
-    // DEBUG uncomment below to test the loading indicator widget
-    // await Future.delayed(Duration(seconds: 10));
-
-    return packs;
+                ));
+        });
   }
 }

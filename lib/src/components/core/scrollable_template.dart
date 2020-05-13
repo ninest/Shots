@@ -38,5 +38,6 @@ class ScrollableTemplate extends StatelessWidget {
   }
 
   // shortcut for wrapping widget in scaffold
-  Widget scaffold() => Scaffold(body: this);
+  Widget scaffold() =>
+      Scaffold(backgroundColor: AppColors.pageColor, body: this);
 }

@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shots/src/providers/game_state_provider.dart';
 import 'package:universal_platform/universal_platform.dart';
 
 import 'package:shots/src/components/game/shot_card/card_display.dart';
 import 'package:shots/src/models/card_model.dart';
-import 'package:shots/src/providers/card_provider.dart';
 
 /// is responsible for card drags and location, creates child with actual
 /// representation of the card
-class ShotCardParent extends StatefulWidget {
-  const ShotCardParent({Key key, this.shotCard}) : super(key: key);
+class TopCard extends StatefulWidget {
+  const TopCard({Key key, this.shotCard}) : super(key: key);
   final ShotCard shotCard;
 
   @override
-  _ShotCardParentState createState() => _ShotCardParentState();
+  _TopCardState createState() => _TopCardState();
 }
 
-class _ShotCardParentState extends State<ShotCardParent>
-    with SingleTickerProviderStateMixin {
+class _TopCardState extends State<TopCard> with SingleTickerProviderStateMixin {
   AnimationController _controller;
   Animation<Alignment> _animation;
   Alignment _dragAlignment = Alignment.center; // intial card position
@@ -56,10 +55,12 @@ class _ShotCardParentState extends State<ShotCardParent>
   }
 
   void _runCardBackToCenterAnimation() {
-    _animation = _controller.drive(AlignmentTween(
-      begin: _dragAlignment,
-      end: Alignment.center,
-    ));
+    _animation = _controller.drive(
+      AlignmentTween(
+        begin: _dragAlignment,
+        end: Alignment.center,
+      ),
+    );
     _controller
       ..reset()
       ..forward();
@@ -102,11 +103,12 @@ class _ShotCardParentState extends State<ShotCardParent>
         if (_dragAlignment.x.abs() > 0.95) {
           _runCardLeaveAnimation(left: _dragAlignment.x < 0).then((_) {
             // get the next card ready
-            Provider.of<CardProvider>(context, listen: false).nextCard();
+            Provider.of<GameStateProvider>(context, listen: false).popTop();
             // Taking the card back to the center without animation. This gives an appearance
             // the next card has come to the top, when it's actually the same one the users keep
             // swiping away.
-            setState(() => _dragAlignment = Alignment.center);
+            // TODO chk
+            // setState(() => _dragAlignment = Alignment.center);
           });
         } else {
           // if card is left down by finger at any other location, animate it going

@@ -6,8 +6,8 @@ class Strings {
   static const tutorialButton = "Tutorial";
   static const packsRouteTitle = "Choose packs";
   static const selectAllButton = "Select all";
-  static const unSelectAllButton = "Unselect all";
-  static const doneButton = "Done";
+  static const deselectAllButton = "Deselect all";
+  static const startRound = "Start round";
   static const statsSectionTitle = "Stats";
   static const optionsSectionTitle = "Options";
   static const endOfDeck = "End of deck";

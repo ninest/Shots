@@ -16,7 +16,7 @@ class Section extends StatelessWidget {
       children: <Widget>[
         SizedBox(height: Values.mainPadding),
         Text(title, style: TextStyles.sectionHeading),
-        SizedBox(height: Values.mainPadding / 1.5),
+        SizedBox(height: Values.mainPadding * .67),
         ...children,
       ],
     );

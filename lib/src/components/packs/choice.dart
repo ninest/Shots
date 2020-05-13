@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import 'package:shots/src/models/pack_model.dart';
 import 'package:shots/src/providers/packs_provider.dart';
 import 'package:shots/src/services/sound_service.dart';
 import 'package:shots/src/styles/colors.dart';
@@ -10,27 +8,26 @@ import 'package:shots/src/styles/values.dart';
 import 'package:shots/src/utils/extensions.dart';
 
 class Choice extends StatelessWidget {
-  const Choice({Key key, @required this.pack}) : super(key: key);
-  final Pack pack;
+  const Choice({Key key, this.index, this.provider}) : super(key: key);
+  final PacksProvider provider;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
-    // to check if pack is selected or unselected
-    PacksProvider packsProvider =
-        Provider.of<PacksProvider>(context, listen: true);
-    bool selected = packsProvider.packSelected(pack);
-
     return GestureDetector(
       child: AnimatedContainer(
-        duration: Duration(milliseconds: Values.durationMs),
-        padding: EdgeInsets.all(Values.mainPadding * .67),
+        duration: const Duration(milliseconds: Values.durationMs),
+        margin: const EdgeInsets.only(bottom: Values.mainPadding * .5),
+        padding: const EdgeInsets.all(Values.mainPadding * .67),
         decoration: BoxDecoration(
           color: Colors.transparent.withOpacity(0.1),
           borderRadius: BorderRadius.circular(Values.borderRadius),
           border: Border.all(
-            // erased width change so buttons won't move on click
+            // erased width change so buttons won't shake on click
             width: 2,
-            color: selected ? AppColors.accent : AppColors.pageBorderColor,
+            color: provider.selected.contains(index)
+                ? AppColors.accept
+                : AppColors.pageBorderColor,
           ),
         ),
         child: Column(
@@ -41,10 +38,10 @@ class Choice extends StatelessWidget {
                 // Expand to get whole available space
                 Expanded(
                   child: Text(
-                    pack.name,
+                    provider.all[index].name,
                     // if NSFW, make it red
-                    style: pack.nsfw
-                        ? TextStyles.packName.c(AppColors.danger)
+                    style: provider.all[index].nsfw
+                        ? TextStyles.packName.c(AppColors.reject)
                         : TextStyles.packName,
 
                     maxLines: 3,
@@ -52,18 +49,19 @@ class Choice extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "${pack.cards.length} cards",
+                  "${provider.all[index].cards.length} cards",
                   style: TextStyles.body1.s(0.8 * Values.em),
                 ),
               ],
             ),
-            SizedBox(height: Values.mainPadding / 2),
-            Text(pack.description, style: TextStyles.packDescription),
+            SizedBox(height: Values.mainPadding * .5),
+            Text(provider.all[index].description,
+                style: TextStyles.packDescription),
           ],
         ),
       ),
       onTap: () {
-        packsProvider.toggle(pack);
+        provider.toggle(index);
         // play pop button sound
         SoundService.pop(secondary: true);
       },

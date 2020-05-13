@@ -1,11 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import 'package:shots/src/components/core/buttons/button.dart';
 import 'package:shots/src/constants/strings.dart';
-import 'package:shots/src/providers/game_provider.dart';
-import 'package:shots/src/services/game_service.dart';
-import 'package:shots/src/services/tutorial_service.dart';
 import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/styles/text_styles.dart';
 import 'package:shots/src/styles/values.dart';
@@ -45,8 +42,8 @@ showEndDialog(BuildContext context) {
               // options (continue game and end game)
               Button(
                 text: "Continue playing",
-                color: AppColors.accent,
-                onTap: () => _closeDialog(context),
+                color: AppColors.accept,
+                onTap: () => ExtendedNavigator.of(context).pop(context),
               ),
 
               // spacing to make it look cleaner
@@ -55,8 +52,11 @@ showEndDialog(BuildContext context) {
               Button(
                 text: "End game",
                 // outline: true,
-                color: AppColors.danger,
-                onTap: () => _endGame(context),
+                color: AppColors.reject,
+                onTap: () => ExtendedNavigator.of(context)
+                    .popUntil((route) => route.isFirst
+                        // ||  route.settings.name == Routes.homeRoute),
+                        ),
               ),
             ],
           ),
@@ -64,17 +64,4 @@ showEndDialog(BuildContext context) {
       );
     },
   );
-}
-
-void _closeDialog(BuildContext context) {
-  Navigator.pop(context);
-}
-
-/// End game or tutorial
-void _endGame(BuildContext context) {
-  final gameProvider = Provider.of<GameProvider>(context, listen: false);
-  if (gameProvider.isTutorial)
-    TutorialService.endTutorial(context);
-  else
-    GameService.end(context);
 }

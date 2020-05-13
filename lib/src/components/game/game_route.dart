@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 import 'package:shots/src/components/core/buttons/close_button.dart';
+import 'package:shots/src/components/core/scrollable_template.dart';
 import 'package:shots/src/components/game/end_alert.dart';
 import 'package:shots/src/components/game/shot_card/next_card.dart';
 import 'package:shots/src/components/game/shot_card/parent.dart';
@@ -10,116 +12,118 @@ import 'package:shots/src/components/game/sliding_panel/sections/options.dart';
 import 'package:shots/src/components/game/sliding_panel/sections/stats.dart';
 import 'package:shots/src/components/game/sliding_panel/sliding_panel.dart';
 import 'package:shots/src/constants/strings.dart';
-import 'package:shots/src/models/card_model.dart';
-import 'package:shots/src/providers/card_provider.dart';
-import 'package:shots/src/providers/game_provider.dart';
-import 'package:shots/src/services/tutorial_service.dart';
+import 'package:shots/src/providers/game_state_provider.dart';
+import 'package:shots/src/styles/colors.dart';
+import 'package:shots/src/styles/text_styles.dart';
 import 'package:shots/src/styles/values.dart';
+import 'package:shots/src/utils/extensions.dart';
 
-class GameRoute extends StatelessWidget {
+class GameRoute extends StatefulWidget {
+  GameRoute({this.selected = const {}, Key key}) : super(key: key);
+  final Set<String> selected;
+  @override
+  _GameRouteState createState() => _GameRouteState();
+}
+
+class _GameRouteState extends State<GameRoute> {
   // controller required to programmatically open sliding panel
   final PanelController _panelController = PanelController();
+  GameStateProvider state;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    final selected = widget.selected;
+    state = GameStateProvider(selected);
+  }
+
+  @override
+  void dispose() {
+    state.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    // tell game provider if this is a tutorial "game" or not
-    final GameProvider gameProvider =
-        Provider.of<GameProvider>(context, listen: false);
-    // including this here to change the background color
-    final CardProvider cardProvider =
-        Provider.of<CardProvider>(context, listen: true);
-
-    // when all cards are over, this will be null
-    ShotCard currentCard;
-
-    // If there is no top card, this returns null
-    bool currentCardExists;
-
-    try {
-      currentCard = cardProvider.cards[cardProvider.currentCardIndex];
-      currentCardExists = true;
-    } catch (e) {
-      currentCard = null;
-      currentCardExists = false;
-    }
-
-    int cardsLeft = cardProvider.cards.length - cardProvider.currentCardIndex;
-
-    // if the cards left is 0 and it's a tutorial, leave!
-    if (gameProvider.isTutorial && cardsLeft <= 1) {
-      TutorialService.endTutorial(context);
-    }
-
     return Scaffold(
-      backgroundColor: Colors.black,
+        backgroundColor: Colors.black,
+        body: ChangeNotifierProvider.value(
+            value: state,
+            child: Consumer<GameStateProvider>(
+              builder: (context, provider, child) {
+                if (provider.loading) {
+                  print('loading');
+                  return ScrollableTemplate(
+                    showBackButton: true,
+                    children: [
+                      Text(
+                        "Loading packs ...",
+                        style: TextStyles.loadingText,
+                      ).sliver(),
+                    ],
+                  );
+                }
+// ScrollableTemplate(showBackButton: true, children: [
+                if (provider.isTutorial && provider.topCard == null) {
+                  print('empty tutorial');
+                  ExtendedNavigator.of(context).pop();
+                  return Container(
+                    color: AppColors.black[2],
+                  );
+                }
 
-      // see [_slidingUpPanel] to see how the sliding up panel is coming about
-      body: SlidingPanel(
-        // if there no cards left, hide the sliding panel because all of its contents
-        // (options and stats) are already being shown by _endFfDeck()
-        showSlidingPanel: currentCardExists,
-        panelController: _panelController,
+                print('normal game State');
+                return provider.topCard != null
+                    ? SlidingPanel(
+                        panelController: _panelController,
+                        background: Container(
+                          color: AppColors.black[2],
+                          child: SafeArea(
+                            child: FittedBox(
+                              child: Stack(
+                                children: <Widget>[
+                                  // uncomment to easily swipe cards on an emulator
+                                  // Button(text: "Next", onTap: () => cardProvider.nextCard()),
+                                  Align(
+                                    alignment: Alignment.topLeft,
+                                    child: Padding(
+                                      padding:
+                                          EdgeInsets.all(Values.mainPadding),
+                                      child: AppCloseButton(
+                                        overrideOnTap: () =>
+                                            showEndDialog(context),
+                                      ),
+                                    ),
+                                  ),
 
-        // actual page body
-        body: AnimatedContainer(
-          color: currentCard == null
-              ? Colors.black
-              : currentCard.color.withOpacity(Values.containerOpacity),
-
-          // nice non-distracing color changing effect
-          duration: Duration(seconds: 6),
-          child: SafeArea(
-            child: Stack(
-              children: <Widget>[
-                // un comment to easily swipe cards on an emulator
-                // Button(text: "Next", onTap: () => cardProvider.nextCard()),
-
-                // show x button
-                // don't show it when the end of deck menu is showing
-                // because there are two buttons (End game and X) that do the
-                // same thing
-                if (currentCardExists)
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Padding(
-                      padding: EdgeInsets.all(Values.mainPadding),
-                      child: AppCloseButton(
-                        // overrideOnTap: () => _endGame(context),
-                        overrideOnTap: () => showEndDialog(context),
-                      ),
-                    ),
-                  ),
-
-                if (currentCardExists) ...[
-                  // placeholder shot cards
-                  for (var i = cardProvider.nextCardsNo; i >= 1; i--)
-                    _nextCard(i),
-
-                  ShotCardParent(
-                    shotCard: currentCard,
-                  )
-                ],
-
-                // show end of deck menu
-                if (!currentCardExists) _endOfDeck(),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
+                                  ...provider.deck
+                                      .map((e) => DeckCard(e))
+                                      .toList(),
+                                  TopCard(shotCard: provider.topCard)
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
+                    : Container(
+                        color: AppColors.black[2],
+                        child: SafeArea(
+                          child: _endOfDeck(),
+                        ),
+                      );
+              },
+            )));
   }
-
-  Widget _nextCard(int index) => Align(
-        alignment: Alignment.center,
-        child: NextShotCard(index: index),
-      );
 
   Widget _endOfDeck() => Padding(
         padding: EdgeInsets.all(Values.mainPadding),
         child: Column(
           children: <Widget>[
-            OptionsSection(overrideTitle: Strings.endOfDeck),
+            OptionsSection(
+              title: Strings.endOfDeck,
+            ),
             StatsSection(),
           ],
         ),

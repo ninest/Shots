@@ -14,7 +14,7 @@ TextTheme _buildTextTheme(TextTheme base) {
 ThemeData _buildTheme() {
   final ThemeData base = ThemeData(
     brightness: Brightness.light,
-    accentColor: AppColors.accent,
+    accentColor: AppColors.accept,
     fontFamily: 'Rubik',
   );
 

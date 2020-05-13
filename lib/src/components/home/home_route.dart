@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:shots/src/components/core/buttons/button.dart';
 import 'package:shots/src/constants/strings.dart';
 import 'package:shots/src/router/router.gr.dart';
-import 'package:shots/src/services/tutorial_service.dart';
 import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/styles/text_styles.dart';
 import 'package:shots/src/styles/values.dart';
@@ -16,7 +15,7 @@ class HomeRoute extends StatelessWidget {
   List<Widget> _buildButtons(BuildContext context) => [
         Button(
           text: Strings.startButton,
-          color: AppColors.accent,
+          color: AppColors.accept,
           width: 200.0,
           focus: true,
           onTap: () =>
@@ -43,7 +42,8 @@ class HomeRoute extends StatelessWidget {
           text: Strings.tutorialButton,
           color: AppColors.orange[0],
           // outline: true,
-          onTap: () => TutorialService.startTutorial(context),
+          onTap: () =>
+              ExtendedNavigator.of(context).pushNamed(Routes.gameRoute),
         ),
       ];
 

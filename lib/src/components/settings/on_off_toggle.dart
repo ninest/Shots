@@ -55,13 +55,13 @@ class OnOffToggle extends StatelessWidget {
 
   /// Padding for "On" and "Off" toggles
   EdgeInsets _buttonPadding() => EdgeInsets.symmetric(
-        horizontal: Values.mainPadding / 2,
-        vertical: Values.mainPadding / 3,
+        horizontal: Values.mainPadding * .5,
+        vertical: Values.mainPadding * .34,
       );
 
   /// Border function (blue border for on if enabled, otherside blue for off)
   Border _border(enabled) => Border.all(
-        color: enabled ? AppColors.accent : AppColors.pageBorderColor,
-        width: enabled ? 2 : 1,
+        color: enabled ? AppColors.accept : AppColors.pageBorderColor,
+        width: 2,
       );
 }

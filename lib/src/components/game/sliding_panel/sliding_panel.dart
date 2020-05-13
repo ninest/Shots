@@ -10,13 +10,11 @@ import 'package:shots/src/styles/values.dart';
 class SlidingPanel extends StatelessWidget {
   const SlidingPanel({
     Key key,
-    this.showSlidingPanel = false,
     this.panelController,
-    @required this.body,
+    @required this.background,
   }) : super(key: key);
-  final bool showSlidingPanel;
   final PanelController panelController;
-  final Widget body;
+  final Widget background;
 
   @override
   Widget build(BuildContext context) {
@@ -29,15 +27,15 @@ class SlidingPanel extends StatelessWidget {
       onWillPop: () => _onBackGesture(panelController),
       child: SlidingUpPanel(
         controller: panelController,
-        minHeight: showSlidingPanel ? (safeAreaPaddingBottom + 65.0) : 0.0,
+        minHeight: (safeAreaPaddingBottom + 65.0),
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(Values.borderRadius),
           topRight: Radius.circular(Values.borderRadius),
         ),
         border: Border.all(width: 1, color: AppColors.pageBorderColor),
         color: AppColors.pageColor,
-        panel: _actualSlidingPanel(),
-        body: body,
+        panel: PanelWidget(),
+        body: background,
       ),
     );
   }
@@ -49,8 +47,15 @@ class SlidingPanel extends StatelessWidget {
     else
       await controller.open();
   }
+}
 
-  Widget _actualSlidingPanel() => Container(
+class PanelWidget extends StatelessWidget {
+  const PanelWidget({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) => Container(
         padding: EdgeInsets.only(
           right: Values.mainPadding,
           left: Values.mainPadding,

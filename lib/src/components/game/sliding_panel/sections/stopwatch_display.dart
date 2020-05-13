@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:shots/src/providers/stopwatch_provider.dart';
+import 'package:shots/src/providers/game_state_provider.dart';
 
 class StopwatchDisplay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final StopwatchProvider stopwatchProvider =
-        Provider.of<StopwatchProvider>(context, listen: true);
+    final provider = Provider.of<GameStateProvider>(
+      context,
+    );
 
-    int minutes = stopwatchProvider.seconds ~/ 60;
-    int seconds = stopwatchProvider.seconds - minutes * 60;
+    if (provider.isTutorial) return Text('Tutorial mode');
 
-    String minutesDisplay = minutes.toString();
-    if (minutesDisplay.length == 1) minutesDisplay = '0$minutesDisplay';
+    int minutes = provider.seconds ~/ 60;
+    int seconds = provider.seconds % 60;
 
-    String secondsDisplay = seconds.toString();
-    if (secondsDisplay.length == 1) secondsDisplay = '0$secondsDisplay';
+    String minutesDisplay = '${minutes < 10 ? '0' : ''}${minutes.toString()}';
+    String secondsDisplay = '${seconds < 10 ? '0' : ''}${seconds.toString()}';
 
     return Text("$minutesDisplay:$secondsDisplay");
   }

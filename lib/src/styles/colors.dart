@@ -5,9 +5,9 @@ class AppColors {
   static final _rng = Random();
   static const dark = Color(0xFF333333);
 
-  static const accent = Colors.indigo;
+  static const accept = Colors.indigo;
   static const secondary = Colors.green;
-  static const danger = Colors.red;
+  static const reject = Colors.red;
   static const pageColor = Color(0xff222222);
   static const pageBorderColor = Colors.black;
 
