@@ -9,9 +9,9 @@ import 'package:shots/src/models/card_model.dart';
 /// is responsible for card drags and location, creates child with actual
 /// representation of the card
 class TopCard extends StatefulWidget {
-  const TopCard({Key key, this.shotCard}) : super(key: key);
+  const TopCard({Key key, this.cardKey, this.shotCard}) : super(key: key);
   final ShotCard shotCard;
-
+  final Key cardKey;
   @override
   _TopCardState createState() => _TopCardState();
 }
@@ -120,6 +120,7 @@ class _TopCardState extends State<TopCard> with SingleTickerProviderStateMixin {
         alignment: _dragAlignment,
         // keeping actual widget in new file to make it less confusing
         child: CardDisplay(
+          key: widget.cardKey,
           shotCard: widget.shotCard,
         ),
       ),

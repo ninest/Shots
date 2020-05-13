@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shots/src/components/game/sliding_panel/game_menu.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 import 'package:shots/src/components/core/scroll_indicator.dart';
@@ -34,7 +35,11 @@ class SlidingPanel extends StatelessWidget {
         ),
         border: Border.all(width: 1, color: AppColors.pageBorderColor),
         color: AppColors.pageColor,
-        panel: PanelWidget(),
+        panel: GameMenu(
+          sliderCloseCallback: () {
+            panelController.close();
+          },
+        ),
         body: background,
       ),
     );
@@ -49,26 +54,30 @@ class SlidingPanel extends StatelessWidget {
   }
 }
 
-class PanelWidget extends StatelessWidget {
-  const PanelWidget({
-    Key key,
-  }) : super(key: key);
+// class PanelWidget extends StatelessWidget {
+//   const PanelWidget({
+//     Key key,
+//   }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) => Container(
-        padding: EdgeInsets.only(
-          right: Values.mainPadding,
-          left: Values.mainPadding,
-          bottom: Values.mainPadding,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            ScrollIndicator().spacing(),
-            SizedBox(height: Values.mainPadding),
-            StatsSection(),
-            OptionsSection(),
-          ],
-        ),
-      );
-}
+//   @override
+//   Widget build(BuildContext context) => Container(
+//         padding: EdgeInsets.only(
+//           right: Values.mainPadding,
+//           left: Values.mainPadding,
+//           bottom: Values.mainPadding,
+//         ),
+//         child: Column(
+//           crossAxisAlignment: CrossAxisAlignment.start,
+//           children: <Widget>[
+//             ScrollIndicator().spacing(),
+//             SizedBox(height: Values.mainPadding),
+//             StatsSection(),
+//             OptionsSection(
+//               closeSlider: () {
+//                 controller.close();
+//               },
+//             ),
+//           ],
+//         ),
+//       );
+// }

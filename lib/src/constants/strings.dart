@@ -11,6 +11,8 @@ class Strings {
   static const statsSectionTitle = "Stats";
   static const optionsSectionTitle = "Options";
   static const endOfDeck = "End of deck";
+  static const resetGame = "Restart";
+  static const closeGame = "Go to menu";
 
   // end game dialog strings
   static const endDialogTitle = "Sure you wanna end?";

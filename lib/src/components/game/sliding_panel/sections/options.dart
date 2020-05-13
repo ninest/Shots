@@ -11,37 +11,42 @@ import 'package:shots/src/styles/values.dart';
 import 'package:shots/src/constants/strings.dart';
 
 class OptionsSection extends StatelessWidget {
-  const OptionsSection({
-    Key key,
-    this.title = Strings.optionsSectionTitle,
-  }) : super(key: key);
-  final String title;
+  const OptionsSection({Key key, this.sliderCloseCallback}) : super(key: key);
+
+  final VoidCallback sliderCloseCallback;
 
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<GameStateProvider>(context, listen: true);
     // disable buttons in tutorial mode
     return Section(
-      title: title,
+      title: provider.topCard == null
+          ? Strings.endOfDeck
+          : Strings.optionsSectionTitle,
       children: <Widget>[
         Button(
-          text: "Restart rounds",
+          text: Strings.resetGame,
           color: AppColors.accept,
           width: double.infinity,
           disabled: provider.isTutorial,
-          onTap: provider.isTutorial ? null : provider.reset,
+          onTap: provider.isTutorial
+              ? null
+              : () {
+                  provider.reset();
+                  if (sliderCloseCallback != null) sliderCloseCallback();
+                },
         ),
         SizedBox(height: Values.mainPadding / 2),
         Button(
-          text: "End game",
+          text: Strings.closeGame,
           outline: true,
           color: AppColors.reject,
           width: double.infinity,
           // disabled: isTutorial,
-          onTap: () => provider.topCard == null || provider.isTutorial
-              ? ExtendedNavigator.of(context).pop
+          onTap: (provider.topCard == null || provider.isTutorial)
+              ? () => ExtendedNavigator.of(context).pop()
               : () => showEndDialog(context),
-        )
+        ),
       ],
     );
   }

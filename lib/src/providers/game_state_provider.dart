@@ -8,15 +8,16 @@ import 'package:shots/src/services/pack_service.dart';
 
 /// The sole purpose of this is to tell whether a game is going on or not
 class GameStateProvider extends ChangeNotifier {
-  bool gameRunning;
-  bool loading = true;
-  bool isTutorial;
-  List<ShotCard> cards;
-  int top;
   static const int deckHeight = 7;
 
+  bool gameRunning = false;
+  bool loading = true;
+  bool isTutorial = false;
+  List<ShotCard> cards;
+  int top = 0;
+
   Timer timer;
-  int seconds;
+  int seconds = 0;
 
   ShotCard get topCard => top < cards.length ? cards[top] : null;
   List<ShotCard> get deck => top + 1 < cards.length
@@ -27,20 +28,17 @@ class GameStateProvider extends ChangeNotifier {
       : [];
 
   GameStateProvider(Set<String> selected) {
-    seconds = 0;
     timer = Timer.periodic(Duration(seconds: 1), (timer) {
       if (loading || isTutorial || !gameRunning) return;
       seconds++;
       notifyListeners();
     });
 
-    gameRunning = false;
-    top = 0;
     if (selected.isEmpty) {
       isTutorial = true;
       cards = tutorialCards;
       loading = false;
-      start();
+      gameRunning = true;
     } else {
       isTutorial = false;
       loading = true;
@@ -49,8 +47,7 @@ class GameStateProvider extends ChangeNotifier {
         cards.addAll(packs.values
             .where((pack) => selected.contains(pack.slug))
             .expand((pack) => pack.cards));
-        loading = false;
-        start();
+        reset();
       });
     }
   }
@@ -62,21 +59,16 @@ class GameStateProvider extends ChangeNotifier {
   }
 
   reset() {
-    //
-  }
-
-  popTop() {
-    top++;
-    notifyListeners();
-  }
-
-  start() {
+    seconds = 0;
+    top = 0;
+    cards.shuffle();
+    loading = false;
     gameRunning = true;
     notifyListeners();
   }
 
-  end() {
-    gameRunning = false;
+  popTop() {
+    if (top < cards.length && (++top) == cards.length) gameRunning = false;
     notifyListeners();
   }
 }
