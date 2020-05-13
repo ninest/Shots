@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   static final _rng = Random();
-  static const dark = Color(0xFF333333);
+  static const pageColor = Color(0xff212121);
+  static const pageBG = Colors.black;
 
-  static const accept = Colors.indigo;
-  static const secondary = Colors.green;
-  static const reject = Colors.red;
-  static const pageColor = Color(0xff222222);
-  static const pageBorderColor = Colors.black;
+  static const acceptColor = Color(0xff269671);
+  static const rejectColor = Color(0xffb0413e);
+  static const miscColor = Color(0xff255C99);
+  static const borderColor = Color(0xff08090A);
+  static const choiceCard = Color(0xff473335);
 
   // TODO adjust constants so they wont try to pluck ur eyes out
   static const black = const [

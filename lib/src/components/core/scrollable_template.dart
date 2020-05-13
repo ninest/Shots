@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
 import 'package:shots/src/components/core/buttons/close_button.dart';
-import 'package:shots/src/components/core/title_text.dart';
 import 'package:shots/src/styles/colors.dart';
+import 'package:shots/src/styles/text_styles.dart';
 import 'package:shots/src/styles/values.dart';
 import 'package:shots/src/utils/extensions.dart';
 
 class ScrollableTemplate extends StatelessWidget {
   final List<Widget> children;
-  final bool showBackButton;
+  final bool hideReturnButton;
   final String title;
 
   ScrollableTemplate(
-      {@required this.children, this.showBackButton = false, this.title});
+      {@required this.children, this.hideReturnButton = false, this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -20,15 +20,27 @@ class ScrollableTemplate extends StatelessWidget {
     // double statusBarHeight = MediaQuery.of(context).padding.top;
 
     return Container(
-      color: AppColors.pageColor,
+      decoration: BoxDecoration(
+        // gradient: _getLinearGradient(),
+        color: AppColors.pageColor,
+        borderRadius: BorderRadius.circular(Values.mainPadding),
+        border: Border.all(
+          width: Values.mainPadding * .5,
+          color: AppColors.pageBG.withOpacity(Values.borderOpacity),
+        ),
+      ),
       padding: EdgeInsets.symmetric(horizontal: Values.mainPadding),
       child: CustomScrollView(slivers: <Widget>[
-        if (showBackButton) AppCloseButton().sliver(),
-        // uncomment if required
-        // padding for status bar; we still want content to be able to scroll and be seen behind it
-        // Spacing(height: statusBarHeight).sliver(),
-
-        if (title != null) TitleText(text: title).sliver(),
+        if (!hideReturnButton) AppCloseButton().sliver(),
+        if (title != null)
+          Container(
+            alignment: Alignment.topLeft,
+            margin: EdgeInsets.only(top: Values.mainPadding),
+            child: Text(
+              title,
+              style: TextStyles.pageTitle,
+            ),
+          ).sliver(),
         SizedBox(height: Values.mainPadding).sliver(),
         ...children,
         // added so end of content is readable with maximum bottom scroll
@@ -36,8 +48,4 @@ class ScrollableTemplate extends StatelessWidget {
       ]),
     );
   }
-
-  // shortcut for wrapping widget in scaffold
-  Widget scaffold() =>
-      Scaffold(backgroundColor: AppColors.pageColor, body: this);
 }

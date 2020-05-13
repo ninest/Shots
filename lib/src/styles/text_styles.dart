@@ -10,7 +10,7 @@ class TextStyles {
   static get em => Values.em;
 
   /// App title
-  static TextStyle get title =>
+  static TextStyle get pageTitle =>
       // UniversalPlatform.isIOS || UniversalPlatform.isAndroid
       //     ? GoogleFonts.rubik(
       // textStyle:
@@ -92,7 +92,7 @@ class TextStyles {
       );
 
   /// Title of section (Options and Stats)
-  static TextStyle get sectionHeading =>
+  static TextStyle get sectionHeader =>
       // GoogleFonts.rubik(
       //       textStyle:
       TextStyle(

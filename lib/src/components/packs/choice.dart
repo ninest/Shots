@@ -16,18 +16,18 @@ class Choice extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: Values.durationMs),
+        duration: Values.animationDuration,
         margin: const EdgeInsets.only(bottom: Values.mainPadding * .5),
         padding: const EdgeInsets.all(Values.mainPadding * .67),
         decoration: BoxDecoration(
-          color: Colors.transparent.withOpacity(0.1),
+          color: AppColors.choiceCard,
           borderRadius: BorderRadius.circular(Values.borderRadius),
           border: Border.all(
             // erased width change so buttons won't shake on click
-            width: 2,
+            width: Values.borderWidth,
             color: provider.selected.contains(index)
-                ? AppColors.accept
-                : AppColors.pageBorderColor,
+                ? AppColors.acceptColor
+                : AppColors.borderColor.withOpacity(Values.borderOpacity),
           ),
         ),
         child: Column(
@@ -41,7 +41,7 @@ class Choice extends StatelessWidget {
                     provider.all[index].name,
                     // if NSFW, make it red
                     style: provider.all[index].nsfw
-                        ? TextStyles.packName.c(AppColors.reject)
+                        ? TextStyles.packName.c(AppColors.rejectColor)
                         : TextStyles.packName,
 
                     maxLines: 3,

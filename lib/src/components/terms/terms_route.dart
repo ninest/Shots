@@ -11,9 +11,8 @@ class TermsRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScrollableTemplate(
-      showBackButton: true,
-      title: Strings.termsRouteTitle,
-      children: <Widget>[MarkdownBody(data: Strings.terms).sliver()],
+      title: AppStrings.termsRouteTitle,
+      children: <Widget>[MarkdownBody(data: AppStrings.terms).sliver()],
     ).scaffold();
   }
 }

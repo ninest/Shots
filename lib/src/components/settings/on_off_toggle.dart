@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:shots/src/styles/colors.dart';
+import 'package:shots/src/styles/text_styles.dart';
 import 'package:shots/src/styles/values.dart';
 
 class OnOffToggle extends StatelessWidget {
@@ -21,14 +22,23 @@ class OnOffToggle extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Text(title),
+            Text(
+              title,
+              style: TextStyles.sectionHeader,
+            ),
             Row(
               children: [true, false]
                   .map((e) => AnimatedContainer(
-                        duration: Duration(milliseconds: Values.durationMs),
-                        padding: _buttonPadding(),
+                        duration: Values.animationDuration,
+                        padding: buttonPadding,
                         decoration: BoxDecoration(
-                          border: _border(enabled ^ !e),
+                          border: _border(
+                            e ^ enabled
+                                ? AppColors.borderColor
+                                : e
+                                    ? AppColors.acceptColor
+                                    : AppColors.miscColor,
+                          ),
                           borderRadius: e
                               ? BorderRadius.only(
                                   topLeft: Radius.circular(Values.borderRadius),
@@ -54,14 +64,14 @@ class OnOffToggle extends StatelessWidget {
   }
 
   /// Padding for "On" and "Off" toggles
-  EdgeInsets _buttonPadding() => EdgeInsets.symmetric(
-        horizontal: Values.mainPadding * .5,
-        vertical: Values.mainPadding * .34,
-      );
+  final buttonPadding = const EdgeInsets.symmetric(
+    horizontal: Values.mainPadding * .5,
+    vertical: Values.mainPadding * .34,
+  );
 
   /// Border function (blue border for on if enabled, otherside blue for off)
-  Border _border(enabled) => Border.all(
-        color: enabled ? AppColors.accept : AppColors.pageBorderColor,
-        width: 2,
+  Border _border(Color color) => Border.all(
+        color: color,
+        width: Values.borderWidth,
       );
 }

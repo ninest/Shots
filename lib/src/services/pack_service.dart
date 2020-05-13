@@ -8,9 +8,11 @@ class PackService {
   static Map<String, Pack> _cache = {};
 
   static Future<Map<String, Pack>> loadPacks() async {
+    // TODO remove delay
+    // await Future.delayed(Duration(seconds: 8));
+
     if (_cache.isEmpty) {
-      // 1. Read yml file metadata.yml and get a list of packs
-      // 2. Read each file from packs/ to get the cards
+      // Read pack slugs from metadata.yml, load pack for each slug
 
       // reading metadata.yml
       final fileContent = await rootBundle.loadString('assets/metadata.yml');

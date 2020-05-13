@@ -14,8 +14,8 @@ class HomeRoute extends StatelessWidget {
 
   List<Widget> _buildButtons(BuildContext context) => [
         Button(
-          text: Strings.startButton,
-          color: AppColors.accept,
+          text: AppStrings.startButton,
+          color: AppColors.red[0],
           width: 200.0,
           focus: true,
           onTap: () =>
@@ -23,25 +23,22 @@ class HomeRoute extends StatelessWidget {
         ),
         SizedBox(height: Values.buttonVerticalPadding),
         Button(
-          text: Strings.termsRouteTitle,
-          // outline: true,
-          color: AppColors.teal[0],
+          text: AppStrings.termsRouteTitle,
+          color: AppColors.orange[0],
           onTap: () =>
               ExtendedNavigator.of(context).pushNamed(Routes.termsRoute),
         ),
         SizedBox(height: Values.buttonVerticalPadding),
         Button(
-          text: Strings.settingsRouteButton,
-          // outline: true,
-          color: AppColors.red[0],
+          text: AppStrings.settingsRouteButton,
+          color: AppColors.teal[0],
           onTap: () =>
               ExtendedNavigator.of(context).pushNamed(Routes.settingsRoute),
         ),
         SizedBox(height: Values.buttonVerticalPadding),
         Button(
-          text: Strings.tutorialButton,
-          color: AppColors.orange[0],
-          // outline: true,
+          text: AppStrings.tutorialButton,
+          color: AppColors.blue[0],
           onTap: () =>
               ExtendedNavigator.of(context).pushNamed(Routes.gameRoute),
         ),
@@ -59,7 +56,7 @@ class HomeRoute extends StatelessWidget {
           ),
 
         // title
-        Align(child: Text(Strings.appTitle, style: TextStyles.title)),
+        Align(child: Text(AppStrings.appTitle, style: TextStyles.pageTitle)),
         SizedBox(height: Values.buttonVerticalPadding),
         if (flexible) Spacer(flex: 3),
         ..._buildButtons(context),
@@ -72,7 +69,7 @@ class HomeRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: AppColors.pageBG,
       body: Container(
         // margin: EdgeInsets.symmetric(
         //   horizontal: Values.mainPadding,
@@ -82,11 +79,11 @@ class HomeRoute extends StatelessWidget {
         alignment: Alignment.center,
         decoration: BoxDecoration(
           // gradient: _getLinearGradient(),
-          color: AppColors.black[2],
+          color: AppColors.pageColor,
           borderRadius: BorderRadius.circular(Values.borderRadius * 2),
           border: Border.all(
             width: Values.mainPadding / 2,
-            color: Colors.transparent.withOpacity(Values.containerOpacity),
+            color: AppColors.pageBG.withOpacity(Values.borderOpacity),
           ),
         ),
         child: LayoutBuilder(builder: (context, size) {

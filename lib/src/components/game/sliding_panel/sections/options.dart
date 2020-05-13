@@ -21,12 +21,12 @@ class OptionsSection extends StatelessWidget {
     // disable buttons in tutorial mode
     return Section(
       title: provider.topCard == null
-          ? Strings.endOfDeck
-          : Strings.optionsSectionTitle,
+          ? AppStrings.endOfDeck
+          : AppStrings.optionsSectionTitle,
       children: <Widget>[
         Button(
-          text: Strings.resetGame,
-          color: AppColors.accept,
+          text: AppStrings.resetGame,
+          color: AppColors.miscColor,
           width: double.infinity,
           disabled: provider.isTutorial,
           onTap: provider.isTutorial
@@ -38,9 +38,9 @@ class OptionsSection extends StatelessWidget {
         ),
         SizedBox(height: Values.mainPadding / 2),
         Button(
-          text: Strings.closeGame,
+          text: AppStrings.closeGame,
           outline: true,
-          color: AppColors.reject,
+          color: AppColors.rejectColor,
           width: double.infinity,
           // disabled: isTutorial,
           onTap: (provider.topCard == null || provider.isTutorial)

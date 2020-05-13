@@ -20,6 +20,9 @@ class BottomBar extends StatelessWidget {
     return SafeArea(
       // for phones such as iPhone X with rounded bottom corners
       bottom: true,
+      // left: true,
+      // right: true,
+
       child: Container(
         padding: EdgeInsets.symmetric(
           horizontal: Values.mainPadding,
@@ -28,30 +31,33 @@ class BottomBar extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppColors.pageColor,
           border: Border(
-              top: BorderSide(width: 1, color: AppColors.pageBorderColor)),
+              top: BorderSide(
+                  width: Values.borderWidth, color: AppColors.pageBG)),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            // when we selected something, we can reset state
-            // when state is empty we could select everything
+            noPacksSelected
+                ? Button(
+                    text: AppStrings.selectAllButton,
+                    color: AppColors.miscColor,
+                    outline: true,
+                    // if everything is selected, button press should deselect all
+                    onTap: provider.selectAll,
+                  )
+                : Button(
+                    text: AppStrings.deselectAllButton,
+                    color: AppColors.rejectColor,
+                    outline: true,
+                    onTap: provider.deselectAll,
+                  ),
             Button(
-              text: noPacksSelected
-                  ? Strings.selectAllButton
-                  : Strings.deselectAllButton,
-              color: noPacksSelected ? AppColors.secondary : AppColors.reject,
-              outline: true,
-              // if everything is selected, button press should deselect all
-              onTap:
-                  noPacksSelected ? provider.selectAll : provider.deselectAll,
-            ),
-            Button(
-              text: Strings.startRound,
-              color: AppColors.accept,
+              text: AppStrings.startRound,
+              color: AppColors.acceptColor,
               disabled: noPacksSelected,
               onTap: noPacksSelected
                   ? null
-                  : () => ExtendedNavigator.of(context).pushNamed(
+                  : () => ExtendedNavigator.of(context).pushReplacementNamed(
                         Routes.gameRoute,
                         arguments: GameRouteArguments(
                             selected: provider.selected

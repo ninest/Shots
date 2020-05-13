@@ -14,8 +14,7 @@ class SettingsRoute extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<SettingsProvider>(
       builder: (context, provider, child) => ScrollableTemplate(
-        showBackButton: true,
-        title: Strings.settingsRouteTitle,
+        title: AppStrings.settingsRouteTitle,
         children: <Widget>[
           OnOffToggle(
             title: "NSFW",

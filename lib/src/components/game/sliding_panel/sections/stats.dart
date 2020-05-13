@@ -14,11 +14,11 @@ class StatsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final provider = Provider.of<GameStateProvider>(context);
     return Section(
-      title: Strings.statsSectionTitle,
+      title: AppStrings.statsSectionTitle,
       children: <Widget>[
         Opacity(
           // dim buttons in tutorial mode
-          opacity: provider.isTutorial ? Values.disabledOpacity : 1.0,
+          opacity: provider.isTutorial ? Values.disabledButtonOpacity : 1.0,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[

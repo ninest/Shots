@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shots/src/components/game/sliding_panel/game_menu.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
-import 'package:shots/src/components/core/scroll_indicator.dart';
-import 'package:shots/src/components/game/sliding_panel/sections/options.dart';
-import 'package:shots/src/components/game/sliding_panel/sections/stats.dart';
+import 'package:shots/src/components/game/sliding_panel/game_menu.dart';
 import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/styles/values.dart';
 
@@ -33,7 +30,7 @@ class SlidingPanel extends StatelessWidget {
           topLeft: Radius.circular(Values.borderRadius),
           topRight: Radius.circular(Values.borderRadius),
         ),
-        border: Border.all(width: 1, color: AppColors.pageBorderColor),
+        border: Border.all(width: 1, color: AppColors.pageBG),
         color: AppColors.pageColor,
         panel: GameMenu(
           sliderCloseCallback: () {

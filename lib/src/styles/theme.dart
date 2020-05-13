@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/styles/text_styles.dart';
 
 final ThemeData appTheme = _buildTheme();
@@ -14,7 +13,6 @@ TextTheme _buildTextTheme(TextTheme base) {
 ThemeData _buildTheme() {
   final ThemeData base = ThemeData(
     brightness: Brightness.light,
-    accentColor: AppColors.accept,
     fontFamily: 'Rubik',
   );
 

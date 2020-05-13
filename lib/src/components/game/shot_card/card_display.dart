@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 
 import 'package:shots/src/models/card_model.dart';
+import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/styles/text_styles.dart';
 import 'package:shots/src/styles/values.dart';
 
@@ -32,7 +33,7 @@ class CardDisplay extends StatelessWidget {
           borderRadius: BorderRadius.circular(Values.borderRadius * 3),
           border: Border.all(
             width: Values.mainPadding * .4,
-            color: Colors.transparent.withOpacity(Values.containerOpacity),
+            color: AppColors.pageBG.withOpacity(Values.borderOpacity),
             // color: Colors.black,
           ),
           boxShadow: [

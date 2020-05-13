@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:shots/src/router/router.gr.dart';
 import 'package:shots/src/services/sound_service.dart';
+import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/styles/text_styles.dart';
 import 'package:shots/src/styles/values.dart';
 
@@ -19,24 +20,23 @@ class AppCloseButton extends StatelessWidget {
       margin: EdgeInsets.only(top: Values.mainPadding),
       alignment: Alignment.topLeft,
       child: InkWell(
-        borderRadius: BorderRadius.circular(100.0),
+        borderRadius: BorderRadius.circular(Values.mainPadding),
         child: Container(
           padding: EdgeInsets.all(Values.buttonVerticalPadding),
           decoration: BoxDecoration(
-            color: Colors.red.withOpacity(0.3),
-            borderRadius: BorderRadius.circular(100.0),
+            color: AppColors.rejectColor.withOpacity(Values.borderOpacity),
+            borderRadius: BorderRadius.circular(Values.mainPadding),
           ),
           child: Icon(
             // by default, show the cross icon unless another one is specified
             iconData ?? FontAwesomeIcons.times,
-            color: color ?? Colors.red,
+            color: color ?? AppColors.rejectColor,
             size: TextStyles.button.fontSize,
           ),
         ),
         onTap: () {
           // go to previous page
           (overrideOnTap ?? () => ExtendedNavigator.ofRouter<Router>().pop())();
-
           // play pop button sound
           SoundService.pop(secondary: true);
         },

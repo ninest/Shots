@@ -1,5 +1,6 @@
-class Strings {
+class AppStrings {
   static const appTitle = "Shots";
+  static const loading = "Loading...";
   static const startButton = "Start";
   static const termsRouteButton = "Terms";
   static const settingsRouteButton = "Settings";

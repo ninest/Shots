@@ -21,7 +21,7 @@ showEndDialog(BuildContext context) {
             borderRadius: BorderRadius.circular(Values.borderRadius * 2),
             border: Border.all(
               width: 1,
-              color: AppColors.pageBorderColor,
+              color: AppColors.pageBG,
             ),
           ),
           padding: EdgeInsets.all(Values.mainPadding),
@@ -30,9 +30,9 @@ showEndDialog(BuildContext context) {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Text(
-                Strings.endDialogTitle,
+                AppStrings.endDialogTitle,
                 // make font size smaller
-                style: TextStyles.title //
+                style: TextStyles.pageTitle //
                     .s(1.5 * Values.em),
               ),
 
@@ -42,7 +42,7 @@ showEndDialog(BuildContext context) {
               // options (continue game and end game)
               Button(
                 text: "Continue playing",
-                color: AppColors.accept,
+                color: AppColors.acceptColor,
                 onTap: () => ExtendedNavigator.of(context).pop(context),
               ),
 
@@ -52,7 +52,7 @@ showEndDialog(BuildContext context) {
               Button(
                 text: "End game",
                 // outline: true,
-                color: AppColors.reject,
+                color: AppColors.rejectColor,
                 onTap: () => ExtendedNavigator.of(context)
                     .popUntil((route) => route.isFirst
                         // ||  route.settings.name == Routes.homeRoute),
