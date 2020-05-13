@@ -17,6 +17,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: appTheme,
+      title: 'Shots',
       builder: (BuildContext context, Widget widget) {
         return ScrollConfiguration(
           behavior: BounceScrollBehavior(),

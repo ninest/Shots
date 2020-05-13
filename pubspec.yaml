@@ -40,19 +40,20 @@ dev_dependencies:
   #   sdk: flutter
   auto_route_generator: ^0.4.3
   build_runner: ^1.8.1
-  flutter_launcher_icons: ^0.7.4
+  flutter_launcher_icons: ^0.7.5
   flutter_native_splash: ^0.1.9
 
 flutter_icons:
   android: "ic_launcher"
-  image_path_android: "icons/android.png"
+  image_path_android: "assets/icons/android.png"
   ios: true
-  image_path_ios: "icons/ios.jpg"
+  image_path_ios: "assets/icons/ios.jpg"
 
 flutter_native_splash:
-  image: "icons/android.png"
-  color: "111111"
+  image: "assets/icons/android.png"
+  color: "#212121"
   android: true
+  ios: true
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -66,7 +67,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - icons/android.png
+    - assets/icons/android.png
 
     - assets/packs/
     - assets/metadata.yml

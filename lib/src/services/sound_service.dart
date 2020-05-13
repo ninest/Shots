@@ -9,9 +9,12 @@ class SoundService {
   static const Map<String, String> sounds = {
     'success': 'success.mp3',
     'failure': 'failure.mp3',
-    'swipe': 'failure.mp3'
+    'swipe': 'failure.mp3',
+    'sample':
+        'https://file-examples.com/wp-content/uploads/2017/11/file_example_MP3_700KB.mp3',
   };
 
+  static void playSample() async => _playAudio(sounds['sample']);
   static void btnPress() async => _playAudio(sounds['success']);
   static void btnFail() async => _playAudio(sounds['failure']);
   static void cardSwipe() async => _playAudio(sounds['swipe']);
@@ -22,8 +25,10 @@ class SoundService {
         UniversalPlatform.isWeb)) return;
     if (_player == null) {
       // print('init player');
+      AudioPlayer.logEnabled = true;
       _player = AudioPlayer(
-          mode: UniversalPlatform.isWeb ? null : PlayerMode.LOW_LATENCY);
+        mode: UniversalPlatform.isWeb ? null : PlayerMode.LOW_LATENCY,
+      );
 
       if (!UniversalPlatform.isWeb) {
         _assetPlayer = AudioCache(fixedPlayer: _player, prefix: 'sounds/');
@@ -32,11 +37,13 @@ class SoundService {
     }
     // try {
     if (UniversalPlatform.isWeb) {
-      _player.play('/assets/sounds/' + path,
-          isLocal: true, respectSilence: true);
+      _player.play('assets/assets/sounds/' + path,
+          // isLocal: false,
+          respectSilence: true,
+          volume: 0.4);
     } else {
       if (_assetPlayer.respectSilence) return;
-      _assetPlayer.play(path);
+      _assetPlayer.play(path, volume: 0.4);
     }
     // } catch (e) {
     //   print("ERROR: $e");

@@ -1,0 +1,38 @@
+- name: Basic
+  slug: basic
+  description: The basic card pack, selected by default.
+
+- name: NSFW
+  slug: nsfw
+  description: Basic NSFW card pack. Do not use if you're playing with people older than you or married couples.
+  nsfw: true
+
+- name: NSFW placeholder
+  slug: nsfw_placeholder
+  description: placeholder
+  nsfw: true
+
+- name: Close friends
+  slug: close
+  description: Only play this pack with closer friends (not with parents, of course)
+  nsfw: true
+
+- name: Challenges
+  slug: challenges
+  description: Just some fun challenges to spice up your game.
+
+- name: Technology
+  slug: technology
+  description: Some fun tech-related cards and challenges
+
+- name: Powerups
+  slug: powerups
+  description: Spice up your otherwise boring game
+
+- name: Developer
+  slug: developer
+  description: For all those who code.
+
+- name: Test pack
+  slug: test
+  description: Use this if you want to test how the card swiping

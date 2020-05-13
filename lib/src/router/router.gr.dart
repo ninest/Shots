@@ -35,6 +35,7 @@ class Router extends RouterBase {
         if (hasInvalidArgs<HomeRouteArguments>(args)) {
           return misTypedArgsRoute<HomeRouteArguments>(args);
         }
+
         final typedArgs = args as HomeRouteArguments ?? HomeRouteArguments();
         return MaterialPageRoute<dynamic>(
           builder: (_) =>

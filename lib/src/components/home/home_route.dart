@@ -13,7 +13,6 @@ import 'package:shots/src/styles/values.dart';
 class HomeRoute extends StatelessWidget {
   const HomeRoute({this.showLogo = true, Key key}) : super(key: key);
   final bool showLogo;
-
   List<Widget> _buildButtons(BuildContext context) => [
         Button(
           text: AppStrings.startButton,
@@ -52,7 +51,7 @@ class HomeRoute extends StatelessWidget {
         if (showLogo)
           Align(
             child: Image.asset(
-              'icons/android.png',
+              'assets/icons/android.png',
               scale: 7.5,
             ),
           ),
