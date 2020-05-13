@@ -1,57 +1,72 @@
 import 'package:flutter/material.dart';
+
 import 'package:shots/src/components/core/buttons/close_button.dart';
-import 'package:shots/src/components/core/spacing.dart';
-import 'package:shots/src/components/core/title_text.dart';
 import 'package:shots/src/styles/colors.dart';
+import 'package:shots/src/styles/text_styles.dart';
 import 'package:shots/src/styles/values.dart';
 import 'package:shots/src/utils/extensions.dart';
 
 class ScrollableTemplate extends StatelessWidget {
   final List<Widget> children;
-  final bool showBackButton;
+  final bool hideReturnButton;
+  final bool hideBottomBorder;
   final String title;
 
-  ScrollableTemplate({@required this.children, this.showBackButton = false, this.title});
+  ScrollableTemplate(
+      {this.children = const [],
+      this.hideReturnButton = false,
+      this.hideBottomBorder = false,
+      this.title});
 
   @override
   Widget build(BuildContext context) {
-    // un comment if we want use this as a safe area for notch/rounded corners
+    // uncomment if we want use this as a safe area for notch/rounded corners
     // double statusBarHeight = MediaQuery.of(context).padding.top;
-
+    // final btnGlobalKey = GlobalKey();
+    // WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    //   final renderObj = btnGlobalKey.currentContext.findRenderObject();
+    //   final positionRed = (renderObj as RenderBox).localToGlobal(Offset.zero);
+    //   print("POSITION of Red: $positionRed ");
+    // });
     return Container(
-      color: AppColors.pageColor,
+      margin: hideBottomBorder
+          ? EdgeInsets.only(
+              top: Values.mainPadding,
+              left: Values.mainPadding,
+              right: Values.mainPadding)
+          : EdgeInsets.all(Values.mainPadding),
+      decoration: BoxDecoration(
+        // gradient: _getLinearGradient(),
+        color: AppColors.pageColor,
+        borderRadius: hideBottomBorder
+            ? BorderRadius.only(
+                topLeft: Radius.circular(Values.mainPadding),
+                topRight: Radius.circular(Values.mainPadding))
+            : BorderRadius.circular(Values.mainPadding),
+        boxShadow: [
+          BoxShadow(
+            spreadRadius: Values.mainPadding * .5,
+            color: AppColors.borderColor,
+          )
+        ],
+      ),
       padding: EdgeInsets.symmetric(horizontal: Values.mainPadding),
       child: CustomScrollView(slivers: <Widget>[
-        if (showBackButton)
-          Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Spacing(height: Values.mainPadding),
-                AppCloseButton(),
-              ]).sliver(),
-
-        // some spacing so the content doesn't touch the top of the screen
-        Spacing(height: Values.mainPadding).sliver(),
-
-        // un comment if required
-        // padding for status bar; we still want content to be able to scroll and be seen behind it
-        // Spacing(height: statusBarHeight).sliver(),
-
+        if (!hideReturnButton) AppCloseButton().sliver(),
         if (title != null)
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              TitleText(text: title),
-              Spacing(height: Values.mainPadding),
-            ],
+          Container(
+            alignment: Alignment.topLeft,
+            margin: EdgeInsets.only(top: Values.mainPadding),
+            child: Text(
+              title,
+              style: TextStyles.pageTitle,
+            ),
           ).sliver(),
-
+        SizedBox(height: Values.mainPadding).sliver(),
         ...children,
+        // added so end of content is readable with maximum bottom scroll
+        if (children.isNotEmpty) SizedBox(height: Values.mainPadding).sliver(),
       ]),
     );
   }
-
-  // shortcut for wrapping widget in scaffold
-  Widget scaffold() => Scaffold(body: this);
 }

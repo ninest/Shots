@@ -1,28 +1,52 @@
-import 'dart:math';
-
-import 'package:shots/src/utils/audio.dart';
+import 'package:audioplayers/audio_cache.dart';
+import 'package:audioplayers/audioplayers.dart';
+// import 'package:audioplayers/';
+import 'package:universal_platform/universal_platform.dart';
 
 class SoundService {
-  // no of primary and secondary sounds available
-  static int noPrimaryPop = 2;
-  static int noSecondaryPop = 3;
+  static AudioPlayer _player;
+  static AudioCache _assetPlayer;
+  static const Map<String, String> sounds = {
+    'success': 'success.mp3',
+    'failure': 'failure.mp3',
+    'swipe': 'failure.mp3',
+    'sample':
+        'https://file-examples.com/wp-content/uploads/2017/11/file_example_MP3_700KB.mp3',
+  };
 
-  static pop({bool secondary = false}) async {
-    final random = new Random();
+  static void playSample() async => _playAudio(sounds['sample']);
+  static void btnPress() async => _playAudio(sounds['success']);
+  static void btnFail() async => _playAudio(sounds['failure']);
+  static void cardSwipe() async => _playAudio(sounds['swipe']);
 
-    // there are a different no of primary and secondary sounds, so get the
-    // number accordingly
-    int randomNumber = random.nextInt(secondary ? noSecondaryPop : noPrimaryPop) + 1;
+  static void _playAudio(String path) async {
+    if (!(UniversalPlatform.isIOS ||
+        UniversalPlatform.isAndroid ||
+        UniversalPlatform.isWeb)) return;
+    if (_player == null) {
+      // print('init player');
+      AudioPlayer.logEnabled = true;
+      _player = AudioPlayer(
+        mode: UniversalPlatform.isWeb ? null : PlayerMode.LOW_LATENCY,
+      );
 
-    String url;
-    if (secondary)
-      url = 'sounds/pop/secondary/s$randomNumber.mp3';
-    else
-      url = 'sounds/pop/primary/s$randomNumber.mp3';
-
-    playAudio(url);
-
-    // uncomment for debugging
-    // print(url);
+      if (!UniversalPlatform.isWeb) {
+        _assetPlayer = AudioCache(fixedPlayer: _player, prefix: 'sounds/');
+        await _assetPlayer.loadAll(sounds.values.toList());
+      }
+    }
+    // try {
+    if (UniversalPlatform.isWeb) {
+      _player.play('assets/assets/sounds/' + path,
+          // isLocal: false,
+          respectSilence: true,
+          volume: 0.4);
+    } else {
+      if (_assetPlayer.respectSilence) return;
+      _assetPlayer.play(path, volume: 0.4);
+    }
+    // } catch (e) {
+    //   print("ERROR: $e");
+    // }
   }
 }

@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route_annotations.dart';
+
 import 'package:shots/src/components/game/game_route.dart';
 import 'package:shots/src/components/home/home_route.dart';
 import 'package:shots/src/components/packs/packs_route.dart';

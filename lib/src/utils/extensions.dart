@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:shots/src/styles/colors.dart';
 
 extension E on Widget {
   Widget sliver() {
     return SliverToBoxAdapter(child: this);
   }
+
+  // shortcut for wrapping widget in scaffold
+  Widget scaffold({Widget bottomNavigationBar}) => Scaffold(
+      backgroundColor: AppColors.pageBG,
+      body: this,
+      bottomNavigationBar: bottomNavigationBar);
 }
 
 extension T on TextStyle {
@@ -15,5 +22,4 @@ extension T on TextStyle {
 
   // size
   TextStyle s(double value) => copyWith(fontSize: value);
-
 }

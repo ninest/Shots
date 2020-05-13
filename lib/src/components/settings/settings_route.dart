@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import 'package:shots/src/components/core/scrollable_template.dart';
 import 'package:shots/src/components/settings/on_off_toggle.dart';
 import 'package:shots/src/constants/strings.dart';
@@ -11,26 +12,18 @@ class SettingsRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // not listening because Hive (and valueListenableBuilder) rebuilds everything for us
-    SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context, listen: false);
-
-    return ScrollableTemplate(
-      showBackButton: true,
-      title: Strings.settingsRouteTitle,
-      children: <Widget>[
-        OnOffToggle(
-          title: "NSFW",
-          enabled: settingsProvider.nsfw,
-          onTap: () {
-            SettingsProvider settingsProvider =
-                Provider.of<SettingsProvider>(context, listen: false);
-            if (settingsProvider.nsfw)
-              SettingsService.disableNsfw();
-            else
-              SettingsService.enableNsfw();
-          },
-        ).sliver()
-      ],
-    ).scaffold();
+    return Consumer<SettingsProvider>(
+      builder: (context, provider, child) => ScrollableTemplate(
+        title: AppStrings.settingsRouteTitle,
+        children: <Widget>[
+          OnOffToggle(
+            title: "NSFW",
+            enabled: provider.nsfw,
+            // toggle
+            onTap: () => provider.nsfw ^= true,
+          ).sliver()
+        ],
+      ).scaffold(),
+    );
   }
 }

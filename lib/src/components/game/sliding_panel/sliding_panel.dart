@@ -1,22 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:shots/src/components/core/scroll_indicator.dart';
-import 'package:shots/src/components/core/spacing.dart';
-import 'package:shots/src/components/game/sliding_panel/sections/options.dart';
-import 'package:shots/src/components/game/sliding_panel/sections/stats.dart';
+import 'package:sliding_up_panel/sliding_up_panel.dart';
+
+import 'package:shots/src/components/game/sliding_panel/game_menu.dart';
 import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/styles/values.dart';
-import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class SlidingPanel extends StatelessWidget {
   const SlidingPanel({
     Key key,
-    this.showSlidingPanel = false,
     this.panelController,
-    @required this.body,
+    @required this.background,
   }) : super(key: key);
-  final bool showSlidingPanel;
   final PanelController panelController;
-  final Widget body;
+  final Widget background;
 
   @override
   Widget build(BuildContext context) {
@@ -29,41 +25,39 @@ class SlidingPanel extends StatelessWidget {
       onWillPop: () => _onBackGesture(panelController),
       child: SlidingUpPanel(
         controller: panelController,
-        minHeight: showSlidingPanel ? (safeAreaPaddingBottom + 65.0) : 0.0,
+        minHeight: (safeAreaPaddingBottom + Values.mainPadding),
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(Values.borderRadius),
-          topRight: Radius.circular(Values.borderRadius),
+          topLeft: Radius.circular(Values.mainPadding),
+          topRight: Radius.circular(Values.mainPadding),
         ),
-        border: Border.all(width: 1, color: AppColors.pageBorderColor),
+        margin: EdgeInsets.only(
+          left: Values.mainPadding,
+          right: Values.mainPadding,
+          top: Values.mainPadding,
+        ),
+        boxShadow: [
+          BoxShadow(
+            spreadRadius: Values.mainPadding,
+            // blurRadius: Values.borderBlurRadius,
+            color: AppColors.borderColor,
+          )
+        ],
         color: AppColors.pageColor,
-        panel: _actualSlidingPanel(),
-        body: body,
+        panel: GameMenu(
+          sliderCloseCallback: () {
+            panelController.close();
+          },
+        ),
+        body: background,
       ),
     );
   }
 
-  // overriden back button
+  // override back button
   _onBackGesture(PanelController controller) async {
     if (controller.isPanelOpen)
       await controller.close();
     else
       await controller.open();
   }
-
-  Widget _actualSlidingPanel() => Container(
-        padding: EdgeInsets.only(
-          right: Values.mainPadding,
-          left: Values.mainPadding,
-          bottom: Values.mainPadding,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            ScrollIndicator().spacing(),
-            Spacing(height: Values.mainPadding),
-            StatsSection(),
-            OptionsSection(),
-          ],
-        ),
-      );
 }

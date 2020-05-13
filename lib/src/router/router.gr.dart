@@ -35,9 +35,11 @@ class Router extends RouterBase {
         if (hasInvalidArgs<HomeRouteArguments>(args)) {
           return misTypedArgsRoute<HomeRouteArguments>(args);
         }
+
         final typedArgs = args as HomeRouteArguments ?? HomeRouteArguments();
         return MaterialPageRoute<dynamic>(
-          builder: (_) => HomeRoute(key: typedArgs.key),
+          builder: (_) =>
+              HomeRoute(showLogo: typedArgs.showLogo, key: typedArgs.key),
           settings: settings,
         );
       case Routes.packsRoute:
@@ -50,8 +52,13 @@ class Router extends RouterBase {
           settings: settings,
         );
       case Routes.gameRoute:
+        if (hasInvalidArgs<GameRouteArguments>(args)) {
+          return misTypedArgsRoute<GameRouteArguments>(args);
+        }
+        final typedArgs = args as GameRouteArguments ?? GameRouteArguments();
         return CupertinoPageRoute<dynamic>(
-          builder: (_) => GameRoute(),
+          builder: (_) =>
+              GameRoute(selected: typedArgs.selected, key: typedArgs.key),
           settings: settings,
           fullscreenDialog: true,
         );
@@ -86,14 +93,22 @@ class Router extends RouterBase {
 
 //HomeRoute arguments holder class
 class HomeRouteArguments {
+  final bool showLogo;
   final Key key;
-  HomeRouteArguments({this.key});
+  HomeRouteArguments({this.showLogo = true, this.key});
 }
 
 //PacksRoute arguments holder class
 class PacksRouteArguments {
   final Key key;
   PacksRouteArguments({this.key});
+}
+
+//GameRoute arguments holder class
+class GameRouteArguments {
+  final Set<String> selected;
+  final Key key;
+  GameRouteArguments({this.selected = const {}, this.key});
 }
 
 //TermsRoute arguments holder class

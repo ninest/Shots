@@ -1,55 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import 'package:shots/src/models/pack_model.dart';
+import 'package:shots/src/providers/settings_provider.dart';
 
 class PacksProvider extends ChangeNotifier {
-  List<Pack> selectedPacks = [];
-  List<Pack> unSelectedPacks = [];
+  List<Pack> all;
+  Set<int> selected;
 
-  loadPacks(List<Pack> packs) {
-    unSelectedPacks = packs;
+  PacksProvider(BuildContext context, Map<String, Pack> packs) {
+    all = packs.values
+        .where((e) =>
+            Provider.of<SettingsProvider>(context, listen: false).nsfw ||
+            !e.nsfw)
+        .toList();
 
-    // Need tp update UI because the bottom bar is listening.
-    // Otherwise, the bottom bar will think unSelectedPacks is still empty
-    // because it is empty by default.
+    selected = {};
     notifyListeners();
   }
 
-  select(Pack pack) {
-    // Remove from unselected list, add it to selected list
-    unSelectedPacks.remove(pack);
-    selectedPacks.add(pack);
-
+  void toggle(int index) {
+    if (!selected.remove(index)) selected.add(index);
     notifyListeners();
   }
 
-  unSelect(Pack pack) {
-    // Remove from selected list, add it to unselected list
-    selectedPacks.remove(pack);
-    unSelectedPacks.add(pack);
-
+  void selectAll() {
+    selected = [for (int i = 0; i < all.length; i++) i].toSet();
     notifyListeners();
   }
 
-  selectAll() {
-    // Dump Everything in selected packs list then empty unselected packs list
-    selectedPacks = [...selectedPacks, ...unSelectedPacks];
-    unSelectedPacks = [];
-
+  void deselectAll() {
+    selected.clear();
     notifyListeners();
-  }
-
-  unSelectAll() {
-    // Move everything into unselected list, empty list
-    unSelectedPacks = [...unSelectedPacks, ...selectedPacks];
-    selectedPacks = [];
-
-    notifyListeners();
-  }
-
-  endGame() {
-    // empyt/rest all packs
-    // packs should not go into the next game
-    selectedPacks = [];
-    unSelectedPacks = [];
   }
 }

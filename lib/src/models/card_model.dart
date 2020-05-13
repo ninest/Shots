@@ -1,43 +1,44 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
+
 import 'package:shots/src/styles/colors.dart';
-import 'package:yaml/yaml.dart';
 
 // this is called shot card and not card because card and material's card will interfire
+@immutable
 class ShotCard {
-  ShotCard({@required this.line1, this.line2, this.color, this.rotateAngle, this.offset});
-  final String line1, line2;
+  // random number generator
+  static final _rng = Random();
+
+  const ShotCard(
+      {@required this.title,
+      this.subtitle,
+      this.color,
+      this.rotateAngle,
+      this.offset});
+  final String title, subtitle;
   final Color color;
   final double rotateAngle;
   final Offset offset;
 
-
-  factory ShotCard.fromJson(YamlMap map) {
-    Random random = new Random();
-
-    // we need number frm 0.01 to 0.10 for angle in radian
-    int randNo = random.nextInt(3) + 1; // generates rannd no from 1 to 10
-    double rotateAngle = randNo / 100;
+  factory ShotCard.fromJson(Map<dynamic, dynamic> json) {
+    // we need number from 0.01 to 0.10 for angle in radian
+    double rotateAngle = .01 * (1 + _rng.nextInt(10));
 
     // we also need a 50% chance to multiply the angle by -1
-    int randNoC = random.nextInt(2); // generates rand no either 0 or 1
-    // if it's 0, multiple angle by -1
-    if (randNoC == 0) rotateAngle = -1 * rotateAngle;
+    rotateAngle *= _rng.nextBool() ? -1 : 1;
 
     // random offset
     final offset = Offset(
-      random.nextInt(10).toDouble() - 5,
-
-      // bigger range in y because cards are taller than they are wide
-      random.nextInt(16).toDouble() - 8,
+      _rng.nextInt(10) - 5.0,
+      // bigger range in y because card height is bigger than width
+      _rng.nextInt(16) - 8.0,
     );
 
-    Color cardColor = AppColors.getColor();
+    Color cardColor = AppColors.random;
 
     return ShotCard(
-      line1: map['line1'],
-      line2: map['line2'],
+      title: json['line1'],
+      subtitle: json['line2'],
       color: cardColor,
       rotateAngle: rotateAngle,
       offset: offset,

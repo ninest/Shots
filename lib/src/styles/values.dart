@@ -1,23 +1,21 @@
 class Values {
-  /// Basic font size, used in search boxes and buttons mainly
-  static double get em => 19;
+  // relative font unit
+  static const em = 19.0;
 
   /// Padding used when a specified padding is not known
-  static double get mainPadding => 31;
+  static const mainPadding = 24.0;
 
-  /// button padding
-  static double get buttonHorizontalPadding => 15.0;
-  static double get buttonVerticalPadding => 13.0;
+  // border
+  static const borderBlurRadius = 2.0;
+  static const borderOpacity = 0.3;
+  static const borderRadius = 8.0;
+  static const borderWidth = 4.0;
 
-  /// Border radius to use app-wide
-  static double get borderRadius => 8.0;
-
-  /// opacity uses app-wide
-  static double get containerOpacity => 0.3;
+  // buttons
+  static const buttonHorizontalPadding = 15.0;
+  static const buttonVerticalPadding = 8.5;
+  static const disabledButtonOpacity = 0.5;
 
   // animation duration in milliseconds (for inputs like selectables or toggles)
-  static int get durationMs => 200;
-
-  // for any disabled items (buttons, text)
-  static double get disabledOpacity => 0.4;
+  static const animationDuration = const Duration(milliseconds: 200);
 }

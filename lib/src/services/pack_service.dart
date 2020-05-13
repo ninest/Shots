@@ -1,65 +1,66 @@
 import 'package:flutter/services.dart';
-import 'package:shots/src/models/card_model.dart';
-import 'package:shots/src/models/pack_model.dart';
 import 'package:yaml/yaml.dart';
 
+import 'package:shots/src/models/card_model.dart';
+import 'package:shots/src/models/pack_model.dart';
+
 class PackService {
-  static Future<List<Pack>> loadPacks() async {
-    /*
-    1. Read yml file metadata.yml and get a list of packs
-    2. Read each file from packs/ to get the cards
-    */
+  static Map<String, Pack> _cache = {};
 
-    // reading metadata.yml
-    final fileContent = await rootBundle.loadString('assets/metadata.yml');
-    final metadata = loadYaml(fileContent);
+  static Future<Map<String, Pack>> loadPacks() async {
+    // TODO remove delay
+    // await Future.delayed(Duration(seconds: 8));
 
-    List<Pack> packs = [];
+    if (_cache.isEmpty) {
+      // Read pack slugs from metadata.yml, load pack for each slug
 
-    for (var packMap in metadata) {
-      // load cards by reading their files
+      // reading metadata.yml
+      final fileContent = await rootBundle.loadString('assets/metadata.yml');
+      final metadata = loadYaml(fileContent);
 
-      // BUG: error in the loop sometimes ocurs. Cannot replroduce it
-      
-      print("Adding pack");
-      try {
-        final List<ShotCard> cards = await _loadCards(packMap['slug']);
+      for (var packMap in metadata) {
+        // load cards by reading their files
+        String slug = packMap['slug'];
+        // print('loading $slug');
 
-        final newPack = Pack(
-          name: packMap['name'],
-          slug: packMap['slug'],
-          description: packMap['description'],
-          // If not explictly stated, they are not NSFW
-          nsfw: packMap['nsfw'] ?? false,
-          cards: cards,
-        );
+        // BUG: error in the loop sometimes ocurs. Cannot replroduce it
+        List<ShotCard> cards;
+        try {
+          cards = await _loadCards(slug);
+          // print('loaded pack $slug');
+        } catch (e) {
+          // If there's a card pack listed in metadata.yml, but with no {pack}.yml file,
+          // there will be a silent error so the app doesn't crash
+          // print('error loading pack $slug:');
+          // print(e);
+        }
 
-        packs.add(newPack);
-      } catch (e) {
-        // If there's a card pack listed in metadata.yml, but with no {pack}.yml file,
-        // there will be a silent error so the app doesn't crash
+        if (cards != null)
+          _cache[slug] = Pack(
+            name: packMap['name'],
+            slug: slug,
+            description: packMap['description'],
+            // If not explictly stated, they are not NSFW
+            nsfw: packMap['nsfw'] ?? false,
+            cards: cards,
+          );
       }
     }
 
-    return packs;
+    return _cache;
   }
 
   /// [slug] is the filename (filename.yml)
+  ///
   /// This function will not be called on its own; it is only supposed to be called
   /// from the [[loadPacks()]] function
   static Future<List<ShotCard>> _loadCards(String slug) async {
-    /*
-    1. Read filename and return list of cards
-    */
+    // Read filename and return list of cards
 
     final fileContent = await rootBundle.loadString('assets/packs/$slug.yml');
     final YamlList yamlListCards = loadYaml(fileContent);
-
-    List<ShotCard> cards = [];
-    for (var cardMap in yamlListCards) {
-      final newCard = ShotCard.fromJson(cardMap);
-      cards.add(newCard);
-    }
+    final cards = List<ShotCard>.from(
+        yamlListCards.map((json) => ShotCard.fromJson(json)));
 
     return cards;
   }

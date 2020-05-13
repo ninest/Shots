@@ -42,7 +42,7 @@ packages:
       name: audioplayers
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.13.2"
+    version: "0.15.1"
   auto_route:
     dependency: "direct main"
     description:
@@ -57,13 +57,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.4.3"
-  boolean_selector:
-    dependency: transitive
-    description:
-      name: boolean_selector
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0"
   build:
     dependency: transitive
     description:
@@ -208,7 +201,7 @@ packages:
       name: flutter_launcher_icons
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.7.4"
+    version: "0.7.5"
   flutter_markdown:
     dependency: "direct main"
     description:
@@ -223,8 +216,8 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.9"
-  flutter_test:
-    dependency: "direct dev"
+  flutter_web_plugins:
+    dependency: transitive
     description: flutter
     source: sdk
     version: "0.0.0"
@@ -548,13 +541,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.5"
-  swipeable_card:
-    dependency: "direct main"
-    description:
-      name: swipeable_card
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0"
   term_glyph:
     dependency: transitive
     description:
@@ -562,13 +548,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.0"
-  test_api:
-    dependency: transitive
-    description:
-      name: test_api
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.2.15"
   timing:
     dependency: transitive
     description:
@@ -583,6 +562,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.6"
+  universal_platform:
+    dependency: "direct main"
+    description:
+      name: universal_platform
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.3"
   uuid:
     dependency: transitive
     description:
