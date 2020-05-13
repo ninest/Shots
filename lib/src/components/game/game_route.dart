@@ -68,42 +68,56 @@ class GameRoute extends StatelessWidget {
           // nice non-distracing color changing effect
           duration: Duration(seconds: 6),
           child: SafeArea(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              // mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                // un comment to easily swipe cards on an emulator
-                // Button(text: "Next", onTap: () => cardProvider.nextCard()),
-
-                // show x button
-                // don't show it when the end of deck menu is showing
-                // because there are two buttons (End game and X) that do the
-                // same thing
-                if (currentCardExists)
-                  Padding(
-                    padding: EdgeInsets.all(Values.mainPadding),
-                    child: AppCloseButton(
-                      overrideOnTap: () => showEndDialog(context),
-                    ),
+              child: Stack(
+            children: <Widget>[
+              // show x button
+              // don't show it when the end of deck menu is showing
+              // because there are two buttons (End game and X) that do the
+              // same thing
+              if (currentCardExists)
+                Padding(
+                  padding: EdgeInsets.all(Values.mainPadding),
+                  child: AppCloseButton(
+                    overrideOnTap: () => showEndDialog(context),
                   ),
+                ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                // mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  // un comment to easily swipe cards on an emulator
+                  // Button(text: "Next", onTap: () => cardProvider.nextCard()),
 
-                if (currentCardExists) ...[
-                  // placeholder shot cards
+                  // show x button
+                  // don't show it when the end of deck menu is showing
+                  // because there are two buttons (End game and X) that do the
+                  // same thing
+                  // if (currentCardExists)
+                  //   Padding(
+                  //     padding: EdgeInsets.all(Values.mainPadding),
+                  //     child: AppCloseButton(
+                  //       overrideOnTap: () => showEndDialog(context),
+                  //     ),
+                  //   ),
 
-                  ShotCardParent(
-                    shotCard: currentCard,
-                    nextCards: [
-                      for (var i = cardProvider.nextCardsNo; i >= 1; i--) _nextCard(i),
-                    ],
-                  )
+                  if (currentCardExists) ...[
+                    // placeholder shot cards
+
+                    ShotCardParent(
+                      shotCard: currentCard,
+                      nextCards: [
+                        for (var i = cardProvider.nextCardsNo; i >= 1; i--) _nextCard(i),
+                      ],
+                    )
+                  ],
+
+                  // show end of deck menu
+                  if (!currentCardExists)
+                    _endOfDeck(),
                 ],
-
-                // show end of deck menu
-                if (!currentCardExists)
-                  _endOfDeck(),
-              ],
-            ),
-          ),
+              ),
+            ],
+          )),
         ),
       ),
     );
