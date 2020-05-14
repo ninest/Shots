@@ -35,6 +35,7 @@ class ScrollableTemplate extends StatelessWidget {
               left: Values.mainPadding,
               right: Values.mainPadding)
           : EdgeInsets.all(Values.mainPadding),
+      padding: EdgeInsets.all(Values.mainPadding),
       decoration: BoxDecoration(
         // gradient: _getLinearGradient(),
         color: AppColors.pageColor,

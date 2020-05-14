@@ -1,5 +1,4 @@
-
-Fork from <a href='https://github.com/ninest/Shots' >ninest</a>
+Fork from <a href='https://github.com/ninest/Shots'>ninest</a>
 
 ## License
 

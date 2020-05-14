@@ -58,10 +58,13 @@ class _SlidingPanelState extends State<SlidingPanel> {
           )
         ],
         color: AppColors.pageColor,
-        panel: GameMenu(
-          sliderCloseCallback: () {
-            widget.panelController.close();
-          },
+        panel: Padding(
+          padding: EdgeInsets.all(Values.mainPadding),
+          child: GameMenu(
+            sliderCloseCallback: () {
+              widget.panelController.close();
+            },
+          ),
         ),
         body: widget.background,
       ),
