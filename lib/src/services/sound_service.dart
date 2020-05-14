@@ -1,52 +1,73 @@
 import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
-// import 'package:audioplayers/';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:universal_platform/universal_platform.dart';
 
+import 'package:shots/src/providers/settings_provider.dart';
+
 class SoundService {
-  static AudioPlayer _player;
+  static Map<String, AudioPlayer> _cachedWebElements;
   static AudioCache _assetPlayer;
+  static bool _initialized = false;
+
+  static bool get available =>
+      UniversalPlatform.isWeb ||
+      UniversalPlatform.isAndroid ||
+      UniversalPlatform.isIOS;
+
   static const Map<String, String> sounds = {
-    'success': 'success.mp3',
-    'failure': 'failure.mp3',
-    'swipe': 'failure.mp3',
-    'sample':
-        'https://file-examples.com/wp-content/uploads/2017/11/file_example_MP3_700KB.mp3',
+    'btn_press': 'click.mp3',
+    'btn_disabled': 'disabled.mp3',
+    'btn_close': 'click.mp3',
+    'btn_toggle': 'toggle.mp3',
+    'swipe': 'swipe.mp3',
   };
 
-  static void playSample() async => _playAudio(sounds['sample']);
-  static void btnPress() async => _playAudio(sounds['success']);
-  static void btnFail() async => _playAudio(sounds['failure']);
-  static void cardSwipe() async => _playAudio(sounds['swipe']);
-
-  static void _playAudio(String path) async {
-    if (!(UniversalPlatform.isIOS ||
-        UniversalPlatform.isAndroid ||
-        UniversalPlatform.isWeb)) return;
-    if (_player == null) {
+  static Future initialize() async {
+    if (available && !_initialized && _cachedWebElements == null) {
       // print('init player');
-      AudioPlayer.logEnabled = true;
-      _player = AudioPlayer(
-        mode: UniversalPlatform.isWeb ? null : PlayerMode.LOW_LATENCY,
-      );
+      AudioPlayer.logEnabled = false;
 
-      if (!UniversalPlatform.isWeb) {
-        _assetPlayer = AudioCache(fixedPlayer: _player, prefix: 'sounds/');
-        await _assetPlayer.loadAll(sounds.values.toList());
+      if (UniversalPlatform.isWeb) {
+        _cachedWebElements = {};
+        // toSet to insure that every element created only single time
+        sounds.values.toSet().forEach((asset) {
+          _cachedWebElements[asset] = AudioPlayer()
+            ..setUrl('assets/assets/sounds/$asset', respectSilence: true)
+            ..setVolume(0.4);
+        });
+      } else {
+        _assetPlayer = AudioCache(prefix: 'sounds/');
+        await _assetPlayer.loadAll(sounds.values.toSet().toList());
       }
     }
-    // try {
-    if (UniversalPlatform.isWeb) {
-      _player.play('assets/assets/sounds/' + path,
-          // isLocal: false,
-          respectSilence: true,
-          volume: 0.4);
-    } else {
-      if (_assetPlayer.respectSilence) return;
-      _assetPlayer.play(path, volume: 0.4);
+    _initialized = true;
+  }
+
+  static void play(BuildContext context, String sound) {
+    if (Provider.of<SettingsProvider>(context, listen: false).audio &&
+        _initialized) _playAudio(sounds[sound]);
+  }
+
+  static void _playAudio(String path) async {
+    if (path == null || path.isEmpty) return;
+    try {
+      if (UniversalPlatform.isWeb) {
+        _cachedWebElements[path].resume();
+        // // isLocal: false,
+        // respectSilence: true,
+        // volume: 0.4);
+      } else {
+        if (_assetPlayer.respectSilence) return;
+        _assetPlayer.play(
+          path,
+          mode: PlayerMode.LOW_LATENCY,
+          volume: 0.4,
+        );
+      }
+    } catch (e) {
+      print("Sound service error: $e");
     }
-    // } catch (e) {
-    //   print("ERROR: $e");
-    // }
   }
 }

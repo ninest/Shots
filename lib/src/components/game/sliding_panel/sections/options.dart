@@ -20,30 +20,50 @@ class OptionsSection extends StatelessWidget {
     final provider = Provider.of<GameStateProvider>(context, listen: true);
     // disable buttons in tutorial mode
     return Section(
-      title: provider.topCard == null
-          ? AppStrings.endOfDeck
-          : AppStrings.optionsSectionTitle,
+      title: provider.gameRunning
+          ? AppStrings.optionsSectionTitle
+          : AppStrings.endOfDeck,
       children: <Widget>[
+        Button(
+          text: AppStrings.shuffleGame,
+          color: AppColors.miscColor,
+          // width: double.infinity,
+          disabled: provider.isTutorial || !provider.gameRunning,
+          onTap: () {
+            provider.shuffle();
+            if (sliderCloseCallback != null) sliderCloseCallback();
+          },
+        ),
+        SizedBox(height: Values.mainPadding / 2),
+        Button(
+          text: AppStrings.reshuffleGame,
+          color: AppColors.miscColor,
+          // width: double.infinity,
+          disabled: provider.isTutorial,
+          onTap: () {
+            provider.reshuffle();
+            if (sliderCloseCallback != null) sliderCloseCallback();
+          },
+        ),
+        SizedBox(height: Values.mainPadding / 2),
         Button(
           text: AppStrings.resetGame,
           color: AppColors.miscColor,
-          width: double.infinity,
+          // width: double.infinity,
           disabled: provider.isTutorial,
-          onTap: provider.isTutorial
-              ? null
-              : () {
-                  provider.reset();
-                  if (sliderCloseCallback != null) sliderCloseCallback();
-                },
+          onTap: () {
+            provider.reset();
+            if (sliderCloseCallback != null) sliderCloseCallback();
+          },
         ),
         SizedBox(height: Values.mainPadding / 2),
         Button(
           text: AppStrings.closeGame,
           outline: true,
           color: AppColors.rejectColor,
-          width: double.infinity,
+          // width: double.infinity,
           // disabled: isTutorial,
-          onTap: (provider.topCard == null || provider.isTutorial)
+          onTap: (provider.isTutorial || !provider.gameRunning)
               ? () => ExtendedNavigator.of(context).pop()
               : () => showEndDialog(context),
         ),

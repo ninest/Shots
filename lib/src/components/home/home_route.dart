@@ -8,14 +8,14 @@ import 'package:shots/src/router/router.gr.dart';
 import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/styles/text_styles.dart';
 import 'package:shots/src/styles/values.dart';
-// import 'package:shots/src/utils/extensions.dart';
+import 'package:shots/src/utils/extensions.dart';
 
 class HomeRoute extends StatelessWidget {
   const HomeRoute({this.showLogo = true, Key key}) : super(key: key);
   final bool showLogo;
   List<Widget> _buildButtons(BuildContext context) => [
         Button(
-          text: AppStrings.startButton,
+          text: AppStrings.gameRouteTitle,
           color: AppColors.red[0],
           width: 200.0,
           focus: true,
@@ -31,14 +31,14 @@ class HomeRoute extends StatelessWidget {
         ),
         SizedBox(height: Values.buttonVerticalPadding),
         Button(
-          text: AppStrings.settingsRouteButton,
+          text: AppStrings.settingsRouteTitle,
           color: AppColors.teal[0],
           onTap: () =>
               ExtendedNavigator.of(context).pushNamed(Routes.settingsRoute),
         ),
         SizedBox(height: Values.buttonVerticalPadding),
         Button(
-          text: AppStrings.tutorialButton,
+          text: AppStrings.tutorialRouteTitle,
           color: AppColors.blue[0],
           onTap: () =>
               ExtendedNavigator.of(context).pushNamed(Routes.gameRoute),
@@ -52,6 +52,8 @@ class HomeRoute extends StatelessWidget {
           Align(
             child: Image.asset(
               'assets/icons/android.png',
+              width: 140,
+              height: 140,
               scale: 7.5,
             ),
           ),
@@ -75,37 +77,34 @@ class HomeRoute extends StatelessWidget {
     //   hideReturnButton: true,
     // ).scaffold();
 
-    return Scaffold(
-      backgroundColor: AppColors.pageBG,
-      body: Container(
-        margin: EdgeInsets.all(Values.mainPadding),
-        decoration: BoxDecoration(
-          // gradient: _getLinearGradient(),
-          color: AppColors.pageColor,
-          borderRadius: BorderRadius.circular(Values.mainPadding),
-          boxShadow: [
-            BoxShadow(
-              spreadRadius: Values.mainPadding * .5,
-              blurRadius: Values.borderBlurRadius,
-              color: AppColors.borderColor,
-            )
-          ],
-        ),
-        padding: EdgeInsets.symmetric(horizontal: Values.mainPadding),
-        alignment: Alignment.center,
-        child: LayoutBuilder(builder: (context, size) {
-          bool flexible = size.maxHeight > 510;
-          final children = _buildChildren(context, flexible);
-          return flexible
-              ? Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: _buildChildren(context, true),
-                )
-              : ListView.builder(
-                  itemCount: children.length,
-                  itemBuilder: (context, i) => children[i]);
-        }),
+    return Container(
+      margin: EdgeInsets.all(Values.mainPadding),
+      decoration: BoxDecoration(
+        // gradient: _getLinearGradient(),
+        color: AppColors.pageColor,
+        borderRadius: BorderRadius.circular(Values.mainPadding),
+        boxShadow: [
+          BoxShadow(
+            spreadRadius: Values.mainPadding * .5,
+            blurRadius: Values.borderBlurRadius,
+            color: AppColors.borderColor,
+          )
+        ],
       ),
-    );
+      padding: EdgeInsets.symmetric(horizontal: Values.mainPadding),
+      alignment: Alignment.center,
+      child: LayoutBuilder(builder: (context, size) {
+        bool flexible = size.maxHeight > 510;
+        final children = _buildChildren(context, flexible);
+        return flexible
+            ? Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: _buildChildren(context, true),
+              )
+            : ListView.builder(
+                itemCount: children.length,
+                itemBuilder: (context, i) => children[i]);
+      }),
+    ).scaffold();
   }
 }

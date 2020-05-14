@@ -51,3 +51,4 @@ assets/packs/close.yml
 
 # app key
 **/android/key.properties
+**/android/app/key.jks

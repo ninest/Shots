@@ -1,4 +1,5 @@
 import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 import 'package:shots/src/styles/colors.dart';
@@ -14,8 +15,12 @@ class ShotCard {
       this.subtitle,
       this.color,
       this.rotateAngle,
-      this.offset});
-  final String title, subtitle;
+      this.offset,
+      this.id});
+
+  final int id;
+  final String title;
+  final String subtitle;
   final Color color;
   final double rotateAngle;
   final Offset offset;
@@ -37,11 +42,36 @@ class ShotCard {
     Color cardColor = AppColors.random;
 
     return ShotCard(
-      title: json['line1'],
-      subtitle: json['line2'],
-      color: cardColor,
-      rotateAngle: rotateAngle,
-      offset: offset,
-    );
+        title: json['line1'],
+        subtitle: json['line2'],
+        color: cardColor,
+        rotateAngle: rotateAngle,
+        offset: offset,
+        id: _rng.nextInt(1e9.toInt()));
+  }
+
+  @override
+  bool operator ==(Object o) {
+    if (identical(this, o)) return true;
+
+    return o is ShotCard &&
+        o.subtitle == subtitle &&
+        o.color == color &&
+        o.rotateAngle == rotateAngle &&
+        o.offset == offset;
+  }
+
+  @override
+  int get hashCode {
+    return id ??
+        (subtitle.hashCode ^
+            color.hashCode ^
+            rotateAngle.hashCode ^
+            offset.hashCode);
+  }
+
+  @override
+  String toString() {
+    return 'ShotCard($id)';
   }
 }

@@ -15,17 +15,18 @@ class GameStateProvider extends ChangeNotifier {
   bool isTutorial = false;
   List<ShotCard> cards;
   int top = 0;
+  int get bottom => min(top + deckHeight, cards.length - 1);
 
   Timer timer;
   int seconds = 0;
 
-  ShotCard get topCard => top < cards.length ? cards[top] : null;
-  List<ShotCard> get deck => top + 1 < cards.length
-      ? cards
-          .sublist(top + 1, min(cards.length, top + deckHeight))
-          .reversed
-          .toList()
-      : [];
+  // ShotCard get topCard => top < cards.length ? cards[top] : null;
+  // List<ShotCard> get deck => top + 1 < cards.length
+  //     ? cards
+  //         .sublist(top + 1, min(cards.length, top + deckHeight))
+  //         .reversed
+  //         .toList()
+  //     : [];
 
   GameStateProvider(Set<String> selected) {
     timer = Timer.periodic(Duration(seconds: 1), (timer) {
@@ -60,11 +61,36 @@ class GameStateProvider extends ChangeNotifier {
 
   reset() {
     seconds = 0;
-    top = 0;
-    cards.shuffle();
-    loading = false;
-    gameRunning = true;
-    notifyListeners();
+    reshuffle();
+  }
+
+  bool _mutexFree = true;
+
+  shuffle() {
+    if (_mutexFree) {
+      _mutexFree = false;
+      var sub = cards.sublist(top, cards.length);
+      sub.shuffle();
+      cards = cards.sublist(0, top);
+      cards.addAll(sub);
+
+      _mutexFree = true;
+      notifyListeners();
+    }
+    // else
+    //   print('mutex locked');
+  }
+
+  reshuffle() {
+    if (_mutexFree) {
+      _mutexFree = false;
+      top = 0;
+      cards.shuffle();
+      loading = false;
+      gameRunning = true;
+      _mutexFree = true;
+      notifyListeners();
+    }
   }
 
   popTop() {

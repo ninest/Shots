@@ -65,7 +65,7 @@ class _GameRouteState extends State<GameRoute> {
                 );
               }
 
-              if (provider.isTutorial && provider.topCard == null) {
+              if (provider.isTutorial && !provider.gameRunning) {
                 // print('empty tutorial');
                 // print('render frame then pop');
                 WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -75,7 +75,7 @@ class _GameRouteState extends State<GameRoute> {
               }
 
               // print('normal game State');
-              return provider.topCard != null
+              return provider.gameRunning
                   ? SlidingPanel(
                       panelController: _panelController,
                       background: Container(
@@ -94,17 +94,19 @@ class _GameRouteState extends State<GameRoute> {
                                 // ),
                               ),
                             ),
-                            ...provider.deck
-                                .map(
-                                  (e) => Center(
-                                    child: DeckCard(e,
-                                        key: ValueKey(
-                                            provider.cards.indexOf(e))),
+                            ...[
+                              for (var i = provider.bottom;
+                                  i > provider.top;
+                                  i--)
+                                Center(
+                                  child: DeckCard(
+                                    provider.cards[i],
+                                    key: ValueKey(i),
                                   ),
                                 )
-                                .toList(),
+                            ],
                             TopCard(
-                              shotCard: provider.topCard,
+                              shotCard: provider.cards[provider.top],
                               key: ValueKey(provider.top),
                             ),
                           ],

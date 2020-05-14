@@ -50,7 +50,6 @@ class ScrollableTemplate extends StatelessWidget {
           )
         ],
       ),
-      padding: EdgeInsets.symmetric(horizontal: Values.mainPadding),
       child: CustomScrollView(slivers: <Widget>[
         if (!hideReturnButton) AppCloseButton().sliver(),
         if (title != null)

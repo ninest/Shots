@@ -55,20 +55,23 @@ class _TopCardState extends State<TopCard> with SingleTickerProviderStateMixin {
     super.dispose();
   }
 
-  void _runCardBackToCenterAnimation() {
+  void _runCardBackToCenterAnimation(BuildContext context) {
+    SoundService.play(context, 'swipe');
     _animation = _controller.drive(
       AlignmentTween(
         begin: _dragAlignment,
         end: Alignment.center,
       ),
     );
-    SoundService.cardSwipe();
+
     _controller
       ..reset()
       ..forward();
   }
 
-  TickerFuture _runCardLeaveAnimation({bool left = false}) {
+  TickerFuture _runCardLeaveAnimation(BuildContext context,
+      {bool left = false}) {
+    SoundService.play(context, 'swipe');
     _animation = _controller.drive(AlignmentTween(
         begin: _dragAlignment,
         // make it go off screen
@@ -78,7 +81,6 @@ class _TopCardState extends State<TopCard> with SingleTickerProviderStateMixin {
           // make it go a little lower (more natural)
           _dragAlignment.y + 0.2,
         )));
-    SoundService.cardSwipe();
     _controller.reset();
     return _controller.forward();
   }
@@ -103,19 +105,14 @@ class _TopCardState extends State<TopCard> with SingleTickerProviderStateMixin {
         // We must wait for the animation to finish, only then we can put the card back the center and set
         // it to the next card
         if (_dragAlignment.x.abs() > 0.95) {
-          _runCardLeaveAnimation(left: _dragAlignment.x < 0).then((_) {
+          _runCardLeaveAnimation(context, left: _dragAlignment.x < 0).then((_) {
             // get the next card ready
             Provider.of<GameStateProvider>(context, listen: false).popTop();
-            // Taking the card back to the center without animation. This gives an appearance
-            // the next card has come to the top, when it's actually the same one the users keep
-            // swiping away.
-            // TODO chk
-            // setState(() => _dragAlignment = Alignment.center);
           });
         } else {
           // if card is left down by finger at any other location, animate it going
           // back to the center
-          _runCardBackToCenterAnimation();
+          _runCardBackToCenterAnimation(context);
         }
       },
       child: Align(

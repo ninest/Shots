@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shots/src/services/sound_service.dart';
 
 import 'package:shots/src/styles/colors.dart';
 import 'package:shots/src/styles/text_styles.dart';
@@ -59,7 +60,10 @@ class OnOffToggle extends StatelessWidget {
           ],
         ),
       ),
-      onTap: onTap,
+      onTap: () {
+        SoundService.play(context, 'btn_toggle');
+        onTap();
+      },
     );
   }
 

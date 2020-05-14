@@ -7,6 +7,7 @@ class HiveBoxes {
 /// All value names in the [settings] box
 class SettingsBox {
   static const nsfw = "nsfw";
+  static const audio = "audio";
 }
 
 /// All value names in the [customCards] box

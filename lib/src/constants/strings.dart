@@ -1,24 +1,28 @@
 class AppStrings {
   static const appTitle = "Shots";
-  static const loading = "Loading...";
-  static const startButton = "Start";
+  static const gameRouteTitle = "Play";
   static const termsRouteButton = "Terms";
-  static const settingsRouteButton = "Settings";
-  static const tutorialButton = "Tutorial";
   static const packsRouteTitle = "Choose packs";
+  static const settingsRouteTitle = "Settings";
+  static const tutorialRouteTitle = "Tutorial";
+
+  static const loading = "Loading...";
+
+  static const startRound = "Start round";
   static const selectAllButton = "Select all";
   static const deselectAllButton = "Deselect all";
-  static const startRound = "Start round";
+
   static const statsSectionTitle = "Stats";
   static const optionsSectionTitle = "Options";
   static const endOfDeck = "End of deck";
+
+  static const reshuffleGame = "Re-shuffle";
+  static const shuffleGame = "Shuffle";
   static const resetGame = "Restart";
   static const closeGame = "Go to menu";
 
   // end game dialog strings
   static const endDialogTitle = "Sure you wanna end?";
-
-  static const settingsRouteTitle = "Settings";
 
   static const termsRouteTitle = "Terms";
   static const terms = """
