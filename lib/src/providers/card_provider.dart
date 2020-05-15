@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:shots/src/models/card_model.dart';
+import 'package:universal_platform/universal_platform.dart';
 
 class CardProvider extends ChangeNotifier {
   List<ShotCard> cards = [];
   int currentCardIndex = 0;
 
   // number of cards to show behind current card
-  int nextCardsNo = 5;
+  int nextCardsNo = UniversalPlatform.isIOS ? 4 : 3;
 
   // no of cards gone through (used for stats)
   // this does not reset when cards are shuffled

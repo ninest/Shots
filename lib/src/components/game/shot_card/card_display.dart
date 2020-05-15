@@ -3,17 +3,20 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:shots/src/models/card_model.dart';
 import 'package:shots/src/styles/text_styles.dart';
 import 'package:shots/src/styles/values.dart';
+import 'package:shots/src/utils/extensions.dart';
 
 class CardDisplay extends StatelessWidget {
   const CardDisplay({Key key, this.shotCard}) : super(key: key);
   final ShotCard shotCard;
 
-  // Might change values later or use MediaQuery
-  final double _cardHeight = 460.0;
-  final double _cardwidth = 320.0;
-
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final bool screenSmall = screenWidth < 370;
+
+    double _cardwidth = screenSmall ? 270.0 : 320.0;
+    double _cardHeight = _cardwidth * 1.4375;
+
     return Transform.translate(
       offset: shotCard.offset ?? Offset(0, 0),
       child: Transform.rotate(
@@ -21,11 +24,11 @@ class CardDisplay extends StatelessWidget {
         child: Container(
           height: _cardHeight,
           width: _cardwidth,
-          padding: EdgeInsets.only(
-            top: Values.mainPadding * 1.4,
-            left: Values.mainPadding,
-            right: Values.mainPadding,
-            bottom: Values.mainPadding,
+          padding: EdgeInsets.all(
+            // less padding if sceren is small
+            screenSmall //
+                ? Values.mainPadding / 1.5
+                : Values.mainPadding,
           ),
           decoration: BoxDecoration(
             color: shotCard.color,
@@ -56,7 +59,13 @@ class CardDisplay extends StatelessWidget {
               // line1 is there for all cards
               Text(
                 shotCard.line1,
-                style: TextStyles.cardLine1,
+                style: TextStyles.cardLine1.s(
+                  // reduce font size to a fraction if on a small screen
+                  screenSmall
+                      ? TextStyles.cardLine1.fontSize / 1.1
+                      : TextStyles.cardLine1.fontSize,
+                ),
+                // don't change size on smaller screens
                 textScaleFactor: 1.0,
               ),
               // line2 is optional
@@ -64,7 +73,14 @@ class CardDisplay extends StatelessWidget {
                 Flexible(flex: 1, child: Container()),
                 MarkdownBody(
                   data: shotCard.line2,
-                  styleSheet: MarkdownStyleSheet(p: TextStyles.cardLine2),
+                  styleSheet: MarkdownStyleSheet(
+                    p: TextStyles.cardLine2.s(
+                      // again, reduce font size on smaller screens
+                      screenSmall
+                          ? TextStyles.cardLine2.fontSize / 1.2
+                          : TextStyles.cardLine2.fontSize,
+                    ),
+                  ),
                 )
               ],
             ],
