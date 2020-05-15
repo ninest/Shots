@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shots/src/components/core/scroll_indicator.dart';
 import 'package:shots/src/components/core/spacing.dart';
+import 'package:shots/src/components/game/end_alert.dart';
 import 'package:shots/src/components/game/sliding_panel/sections/options.dart';
 import 'package:shots/src/components/game/sliding_panel/sections/stats.dart';
 import 'package:shots/src/styles/colors.dart';
@@ -23,11 +24,13 @@ class SlidingPanel extends StatelessWidget {
     // to provider more space for phones with rounded cornered screens (iPhoneX)
     final double safeAreaPaddingBottom = MediaQuery.of(context).padding.bottom;
 
-    // WillPopScope provides the onWillPop function, which overrides the action when the Android
-    // back button is pressed
+    // WillPopScope provides the onWillPop function, which overrides the 
+    // action when the Android back button is pressed
     return WillPopScope(
-      onWillPop: () => _onBackGesture(panelController),
-      child: SlidingUpPanel(
+      // onWillPop: () => _onBackGesture(panelController),
+      onWillPop: () => showEndDialog(context),
+      child: 
+      SlidingUpPanel(
         controller: panelController,
         minHeight: showSlidingPanel ? (safeAreaPaddingBottom + 77.0) : 0.0,
         borderRadius: BorderRadius.only(
