@@ -12,7 +12,8 @@ class SettingsRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // not listening because Hive (and valueListenableBuilder) rebuilds everything for us
-    SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context, listen: false);
+    SettingsProvider settingsProvider =
+        Provider.of<SettingsProvider>(context, listen: false);
 
     return ScrollableTemplate(
       showBackButton: true,
@@ -28,6 +29,18 @@ class SettingsRoute extends StatelessWidget {
               SettingsService.disableNsfw();
             else
               SettingsService.enableNsfw();
+          },
+        ).sliver(),
+        OnOffToggle(
+          title: "High performance",
+          enabled: settingsProvider.highPerformanceAnimation,
+          onTap: () {
+            SettingsProvider settingsProvider =
+                Provider.of<SettingsProvider>(context, listen: false);
+            if (settingsProvider.highPerformanceAnimation)
+              SettingsService.disableHighPerformanceAnimations();
+            else
+              SettingsService.enableHighPerformanceAnimations();
           },
         ).sliver()
       ],
