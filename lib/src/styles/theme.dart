@@ -18,15 +18,15 @@ ThemeData _buildTheme() {
   );
 
   // for better back transition
-PageTransitionsTheme _pageTransitionsTheme = PageTransitionsTheme(
-  builders: <TargetPlatform, PageTransitionsBuilder>{
-    TargetPlatform.android: CupertinoPageTransitionsBuilder(),
-    TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
-  },
-);
+// PageTransitionsTheme _pageTransitionsTheme = PageTransitionsTheme(
+//   builders: <TargetPlatform, PageTransitionsBuilder>{
+//     TargetPlatform.android: CupertinoPageTransitionsBuilder(),
+//     TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+//   },
+// );
 
   return base.copyWith(
     textTheme: _buildTextTheme(base.textTheme),
-    pageTransitionsTheme: _pageTransitionsTheme,
+    // pageTransitionsTheme: _pageTransitionsTheme,
   );
 }
