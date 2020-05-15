@@ -61,7 +61,7 @@ class SettingsRoute extends StatelessWidget {
 
   Widget explanation(String text) {
     return MarkdownBody(
-      data: AppStrings.nsfwExplanation,
+      data: text,
       styleSheet: MarkdownStyleSheet(
         p: TextStyles.settingExplanation,
       ),
