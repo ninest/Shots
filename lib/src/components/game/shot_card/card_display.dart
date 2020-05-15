@@ -15,7 +15,8 @@ class CardDisplay extends StatelessWidget {
     final bool screenSmall = screenWidth < 370;
 
     double _cardwidth = screenSmall ? 270.0 : 320.0;
-    double _cardHeight = _cardwidth * 1.4375;
+    double _cardHeight = _cardwidth * 1.4375; 
+    // 1.4375 is the ratio of the height to the width
 
     return Transform.translate(
       offset: shotCard.offset ?? Offset(0, 0),

@@ -30,7 +30,6 @@ class TextStyles {
         ),
       );
 
-
   // pack name (only in choice.dart)
   static TextStyle get packName => body1 //
       .w(FontWeight.w700);
@@ -85,4 +84,11 @@ class TextStyles {
 
   static TextStyle get loadingSubText => body1 //
       .w(FontWeight.w400);
+
+  static TextStyle get settings => body1 //
+      .s(1.2 * Values.em);
+
+  static TextStyle get settingExplanation => body1 //
+      .s(0.9 * Values.em)
+      .w(FontWeight.normal);
 }

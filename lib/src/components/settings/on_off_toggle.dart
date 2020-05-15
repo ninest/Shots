@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:shots/src/styles/colors.dart';
+import 'package:shots/src/styles/text_styles.dart';
 import 'package:shots/src/styles/values.dart';
 
 class OnOffToggle extends StatelessWidget {
-  const OnOffToggle({Key key, this.title, this.enabled = false, this.onTap}) : super(key: key);
+  const OnOffToggle({Key key, this.title, this.enabled = false, this.onTap})
+      : super(key: key);
   final String title;
   final bool enabled;
   final Function onTap;
@@ -19,34 +21,44 @@ class OnOffToggle extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Text(title),
-            Row(
-              children: <Widget>[
-                AnimatedContainer(
-                  duration: Duration(milliseconds: Values.durationMs),
-                  padding: _togglePadding(),
-                  decoration: BoxDecoration(
-                    border: _border(enabled),
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(Values.borderRadius),
-                      bottomLeft: Radius.circular(Values.borderRadius),
+            Flexible(
+              flex: 1,
+              child: Text(
+                title,
+                style: TextStyles.settings,
+                overflow: TextOverflow.fade,
+              ),
+            ),
+            Expanded(
+              flex: 0,
+              child: Row(
+                children: <Widget>[
+                  AnimatedContainer(
+                    duration: Duration(milliseconds: Values.durationMs),
+                    padding: _togglePadding(),
+                    decoration: BoxDecoration(
+                      border: _border(enabled),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(Values.borderRadius),
+                        bottomLeft: Radius.circular(Values.borderRadius),
+                      ),
                     ),
+                    child: Text("On"),
                   ),
-                  child: Text("On"),
-                ),
-                AnimatedContainer(
-                  duration: Duration(milliseconds: Values.durationMs),
-                  padding: _togglePadding(),
-                  decoration: BoxDecoration(
-                    border: _border(!enabled),
-                    borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(Values.borderRadius),
-                      bottomRight: Radius.circular(Values.borderRadius),
+                  AnimatedContainer(
+                    duration: Duration(milliseconds: Values.durationMs),
+                    padding: _togglePadding(),
+                    decoration: BoxDecoration(
+                      border: _border(!enabled),
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(Values.borderRadius),
+                        bottomRight: Radius.circular(Values.borderRadius),
+                      ),
                     ),
+                    child: Text("Off"),
                   ),
-                  child: Text("Off"),
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ),

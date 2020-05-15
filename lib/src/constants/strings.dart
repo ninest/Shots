@@ -33,4 +33,12 @@ By playing the game, you agree to the following terms:
 
 Do not force anyone to drink.
 """;
+
+
+  // settings explanations
+  static String get nsfw => "NSFW";
+  static String get highPerformance => "High performance";
+
+  static String get nsfwExplanation => "Please ensure that you are older than 18 to enable NSFW (Not Safe For Work).";
+  static String get performanceExplanation => "Using the high performance settings uses more memory and may be laggy on older devices. Try out both and use whichever setting you prefer!";
 }
