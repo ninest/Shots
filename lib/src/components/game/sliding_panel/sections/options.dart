@@ -22,7 +22,7 @@ class OptionsSection extends StatelessWidget {
     final bool isTutorial = Provider.of<GameProvider>(context, listen: false).isTutorial;
 
     return Section(
-      title: overrideTitle ?? Strings.optionsSectionTitle,
+      title: overrideTitle ?? AppStrings.optionsSectionTitle,
       children: <Widget>[
         Button(
           text: "Re-Shuffle",

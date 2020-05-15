@@ -21,7 +21,7 @@ class PacksRoute extends StatelessWidget {
       backgroundColor: AppColors.pageColor,
       body: ScrollableTemplate(
         showBackButton: true,
-        title: Strings.packsRouteTitle,
+        title: AppStrings.packsRouteTitle,
         children: <Widget>[
           FutureBuilder(
             future: loadPacks(context),

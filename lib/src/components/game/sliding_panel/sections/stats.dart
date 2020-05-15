@@ -16,7 +16,7 @@ class StatsSection extends StatelessWidget {
     final GameProvider gameProvider = Provider.of<GameProvider>(context, listen: false);
 
     return Section(
-      title: Strings.statsSectionTitle,
+      title: AppStrings.statsSectionTitle,
       children: <Widget>[
         Opacity(
           // show opacity to show that timer and card counter are disabled in

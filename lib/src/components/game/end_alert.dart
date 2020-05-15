@@ -33,7 +33,7 @@ showEndDialog(BuildContext context) {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Text(
-                Strings.endDialogTitle,
+                AppStrings.endDialogTitle,
                 // make font size smaller
                 style: TextStyles.title //
                     .s(1.5 * Values.em),

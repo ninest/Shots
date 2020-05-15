@@ -1,4 +1,4 @@
-class Strings {
+class AppStrings {
   static String get appTitle => "Shots";
   
   static String get startButton => "Start";

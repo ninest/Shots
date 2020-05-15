@@ -8,7 +8,6 @@ class AppTitle extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-
         // un comment to show logo
         // Image.asset(
         //   'icons/android.png',
@@ -16,7 +15,10 @@ class AppTitle extends StatelessWidget {
         // ),
 
         // App name (Shots)
-        Text(Strings.appTitle, style: TextStyles.title),
+        Text(
+          AppStrings.appTitle,
+          style: TextStyles.title,
+        ),
       ],
     );
   }

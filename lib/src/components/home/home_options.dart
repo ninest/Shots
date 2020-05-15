@@ -22,7 +22,7 @@ class HomeOptions extends StatelessWidget {
         children: <Widget>[
           // start button (takes to pack selesction first)
           Button(
-            text: Strings.startButton,
+            text: AppStrings.startButton,
             color: AppColors.accent,
             width: 200.0,
             focus: true,
@@ -33,7 +33,7 @@ class HomeOptions extends StatelessWidget {
           Spacing(height: Values.mainPadding),
 
           Button(
-            text: Strings.termsRouteTitle,
+            text: AppStrings.termsRouteTitle,
             // outline: true,
             color: AppColors.greens[0],
             onTap: () => ExtendedNavigator.of(context).pushNamed(Routes.termsRoute),
@@ -43,7 +43,7 @@ class HomeOptions extends StatelessWidget {
           Spacing(height: Values.mainPadding),
 
           Button(
-            text: Strings.settingsRouteButton,
+            text: AppStrings.settingsRouteButton,
             // outline: true,
             color: AppColors.reds[0],
             onTap: () => ExtendedNavigator.of(context).pushNamed(Routes.settingsRoute),
@@ -53,7 +53,7 @@ class HomeOptions extends StatelessWidget {
           Spacing(height: Values.mainPadding),
 
           Button(
-            text: Strings.tutorialButton,
+            text: AppStrings.tutorialButton,
             color: AppColors.oranges[0],
             // outline: true,
             onTap: () => TutorialService.startTutorial(context),

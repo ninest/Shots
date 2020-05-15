@@ -16,7 +16,7 @@ class SettingsRoute extends StatelessWidget {
 
     return ScrollableTemplate(
       showBackButton: true,
-      title: Strings.settingsRouteTitle,
+      title: AppStrings.settingsRouteTitle,
       children: <Widget>[
         OnOffToggle(
           title: "NSFW",

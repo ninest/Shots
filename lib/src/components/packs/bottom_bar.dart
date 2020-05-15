@@ -36,7 +36,7 @@ class BottomBar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Button(
-              text: everythingSelected ? Strings.unSelectAllButton : Strings.selectAllButton,
+              text: everythingSelected ? AppStrings.unSelectAllButton : AppStrings.selectAllButton,
               color: everythingSelected ? AppColors.danger : AppColors.secondary,
               outline: true,
 
@@ -46,7 +46,7 @@ class BottomBar extends StatelessWidget {
                   : () => packsProvider.selectAll(),
             ),
             Button(
-              text: Strings.doneButton,
+              text: AppStrings.doneButton,
               color: AppColors.accent,
               onTap: () => GameService.start(context),
               disabled: disableButton,
