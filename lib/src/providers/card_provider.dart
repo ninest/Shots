@@ -7,6 +7,7 @@ class CardProvider extends ChangeNotifier {
   int currentCardIndex = 0;
 
   // number of cards to show behind current card
+  // show less widgets to render on Android (higher performance)
   int nextCardsNo = UniversalPlatform.isIOS ? 4 : 3;
 
   // no of cards gone through (used for stats)
