@@ -70,17 +70,6 @@ class GameRoute extends StatelessWidget {
           child: SafeArea(
             child: Stack(
               children: <Widget>[
-                // show x button
-                // don't show it when the end of deck menu is showing
-                // because there are two buttons (End game and X) that do the
-                // same thing
-                if (currentCardExists)
-                  Padding(
-                    padding: EdgeInsets.all(Values.mainPadding),
-                    child: AppCloseButton(
-                      overrideOnTap: () => showEndDialog(context),
-                    ),
-                  ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   // mainAxisSize: MainAxisSize.min,
@@ -105,6 +94,20 @@ class GameRoute extends StatelessWidget {
                       _endOfDeck(),
                   ],
                 ),
+                // show x button
+                // don't show it when the end of deck menu is showing
+                // because there are two buttons (End game and X) that do the
+                // same thing
+                if (currentCardExists)
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Padding(
+                      padding: EdgeInsets.all(Values.mainPadding),
+                      child: AppCloseButton(
+                        overrideOnTap: () => showEndDialog(context),
+                      ),
+                    ),
+                  )
               ],
             ),
           ),

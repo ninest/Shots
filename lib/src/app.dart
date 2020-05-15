@@ -16,7 +16,13 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // make it a full screen app
-    SystemChrome.setEnabledSystemUIOverlays([]);
+    // but show Android navbar
+    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
+
+    // black android navbar
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      systemNavigationBarColor: Colors.black,
+    ));
 
     return ValueListenableBuilder(
       // listen
@@ -27,7 +33,7 @@ class App extends StatelessWidget {
           theme: appTheme,
           builder: (BuildContext context, Widget widget) {
             // load settings
-            SettingsProvider settingsProvider =
+            final settingsProvider =
                 Provider.of<SettingsProvider>(context, listen: false);
             settingsProvider.loadSettings();
             print("build app");
