@@ -7,19 +7,32 @@ class SettingsProvider extends ChangeNotifier {
     print("Loading settings ...");
     final settingsBox = Hive.box(HiveBoxes.settings);
     nsfw = settingsBox.get(SettingsBox.nsfw, defaultValue: false);
+    highPerformanceAnimation =
+        settingsBox.get(SettingsBox.highPerformanceAnimation, defaultValue: false);
   }
 
   bool nsfw;
+  bool highPerformanceAnimation;
 }
 
 class SettingsService {
+  static var _settingsBox = Hive.box(HiveBoxes.settings);
+
+
+  // todo: refactor these functins and shorten them
   static enableNsfw() {
-    final settingsBox = Hive.box(HiveBoxes.settings);
-    settingsBox.put(SettingsBox.nsfw, true);
+    _settingsBox.put(SettingsBox.nsfw, true);
   }
 
   static disableNsfw() {
-    final settingsBox = Hive.box(HiveBoxes.settings);
-    settingsBox.put(SettingsBox.nsfw, false);
+    _settingsBox.put(SettingsBox.nsfw, false);
+  }
+
+  static enableHighPerformanceAnimations() {
+    _settingsBox.put(SettingsBox.highPerformanceAnimation, true);
+  }
+
+  static disableHighPerformanceAnimations() {
+    _settingsBox.put(SettingsBox.highPerformanceAnimation, false);
   }
 }

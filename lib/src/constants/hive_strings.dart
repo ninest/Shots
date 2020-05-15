@@ -8,6 +8,7 @@ class HiveBoxes {
 /// All value names in the [settings] box
 class SettingsBox {
   static String get nsfw => "nsfw";
+  static String get highPerformanceAnimation => "high_performance_animations";
 }
 
 

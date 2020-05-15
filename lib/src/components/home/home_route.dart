@@ -15,7 +15,7 @@ class HomeRoute extends StatelessWidget {
 
     List<Widget> children = [
       // extra space above so it doesn't look too weird
-      Spacing(height: heightUnit/2),
+      Spacing(height: heightUnit / 2),
 
       AppTitle(),
 
@@ -49,28 +49,6 @@ class HomeRoute extends StatelessWidget {
           children: children,
         ),
       ),
-    );
-  }
-
-  LinearGradient _getLinearGradient() {
-    // used for animating background
-    List<Alignment> _top = [Alignment.topLeft, Alignment.topCenter, Alignment.topRight];
-    List<Alignment> _bottom = [
-      Alignment.bottomLeft,
-      Alignment.bottomCenter,
-      Alignment.bottomRight
-    ];
-    List<Color> _colors = [...AppColors.blacks];
-
-    // get random
-    Alignment topAlignment = (_top..shuffle()).first;
-    Alignment bottomAlignment = (_bottom..shuffle()).first;
-    List<Color> color = (_colors..shuffle());
-
-    return LinearGradient(
-      begin: topAlignment,
-      end: bottomAlignment,
-      colors: [color[0], color[1]],
     );
   }
 }
