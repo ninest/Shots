@@ -26,12 +26,13 @@ class AppStrings {
   static String get terms => """
 By playing the game, you agree to the following terms:
 
-- I am 18 years old of age or older
-- I am responsible for my actions and their consequences
+- You are 18 years old of age or older
+- You are responsible for your own actions and their consequences
+- You will not force anyone to drink
+- You will not play for prolonged periods of time or consume excessive alcohol
 
-**Always be responsible.** The creators of the Shots app will not be held liable for any damage or injury occuring during or after playing the game.
+The creators of the Shots app will not be held liable for any damage or injury occuring during or after playing the game.
 
-Do not force anyone to drink.
 """;
 
 
