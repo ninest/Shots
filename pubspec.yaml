@@ -11,7 +11,7 @@ description: A new Flutter project.
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 0.0.11+11
+version: 0.0.12+12
 
 environment:
   sdk: ">=2.6.0 <3.0.0"
@@ -56,6 +56,7 @@ flutter_native_splash:
   image: "icons/android.png"
   color: "111111"
   android: true
+  android_disable_fullscreen: true
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

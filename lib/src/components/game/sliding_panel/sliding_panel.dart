@@ -24,20 +24,23 @@ class SlidingPanel extends StatelessWidget {
     // to provider more space for phones with rounded cornered screens (iPhoneX)
     final double safeAreaPaddingBottom = MediaQuery.of(context).padding.bottom;
 
-    // WillPopScope provides the onWillPop function, which overrides the 
+    // WillPopScope provides the onWillPop function, which overrides the
     // action when the Android back button is pressed
     return WillPopScope(
       // onWillPop: () => _onBackGesture(panelController),
       onWillPop: () => showEndDialog(context),
-      child: 
-      SlidingUpPanel(
+      child: SlidingUpPanel(
         controller: panelController,
         minHeight: showSlidingPanel ? (safeAreaPaddingBottom + 77.0) : 0.0,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(Values.borderRadius),
           topRight: Radius.circular(Values.borderRadius),
         ),
-        border: Border.all(width: 1, color: AppColors.pageBorderColor),
+        // border: Border.all(width: 1, color: AppColors.pageBorderColor),
+        border: Border.all(
+          width: 1,
+          color: AppColors.pageBorderColor,
+        ),
         color: AppColors.pageColor,
         panel: _actualSlidingPanel(),
         body: body,

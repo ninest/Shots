@@ -10,19 +10,22 @@ import 'package:shots/src/router/router.gr.dart';
 import 'package:shots/src/styles/theme.dart';
 import 'package:shots/src/utils/bounce_scroll.dart';
 
+import 'styles/colors.dart';
+
 class App extends StatelessWidget {
   const App({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // black android navbar
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      systemNavigationBarColor: AppColors.pageColor,
+      statusBarColor: Colors.transparent,
+    ));
     // make it a full screen app
     // but show Android navbar
     SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
-
-    // black android navbar
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      systemNavigationBarColor: Colors.black,
-    ));
+    // SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top]);
 
     return ValueListenableBuilder(
       // listen

@@ -38,9 +38,9 @@ class HomeRoute extends StatelessWidget {
         decoration: BoxDecoration(
           // gradient: _getLinearGradient(),
           color: AppColors.blacks[3],
-          borderRadius: BorderRadius.circular(Values.borderRadius * 2),
+          borderRadius: BorderRadius.circular(Values.borderRadius * 4.5),
           border: Border.all(
-            width: Values.mainPadding / 2,
+            width: Values.mainPadding /2,
             color: Colors.transparent.withOpacity(Values.containerOpacity),
           ),
         ),
