@@ -5,8 +5,8 @@
 ![Made with Flutter](https://img.shields.io/badge/Made%20With-Flutter-blue?style=flat-square)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![BMAC](https://img.shields.io/badge/Donate-Buy%20Me%20A%20Coffee-orange.svg?style=flat-square)](https://www.buymeacoffee.com/ninest) 
-[![HitCount](http://hits.dwyl.com/themindstorm/Shots.svg)](http://hits.dwyl.com/themindstorm/Shots) 
-![GitHub](https://img.shields.io/github/license/themindstorm/Shots?style=flat-square)
+[![HitCount](http://hits.dwyl.com/ninest/Shots.svg)](http://hits.dwyl.com/ninest/Shots) 
+![GitHub](https://img.shields.io/github/license/ninest/Shots?style=flat-square)
 
 **How to play?** One player reads out cards. All other players have to drink based off of what the card says. Those who fail to do so are out of the game. See the images below for a clearer explanation.
 
@@ -96,7 +96,7 @@ If you're interested in the swipeable cards, check out my package [swipeable_car
 
     Change the rules! Instead of taking a sip, do a sit-up. Instead of taking a shot, do a push-up!
 
-## Other information
+## 📝 Other information
 Project start date: April 9, 2020
 Shots gets its [own website](https://shotsapp.now.sh/): April 30, 2020
 
